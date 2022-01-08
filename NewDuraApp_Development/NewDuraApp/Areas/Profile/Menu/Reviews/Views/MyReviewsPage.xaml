@@ -1,0 +1,317 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="NewDuraApp.Areas.Profile.Menu.Reviews.Views.MyReviewsPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:control="clr-namespace:NewDuraApp.Controls"
+    xmlns:fonticon="clr-namespace:NewDuraApp.FontIcons"
+    xmlns:images="clr-namespace:NewDuraApp.Extensions"
+    xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:sh="http://sharpnado.com"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    BackgroundColor="White"
+    BindingContext="{Binding MyReviewsPage, Source={StaticResource Locator}}"
+    NavigationPage.HasBackButton="True"
+    Shell.NavBarHasShadow="False"
+    Shell.NavBarIsVisible="True"
+    Shell.TabBarIsVisible="False"
+    Visual="Material">
+    <Shell.TitleView>
+
+        <Label
+            FontFamily="ProximaSemiBold"
+            FontSize="22"
+            HorizontalOptions="FillAndExpand"
+            Text="My Reviews"
+            TextColor="Black"
+            VerticalOptions="CenterAndExpand"
+            VerticalTextAlignment="Center" />
+    </Shell.TitleView>
+    <ContentPage.Content>
+        <Grid Margin="15" RowDefinitions="78,*">
+            <sh:Shadows
+                Padding="0"
+                BackgroundColor="#FFFFFF"
+                CornerRadius="8"
+                HorizontalOptions="FillAndExpand">
+                <sh:Shadows.Shades>
+                    <sh:ImmutableShades>
+
+                        <sh:Shade
+                            BlurRadius="10"
+                            Opacity="0.5"
+                            Offset="1,2"
+                            Color="Gray" />
+                    </sh:ImmutableShades>
+                </sh:Shadows.Shades>
+                <Frame
+                    Grid.Row="0"
+                    Margin="-1,-1,0,0"
+                    Padding="11"
+                    BorderColor="#e2e2e2"
+                    CornerRadius="8">
+                    <Grid
+                        ColumnDefinitions="*,*"
+                        ColumnSpacing="0"
+                        RowDefinitions="18,14,12"
+                        VerticalOptions="CenterAndExpand">
+                        <StackLayout
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="2"
+                            HorizontalOptions="Center"
+                            Orientation="Horizontal"
+                            Spacing="2">
+                            <control:RattingBar
+                                EmptyStarImage="rating_inactive_star"
+                                FillStarImage="rating_active_star"
+                                HorizontalOptions="CenterAndExpand"
+                                ImageHeight="30"
+                                ImageWidth="30"
+                                IsEnabled="False"
+                                SelectedStarValue="{Binding ReviewData.TotalStars}" />
+                        </StackLayout>
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="2"
+                            FontFamily="ProximaRegular"
+                            FontSize="12"
+                            HorizontalOptions="CenterAndExpand"
+                            TextColor="#FFB114">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="(" />
+                                    <Span Text="{Binding ReviewData.TotalReviews}" />
+                                    <Span Text=" reviews)" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <StackLayout
+                            Grid.Row="2"
+                            Grid.Column="0"
+                            Orientation="Horizontal"
+                            Spacing="3">
+                            <Image
+                                Aspect="Fill"
+                                HeightRequest="12"
+                                HorizontalOptions="Start"
+                                Source="{images:EmbeddedImage NewDuraApp.Images.positive_reviews.png}"
+                                WidthRequest="12" />
+                            <Label VerticalOptions="CenterAndExpand" VerticalTextAlignment="Center">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span
+                                            FontAttributes="Bold"
+                                            FontSize="9"
+                                            Text="Positive Reviews "
+                                            TextColor="#000000" />
+                                        <Span
+                                            FontSize="9"
+                                            Text="("
+                                            TextColor="#000000" />
+                                        <Span
+                                            FontSize="9"
+                                            Text="{Binding ReviewData.TotalPositiveRating}"
+                                            TextColor="#000000" />
+                                        <Span
+                                            FontSize="9"
+                                            Text=" Reviews)"
+                                            TextColor="#000000" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </StackLayout>
+                        <StackLayout
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            HorizontalOptions="EndAndExpand"
+                            Orientation="Horizontal"
+                            Spacing="3">
+                            <Image
+                                Aspect="Fill"
+                                HeightRequest="12"
+                                HorizontalOptions="Start"
+                                Source="{images:EmbeddedImage NewDuraApp.Images.negative_reviews.png}"
+                                WidthRequest="12" />
+                            <Label VerticalOptions="CenterAndExpand" VerticalTextAlignment="Center">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span
+                                            FontAttributes="Bold"
+                                            FontSize="9"
+                                            Text="Negative Reviews "
+                                            TextColor="#000000" />
+                                        <Span
+                                            FontSize="9"
+                                            Text="("
+                                            TextColor="#000000" />
+                                        <Span
+                                            FontSize="9"
+                                            Text="{Binding ReviewData.TotalNegativeRating}"
+                                            TextColor="#000000" />
+                                        <Span
+                                            FontSize="9"
+                                            Text=" Reviews)"
+                                            TextColor="#000000" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </StackLayout>
+                    </Grid>
+                </Frame>
+            </sh:Shadows>
+            <ScrollView Grid.Row="1" VerticalScrollBarVisibility="Never">
+                <StackLayout Spacing="1">
+                    <StackLayout
+                        x:Name="stackReview"
+                        BindableLayout.ItemsSource="{Binding UserReviews}"
+                        Spacing="1">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <Grid
+                                    Padding="10"
+                                    BackgroundColor="White"
+                                    ColumnDefinitions="43,*,45"
+                                    RowDefinitions="40,12,Auto,Auto,Auto">
+                                    <Frame
+                                        Grid.Row="0"
+                                        Grid.Column="0"
+                                        Padding="0"
+                                        BorderColor="LightGray"
+                                        CornerRadius="6"
+                                        HasShadow="False"
+                                        IsClippedToBounds="True">
+                                        <Image
+                                            Aspect="AspectFill"
+                                            HeightRequest="40"
+                                            HorizontalOptions="Center"
+                                            Source="{Binding profilephoto_url}"
+                                            VerticalOptions="Center"
+                                            WidthRequest="43" />
+                                    </Frame>
+
+                                    <StackLayout
+                                        Grid.Row="0"
+                                        Grid.Column="1"
+                                        Spacing="0">
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label
+                                                FontAttributes="Bold"
+                                                FontFamily="ProximaRegular"
+                                                FontSize="14"
+                                                Text="{Binding FullName}"
+                                                TextColor="Black" />
+                                            <ImageButton
+                                                Aspect="Fill"
+                                                BackgroundColor="Transparent"
+                                                Command="{Binding BindingContext.ReveiewDetails, Source={x:Reference stackReview}}"
+                                                CommandParameter="{Binding .}"
+                                                HeightRequest="16"
+                                                IsVisible="False"
+                                                VerticalOptions="CenterAndExpand"
+                                                WidthRequest="16">
+                                                <ImageButton.Source>
+                                                    <FontImageSource
+                                                        FontFamily="UserIcons"
+                                                        Glyph="{x:Static fonticon:FontIconsClass.SquareEditOutline}"
+                                                        Size="30"
+                                                        Color="Black" />
+
+                                                </ImageButton.Source>
+                                            </ImageButton>
+                                        </StackLayout>
+
+                                        <Label
+                                            FontFamily="ProximaRegular"
+                                            FontSize="12"
+                                            Text="{Binding driver_address}"
+                                            TextColor="Gray" />
+                                    </StackLayout>
+                                    <StackLayout
+                                        Grid.Row="0"
+                                        Grid.Column="2"
+                                        HorizontalOptions="EndAndExpand"
+                                        IsVisible="False"
+                                        Orientation="Horizontal"
+                                        VerticalOptions="Start">
+                                        <Image
+                                            Aspect="Fill"
+                                            HeightRequest="10"
+                                            Source="{images:EmbeddedImage NewDuraApp.Images.heart.png}"
+                                            WidthRequest="15" />
+                                        <Label
+                                            FontFamily="ProximaRegular"
+                                            FontSize="13"
+                                            Text="{Binding UserLikesCount}"
+                                            TextColor="Black" />
+                                    </StackLayout>
+                                    <StackLayout
+                                        Grid.Row="1"
+                                        Grid.Column="0"
+                                        Grid.ColumnSpan="3"
+                                        Orientation="Horizontal"
+                                        Spacing="2">
+                                        <control:RattingBar
+                                            EmptyStarImage="rating_inactive_star"
+                                            FillStarImage="rating_active_star"
+                                            HorizontalOptions="CenterAndExpand"
+                                            ImageHeight="18"
+                                            ImageWidth="18"
+                                            IsEnabled="False"
+                                            SelectedStarValue="{Binding Rating}" />
+                                    </StackLayout>
+                                    <ScrollView
+                                        Grid.Row="2"
+                                        Grid.Column="0"
+                                        Grid.ColumnSpan="3"
+                                        HorizontalScrollBarVisibility="Never"
+                                        Orientation="Horizontal">
+                                        <StackLayout
+                                            BindableLayout.ItemsSource="{Binding ItemDetailsReviewsImageList}"
+                                            Orientation="Horizontal"
+                                            Spacing="10">
+                                            <BindableLayout.ItemTemplate>
+                                                <DataTemplate>
+
+                                                    <Frame
+                                                        Padding="0"
+                                                        BorderColor="#707070"
+                                                        CornerRadius="8"
+                                                        HasShadow="False"
+                                                        HeightRequest="74"
+                                                        IsClippedToBounds="True">
+                                                        <Image
+                                                            Aspect="Fill"
+                                                            HeightRequest="74"
+                                                            Source="{Binding ReviewImage}"
+                                                            WidthRequest="114" />
+                                                    </Frame>
+
+                                                </DataTemplate>
+                                            </BindableLayout.ItemTemplate>
+                                        </StackLayout>
+                                    </ScrollView>
+                                    <Label
+                                        Grid.Row="3"
+                                        Grid.Column="0"
+                                        Grid.ColumnSpan="3"
+                                        FontFamily="ProximaRegular"
+                                        FontSize="12"
+                                        Text="{Binding remarks}"
+                                        TextColor="Gray" />
+                                    <BoxView
+                                        Grid.Row="4"
+                                        Grid.Column="0"
+                                        Grid.ColumnSpan="3"
+                                        BackgroundColor="#e2e2e2"
+                                        HeightRequest="1" />
+                                </Grid>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,202 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="NewDuraApp.Areas.Profile.Menu.SavedCards.Views.AddNewCardPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:behavior="clr-namespace:NewDuraApp.Behaviours"
+    xmlns:control="clr-namespace:NewDuraApp.Controls"
+    xmlns:fonticon="clr-namespace:NewDuraApp.FontIcons"
+    xmlns:images="clr-namespace:NewDuraApp.Extensions"
+    xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:translate="clr-namespace:NewDuraApp.Resources"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    BackgroundColor="White"
+    BindingContext="{Binding AddNewCardPage, Source={StaticResource Locator}}"
+    NavigationPage.HasBackButton="True"
+    Shell.NavBarHasShadow="False"
+    Shell.NavBarIsVisible="True"
+    Shell.TabBarIsVisible="False"
+    Visual="Material">
+    <Shell.TitleView>
+
+        <Label
+            FontFamily="ProximaSemiBold"
+            FontSize="22"
+            HorizontalOptions="FillAndExpand"
+            Text="{Binding HeaderText}"
+            TextColor="Black"
+            VerticalOptions="CenterAndExpand"
+            VerticalTextAlignment="Center" />
+
+
+    </Shell.TitleView>
+    <ContentPage.Content>
+        <ScrollView Margin="15" VerticalScrollBarVisibility="Never">
+            <Grid
+                Margin="0,15"
+                ColumnDefinitions="*,*"
+                ColumnSpacing="15"
+                RowDefinitions="50,50,50,50"
+                RowSpacing="15">
+                <Frame
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    Margin="2"
+                    Padding="0"
+                    BackgroundColor="#FBFBFF"
+                    CornerRadius="5">
+                    <control:CustomEntry
+                        Margin="10,0"
+                        FontSize="14"
+                        Placeholder="{translate:Translate Card_Holder_Name}"
+                        PlaceholderColor="{StaticResource PlaceholderColor}"
+                        Text="{Binding CardHolderName}"
+                        TextColor="Black">
+                        <control:CustomEntry.Behaviors>
+                            <behavior:NumericValidationBehaviorAlphOnly />
+                        </control:CustomEntry.Behaviors>
+                    </control:CustomEntry>
+                </Frame>
+                <Label
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    Margin="0,0,0,-15"
+                    FontSize="12"
+                    IsVisible="{Binding IsCardHoilderNameErrorVisible}"
+                    Text="{translate:Translate Please_enter_Card_Holder_Name}"
+                    TextColor="Red"
+                    VerticalOptions="End" />
+                <Frame
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    Margin="2,5"
+                    Padding="0"
+                    BackgroundColor="#FBFBFF"
+                    CornerRadius="5">
+                    <control:CustomEntry
+                        Margin="10,0"
+                        FontSize="14"
+                        Keyboard="Numeric"
+                        Placeholder="{translate:Translate Card_Number}"
+                        PlaceholderColor="{StaticResource PlaceholderColor}"
+                        Text="{Binding CardNumber}"
+                        TextColor="Black">
+                        <control:CustomEntry.Behaviors>
+                            <behavior:MaskedBehavior Mask="XXXX-XXXX-XXXX-XXXX" />
+                        </control:CustomEntry.Behaviors>
+                    </control:CustomEntry>
+                </Frame>
+                <Label
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    Margin="0,0,0,-15"
+                    FontSize="12"
+                    IsVisible="{Binding IsCardNumberErrorVisible}"
+                    Text="{translate:Translate Please_enter_Card_Number}"
+                    TextColor="Black"
+                    VerticalOptions="End" />
+                <Frame
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    Margin="2,5,0,5"
+                    Padding="0"
+                    BackgroundColor="#FBFBFF"
+                    CornerRadius="5">
+                    <Grid ColumnDefinitions="*">
+                        <control:CustomEntry
+                            Grid.Column="0"
+                            Margin="10,0,0,0"
+                            ClassId="expdate"
+                            FontSize="14"
+                            Keyboard="Numeric"
+                            Placeholder="{translate:Translate Exp_date}"
+                            PlaceholderColor="{StaticResource PlaceholderColor}"
+                            Text="{Binding ExpiryDate}"
+                            TextColor="Black">
+                            <control:CustomEntry.Behaviors>
+                                <behavior:MaskedBehavior Mask="XX/XXXX" />
+                            </control:CustomEntry.Behaviors>
+                        </control:CustomEntry>
+                        <!--<Image
+                            Grid.Column="1"
+                            IsVisible="False"
+                            Margin="0,0,5,0"
+                            Aspect="AspectFill"
+                            HeightRequest="18"
+                            HorizontalOptions="End"
+                            VerticalOptions="CenterAndExpand"
+                            WidthRequest="20">
+                            <Image.Source>
+                                <FontImageSource
+                                    FontFamily="UserIcons"
+                                    Glyph="{x:Static fonticon:FontIconsClass.CalendarBlank}"
+                                    Size="30"
+                                    Color="Black" />
+
+                            </Image.Source>
+                        </Image>-->
+                    </Grid>
+
+                </Frame>
+                <Label
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    Margin="0,0,0,-15"
+                    FontSize="12"
+                    IsVisible="{Binding IsExpiryDateErrorVisible}"
+                    Text="{translate:Translate Please_enter_Expiry_Date}"
+                    TextColor="Red"
+                    VerticalOptions="End" />
+                <Frame
+                    Grid.Row="2"
+                    Grid.Column="1"
+                    Margin="0,5,2,5"
+                    Padding="0"
+                    BackgroundColor="#FBFBFF"
+                    CornerRadius="5">
+                    <control:CustomEntry
+                        Margin="10,0"
+                        FontSize="14"
+                        Keyboard="Numeric"
+                        MaxLength="3"
+                        Placeholder="{translate:Translate Security_code}"
+                        PlaceholderColor="{StaticResource PlaceholderColor}"
+                        Text="{Binding SecurityCode}"
+                        TextColor="Black">
+                        <control:CustomEntry.Behaviors>
+                            <behavior:NumericValidationBehaviorNumberOnly />
+                        </control:CustomEntry.Behaviors>
+                    </control:CustomEntry>
+                </Frame>
+                <Label
+                    Grid.Row="2"
+                    Grid.Column="1"
+                    Margin="0,0,0,-15"
+                    FontSize="12"
+                    IsVisible="{Binding IsSecurityCodeErrorVisible}"
+                    Text="{translate:Translate Please_enter_Security_Code}"
+                    TextColor="Red"
+                    VerticalOptions="End" />
+                <Button
+                    Grid.Row="3"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    BackgroundColor="#211E66"
+                    Command="{Binding AddUpdateSaveCardCommand}"
+                    CornerRadius="5"
+                    FontFamily="ProximaRegular"
+                    FontSize="16"
+                    HeightRequest="50"
+                    HorizontalOptions="FillAndExpand"
+                    IsEnabled="{Binding IsButtonEnabled}"
+                    Text="{Binding ButtonText}"
+                    TextColor="White"
+                    VerticalOptions="EndAndExpand" />
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

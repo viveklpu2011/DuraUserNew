@@ -1,0 +1,498 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>portable</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Xamarin.Auth" Version="1.7.0" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
+    <PackageReference Include="Xamarin.CommunityToolkit" Version="1.1.0" />
+    <PackageReference Include="Xamarin.Forms.PancakeView" Version="2.3.0.759" />
+    <PackageReference Include="Xamarin.Forms.Visual.Material" Version="5.0.0.2012" />
+    <PackageReference Include="Acr.UserDialogs" Version="7.1.0.446" />
+    <PackageReference Include="FreshMvvm" Version="3.0.0" />
+    <PackageReference Include="Refractored.MvvmHelpers" Version="1.6.2" />
+    <PackageReference Include="Rg.Plugins.Popup" Version="2.0.0.10" />
+    <PackageReference Include="Plugin.Permissions" Version="6.0.1" />
+    <PackageReference Include="Plugin.Multilingual" Version="1.0.2" />
+    <PackageReference Include="Xamarin.Forms.PancakeView" Version="2.3.0.759" />
+    <PackageReference Include="App.User.LocationInfo" Version="1.0.0" />
+    <PackageReference Include="Xam.Plugin.Media" Version="5.0.1" />
+    <PackageReference Include="Sharpnado.Shadows" Version="1.2.0" />
+    <PackageReference Include="Xamarin.Forms.Maps" Version="5.0.0.2012" />
+    <PackageReference Include="Xamarin.FFImageLoading.Transformations" Version="2.4.11.982" />
+    <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.11.982" />
+    <PackageReference Include="ReactiveUI.XamForms" Version="11.1.23" />
+    <PackageReference Include="Plugin.FacebookClient" Version="2.2.1" />
+    <PackageReference Include="Com.Airbnb.Xamarin.Forms.Lottie" Version="3.1.3" />
+    <PackageReference Include="Plugin.GoogleClient" Version="2.1.12" />
+    <PackageReference Include="Xamarin.FFImageLoading" Version="2.4.11.982" />
+    <PackageReference Include="Xamarin.Forms.GoogleMaps" Version="3.3.0" />
+    <PackageReference Include="Xam.Plugin.Geolocator" Version="4.5.0.6" />
+    <PackageReference Include="Plugin.FirebasePushNotification" Version="3.3.10" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DuraApp.Core\DuraApp.Core.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Areas\DuraEats\" />
+    <Folder Include="ViewModels\" />
+    <Folder Include="Services\" />
+    <Folder Include="Converters\" />
+    <Folder Include="Extensions\" />
+    <Folder Include="Areas\DuraEats\Home\" />
+    <Folder Include="Areas\DuraEats\Home\Views\" />
+    <Folder Include="Areas\DuraEats\Home\ViewModels\" />
+    <Folder Include="Areas\DuraEats\ItemDetails\" />
+    <Folder Include="Areas\DuraEats\ItemDetails\Views\" />
+    <Folder Include="Areas\DuraEats\ItemDetails\ViewMdels\" />
+    <Folder Include="Areas\DuraEats\ItemDetails\Popups\" />
+    <Folder Include="Areas\DuraEats\ItemDetails\Popups\Views\" />
+    <Folder Include="Areas\DuraEats\ItemDetails\Popups\ViewModels\" />
+    <Folder Include="Areas\DuraEats\MyCart\" />
+    <Folder Include="Areas\DuraEats\MyCart\Views\" />
+    <Folder Include="Areas\DuraEats\MyCart\ViewModels\" />
+    <Folder Include="Areas\DuraEats\PaymentMethod\" />
+    <Folder Include="Areas\DuraEats\PaymentMethod\Views\" />
+    <Folder Include="Areas\DuraEats\PaymentMethod\ViewModels\" />
+    <Folder Include="Areas\DuraEats\PaymentMethod\Popups\" />
+    <Folder Include="Areas\DuraEats\PaymentMethod\Popups\Views\" />
+    <Folder Include="Areas\DuraEats\PaymentMethod\Popups\ViewModels\" />
+    <Folder Include="Areas\DuraEats\TrackOrder\" />
+    <Folder Include="Areas\DuraEats\TrackOrder\Views\" />
+    <Folder Include="Areas\DuraEats\TrackOrder\ViewModels\" />
+    <Folder Include="Areas\DuraEats\OrderDetails\" />
+    <Folder Include="Areas\DuraEats\OrderDetails\Views\" />
+    <Folder Include="Areas\DuraEats\OrderDetails\ViewModels\" />
+
+    <Folder Include="Behaviours\" />
+    <Folder Include="CommonData\" />
+    <Folder Include="Helpers\GeoCoder\" />
+    <Folder Include="Areas\Profile\Menu\Settings\SettingsMenu\TermsCondition\" />
+    <Folder Include="Areas\Profile\Menu\Settings\SettingsMenu\TermsCondition\View\" />
+    <Folder Include="Areas\Profile\Menu\Settings\SettingsMenu\TermsCondition\ViewModel\" />
+    <Folder Include="SocialLogin\" />
+    <Folder Include="SocialLogin\Constants\" />
+    <Folder Include="SocialLogin\AuthHelpers\" />
+    <Folder Include="SocialLogin\Models\" />
+    <Folder Include="Areas\DuraExpress\Common\" />
+    <Folder Include="Areas\DuraExpress\Common\MapPopups\" />
+    <Folder Include="Areas\DuraExpress\Common\MapPopups\Views\" />
+    <Folder Include="Areas\DuraExpress\Common\MapPopups\ViewModel\" />
+    <Folder Include="Areas\DuraExpress\Common\Maps\" />
+    <Folder Include="Areas\NoConnection\" />
+    <Folder Include="Areas\NoConnection\View\" />
+    <Folder Include="Areas\NoConnection\ViewModel\" />
+    <Folder Include="GCash\" />
+    <Folder Include="GCash\Helpers\" />
+    <Folder Include="GCash\Models\" />
+    <Folder Include="GCash\Views\" />
+    <Folder Include="GCash\ViewModel\" />
+    <Folder Include="Areas\Profile\Menu\Settings\SettingsMenu\StandardRates\" />
+    <Folder Include="Areas\Profile\Menu\Settings\SettingsMenu\StandardRates\Views\" />
+    <Folder Include="Areas\Profile\Menu\Settings\SettingsMenu\StandardRates\ViewModels\" />
+    <Folder Include="Services\LocationService\" />
+    <Folder Include="Areas\Chat\" />
+    <Folder Include="LocationTracker\" />
+    <Folder Include="LocationTracker\Models\" />
+    <Folder Include="LocationTracker\Helper\" />
+    <Folder Include="LocationTracker\Services\" />
+    <Folder Include="LocationTracker\Controls\" />
+    <Folder Include="Areas\Common\Permissions\" />
+    <Folder Include="Areas\Common\Permissions\Views\" />
+    <Folder Include="Areas\Common\Permissions\ViewModels\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="FontIcons\Fonts\FontsFreeNetproxima_nova_regwebfont.ttf" />
+    <None Remove="FontIcons\Fonts\FontsFree_Net_Proxima_Nova_Bold.otf" />
+    <None Remove="FontIcons\Fonts\ProximaNovaSemibold.otf" />
+    <None Remove="FontIcons\Fonts\RobotoBold.ttf" />
+    <None Remove="FontIcons\Fonts\RobotoMedium.ttf" />
+    <None Remove="FontIcons\Fonts\RobotoRegular.ttf" />
+    <None Remove="FontIcons\Fonts\segoeui.ttf" />
+    <None Remove="FontIcons\mymaterialicons.ttf" />
+    <None Remove="Images\add.png" />
+    <None Remove="Images\add_photo.png" />
+    <None Remove="Images\appliances.png" />
+    <None Remove="Images\AppLogo.png" />
+    <None Remove="Images\be_a_rider.png" />
+    <None Remove="Images\box.png" />
+    <None Remove="Images\calender.png" />
+    <None Remove="Images\camera.png" />
+    <None Remove="Images\clock.png" />
+    <None Remove="Images\close_circle.png" />
+    <None Remove="Images\contact_book.png" />
+    <None Remove="Images\coupon_bg.png" />
+    <None Remove="Images\current_location.png" />
+    <None Remove="Images\delete.png" />
+    <None Remove="Images\dicrease.png" />
+    <None Remove="Images\dura_eats_graphic.png" />
+    <None Remove="Images\dura_eats_service.png" />
+    <None Remove="Images\dura_express_drive.png" />
+    <None Remove="Images\dura_express_service.png" />
+    <None Remove="Images\dura_shops_service.png" />
+    <None Remove="Images\dura_shop_graphic.png" />
+    <None Remove="Images\edit.png" />
+    <None Remove="Images\essential_goods.png" />
+    <None Remove="Images\finding_driver.png" />
+    <None Remove="Images\gadgets.png" />
+    <None Remove="Images\help_center.png" />
+    <None Remove="Images\home_active.png" />
+    <None Remove="Images\home_address.png" />
+    <None Remove="Images\ic_visa.png" />
+    <None Remove="Images\img_placeholder.png" />
+    <None Remove="Images\increase.png" />
+    <None Remove="Images\Line.png" />
+    <None Remove="Images\logout.png" />
+    <None Remove="Images\map_locaiton.png" />
+    <None Remove="Images\mcdonalds.jpg" />
+    <None Remove="Images\McDonalds.png" />
+    <None Remove="Images\microwave.png" />
+    <None Remove="Images\more.png" />
+    <None Remove="Images\motorcycle.png" />
+    <None Remove="Images\mpv.png" />
+    <None Remove="Images\my_orders_active.png" />
+    <None Remove="Images\my_profile_active.png" />
+    <None Remove="Images\my_wallet.png" />
+    <None Remove="Images\next_arrow.png" />
+    <None Remove="Images\logo.png" />
+    <None Remove="Images\drop_down_arrow.png" />
+    <None Remove="Images\google.png" />
+    <None Remove="Images\facebook.png" />
+    <None Remove="Images\notification.png" />
+    <None Remove="Images\offers_promo.png" />
+    <None Remove="Images\pickup_current_location.png" />
+    <None Remove="Images\plus.png" />
+    <None Remove="Images\proceed.png" />
+    <None Remove="Images\product_details_arrow.png" />
+    <None Remove="Images\profile.png" />
+    <None Remove="Images\rating_active_star.png" />
+    <None Remove="Images\rating_inactive_star.png" />
+    <None Remove="Images\ReadingIcon.png" />
+    <None Remove="Images\Rectangle_2654.png" />
+    <None Remove="Images\refer_a_friend.png" />
+    <None Remove="Images\refer_friend_graphic.png" />
+    <None Remove="Images\refrigerator.png" />
+    <None Remove="Images\reviews.png" />
+    <None Remove="Images\saved_addresses.png" />
+    <None Remove="Images\saved_cards.png" />
+    <None Remove="Images\saved_location.png" />
+    <None Remove="Images\send.png" />
+    <None Remove="Images\service_detail_arrow.png" />
+    <None Remove="Images\settings.png" />
+    <None Remove="Images\share.png" />
+    <None Remove="Images\splash.png" />
+    <None Remove="Images\support_chat.png" />
+    <None Remove="Images\upload.png" />
+    <None Remove="Images\user_location.png" />
+    <None Remove="Images\user_pic_placeholder.png" />
+
+    <None Remove="Images\van.png" />
+    <None Remove="Images\watch.png" />
+
+    <None Remove="Images\cart.png" />
+    <None Remove="Images\search_product.png" />
+    <None Remove="Images\search_product_placeholder.png" />
+    <None Remove="Images\banner_two.png" />
+    <None Remove="Images\burger.png" />
+    <None Remove="Images\chinese.png" />
+    <None Remove="Images\indian.png" />
+    <None Remove="Images\mexican.png" />
+    <None Remove="Images\pizza.png" />
+    <None Remove="Images\resto_four.png" />
+    <None Remove="Images\resto_one.png" />
+    <None Remove="Images\resto_three.png" />
+    <None Remove="Images\resto_two.png" />
+    <None Remove="Images\star_active.png" />
+    <None Remove="Images\star_inactive.png" />
+    <None Remove="Images\star_white.png" />
+    <None Remove="Images\share_item.png" />
+    <None Remove="Images\restaurent.png" />
+    <None Remove="Images\food_one.png" />
+    <None Remove="Images\negative_reviews.png" />
+    <None Remove="Images\positive_reviews.png" />
+    <None Remove="Images\t_shirt.png" />
+    <None Remove="Images\heart.png" />
+    <None Remove="Images\success.png" />
+    <None Remove="Images\help.png" />
+    <None Remove="Images\call_driver.png" />
+    <None Remove="Images\chat_driver.png" />
+    <None Remove="Images\french_fries.png" />
+    <None Remove="Images\map.png" />
+    <None Remove="Images\call.png" />
+    <None Remove="Images\smilly.png" />
+
+    <None Remove="CommonData\countriescode.json" />
+    <None Remove="Images\arrow.png" />
+    <None Remove="Images\bg_dura_express.png" />
+    <None Remove="Images\graphic_dura_express.png" />
+    <None Remove="Images\graphic_referral_code.png" />
+    <None Remove="Images\rafer_a_friend.png" />
+    <None Remove="Images\review.png" />
+    <None Remove="Images\saved_address.png" />
+    <None Remove="Images\verified.png" />
+    <None Remove="Images\wallet.png" />
+    <None Remove="Plugin.GoogleClient" />
+    <None Remove="Xamarin.FFImageLoading" />
+    <None Remove="Areas\Chat\" />
+    <None Remove="LocationTracker\MapStyle.json" />
+    <None Remove="Plugin.FirebasePushNotification" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\coupon_bg.png" />
+    <EmbeddedResource Include="Images\ReadingIcon.png" />
+    <EmbeddedResource Include="Images\saved_addresses.png" />
+    <EmbeddedResource Include="CommonData\countriescode.json" />
+    <EmbeddedResource Include="Images\arrow.png" />
+    <EmbeddedResource Include="Images\bg_dura_express.png" />
+    <EmbeddedResource Include="Images\graphic_dura_express.png" />
+    <EmbeddedResource Include="Images\graphic_referral_code.png" />
+    <EmbeddedResource Include="Images\rafer_a_friend.png" />
+    <EmbeddedResource Include="Images\review.png" />
+    <EmbeddedResource Include="Images\saved_address.png" />
+    <EmbeddedResource Include="Images\verified.png" />
+    <EmbeddedResource Include="Images\wallet.png" />
+    <EmbeddedResource Include="LocationTracker\MapStyle.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="FontIcons\Fonts\FontsFreeNetproxima_nova_regwebfont.ttf" />
+    <EmbeddedResource Include="FontIcons\Fonts\FontsFree_Net_Proxima_Nova_Bold.otf" />
+    <EmbeddedResource Include="FontIcons\Fonts\ProximaNovaSemibold.otf" />
+    <EmbeddedResource Include="FontIcons\Fonts\RobotoBold.ttf" />
+    <EmbeddedResource Include="FontIcons\Fonts\RobotoMedium.ttf" />
+    <EmbeddedResource Include="FontIcons\Fonts\RobotoRegular.ttf" />
+    <EmbeddedResource Include="FontIcons\Fonts\segoeui.ttf" />
+    <EmbeddedResource Include="FontIcons\mymaterialicons.ttf" />
+    <EmbeddedResource Include="Images\add.png" />
+    <EmbeddedResource Include="Images\add_photo.png" />
+    <EmbeddedResource Include="Images\appliances.png" />
+    <EmbeddedResource Include="Images\AppLogo.png" />
+    <EmbeddedResource Include="Images\banner_two.png" />
+    <EmbeddedResource Include="Images\be_a_rider.png" />
+    <EmbeddedResource Include="Images\box.png" />
+    <EmbeddedResource Include="Images\calender.png" />
+    <EmbeddedResource Include="Images\camera.png" />
+    <EmbeddedResource Include="Images\clock.png" />
+    <EmbeddedResource Include="Images\close_circle.png" />
+    <EmbeddedResource Include="Images\contact_book.png" />
+    <EmbeddedResource Include="Images\current_location.png" />
+    <EmbeddedResource Include="Images\delete.png" />
+    <EmbeddedResource Include="Images\dicrease.png" />
+    <EmbeddedResource Include="Images\dura_eats_graphic.png" />
+    <EmbeddedResource Include="Images\dura_eats_service.png" />
+    <EmbeddedResource Include="Images\dura_express_drive.png" />
+    <EmbeddedResource Include="Images\dura_express_service.png" />
+    <EmbeddedResource Include="Images\dura_shops_service.png" />
+    <EmbeddedResource Include="Images\dura_shop_graphic.png" />
+    <EmbeddedResource Include="Images\edit.png" />
+    <EmbeddedResource Include="Images\essential_goods.png" />
+    <EmbeddedResource Include="Images\finding_driver.png" />
+    <EmbeddedResource Include="Images\gadgets.png" />
+    <EmbeddedResource Include="Images\help_center.png" />
+    <EmbeddedResource Include="Images\home_active.png" />
+    <EmbeddedResource Include="Images\home_address.png" />
+    <EmbeddedResource Include="Images\ic_visa.png" />
+    <EmbeddedResource Include="Images\img_placeholder.png" />
+    <EmbeddedResource Include="Images\Line.png" />
+    <EmbeddedResource Include="Images\logout.png" />
+    <EmbeddedResource Include="Images\map_locaiton.png" />
+    <EmbeddedResource Include="Images\mcdonalds.jpg" />
+    <EmbeddedResource Include="Images\McDonalds.png" />
+    <EmbeddedResource Include="Images\microwave.png" />
+    <EmbeddedResource Include="Images\more.png" />
+    <EmbeddedResource Include="Images\motorcycle.png" />
+    <EmbeddedResource Include="Images\mpv.png" />
+    <EmbeddedResource Include="Images\my_orders_active.png" />
+    <EmbeddedResource Include="Images\my_profile_active.png" />
+    <EmbeddedResource Include="Images\my_wallet.png" />
+    <EmbeddedResource Include="Images\next_arrow.png" />
+    <EmbeddedResource Include="Images\logo.png" />
+    <EmbeddedResource Include="Images\drop_down_arrow.png" />
+    <EmbeddedResource Include="Images\google.png" />
+    <EmbeddedResource Include="Images\facebook.png" />
+    <EmbeddedResource Include="Images\notification.png" />
+    <EmbeddedResource Include="Images\offers_promo.png" />
+    <EmbeddedResource Include="Images\pickup_current_location.png" />
+    <EmbeddedResource Include="Images\plus.png" />
+    <EmbeddedResource Include="Images\proceed.png" />
+    <EmbeddedResource Include="Images\product_details_arrow.png" />
+    <EmbeddedResource Include="Images\profile.png" />
+    <EmbeddedResource Include="Images\rating_active_star.png" />
+    <EmbeddedResource Include="Images\rating_inactive_star.png" />
+    <EmbeddedResource Include="Images\Rectangle_2654.png" />
+    <EmbeddedResource Include="Images\refer_a_friend.png" />
+    <EmbeddedResource Include="Images\refer_friend_graphic.png" />
+    <EmbeddedResource Include="Images\refrigerator.png" />
+    <EmbeddedResource Include="Images\reviews.png" />
+    <EmbeddedResource Include="Images\saved_cards.png" />
+    <EmbeddedResource Include="Images\saved_location.png" />
+    <EmbeddedResource Include="Images\send.png" />
+    <EmbeddedResource Include="Images\service_detail_arrow.png" />
+    <EmbeddedResource Include="Images\settings.png" />
+    <EmbeddedResource Include="Images\share.png" />
+    <EmbeddedResource Include="Images\splash.png" />
+    <EmbeddedResource Include="Images\support_chat.png" />
+    <EmbeddedResource Include="Images\upload.png" />
+    <EmbeddedResource Include="Images\user_location.png" />
+    <EmbeddedResource Include="Images\user_pic_placeholder.png" />
+
+    <EmbeddedResource Include="Images\van.png" />
+    <EmbeddedResource Include="Images\watch.png" />
+
+    <EmbeddedResource Include="Images\cart.png" />
+    <EmbeddedResource Include="Images\search_product.png" />
+    <EmbeddedResource Include="Images\search_product_placeholder.png" />
+   
+    <EmbeddedResource Include="Images\burger.png" />
+    <EmbeddedResource Include="Images\chinese.png" />
+    <EmbeddedResource Include="Images\indian.png" />
+    <EmbeddedResource Include="Images\mexican.png" />
+    <EmbeddedResource Include="Images\pizza.png" />
+    <EmbeddedResource Include="Images\resto_four.png" />
+    <EmbeddedResource Include="Images\resto_one.png" />
+    <EmbeddedResource Include="Images\resto_three.png" />
+    <EmbeddedResource Include="Images\resto_two.png" />
+    <EmbeddedResource Include="Images\star_active.png" />
+    <EmbeddedResource Include="Images\star_inactive.png" />
+    <EmbeddedResource Include="Images\star_white.png" />
+    <EmbeddedResource Include="Images\share_item.png" />
+    <EmbeddedResource Include="Images\restaurent.png" />
+    <EmbeddedResource Include="Images\food_one.png" />
+    <EmbeddedResource Include="Images\negative_reviews.png" />
+    <EmbeddedResource Include="Images\positive_reviews.png" />
+    <EmbeddedResource Include="Images\t_shirt.png" />
+    <EmbeddedResource Include="Images\heart.png" />
+    <EmbeddedResource Include="Images\success.png" />
+    <EmbeddedResource Include="Images\help.png" />
+    <EmbeddedResource Include="Images\call_driver.png" />
+    <EmbeddedResource Include="Images\chat_driver.png" />
+    <EmbeddedResource Include="Images\french_fries.png" />
+    <EmbeddedResource Include="Images\map.png" />
+    <EmbeddedResource Include="Images\call.png" />
+    <EmbeddedResource Include="Images\smilly.png" />
+
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Images\increase.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Areas\Common\PopupView\View\CashOnDeliveryPopup.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\Common\PopupView\View\LocationSearchPopup.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\Common\PopupView\View\ResetSuccessfullyPopup.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\Common\Views\HomeMenuShell.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\Common\Views\MyOrdersTab.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\Common\Views\NotificatonPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\Common\Views\Payment.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\Common\Views\PersonalDetails.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\Common\Views\ReferralCodeView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\Common\Views\ResetPassword.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\Common\Views\SearchScreen.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\Common\Views\TermsConditionsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\DuraExpress\DuraExpressView\AddMoreDetails.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\DuraExpress\DuraExpressView\AddStopLocation.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\DuraExpress\DuraExpressView\DuraExpress.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\DuraExpress\DuraExpressView\FindingDriver.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\DuraExpress\DuraExpressView\OrderDetails.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\DuraExpress\DuraExpressView\OrderDetails2.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\DuraExpress\DuraExpressView\PickupLocation.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\DuraExpress\DuraExpressView\PickupSchedule.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\DuraExpress\DuraExpressView\SelectVehicle.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\DuraExpress\DuraExpressView\TrackOrder.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\DuraExpress\DuraExpressView\WhereTo.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\DuraExpress\Popup\View\CancelDriverPopup.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\DuraExpress\Popup\View\FeeBreakdownPopup.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\DuraExpress\Popup\View\FoundDriverPopup.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\DuraExpress\Popup\View\PickupSchedulePopUp.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\DuraShop\Popup\View\SuccessOrderPopup.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\DuraShop\View\DuraShop.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\DuraShop\View\Featured.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\DuraShop\View\ItemDetails.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\DuraShop\View\MyCart.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\DuraShop\View\TrackOrderShop.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\Orders\Views\MyOrders.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\Profile\Views\MyProfile.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Areas\Common\Views\OrderTrackerPage.xaml.cs">
+      <DependentUpon>OrderTrackerPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+</Project>

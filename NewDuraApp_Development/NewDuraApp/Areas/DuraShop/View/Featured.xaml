@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="NewDuraApp.Areas.DuraShop.View.Featured"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:images="clr-namespace:NewDuraApp.Extensions" xmlns:sh="http://sharpnado.com"
+    x:Name="thispage"
+    BindingContext="{Binding Featured, Source={StaticResource Locator}}"
+    NavigationPage.HasBackButton="True"
+    Shell.NavBarHasShadow="False"
+    Shell.NavBarIsVisible="True"
+    Shell.TabBarIsVisible="False"
+    Visual="Material">
+    <Shell.TitleView>
+        <StackLayout
+            Padding="0"
+            Orientation="Horizontal"
+            VerticalOptions="CenterAndExpand">
+            <Label
+                FontFamily="ProximaSemiBold"
+                FontSize="20"
+                Text="Featured"
+                TextColor="Black"
+                VerticalOptions="CenterAndExpand"
+                VerticalTextAlignment="Center" />
+            <ImageButton
+                Margin="0,0,10,0"
+                BackgroundColor="Transparent"
+                Command="{Binding GoToSearchCmd}"
+                HeightRequest="20"
+                HorizontalOptions="EndAndExpand"
+                Source="{images:EmbeddedImage NewDuraApp.Images.search_product.png}"
+                VerticalOptions="CenterAndExpand"
+                WidthRequest="20" />
+
+        </StackLayout>
+    </Shell.TitleView>
+    <ContentPage.Content>
+        <Grid Margin="20,0,20,0">
+
+            <ScrollView VerticalScrollBarVisibility="Never">
+                <CollectionView ItemsSource="{Binding ProductList}">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout
+                            HorizontalItemSpacing="10"
+                            Orientation="Vertical"
+                            Span="2"
+                            VerticalItemSpacing="20" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout HeightRequest="155" WidthRequest="100">
+                                <sh:Shadows
+                                            Padding="0"
+                                            BackgroundColor="#FFFFFF"
+                                            CornerRadius="5"
+                                            HorizontalOptions="FillAndExpand">
+                                            <sh:Shadows.Shades>
+                                                <sh:ImmutableShades>
+
+                                                    <sh:Shade
+                                                        BlurRadius="10"
+                                                        Opacity="0.5"
+                                                        Offset="2,2"
+                                                        Color="Gray" />
+                                                </sh:ImmutableShades>
+                                            </sh:Shadows.Shades>
+                                <Frame
+                                    Margin="5"
+                                    Padding="0"
+                                    CornerRadius="10"
+                                    HeightRequest="150"
+                                    IsClippedToBounds="True"
+                                    WidthRequest="100">
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding Path=BindingContext.ItemDetailsCmd, Source={x:Reference thispage}}" CommandParameter="{Binding .}" />
+                                    </Frame.GestureRecognizers>
+                                    <StackLayout Spacing="0">
+                                        <Image
+                                            Margin="5"
+                                            HeightRequest="100"
+                                            Source="{Binding ProductImage}"
+                                            VerticalOptions="CenterAndExpand" />
+                                        <Label
+                                            Margin="10,0"
+                                            FontFamily="ProximaSemiBold"
+                                            FontSize="12"
+                                            LineBreakMode="TailTruncation"
+                                            Text="{Binding ProductName}"
+                                            TextColor="#292B3A"
+                                            VerticalOptions="EndAndExpand" />
+                                        <Label
+                                            Margin="10,0,0,5"
+                                            FontFamily="ProximaSemiBold"
+                                            FontSize="14"
+                                            Text="{Binding ProductPrice}"
+                                            TextColor="#363636" />
+                                    </StackLayout>
+                                </Frame>
+                                    </sh:Shadows>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </ScrollView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

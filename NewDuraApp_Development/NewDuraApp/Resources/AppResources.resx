@@ -1,0 +1,1293 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+	<xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+		<xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+		<xsd:element name="root" msdata:IsDataSet="true">
+			<xsd:complexType>
+				<xsd:choice maxOccurs="unbounded">
+					<xsd:element name="metadata">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" />
+							</xsd:sequence>
+							<xsd:attribute name="name" use="required" type="xsd:string" />
+							<xsd:attribute name="type" type="xsd:string" />
+							<xsd:attribute name="mimetype" type="xsd:string" />
+							<xsd:attribute ref="xml:space" />
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="assembly">
+						<xsd:complexType>
+							<xsd:attribute name="alias" type="xsd:string" />
+							<xsd:attribute name="name" type="xsd:string" />
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="data">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+								<xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+							<xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+							<xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+							<xsd:attribute ref="xml:space" />
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="resheader">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" use="required" />
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:choice>
+			</xsd:complexType>
+		</xsd:element>
+	</xsd:schema>
+	<resheader name="resmimetype">
+		<value>text/microsoft-resx</value>
+	</resheader>
+	<resheader name="version">
+		<value>2.0</value>
+	</resheader>
+	<resheader name="reader">
+		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<resheader name="writer">
+		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<data name="About" xml:space="preserve">
+    <value>About</value>
+  </data>
+	<data name="About_Us" xml:space="preserve">
+    <value>About Us</value>
+  </data>
+	<data name="Account_Type" xml:space="preserve">
+    <value>Account Type</value>
+  </data>
+	<data name="Add" xml:space="preserve">
+    <value>Add</value>
+  </data>
+	<data name="Additiontal_Service" xml:space="preserve">
+    <value>Additiontal Service</value>
+  </data>
+	<data name="Address_2" xml:space="preserve">
+    <value>Address 2</value>
+  </data>
+	<data name="Address_are_mandatory" xml:space="preserve">
+    <value>Address are mandatory</value>
+  </data>
+	<data name="Address_removed" xml:space="preserve">
+    <value>Address removed</value>
+  </data>
+	<data name="Address_Updated" xml:space="preserve">
+    <value>Address Updated</value>
+  </data>
+	<data name="Add_Item_Photo" xml:space="preserve">
+    <value>Add Item Photo</value>
+  </data>
+	<data name="Add_More_Details" xml:space="preserve">
+    <value>Add More Details</value>
+  </data>
+	<data name="Add_New_Address" xml:space="preserve">
+    <value>Add New Address</value>
+  </data>
+	<data name="Add_New_Card" xml:space="preserve">
+    <value>Add New Card</value>
+  </data>
+	<data name="Add_Pickup_Location" xml:space="preserve">
+    <value>Add Pickup Location</value>
+  </data>
+	<data name="Add_Stop_Location" xml:space="preserve">
+    <value>Add Stop Location</value>
+  </data>
+	<data name="Add_Tip_to_Driver" xml:space="preserve">
+    <value>Add Tip to Driver</value>
+  </data>
+	<data name="Add_Where_To_Final_Drop_Location" xml:space="preserve">
+    <value>Add Where To(Final Drop)Location</value>
+  </data>
+	<data name="Alert" xml:space="preserve">
+    <value>Alert</value>
+  </data>
+	<data name="All_fields_are_mandatory" xml:space="preserve">
+    <value>* All fields are mandatory.</value>
+  </data>
+	<data name="Already_an_User" xml:space="preserve">
+    <value>Already an User?</value>
+  </data>
+	<data name="Already_Exist" xml:space="preserve">
+    <value>Already Exist</value>
+  </data>
+	<data name="Amount" xml:space="preserve">
+    <value>Amount</value>
+  </data>
+	<data name="API_Error" xml:space="preserve">
+    <value>API Error</value>
+  </data>
+	<data name="Apply" xml:space="preserve">
+    <value>Apply</value>
+  </data>
+	<data name="Are_you_sure_you_want_to_logout" xml:space="preserve">
+    <value>Are you sure you want to logout?</value>
+  </data>
+	<data name="Are_you_sure_you_want_to_logout_from_app" xml:space="preserve">
+    <value>Are you sure you want to logout from app ?</value>
+  </data>
+	<data name="Available_Balance" xml:space="preserve">
+    <value>Available Balance</value>
+  </data>
+	<data name="Available_Offer" xml:space="preserve">
+    <value>Available Offer</value>
+  </data>
+	<data name="Available_offers" xml:space="preserve">
+    <value>Available offers</value>
+  </data>
+	<data name="Back_Confirm_Order" xml:space="preserve">
+    <value>Back &amp; Confirm Order</value>
+  </data>
+	<data name="Back_Document_1_photo" xml:space="preserve">
+    <value>Back Document 1 photo</value>
+  </data>
+	<data name="Back_Document_2_Photo" xml:space="preserve">
+    <value>Back Document 2 Photo</value>
+  </data>
+	<data name="Back_side_id_card_photo" xml:space="preserve">
+    <value>Back side id card photo</value>
+  </data>
+	<data name="Balance" xml:space="preserve">
+    <value>Balance</value>
+  </data>
+	<data name="BasePrice" xml:space="preserve">
+    <value>Base Price</value>
+  </data>
+	<data name="Base_Fare" xml:space="preserve">
+    <value>Base Fare</value>
+  </data>
+	<data name="Base_Price" xml:space="preserve">
+    <value>Base Price (</value>
+  </data>
+	<data name="Block" xml:space="preserve">
+    <value>Block</value>
+  </data>
+	<data name="Block_M_Reyes_St_Bangka_Makati_City" xml:space="preserve">
+    <value>Block: 1976 M Reyes St Bangka Makati City</value>
+  </data>
+	<data name="Business_Account" xml:space="preserve">
+    <value>Business Account</value>
+  </data>
+	<data name="By_clicking_on_send_OTP_button_you_get_4_digit_OTP_to_verify_that_you_are_real" xml:space="preserve">
+    <value>By clicking on send OTP button, you'll get a 4 digit OTP to verify that you are real</value>
+  </data>
+	<data name="By_Email" xml:space="preserve">
+    <value>By Email</value>
+  </data>
+	<data name="By_Phone" xml:space="preserve">
+    <value>By Phone</value>
+  </data>
+	<data name="Camera_Permission" xml:space="preserve">
+    <value>Camera Permission</value>
+  </data>
+	<data name="Camera_Permission_Required" xml:space="preserve">
+    <value>Camera Permission Required</value>
+  </data>
+	<data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+	<data name="Cancelled_OrderCancelled" xml:space="preserve">
+    <value>Cancelled-OrderCancelled</value>
+  </data>
+	<data name="Capt_M_Reyes_Makati_Metro_Manila_Phillipnes" xml:space="preserve">
+    <value>1976 Capt. M. Reyes, Makati, Metro Manila Phillipnes</value>
+  </data>
+	<data name="Card_Holder_Name" xml:space="preserve">
+    <value>Card Holder Name</value>
+  </data>
+	<data name="Card_Number" xml:space="preserve">
+    <value>Card Number</value>
+  </data>
+	<data name="Card_Removed" xml:space="preserve">
+    <value>Card Removed</value>
+  </data>
+	<data name="Card_Updated" xml:space="preserve">
+    <value>Card Updated</value>
+  </data>
+	<data name="Cash_On_Delivery" xml:space="preserve">
+    <value>Cash On Delivery</value>
+  </data>
+	<data name="Change_Password" xml:space="preserve">
+    <value>Change Password</value>
+  </data>
+	<data name="ChooseLocation" xml:space="preserve">
+    <value>Choose Location</value>
+  </data>
+	<data name="Choose_Status" xml:space="preserve">
+    <value>Choose Status</value>
+  </data>
+	<data name="City" xml:space="preserve">
+    <value>City</value>
+  </data>
+	<data name="Click_here_to_add_photo" xml:space="preserve">
+    <value>Click here to add photo</value>
+  </data>
+	<data name="Completed_OrderDelivered" xml:space="preserve">
+    <value>Completed-OrderDelivered</value>
+  </data>
+	<data name="Confirm" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
+	<data name="ConfirmPassword" xml:space="preserve">
+    <value>Confirm Password</value>
+  </data>
+	<data name="Confirm_New_password" xml:space="preserve">
+    <value>Confirm New password</value>
+  </data>
+	<data name="Confirm_Password" xml:space="preserve">
+    <value>Confirm password does not match with password.</value>
+  </data>
+	<data name="Connected" xml:space="preserve">
+    <value>Connected</value>
+  </data>
+	<data name="contacts" xml:space="preserve">
+    <value>contacts</value>
+  </data>
+	<data name="Contact_Number" xml:space="preserve">
+    <value>Contact Number</value>
+  </data>
+	<data name="Contact_Permission" xml:space="preserve">
+    <value>Contact Permission</value>
+  </data>
+	<data name="Contact_Person" xml:space="preserve">
+    <value>Contact Person</value>
+  </data>
+	<data name="Contact_person_name" xml:space="preserve">
+    <value>Contact person name</value>
+  </data>
+	<data name="Continue" xml:space="preserve">
+    <value>Continue</value>
+  </data>
+	<data name="Coupon" xml:space="preserve">
+    <value>Coupon :</value>
+  </data>
+	<data name="Coupon_Discount" xml:space="preserve">
+    <value>Coupon Discount :</value>
+  </data>
+	<data name="Create_Password" xml:space="preserve">
+    <value>Create Password</value>
+  </data>
+	<data name="Discounted_Amount" xml:space="preserve">
+    <value>Discounted Amount</value>
+  </data>
+	<data name="Distance" xml:space="preserve">
+    <value>Distance</value>
+  </data>
+	<data name="Dist_Travelled_Amount" xml:space="preserve">
+    <value>Dist. Travelled Amount</value>
+  </data>
+	<data name="Document_1_back_image_removed" xml:space="preserve">
+    <value>Document 1  back image removed.</value>
+  </data>
+	<data name="Document_1_front_image_removed" xml:space="preserve">
+    <value>Document 1 front image removed.</value>
+  </data>
+	<data name="Document_2_back_image_removed" xml:space="preserve">
+    <value>Document 2  back image removed.</value>
+  </data>
+	<data name="Document_2_front_image_removed" xml:space="preserve">
+    <value>Document 2  front image removed.</value>
+  </data>
+	<data name="Done" xml:space="preserve">
+    <value>Done</value>
+  </data>
+	<data name="Do_you_really_want_to_cancel" xml:space="preserve">
+    <value>Do you really want to cancel ?</value>
+  </data>
+	<data name="Do_you_want_to_cancel_your_order" xml:space="preserve">
+    <value>Do you want to cancel your order</value>
+  </data>
+	<data name="Driver_arrived" xml:space="preserve">
+    <value>Driver_arrived</value>
+  </data>
+	<data name="Driver_License_back_photo" xml:space="preserve">
+    <value>Driver License back photo</value>
+  </data>
+	<data name="Driver_License_front_photo" xml:space="preserve">
+    <value>Driver License front photo</value>
+  </data>
+	<data name="Driving_license_back_image_removed" xml:space="preserve">
+    <value>Driving license back image removed</value>
+  </data>
+	<data name="Driving_license_front_image_removed" xml:space="preserve">
+    <value>Driving license front image removed</value>
+  </data>
+	<data name="Drop_off_Final_Drop_Location" xml:space="preserve">
+    <value>Drop off (Final Drop Location)...</value>
+  </data>
+	<data name="DuraDrive_Chat_with_Admin" xml:space="preserve">
+    <value>DuraDrive - Chat with Admin</value>
+  </data>
+	<data name="DuraEatsDesc" xml:space="preserve">
+    <value>Partner with Dura Eats and reach more customers than ever.</value>
+  </data>
+	<data name="DuraEatsHeading" xml:space="preserve">
+    <value>Dura Eats</value>
+  </data>
+	<data name="DuraExpressDesc" xml:space="preserve">
+    <value>Experience the fastest and most affordable everyday goods delivery service only with Dura Express.</value>
+  </data>
+	<data name="DuraExpressHeading" xml:space="preserve">
+    <value>Dura Express</value>
+  </data>
+	<data name="DuraShopDesc" xml:space="preserve">
+    <value>Connect with your loyal fan base and be amazed at how we can empower your shop and be on top.</value>
+  </data>
+	<data name="DuraShopHeading" xml:space="preserve">
+    <value>Dura Shop</value>
+  </data>
+	<data name="DuraShops" xml:space="preserve">
+    <value>Dura Shops</value>
+  </data>
+	<data name="Duration" xml:space="preserve">
+    <value>Duration:</value>
+  </data>
+	<data name="Dura_Drive_ReferralCode" xml:space="preserve">
+    <value>Dura Drive Referral Code</value>
+  </data>
+	<data name="Dura_eat" xml:space="preserve">
+    <value>Dura eats</value>
+  </data>
+	<data name="Edit_Info" xml:space="preserve">
+    <value>Edit Info</value>
+  </data>
+	<data name="Edit_Location" xml:space="preserve">
+    <value>Edit Location</value>
+  </data>
+	<data name="Edit_Photo" xml:space="preserve">
+    <value>Edit Photo</value>
+  </data>
+	<data name="EmailAddress" xml:space="preserve">
+    <value>Email Address*</value>
+  </data>
+	<data name="Enable_all_to_push_notifications" xml:space="preserve">
+    <value>Enable all to push notifications</value>
+  </data>
+	<data name="EnterLocation" xml:space="preserve">
+    <value>Enter Location</value>
+  </data>
+	<data name="EnterPickup" xml:space="preserve">
+    <value>Enter Pickup</value>
+  </data>
+	<data name="Enter_any_referral_code_if_you_have_any" xml:space="preserve">
+    <value>Enter any referral code if you have any</value>
+  </data>
+	<data name="Enter_current_password" xml:space="preserve">
+    <value>Enter current password</value>
+  </data>
+	<data name="Enter_New_Phone_Number" xml:space="preserve">
+    <value>Enter New Phone Number</value>
+  </data>
+	<data name="Enter_Promocode" xml:space="preserve">
+    <value>Enter Promocode</value>
+  </data>
+	<data name="Enter_referral_code" xml:space="preserve">
+    <value>Enter referral code</value>
+  </data>
+	<data name="Enter_the_address" xml:space="preserve">
+    <value>Enter the address</value>
+  </data>
+	<data name="Enter_the_amount" xml:space="preserve">
+    <value>Enter the amount</value>
+  </data>
+	<data name="Enter_the_drop_off_address_information" xml:space="preserve">
+    <value>Enter the drop-off address information</value>
+  </data>
+	<data name="Enter_the_otp" xml:space="preserve">
+    <value>Enter the otp</value>
+  </data>
+	<data name="Enter_the_OTP_we_sent_on" xml:space="preserve">
+    <value>Enter the OTP we sent on </value>
+  </data>
+	<data name="Enter_the_pickup_address" xml:space="preserve">
+    <value>Enter the pickup address</value>
+  </data>
+	<data name="Enter_the_pickup_address_information" xml:space="preserve">
+    <value>Enter the pickup address information</value>
+  </data>
+	<data name="Enter_the_reason_to_cancel_this_order" xml:space="preserve">
+    <value>Enter the reason to cancel this order</value>
+  </data>
+	<data name="Enter_the_stop_address" xml:space="preserve">
+    <value>Enter the stop address</value>
+  </data>
+	<data name="Enter_tip_manually" xml:space="preserve">
+    <value>Enter tip manually</value>
+  </data>
+	<data name="Enter_your_drop_address" xml:space="preserve">
+    <value>Enter your drop address*</value>
+  </data>
+	<data name="Error_in_updating_records" xml:space="preserve">
+    <value>Error in updating records.</value>
+  </data>
+	<data name="Error_on_removing_address" xml:space="preserve">
+    <value>Error on removing address</value>
+  </data>
+	<data name="error_on_uploading_image_try_again" xml:space="preserve">
+    <value>error on uploading image,try again</value>
+  </data>
+	<data name="Exp_date" xml:space="preserve">
+    <value>Exp date (09/2022)</value>
+  </data>
+	<data name="feature_coming_soon" xml:space="preserve">
+    <value>feature coming soon</value>
+  </data>
+	<data name="Fee_breakdown_details" xml:space="preserve">
+    <value>Fee breakdown details</value>
+  </data>
+	<data name="Finding_Driver" xml:space="preserve">
+    <value>Finding Driver</value>
+  </data>
+	<data name="FirstName" xml:space="preserve">
+    <value>First Name*</value>
+  </data>
+	<data name="First_Id_Proof" xml:space="preserve">
+    <value>First Id Proof</value>
+  </data>
+	<data name="ForgotPassword" xml:space="preserve">
+    <value>Forgot Password?</value>
+  </data>
+	<data name="Forgot_Password" xml:space="preserve">
+    <value>Forgot Password</value>
+  </data>
+	<data name="Front_Document_1_Photo" xml:space="preserve">
+    <value>Front Document 1 Photo</value>
+  </data>
+	<data name="Front_Document_2_Photo" xml:space="preserve">
+    <value>Front Document 2 Photo</value>
+  </data>
+	<data name="Front_side_id_card_photo" xml:space="preserve">
+    <value>Front side id card photo</value>
+  </data>
+	<data name="GetOTP" xml:space="preserve">
+    <value>Get OTP</value>
+  </data>
+	<data name="GetStarted" xml:space="preserve">
+    <value>Get Started</value>
+  </data>
+	<data name="Get_OTP_on_Email" xml:space="preserve">
+    <value>Get OTP on Email</value>
+  </data>
+	<data name="Get_OTP_on_Phone" xml:space="preserve">
+    <value>Get OTP on Phone</value>
+  </data>
+	<data name="GivePermission" xml:space="preserve">
+    <value>Give Permission</value>
+  </data>
+	<data name="Give_Permission" xml:space="preserve">
+    <value>Give Permission</value>
+  </data>
+	<data name="Google_map_is_not_able_to_pick_address_currently" xml:space="preserve">
+    <value>Google map is not able to pick address currently , try again after some time.</value>
+  </data>
+	<data name="Have_Coupon" xml:space="preserve">
+    <value>Have Coupon?</value>
+  </data>
+	<data name="Help_Center" xml:space="preserve">
+    <value>Help Center</value>
+  </data>
+	<data name="History" xml:space="preserve">
+    <value>History</value>
+  </data>
+	<data name="Hi_my_name_is" xml:space="preserve">
+    <value>Hi, my name is</value>
+  </data>
+	<data name="Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
+	<data name="Hope_you_are_satisfied_by_our_services" xml:space="preserve">
+    <value>Hope you are satisfied by our services</value>
+  </data>
+	<data name="Id_card_back_image_removed" xml:space="preserve">
+    <value>Id card back image removed</value>
+  </data>
+	<data name="Id_card_front_image_removed" xml:space="preserve">
+    <value>Id card front image removed</value>
+  </data>
+	<data name="Invite_now" xml:space="preserve">
+    <value>Invite now</value>
+  </data>
+	<data name="in_cash_when_delivered" xml:space="preserve">
+    <value>in cash when delivered</value>
+  </data>
+	<data name="Issued_by_Driver" xml:space="preserve">
+    <value>Issued by Driver</value>
+  </data>
+	<data name="Issued_to" xml:space="preserve">
+    <value>Issued to</value>
+  </data>
+	<data name="I_Accept" xml:space="preserve">
+    <value>I Accept the </value>
+  </data>
+	<data name="Language" xml:space="preserve">
+    <value>Language</value>
+  </data>
+	<data name="LastName" xml:space="preserve">
+    <value>Last Name*</value>
+  </data>
+	<data name="Later" xml:space="preserve">
+    <value>Later</value>
+  </data>
+	<data name="Latersa" xml:space="preserve">
+    <value>Hi, my name is</value>
+  </data>
+	<data name="Linked" xml:space="preserve">
+    <value>Linked</value>
+  </data>
+	<data name="Link_Social_Account" xml:space="preserve">
+    <value>Link Social Account</value>
+  </data>
+	<data name="Live_Tracking_Link" xml:space="preserve">
+    <value>Live Tracking Link</value>
+  </data>
+	<data name="locations" xml:space="preserve">
+    <value>locations</value>
+  </data>
+	<data name="Location_not_found" xml:space="preserve">
+    <value>Location not found</value>
+  </data>
+	<data name="Location_not_updated_Dura_Server_down" xml:space="preserve">
+    <value>Location not updated ! DuraServer down</value>
+  </data>
+	<data name="Location_Permission" xml:space="preserve">
+    <value>Location Permission</value>
+  </data>
+	<data name="Location_service_not_enabled" xml:space="preserve">
+    <value>Location service not enabled</value>
+  </data>
+	<data name="Location_updated_successfully" xml:space="preserve">
+    <value>Location updated successfully</value>
+  </data>
+	<data name="Login" xml:space="preserve">
+    <value>Login</value>
+  </data>
+	<data name="LoginSuccessful" xml:space="preserve">
+    <value>Login successful</value>
+  </data>
+	<data name="LoginWithEmail" xml:space="preserve">
+    <value>Login With Email</value>
+  </data>
+	<data name="LoginWithPhoneNumber" xml:space="preserve">
+    <value>Login With Phone Number</value>
+  </data>
+	<data name="Logout" xml:space="preserve">
+    <value>Logout</value>
+  </data>
+	<data name="Make_It_Default" xml:space="preserve">
+    <value>Make It Default</value>
+  </data>
+	<data name="Map_Page" xml:space="preserve">
+    <value>Map Page</value>
+  </data>
+	<data name="Mark_as_Read" xml:space="preserve">
+    <value>Mark as Read</value>
+  </data>
+	<data name="max_length_100" xml:space="preserve">
+    <value>max length 100</value>
+  </data>
+	<data name="MobileNumber" xml:space="preserve">
+    <value>Mobile Number</value>
+  </data>
+	<data name="Multi_node_Surcharge" xml:space="preserve">
+    <value>Multi-node Surcharge</value>
+  </data>
+	<data name="My_Address" xml:space="preserve">
+    <value>My Address</value>
+  </data>
+	<data name="My_Orders" xml:space="preserve">
+    <value>My Orders</value>
+  </data>
+	<data name="My_Profile" xml:space="preserve">
+    <value>My Profile</value>
+  </data>
+	<data name="My_Saved_Address" xml:space="preserve">
+    <value>My Saved Address</value>
+  </data>
+	<data name="Need_to_access_your_camera_so_that_you_can_upload_your_profile_picture_and_other_documents" xml:space="preserve">
+    <value>Need to access your camera so that you can upload your profile picture and other documents</value>
+  </data>
+	<data name="Need_to_access_your_gallery_so_that_you_can_easily_upload_your_documents" xml:space="preserve">
+    <value>Need to access your gallery so that you can easily upload your documents</value>
+  </data>
+	<data name="Newhere" xml:space="preserve">
+    <value>New here ?</value>
+  </data>
+	<data name="NewPassword" xml:space="preserve">
+    <value>New Password</value>
+  </data>
+	<data name="New_Address_Added" xml:space="preserve">
+    <value>New Address Added</value>
+  </data>
+	<data name="New_Card_Added" xml:space="preserve">
+    <value>New Card Added</value>
+  </data>
+	<data name="Next" xml:space="preserve">
+    <value>Next</value>
+  </data>
+	<data name="No" xml:space="preserve">
+    <value>No</value>
+  </data>
+	<data name="NoInternet" xml:space="preserve">
+    <value>Please Check Your Internet Connection.</value>
+  </data>
+	<data name="Notification" xml:space="preserve">
+    <value>Notification</value>
+  </data>
+	<data name="Notifications" xml:space="preserve">
+    <value>Notifications</value>
+  </data>
+	<data name="Not_Connected" xml:space="preserve">
+    <value>Not Connected</value>
+  </data>
+	<data name="Not_connected_to_internet" xml:space="preserve">
+    <value>Not connected to internet.</value>
+  </data>
+	<data name="Not_Linked" xml:space="preserve">
+    <value>Not Linked</value>
+  </data>
+	<data name="No_Additional_Service_available" xml:space="preserve">
+    <value>No Additional Service available*</value>
+  </data>
+	<data name="No_Address_saved_to_show" xml:space="preserve">
+    <value>No Address save to show</value>
+  </data>
+	<data name="No_Data_Found" xml:space="preserve">
+    <value>No Data Found</value>
+  </data>
+	<data name="No_driver_location_link_found" xml:space="preserve">
+    <value>No driver location link found</value>
+  </data>
+	<data name="No_more_record_found" xml:space="preserve">
+    <value>No more record found!</value>
+  </data>
+	<data name="No_Notifications_data" xml:space="preserve">
+    <value>No Notifications data</value>
+  </data>
+	<data name="No_offers_available" xml:space="preserve">
+    <value>No offers available</value>
+  </data>
+	<data name="No_promo_code_available" xml:space="preserve">
+    <value>No promo code available</value>
+  </data>
+	<data name="No_promo_code_offer_available_for_you" xml:space="preserve">
+    <value>No promo code offer available for you</value>
+  </data>
+	<data name="No_records_found" xml:space="preserve">
+    <value>No records found</value>
+  </data>
+	<data name="No_saved_address" xml:space="preserve">
+    <value>No saved address</value>
+  </data>
+	<data name="No_services_selected" xml:space="preserve">
+    <value>No services selected</value>
+  </data>
+	<data name="Number" xml:space="preserve">
+    <value>Number</value>
+  </data>
+	<data name="Offers_Promo" xml:space="preserve">
+    <value>Offers &amp; Promo</value>
+  </data>
+	<data name="Offer_Promocode_Apply" xml:space="preserve">
+    <value>Offer &amp; Promocode apply</value>
+  </data>
+	<data name="Ok" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+	<data name="Okay_Place_Order" xml:space="preserve">
+    <value>Okay, Place Order</value>
+  </data>
+	<data name="Ongoing_OrderPicked" xml:space="preserve">
+    <value>Ongoing-OrderPicked</value>
+  </data>
+	<data name="Ordered_on" xml:space="preserve">
+    <value>Ordered on </value>
+  </data>
+	<data name="Orders_purchased" xml:space="preserve">
+    <value>Orders And purchased</value>
+  </data>
+	<data name="Order_Details" xml:space="preserve">
+    <value>Order Details</value>
+  </data>
+	<data name="Order_Number" xml:space="preserve">
+    <value>Order Number </value>
+  </data>
+	<data name="Order_Status" xml:space="preserve">
+    <value>Order Status</value>
+  </data>
+	<data name="Or_Sign_in_With" xml:space="preserve">
+    <value>Or Sign in With</value>
+  </data>
+	<data name="Our_Service_are_currently_not_available_in_this_city_We_will_notify_you_as_soon_as_we_launch" xml:space="preserve">
+    <value>Our Service are currently not available in this city We will notify you as soon as we launch.</value>
+  </data>
+	<data name="Over_Mileage" xml:space="preserve">
+    <value>Over_Mileage (</value>
+  </data>
+	<data name="Password_must_be_between_8_to_15 characters" xml:space="preserve">
+    <value>Password must be between 8 to 15 characters, it must also contain atleast 1 lowercase,1 uppercase, 1 special character and 1 digit.</value>
+  </data>
+	<data name="Password_Reset_Successfully" xml:space="preserve">
+    <value>Password Reset Successfully</value>
+  </data>
+	<data name="Payment_Method" xml:space="preserve">
+    <value>Payment Method</value>
+  </data>
+	<data name="Pending_OrderNotPickedYet" xml:space="preserve">
+    <value>Pending-OrderNotPickedYet</value>
+  </data>
+	<data name="PersonalDetails" xml:space="preserve">
+    <value>Personal Details</value>
+  </data>
+	<data name="Personal_Account" xml:space="preserve">
+    <value>Personal Account</value>
+  </data>
+	<data name="Personal_Account_Documents" xml:space="preserve">
+    <value>Personal Account Documents</value>
+  </data>
+	<data name="Phone" xml:space="preserve">
+    <value>Phone</value>
+  </data>
+	<data name="PhoneNumber" xml:space="preserve">
+    <value>Phone Number*</value>
+  </data>
+	<data name="Phone_number_updated_successfully" xml:space="preserve">
+    <value>Phone number updated successfully</value>
+  </data>
+	<data name="PickupSchedule" xml:space="preserve">
+    <value>Pickup Schedule</value>
+  </data>
+	<data name="Pickup_Location" xml:space="preserve">
+    <value>Pickup Location</value>
+  </data>
+	<data name="Pick_from_camera" xml:space="preserve">
+    <value>Pick from camera</value>
+  </data>
+	<data name="Pick_from_gallery" xml:space="preserve">
+    <value>Pick from gallery</value>
+  </data>
+	<data name="Please_check_your_Phone_number_It_may_be_not_reachable" xml:space="preserve">
+    <value>Please check your Phone number.It may be not reachable.</value>
+  </data>
+	<data name="Please_enter_address_1" xml:space="preserve">
+    <value>Please enter address 1</value>
+  </data>
+	<data name="Please_enter_address_2" xml:space="preserve">
+    <value>Please enter address 2</value>
+  </data>
+	<data name="Please_enter_block_address" xml:space="preserve">
+    <value>Please enter block address</value>
+  </data>
+	<data name="Please_enter_Card_Holder_Name" xml:space="preserve">
+    <value>Please enter Card Holder Name</value>
+  </data>
+	<data name="Please_enter_Card_Number" xml:space="preserve">
+    <value>Please enter Card Number</value>
+  </data>
+	<data name="Please_enter_contact_person_name" xml:space="preserve">
+    <value>Please enter contact person name</value>
+  </data>
+	<data name="Please_enter_Expiry_Date" xml:space="preserve">
+    <value>Please enter Expiry Date</value>
+  </data>
+	<data name="Please_enter_home_address" xml:space="preserve">
+    <value>Please enter home address</value>
+  </data>
+	<data name="Please_enter_minimum_10_digit_phone_number" xml:space="preserve">
+    <value>Please enter minimum 10 digit phone number.</value>
+  </data>
+	<data name="Please_enter_name" xml:space="preserve">
+    <value>Please enter name</value>
+  </data>
+	<data name="Please_enter_promo_code_to_get_offer" xml:space="preserve">
+    <value>Please enter promo code to get offer</value>
+  </data>
+	<data name="Please_enter_reason" xml:space="preserve">
+    <value>Please enter reason</value>
+  </data>
+	<data name="Please_enter_Security_Code" xml:space="preserve">
+    <value>Please enter Security Code</value>
+  </data>
+	<data name="Please_enter_the_referral_code" xml:space="preserve">
+    <value>Please enter the referral code</value>
+  </data>
+	<data name="Please_enter_user_full_name" xml:space="preserve">
+    <value>Please enter user full name.</value>
+  </data>
+	<data name="Please_enter_valid_amount" xml:space="preserve">
+    <value>Please enter valid amount</value>
+  </data>
+	<data name="Please_enter_valid_email_id" xml:space="preserve">
+    <value>Please enter valid email id.</value>
+  </data>
+	<data name="Please_enter_valid_first_name" xml:space="preserve">
+    <value>Please enter valid first name</value>
+  </data>
+	<data name="Please_enter_valid_last_name" xml:space="preserve">
+    <value>Please enter valid last name</value>
+  </data>
+	<data name="Please_enter_valid_phone_number" xml:space="preserve">
+    <value>Please enter valid phone number</value>
+  </data>
+	<data name="Please_enter_valid_user_name" xml:space="preserve">
+    <value>Please enter valid user name</value>
+  </data>
+	<data name="Please_provide_rating" xml:space="preserve">
+    <value>Please provide rating</value>
+  </data>
+	<data name="Please_recheck_your_credentials_and_selected_location" xml:space="preserve">
+    <value>Please recheck your credentials and selected location.</value>
+  </data>
+	<data name="Please_recheck_your_phone_number_It_is_already_present_in_dura_server" xml:space="preserve">
+    <value>Please recheck your phone number.It is already present in dura server.</value>
+  </data>
+	<data name="Please_select_area" xml:space="preserve">
+    <value>Please select area</value>
+  </data>
+	<data name="Please_select_desctination_where_to_Final_Drop_location" xml:space="preserve">
+    <value>Please select desctination/where to(Final Drop) location</value>
+  </data>
+	<data name="Please_select_Pickup_location" xml:space="preserve">
+    <value>Please select Pickup location</value>
+  </data>
+	<data name="Please_select_Pickup_Schedule" xml:space="preserve">
+    <value>Please select Pickup Schedule</value>
+  </data>
+	<data name="Please_select_profile_pic" xml:space="preserve">
+    <value>Please select profile pic</value>
+  </data>
+	<data name="Please_select_type" xml:space="preserve">
+    <value>Please select type</value>
+  </data>
+	<data name="Please_select_your_country_code" xml:space="preserve">
+    <value>Please select your country code</value>
+  </data>
+	<data name="Please_tell_us_your_Mobile_number_to_proceed_further" xml:space="preserve">
+    <value>Please tell us your Mobile number to proceed further.</value>
+  </data>
+	<data name="Please_upload_a_picture" xml:space="preserve">
+    <value>Please tell us about yourself and upload a picture.</value>
+  </data>
+	<data name="Please_wait" xml:space="preserve">
+    <value>Please wait</value>
+  </data>
+	<data name="Please_Wait_Finding_Driver" xml:space="preserve">
+    <value>Please Wait Finding Driver</value>
+  </data>
+	<data name="Price" xml:space="preserve">
+    <value>Price : </value>
+  </data>
+	<data name="PriceBreakdown" xml:space="preserve">
+    <value>Price Breakdown</value>
+  </data>
+	<data name="Price_Breakdown" xml:space="preserve">
+    <value>Price Breakdown</value>
+  </data>
+	<data name="Privacy_Policy" xml:space="preserve">
+    <value>Privacy Policy</value>
+  </data>
+	<data name="Promo_code_applied" xml:space="preserve">
+    <value>Promo code applied</value>
+  </data>
+	<data name="Promo_code_applied_successfully" xml:space="preserve">
+    <value>Promo code applied successfully</value>
+  </data>
+	<data name="Rate_Review" xml:space="preserve">
+    <value>Rate &amp; Review</value>
+  </data>
+	<data name="Rate_the_Product" xml:space="preserve">
+    <value>Rate the Product</value>
+  </data>
+	<data name="RecentSearched" xml:space="preserve">
+    <value>Recent Searched</value>
+  </data>
+	<data name="Recent_saved_address" xml:space="preserve">
+    <value>Recent saved address</value>
+  </data>
+	<data name="Recharge_Now" xml:space="preserve">
+    <value>Recharge Now</value>
+  </data>
+	<data name="Refer_a_Friend" xml:space="preserve">
+    <value>Refer a Friend</value>
+  </data>
+	<data name="Refer_a_friend_get_you_and_your_friend_off_on_food_ordering" xml:space="preserve">
+    <value>Refer a friend &amp; get you and your friend 50% off on food ordering</value>
+  </data>
+	<data name="Refer_code_does_not_match" xml:space="preserve">
+    <value>Refer code does not match.Do you really want to proceed without referal code?</value>
+  </data>
+	<data name="RegisterNow" xml:space="preserve">
+    <value>Register Now</value>
+  </data>
+	<data name="Remove" xml:space="preserve">
+    <value>Remove</value>
+  </data>
+	<data name="ResendOTP" xml:space="preserve">
+    <value>Resend OTP</value>
+  </data>
+	<data name="ResetPassword" xml:space="preserve">
+    <value>Reset Password</value>
+  </data>
+	<data name="Reviews" xml:space="preserve">
+    <value>Reviews</value>
+  </data>
+	<data name="Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+	<data name="Saved_Address" xml:space="preserve">
+    <value>Saved Address</value>
+  </data>
+	<data name="Saved_Addresses" xml:space="preserve">
+    <value>Saved Addresses</value>
+  </data>
+	<data name="Saved_Cards" xml:space="preserve">
+    <value>Saved Cards</value>
+  </data>
+	<data name="Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+	<data name="Searching_Driver" xml:space="preserve">
+    <value>Searching Driver...</value>
+  </data>
+	<data name="Search_for_the_driver" xml:space="preserve">
+    <value>Search for the driver</value>
+  </data>
+	<data name="Search_Location" xml:space="preserve">
+    <value>Search Location</value>
+  </data>
+	<data name="Search_Restaurant" xml:space="preserve">
+    <value>Search Restaurant, Dish etc...</value>
+  </data>
+	<data name="Search_Your_Location" xml:space="preserve">
+    <value>Search Your Location</value>
+  </data>
+	<data name="Second_Id_Proof" xml:space="preserve">
+    <value>Second Id Proof</value>
+  </data>
+	<data name="Security_code" xml:space="preserve">
+    <value>Security code</value>
+  </data>
+	<data name="Select_Account_Type" xml:space="preserve">
+    <value>Select Account Type</value>
+  </data>
+	<data name="Select_an_options" xml:space="preserve">
+    <value>Choose an option</value>
+  </data>
+	<data name="Select_List_to_get_the_details" xml:space="preserve">
+    <value>Select List to get the details*</value>
+  </data>
+	<data name="Select_Payment_Mode" xml:space="preserve">
+    <value>Select Payment Mode</value>
+  </data>
+	<data name="Select_Status" xml:space="preserve">
+    <value>Select Status</value>
+  </data>
+	<data name="Select_Vehicle" xml:space="preserve">
+    <value>Select Vehicle</value>
+  </data>
+	<data name="Sending_OTP_Server_Error" xml:space="preserve">
+    <value>Sending OTP Server Error</value>
+  </data>
+	<data name="Send_OTP" xml:space="preserve">
+    <value>Send OTP</value>
+  </data>
+	<data name="ServerError" xml:space="preserve">
+    <value>Api response error, please try again</value>
+  </data>
+	<data name="Services" xml:space="preserve">
+    <value>Services</value>
+  </data>
+	<data name="ServiceType" xml:space="preserve">
+    <value>Service Type</value>
+  </data>
+	<data name="Service_type" xml:space="preserve">
+    <value>Service type</value>
+  </data>
+	<data name="Settings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+	<data name="Set_your_pickup_and_drop_off_location_Dura_Express" xml:space="preserve">
+    <value>Set your pickup and drop off location.Dura Express provides best services to deliver your items.</value>
+  </data>
+	<data name="SignUp" xml:space="preserve">
+    <value>Sign Up</value>
+  </data>
+	<data name="Size" xml:space="preserve">
+    <value>Size : </value>
+  </data>
+	<data name="Skip" xml:space="preserve">
+    <value>Skip</value>
+  </data>
+	<data name="Sorry_we_dont_serve_this_location_yet" xml:space="preserve">
+    <value>Sorry,we don't serve this location yet</value>
+  </data>
+	<data name="Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+	<data name="Stop_Location" xml:space="preserve">
+    <value>Stop Location</value>
+  </data>
+	<data name="Storage_Permission" xml:space="preserve">
+    <value>Storage Permission</value>
+  </data>
+	<data name="Submit" xml:space="preserve">
+    <value>Submit</value>
+  </data>
+	<data name="Submit_Cancel_Order" xml:space="preserve">
+    <value>Submit &amp; Cancel Order</value>
+  </data>
+	<data name="Support_Chat" xml:space="preserve">
+    <value>Support Chat</value>
+  </data>
+	<data name="Surcharge" xml:space="preserve">
+    <value>Surcharge</value>
+  </data>
+	<data name="Tap_on_map_to_set_your_position" xml:space="preserve">
+    <value>Tap on map to set your position</value>
+  </data>
+	<data name="Tap_to_copy_your_reference_code" xml:space="preserve">
+    <value>Tap to copy your reference code</value>
+  </data>
+	<data name="TermAndConditions" xml:space="preserve">
+    <value>Term &amp; Conditions</value>
+  </data>
+	<data name="Terms_of_Services" xml:space="preserve">
+    <value>Terms of Services.</value>
+  </data>
+	<data name="Thanks_for_provide_the_rating" xml:space="preserve">
+    <value>Thanks for provide the rating</value>
+  </data>
+	<data name="This_phone_number_is_already_registered" xml:space="preserve">
+    <value>This phone number is already registered</value>
+  </data>
+	<data name="This_promo_will_be_applied_for_your_next_order" xml:space="preserve">
+    <value>This promo will be applied for your next order</value>
+  </data>
+	<data name="Time" xml:space="preserve">
+    <value>Time</value>
+  </data>
+	<data name="time_should_not_be_less_than_current_time" xml:space="preserve">
+    <value>time should not be less than current time</value>
+  </data>
+	<data name="TipAmount" xml:space="preserve">
+    <value>Tip Amount</value>
+  </data>
+	<data name="Token_expired" xml:space="preserve">
+    <value>Token expired, you will be redirected to login</value>
+  </data>
+	<data name="Total" xml:space="preserve">
+    <value>Total :</value>
+  </data>
+	<data name="Total_Amount" xml:space="preserve">
+    <value>Total Amount</value>
+  </data>
+	<data name="Total_distance" xml:space="preserve">
+    <value>(Total distance</value>
+  </data>
+	<data name="Total_distance_20_km" xml:space="preserve">
+    <value>(Total distance 20 km)</value>
+  </data>
+	<data name="Track_Dura_Express_Order" xml:space="preserve">
+    <value>Track Dura Express Order</value>
+  </data>
+	<data name="Track_Now" xml:space="preserve">
+    <value>Track Now</value>
+  </data>
+	<data name="Track_Order" xml:space="preserve">
+    <value>Track Order</value>
+  </data>
+	<data name="Travel_Time_Source_to_Destination" xml:space="preserve">
+    <value>Travel Time(Source to Destination)</value>
+  </data>
+	<data name="Try_Again" xml:space="preserve">
+    <value>Try Again</value>
+  </data>
+	<data name="Type_notes_to_your_driver_Optional" xml:space="preserve">
+    <value>Type notes to your driver (Optional)</value>
+  </data>
+	<data name="Upload_Additional_Document" xml:space="preserve">
+    <value>Upload Additional Document</value>
+  </data>
+	<data name="Use_current_location" xml:space="preserve">
+    <value>Use your current location</value>
+  </data>
+	<data name="Validity" xml:space="preserve">
+    <value>Validity :</value>
+  </data>
+	<data name="Vehicle" xml:space="preserve">
+    <value>Vehicle</value>
+  </data>
+	<data name="VehicleNumber" xml:space="preserve">
+    <value>Vehicle Number</value>
+  </data>
+	<data name="Vehicle_Type" xml:space="preserve">
+    <value>Vehicle Type</value>
+  </data>
+	<data name="Verification" xml:space="preserve">
+    <value>Verification</value>
+  </data>
+	<data name="Verify" xml:space="preserve">
+    <value>Verify</value>
+  </data>
+	<data name="Verify_Your_Account" xml:space="preserve">
+    <value>Verify Your Account</value>
+  </data>
+	<data name="View_Profile" xml:space="preserve">
+    <value>View Profile</value>
+  </data>
+	<data name="Wallet_Amount_is_less_than_order_amount_Do_you_really_want_to_proceed_with_COD" xml:space="preserve">
+    <value>Wallet Amount is less than order amount.Do you really want to proceed with COD?</value>
+  </data>
+	<data name="Welcome" xml:space="preserve">
+    <value>Welcome!</value>
+  </data>
+	<data name="We_are_coming_soon" xml:space="preserve">
+    <value>We are coming soon !</value>
+  </data>
+	<data name="We_are_Working_on_it_It_is_in_Progress" xml:space="preserve">
+    <value>We are Working on it.It is in Progress.</value>
+  </data>
+	<data name="We_are_working_with_google_for_tracking_link_Backend_Team_work_is_inProgress" xml:space="preserve">
+    <value>We are working with google for tracking link.Backend Team work is inProgress.</value>
+  </data>
+	<data name="We_Found_You_A_Driver" xml:space="preserve">
+    <value>We've Found You A Driver</value>
+  </data>
+	<data name="We_need_to_access_your_phone_book_in_order_to_save_address_with_contact" xml:space="preserve">
+    <value>We need to access your phone book in order to save address with contact</value>
+  </data>
+	<data name="We_need_to_find_where_you_are_in_order_to_better_facilitate_you" xml:space="preserve">
+    <value>We need to find where you are in order to better facilitate you</value>
+  </data>
+	<data name="We_ve_Found_You_A_Driver" xml:space="preserve">
+    <value>Natagpuan ka namin ng isang Driver</value>
+  </data>
+	<data name="Whereto" xml:space="preserve">
+    <value>Where to?</value>
+  </data>
+	<data name="Where_to_Fin" xml:space="preserve">
+    <value>Where to(Final Drop)</value>
+  </data>
+	<data name="Where_To_Final_Drop" xml:space="preserve">
+    <value>Where To(Final Drop)</value>
+  </data>
+	<data name="Where_To_Final_Drop_Location" xml:space="preserve">
+    <value>Where To(Final Drop Location)</value>
+  </data>
+	<data name="will_be_deducted_from_your_wallet_Do_you_really_want_to_proceed" xml:space="preserve">
+    <value>will be deducted from your wallet.Do you really want to proceed?</value>
+  </data>
+	<data name="will_review_later" xml:space="preserve">
+    <value>will review later</value>
+  </data>
+	<data name="Wrong_code" xml:space="preserve">
+    <value>Wrong code</value>
+  </data>
+	<data name="Yes" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+	<data name="Your_account_is_not_verified" xml:space="preserve">
+    <value>Your account is not verified</value>
+  </data>
+	<data name="Your_email_or_phone_is_already_registered" xml:space="preserve">
+    <value>Your email or phone is already registered</value>
+  </data>
+	<data name="Your_order_location_is_not_selected_right_Please_recheck_your_order_confirm_location_pickup_dropup_again" xml:space="preserve">
+    <value>Your order location is not selected right Please recheck your order and confirm location of pick up and drop up again.</value>
+  </data>
+	<data name="Your_OTP_is_not_matching_Please_resend_to_get_new_one" xml:space="preserve">
+    <value>Your OTP is not matching, Please resend to get new one.</value>
+  </data>
+	<data name="Your_UserName_updated_successfully" xml:space="preserve">
+    <value>Your User Name updated successfully.</value>
+  </data>
+	<data name="Your_wallet_amount_is_notsufficient_Do_you_want_to_proceed_with_COD" xml:space="preserve">
+    <value>Your wallet amount is not sufficient.Do you want to proceed with COD?</value>
+  </data>
+	<data name="You_are_now_rider_pending_approval" xml:space="preserve">
+    <value>Sakay ka na (nakabinbin ang pag-apruba)</value>
+  </data>
+	<data name="You_be_have_to_cash_pay_P16_to_delivery_person" xml:space="preserve">
+    <value>You'll be have to cash pay P16 to delivery person</value>
+  </data>
+	<data name="You_can_add_maximum_three_stop_location" xml:space="preserve">
+    <value>You can add maximum three stop location</value>
+  </data>
+	<data name="You_ll_be_have_to_cash_pay_delivery_person" xml:space="preserve">
+    <value>You'll be have to cash pay P16 to delivery person</value>
+  </data>
+	<data name="You_must_fill_all_of_the_fields" xml:space="preserve">
+    <value>* You must fill all of the fields.</value>
+  </data>
+	<data name="You_will_have_to_pay" xml:space="preserve">
+    <value>You will have to pay</value>
+  </data>
+</root>

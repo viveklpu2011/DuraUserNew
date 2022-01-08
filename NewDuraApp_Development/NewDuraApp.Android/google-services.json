@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "143145681882",
+    "project_id": "durauser",
+    "storage_bucket": "durauser.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:143145681882:android:5e409cc90897e420ba36e3",
+        "android_client_info": {
+          "package_name": "com.dura.duraapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "143145681882-p91o4m4sold1jmp1jb5p1a4dh405ofp2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBLuVR3TyIB-eV3bit0hfc4vrKZWqNLdWA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "143145681882-p91o4m4sold1jmp1jb5p1a4dh405ofp2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

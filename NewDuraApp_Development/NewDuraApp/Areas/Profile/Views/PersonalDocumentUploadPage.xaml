@@ -1,0 +1,345 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="NewDuraApp.Areas.Profile.Views.PersonalDocumentUploadPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Helpers="clr-namespace:NewDuraApp.Converters"
+    xmlns:control="clr-namespace:NewDuraApp.Controls"
+    xmlns:fonticon="clr-namespace:NewDuraApp.FontIcons"
+    xmlns:images="clr-namespace:NewDuraApp.Extensions"
+    xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:translate="clr-namespace:NewDuraApp.Resources"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    BackgroundColor="White"
+    BindingContext="{Binding PersonalDocumentUploadPage, Source={StaticResource Locator}}"
+    NavigationPage.HasBackButton="True"
+    Shell.NavBarHasShadow="False"
+    Shell.NavBarIsVisible="True"
+    Shell.TabBarIsVisible="False"
+    Visual="Material">
+    <Shell.TitleView>
+
+        <Label
+            FontAttributes="Bold"
+            FontFamily="ProximaSemiBold"
+            FontSize="18"
+            HorizontalOptions="FillAndExpand"
+            Text="{translate:Translate Personal_Account_Documents}"
+            TextColor="Black"
+            VerticalOptions="CenterAndExpand"
+            VerticalTextAlignment="Center" />
+
+
+    </Shell.TitleView>
+    <ContentPage.Content>
+        <ScrollView Margin="15" VerticalScrollBarVisibility="Never">
+            <Grid RowDefinitions="16,44,97,49,44,97,70" RowSpacing="20">
+                <Frame
+                    Grid.Row="1"
+                    Padding="20,2"
+                    BackgroundColor="#211E66"
+                    CornerRadius="5"
+                    HeightRequest="44">
+                    <Grid
+                        ColumnDefinitions="*,Auto"
+                        RowDefinitions="Auto"
+                        VerticalOptions="CenterAndExpand">
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            FontFamily="ProximaRegular"
+                            FontSize="16"
+                            Text="{translate:Translate First_Id_Proof}"
+                            TextColor="Gray" />
+                        <Image
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Margin="0,0,10,0"
+                            HeightRequest="13"
+                            HorizontalOptions="EndAndExpand"
+                            InputTransparent="True"
+                            IsVisible="False"
+                            Source="{images:EmbeddedImage NewDuraApp.Images.drop_down_arrow.png}"
+                            VerticalOptions="CenterAndExpand"
+                            WidthRequest="13" />
+
+                    </Grid>
+                </Frame>
+                <Grid
+                    Grid.Row="2"
+                    ColumnDefinitions="*,*"
+                    ColumnSpacing="20">
+                    <Frame
+                        Grid.Column="0"
+                        Padding="0"
+                        CornerRadius="5"
+                        IsClippedToBounds="True">
+                        <AbsoluteLayout IsClippedToBounds="True">
+                            <Image
+                                xct:TouchEffect.Command="{Binding PickImageIDFrontCommand}"
+                                AbsoluteLayout.LayoutBounds="0,0,1,1"
+                                AbsoluteLayout.LayoutFlags="All"
+                                Aspect="Fill"
+                                InputTransparent="True"
+                                Source="{Binding ProfileImageIDFront}" />
+                            <ImageButton
+                                Margin="3"
+                                AbsoluteLayout.LayoutBounds="1,0"
+                                AbsoluteLayout.LayoutFlags="PositionProportional"
+                                Aspect="Fill"
+                                BackgroundColor="White"
+                                Command="{Binding DeleteImageIDFrontCommand}"
+                                HeightRequest="17"
+                                IsVisible="{Binding IsIdFrontImageDeleteVisible, Converter={Helpers:InverseBoolConverter}}"
+                                Source="{images:EmbeddedImage NewDuraApp.Images.delete.png}"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="17" />
+                            <StackLayout
+                                xct:TouchEffect.Command="{Binding PickImageIDFrontCommand}"
+                                AbsoluteLayout.LayoutBounds="0,0,1,1"
+                                AbsoluteLayout.LayoutFlags="All"
+                                BackgroundColor="White"
+                                IsClippedToBounds="True"
+                                IsVisible="{Binding IsIdFrontImageDeleteVisible}">
+                                <StackLayout
+                                    HorizontalOptions="CenterAndExpand"
+                                    Spacing="10"
+                                    VerticalOptions="CenterAndExpand">
+                                    <Image
+                                        Aspect="Fill"
+                                        HeightRequest="27"
+                                        HorizontalOptions="CenterAndExpand"
+                                        Source="{images:EmbeddedImage NewDuraApp.Images.upload.png}"
+                                        VerticalOptions="CenterAndExpand"
+                                        WidthRequest="27" />
+                                    <Label
+                                        FontFamily="ProximaRegular"
+                                        FontSize="12"
+                                        HorizontalOptions="CenterAndExpand"
+                                        Text="{translate:Translate Front_side_id_card_photo}"
+                                        TextColor="Black"
+                                        VerticalOptions="CenterAndExpand"
+                                        VerticalTextAlignment="Center" />
+                                </StackLayout>
+                            </StackLayout>
+                        </AbsoluteLayout>
+                    </Frame>
+                    <Frame
+                        Grid.Column="1"
+                        Padding="0"
+                        CornerRadius="5"
+                        IsClippedToBounds="True">
+                        <AbsoluteLayout IsClippedToBounds="True">
+                            <Image
+                                xct:TouchEffect.Command="{Binding PickImageIDBackCommand}"
+                                AbsoluteLayout.LayoutBounds="0,0,1,1"
+                                AbsoluteLayout.LayoutFlags="All"
+                                Aspect="Fill"
+                                InputTransparent="True"
+                                Source="{Binding ProfileImageIDBack}" />
+                            <ImageButton
+                                Margin="3"
+                                AbsoluteLayout.LayoutBounds="1,0"
+                                AbsoluteLayout.LayoutFlags="PositionProportional"
+                                Aspect="Fill"
+                                BackgroundColor="White"
+                                Command="{Binding DeleteImageIDBackCommand}"
+                                HeightRequest="17"
+                                IsVisible="{Binding IsIdBackImageDeleteVisible, Converter={Helpers:InverseBoolConverter}}"
+                                Source="{images:EmbeddedImage NewDuraApp.Images.delete.png}"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="17" />
+                            <StackLayout
+                                xct:TouchEffect.Command="{Binding PickImageIDBackCommand}"
+                                AbsoluteLayout.LayoutBounds="0,0,1,1"
+                                AbsoluteLayout.LayoutFlags="All"
+                                BackgroundColor="White"
+                                IsClippedToBounds="True"
+                                IsVisible="{Binding IsIdBackImageDeleteVisible}">
+                                <StackLayout
+                                    HorizontalOptions="CenterAndExpand"
+                                    Spacing="10"
+                                    VerticalOptions="CenterAndExpand">
+                                    <Image
+                                        Aspect="Fill"
+                                        HeightRequest="27"
+                                        HorizontalOptions="CenterAndExpand"
+                                        Source="{images:EmbeddedImage NewDuraApp.Images.upload.png}"
+                                        VerticalOptions="CenterAndExpand"
+                                        WidthRequest="27" />
+                                    <Label
+                                        FontFamily="ProximaRegular"
+                                        FontSize="12"
+                                        HorizontalOptions="CenterAndExpand"
+                                        Text="{translate:Translate Back_side_id_card_photo}"
+                                        TextColor="Black"
+                                        VerticalOptions="CenterAndExpand"
+                                        VerticalTextAlignment="Center" />
+                                </StackLayout>
+                            </StackLayout>
+                        </AbsoluteLayout>
+                    </Frame>
+                </Grid>
+                <Frame
+                    Grid.Row="4"
+                    Padding="20,2"
+                    BackgroundColor="#211E66"
+                    CornerRadius="5"
+                    HeightRequest="44">
+                    <Grid
+                        ColumnDefinitions="*,Auto"
+                        RowDefinitions="Auto"
+                        VerticalOptions="CenterAndExpand">
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            FontFamily="ProximaRegular"
+                            FontSize="16"
+                            Text="{translate:Translate Second_Id_Proof}"
+                            TextColor="Gray" />
+                        <Image
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Margin="0,0,10,0"
+                            HeightRequest="13"
+                            HorizontalOptions="EndAndExpand"
+                            InputTransparent="True"
+                            IsVisible="False"
+                            Source="{images:EmbeddedImage NewDuraApp.Images.drop_down_arrow.png}"
+                            VerticalOptions="CenterAndExpand"
+                            WidthRequest="13" />
+
+                    </Grid>
+                </Frame>
+                <Grid
+                    Grid.Row="5"
+                    ColumnDefinitions="*,*"
+                    ColumnSpacing="20">
+
+                    <Frame
+                        Grid.Column="0"
+                        Padding="0"
+                        CornerRadius="5"
+                        IsClippedToBounds="True">
+                        <AbsoluteLayout IsClippedToBounds="True">
+                            <Image
+                                xct:TouchEffect.Command="{Binding PickImageDrivingFrontCommand}"
+                                AbsoluteLayout.LayoutBounds="0,0,1,1"
+                                AbsoluteLayout.LayoutFlags="All"
+                                Aspect="Fill"
+                                InputTransparent="True"
+                                Source="{Binding ProfileImageDrivingFront}" />
+                            <ImageButton
+                                Margin="3"
+                                AbsoluteLayout.LayoutBounds="1,0"
+                                AbsoluteLayout.LayoutFlags="PositionProportional"
+                                Aspect="Fill"
+                                BackgroundColor="White"
+                                Command="{Binding DeleteImageDrivingFrontCommand}"
+                                HeightRequest="17"
+                                IsVisible="{Binding IsDrivingFrontImageDeleteVisible, Converter={Helpers:InverseBoolConverter}}"
+                                Source="{images:EmbeddedImage NewDuraApp.Images.delete.png}"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="17" />
+                            <StackLayout
+                                xct:TouchEffect.Command="{Binding PickImageDrivingFrontCommand}"
+                                AbsoluteLayout.LayoutBounds="0,0,1,1"
+                                AbsoluteLayout.LayoutFlags="All"
+                                BackgroundColor="White"
+                                IsClippedToBounds="True"
+                                IsVisible="{Binding IsDrivingFrontImageDeleteVisible}">
+                                <StackLayout
+                                    HorizontalOptions="CenterAndExpand"
+                                    Spacing="10"
+                                    VerticalOptions="CenterAndExpand">
+                                    <Image
+                                        Aspect="Fill"
+                                        HeightRequest="27"
+                                        HorizontalOptions="CenterAndExpand"
+                                        Source="{images:EmbeddedImage NewDuraApp.Images.upload.png}"
+                                        VerticalOptions="CenterAndExpand"
+                                        WidthRequest="27" />
+                                    <Label
+                                        FontFamily="ProximaRegular"
+                                        FontSize="12"
+                                        HorizontalOptions="CenterAndExpand"
+                                        Text="{translate:Translate Driver_License_front_photo}"
+                                        TextColor="Black"
+                                        VerticalOptions="CenterAndExpand"
+                                        VerticalTextAlignment="Center" />
+                                </StackLayout>
+                            </StackLayout>
+                        </AbsoluteLayout>
+                    </Frame>
+                    <Frame
+                        Grid.Column="1"
+                        Padding="0"
+                        CornerRadius="5"
+                        IsClippedToBounds="True">
+                        <AbsoluteLayout IsClippedToBounds="True">
+                            <Image
+                                xct:TouchEffect.Command="{Binding PickImageDrivingBackCommand}"
+                                AbsoluteLayout.LayoutBounds="0,0,1,1"
+                                AbsoluteLayout.LayoutFlags="All"
+                                Aspect="Fill"
+                                InputTransparent="True"
+                                Source="{Binding ProfileImageDrivingBack}" />
+                            <ImageButton
+                                Margin="3"
+                                AbsoluteLayout.LayoutBounds="1,0"
+                                AbsoluteLayout.LayoutFlags="PositionProportional"
+                                Aspect="Fill"
+                                BackgroundColor="White"
+                                Command="{Binding DeleteImageDrivingBackCommand}"
+                                HeightRequest="17"
+                                IsVisible="{Binding IsDrivingBackImageDeleteVisible, Converter={Helpers:InverseBoolConverter}}"
+                                Source="{images:EmbeddedImage NewDuraApp.Images.delete.png}"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="17" />
+                            <StackLayout
+                                xct:TouchEffect.Command="{Binding PickImageDrivingBackCommand}"
+                                AbsoluteLayout.LayoutBounds="0,0,1,1"
+                                AbsoluteLayout.LayoutFlags="All"
+                                BackgroundColor="White"
+                                IsClippedToBounds="True"
+                                IsVisible="{Binding IsDrivingBackImageDeleteVisible}">
+                                <StackLayout
+                                    HorizontalOptions="CenterAndExpand"
+                                    Spacing="10"
+                                    VerticalOptions="CenterAndExpand">
+                                    <Image
+                                        Aspect="Fill"
+                                        HeightRequest="27"
+                                        HorizontalOptions="CenterAndExpand"
+                                        Source="{images:EmbeddedImage NewDuraApp.Images.upload.png}"
+                                        VerticalOptions="CenterAndExpand"
+                                        WidthRequest="27" />
+                                    <Label
+                                        FontFamily="ProximaRegular"
+                                        FontSize="12"
+                                        HorizontalOptions="CenterAndExpand"
+                                        Text="{translate:Translate Driver_License_back_photo}"
+                                        TextColor="Black"
+                                        VerticalOptions="CenterAndExpand"
+                                        VerticalTextAlignment="Center" />
+                                </StackLayout>
+                            </StackLayout>
+                        </AbsoluteLayout>
+                    </Frame>
+                </Grid>
+                <Button
+                    Grid.Row="6"
+                    BackgroundColor="#211E66"
+                    Command="{Binding NavigateBackCommand}"
+                    CornerRadius="5"
+                    FontFamily="ProximaRegular"
+                    FontSize="17"
+                    HeightRequest="50"
+                    HorizontalOptions="FillAndExpand"
+                    Text="{Binding Done}"
+                    TextColor="White"
+                    VerticalOptions="EndAndExpand" />
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

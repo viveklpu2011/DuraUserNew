@@ -1,0 +1,395 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="NewDuraApp.Areas.DuraShop.View.MyCart"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:NewDuraApp.Controls"
+    xmlns:images="clr-namespace:NewDuraApp.Extensions"
+    xmlns:sh="http://sharpnado.com"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    x:Name="thispage"
+    BindingContext="{Binding MyCart, Source={StaticResource Locator}}"
+    NavigationPage.HasBackButton="True"
+    Shell.NavBarHasShadow="False"
+    Shell.NavBarIsVisible="True"
+    Shell.TabBarIsVisible="False"
+    Visual="Material">
+    <Shell.TitleView>
+        <Label
+            FontFamily="ProximaSemiBold"
+            FontSize="22"
+            Text="My Cart"
+            TextColor="Black"
+            VerticalOptions="CenterAndExpand"
+            VerticalTextAlignment="Center" />
+    </Shell.TitleView>
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="50" />
+            </Grid.RowDefinitions>
+            <ScrollView Grid.Row="0" VerticalScrollBarVisibility="Never">
+                <StackLayout Margin="15,0,15,0">
+                    <Label
+                        Margin="0,0,0,20"
+                        FontFamily="ProximaSemiBold"
+                        FontSize="16"
+                        Text="1 Item in your cart"
+                        TextColor="Black" />
+                    <CollectionView HeightRequest="150" ItemsSource="{Binding CartList}">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <sh:Shadows
+                                    Padding="0"
+                                    BackgroundColor="#FFFFFF"
+                                    CornerRadius="5"
+                                    HorizontalOptions="FillAndExpand">
+                                    <sh:Shadows.Shades>
+                                        <sh:ImmutableShades>
+
+                                            <sh:Shade
+                                                BlurRadius="10"
+                                                Opacity="0.5"
+                                                Offset="2,2"
+                                                Color="Gray" />
+                                        </sh:ImmutableShades>
+                                    </sh:Shadows.Shades>
+                                    <Frame
+                                        Margin="10"
+                                        Padding="5"
+                                        BorderColor="Transparent"
+                                        CornerRadius="2"
+                                        HasShadow="False"
+                                        HeightRequest="106">
+                                        <StackLayout
+                                            Padding="0"
+                                            BackgroundColor="White"
+                                            Orientation="Horizontal"
+                                            Spacing="0">
+                                            <Image
+                                                Margin="0,10,10,10"
+                                                Aspect="Fill"
+                                                HeightRequest="90"
+                                                Source="{images:EmbeddedImage NewDuraApp.Images.t_shirt.png}"
+                                                VerticalOptions="CenterAndExpand"
+                                                WidthRequest="90" />
+                                            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                                                <StackLayout
+                                                    HorizontalOptions="FillAndExpand"
+                                                    Orientation="Horizontal"
+                                                    Spacing="0">
+                                                    <Label
+                                                        FontFamily="ProximaSemiBold"
+                                                        FontSize="16"
+                                                        Text="{Binding ProductDescription}"
+                                                        TextColor="#3D3D3D" />
+                                                    <Label
+                                                        Margin="10,0"
+                                                        FontFamily="ProximaSemiBold"
+                                                        FontSize="16"
+                                                        HorizontalOptions="EndAndExpand"
+                                                        Text="₱ 200"
+                                                        TextColor="#3D3D3D" />
+                                                </StackLayout>
+                                                <StackLayout Orientation="Horizontal">
+                                                    <StackLayout Spacing="0">
+                                                        <Label
+                                                            FontFamily="ProximaRegular"
+                                                            FontSize="16"
+                                                            TextColor="#3D3D3D">
+                                                            <Label.FormattedText>
+                                                                <FormattedString>
+                                                                    <Span Text="Color : " />
+                                                                    <Span Text="Red" />
+                                                                </FormattedString>
+                                                            </Label.FormattedText>
+                                                        </Label>
+                                                        <Label
+                                                            FontFamily="ProximaRegular"
+                                                            FontSize="16"
+                                                            TextColor="#3D3D3D">
+                                                            <Label.FormattedText>
+                                                                <FormattedString>
+                                                                    <Span Text="Size : " />
+                                                                    <Span Text="M" />
+                                                                </FormattedString>
+                                                            </Label.FormattedText>
+                                                        </Label>
+                                                    </StackLayout>
+                                                    <Frame
+                                                        Margin="10,0"
+                                                        Padding="0"
+                                                        BorderColor="#211E66"
+                                                        CornerRadius="2"
+                                                        HasShadow="False"
+                                                        HeightRequest="25"
+                                                        HorizontalOptions="EndAndExpand"
+                                                        IsClippedToBounds="True"
+                                                        VerticalOptions="CenterAndExpand"
+                                                        WidthRequest="70">
+                                                        <!--<Frame.GestureRecognizers>
+                                                        <TapGestureRecognizer Command="{Binding Path=BindingContext.IncrementCmd, Source={x:Reference thispage}}" CommandParameter="{Binding .}" />
+                                                    </Frame.GestureRecognizers>-->
+                                                        <Grid HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="30*" />
+                                                                <ColumnDefinition Width="40*" />
+                                                                <ColumnDefinition Width="30*" />
+                                                            </Grid.ColumnDefinitions>
+                                                            <ImageButton
+                                                                Grid.Column="0"
+                                                                Command="{Binding Path=BindingContext.DecrementCmd, Source={x:Reference thispage}}"
+                                                                CommandParameter="{Binding .}"
+                                                                HeightRequest="13"
+                                                                HorizontalOptions="CenterAndExpand"
+                                                                Source="{images:EmbeddedImage NewDuraApp.Images.dicrease.png}"
+                                                                VerticalOptions="CenterAndExpand"
+                                                                WidthRequest="10" />
+                                                            <Label
+                                                                Grid.Column="1"
+                                                                FontFamily="ProximaSemiBold"
+                                                                FontSize="12"
+                                                                HorizontalOptions="CenterAndExpand"
+                                                                Text="{Binding Quantity}"
+                                                                TextColor="#292B3A"
+                                                                VerticalOptions="CenterAndExpand" />
+                                                            <ImageButton
+                                                                Grid.Column="2"
+                                                                Command="{Binding Path=BindingContext.IncrementCmd, Source={x:Reference thispage}}"
+                                                                CommandParameter="{Binding .}"
+                                                                HeightRequest="13"
+                                                                HorizontalOptions="CenterAndExpand"
+                                                                Source="{images:EmbeddedImage NewDuraApp.Images.plus.png}"
+                                                                VerticalOptions="CenterAndExpand"
+                                                                WidthRequest="10" />
+                                                        </Grid>
+                                                    </Frame>
+                                                </StackLayout>
+                                            </StackLayout>
+                                        </StackLayout>
+
+                                    </Frame>
+                                </sh:Shadows>
+
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                    <Frame
+                        Margin="5,0"
+                        Padding="0"
+                        BackgroundColor="#EBE9FF"
+                        CornerRadius="5"
+                        HeightRequest="40">
+                        <Grid Margin="20,0,10,0" Padding="0">
+                            <Label
+                                FontFamily="ProximaRegular"
+                                FontSize="16"
+                                Text="Schedule To Delivery"
+                                TextColor="Black"
+                                VerticalOptions="CenterAndExpand" />
+                            <ImageButton
+                                BackgroundColor="Transparent"
+                                HeightRequest="15"
+                                HorizontalOptions="EndAndExpand"
+                                Rotation="270"
+                                Source="{images:EmbeddedImage NewDuraApp.Images.drop_down_arrow.png}"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="15" />
+                        </Grid>
+                    </Frame>
+                    <Label
+                        Margin="10,10,10,0"
+                        FontFamily="ProximaRegular"
+                        FontSize="14"
+                        Text="Delivery on 10 may 2021, 10:30"
+                        TextColor="#7F7F7F" />
+                    <Frame
+                        Margin="5"
+                        Padding="0"
+                        BackgroundColor="#F9F9FF"
+                        BorderColor="Gray"
+                        CornerRadius="5"
+                        HasShadow="False"
+                        HeightRequest="100">
+                        <controls:BorderlessEditor
+                            Margin="5,0,0,0"
+                            FontFamily="ProximaRegular"
+                            FontSize="12"
+                            Placeholder="Add notes to Shop"
+                            TextColor="#7D7D7F" />
+                    </Frame>
+                    <Frame
+                        Margin="5,10"
+                        Padding="0"
+                        BorderColor="#211E66"
+                        CornerRadius="5"
+                        HasShadow="False"
+                        HeightRequest="40">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding GoToOfferCmd}" />
+                        </Frame.GestureRecognizers>
+                        <Grid Padding="0">
+                            <Label
+                                Margin="10,0,0,0"
+                                FontFamily="ProximaRegular"
+                                FontSize="14"
+                                Text="Have Coupon?"
+                                TextColor="#7F7F7F"
+                                VerticalOptions="CenterAndExpand" />
+
+                            <Label
+                                Margin="0,0,10,0"
+                                FontFamily="RobotoMedium"
+                                FontSize="16"
+                                HorizontalOptions="EndAndExpand"
+                                Text="Apply"
+                                TextColor="#211E66"
+                                VerticalOptions="CenterAndExpand" />
+                        </Grid>
+                    </Frame>
+                    <Frame
+                        Margin="5,10,5,0"
+                        Padding="10"
+                        BackgroundColor="#CFFFE7"
+                        CornerRadius="5">
+                        <StackLayout>
+                            <Label
+                                FontFamily="ProximaSemiBold"
+                                FontSize="14"
+                                Text="Payment Details" />
+                            <StackLayout Orientation="Horizontal">
+                                <Label
+                                    FontFamily="ProximaRegular"
+                                    FontSize="14"
+                                    Text="Subtotal"
+                                    TextColor="#363636" />
+                                <Label
+                                    FontFamily="ProximaSemiBold"
+                                    FontSize="14"
+                                    HorizontalOptions="EndAndExpand"
+                                    Text="₱13"
+                                    TextColor="#363636" />
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label
+                                    FontFamily="ProximaRegular"
+                                    FontSize="14"
+                                    Text="Delivery fee"
+                                    TextColor="#363636" />
+                                <Label
+                                    FontFamily="ProximaSemiBold"
+                                    FontSize="14"
+                                    HorizontalOptions="EndAndExpand"
+                                    Text="₱3"
+                                    TextColor="#363636" />
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label
+                                    FontFamily="ProximaRegular"
+                                    FontSize="14"
+                                    Text="Other Charges"
+                                    TextColor="#363636" />
+                                <Label
+                                    FontFamily="ProximaSemiBold"
+                                    FontSize="14"
+                                    HorizontalOptions="EndAndExpand"
+                                    Text="₱5"
+                                    TextColor="#363636" />
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label
+                                    FontFamily="ProximaRegular"
+                                    FontSize="14"
+                                    Text="Total"
+                                    TextColor="#363636" />
+                                <Label
+                                    FontFamily="ProximaSemiBold"
+                                    FontSize="14"
+                                    HorizontalOptions="EndAndExpand"
+                                    Text="₱16"
+                                    TextColor="#363636" />
+                            </StackLayout>
+                            <Frame
+                                Padding="10"
+                                BackgroundColor="White"
+                                CornerRadius="5">
+                                <StackLayout Orientation="Horizontal">
+                                    <Image
+                                        HeightRequest="13"
+                                        Source="{images:EmbeddedImage NewDuraApp.Images.home_address.png}"
+                                        VerticalOptions="StartAndExpand"
+                                        WidthRequest="13" />
+                                    <StackLayout VerticalOptions="StartAndExpand">
+                                        <Label
+                                            FontFamily="RobotoMedium"
+                                            FontSize="14"
+                                            Text="Home"
+                                            TextColor="#363636" />
+                                        <Label
+                                            FontFamily="RobotoRegular"
+                                            FontSize="12"
+                                            Opacity=".5"
+                                            Text="16/F Cocobank Building Makati Avenue 1200"
+                                            TextColor="#363636" />
+                                    </StackLayout>
+                                    <ImageButton
+                                        Command="{Binding GoToEditAddressCmd}"
+                                        HeightRequest="13"
+                                        HorizontalOptions="EndAndExpand"
+                                        Source="{images:EmbeddedImage NewDuraApp.Images.edit.png}"
+                                        VerticalOptions="StartAndExpand"
+                                        WidthRequest="13" />
+                                </StackLayout>
+                            </Frame>
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+            </ScrollView>
+            <yummy:PancakeView
+                Grid.Row="1"
+                Padding="0"
+                BackgroundColor="#211E66"
+                CornerRadius="15,15,0,0"
+                HeightRequest="50"
+                VerticalOptions="EndAndExpand">
+                <StackLayout Orientation="Horizontal">
+                    <StackLayout Spacing="0">
+                        <Label
+                            Margin="20,10,0,0"
+                            FontFamily="ProximaSemiBold"
+                            FontSize="14"
+                            Text="1 Item Added"
+                            TextColor="White" />
+                        <Label
+                            Margin="20,0,0,0"
+                            FontFamily="ProximaRegular"
+                            FontSize="14"
+                            Text="₱16"
+                            TextColor="White" />
+                    </StackLayout>
+                    <StackLayout
+                        Margin="0,0,20,0"
+                        HorizontalOptions="EndAndExpand"
+                        Orientation="Horizontal"
+                        VerticalOptions="CenterAndExpand">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding GoToPaymentCmd}" />
+                        </StackLayout.GestureRecognizers>
+                        <Label
+                            FontFamily="ProximaSemiBold"
+                            FontSize="14"
+                            Text="Checkout"
+                            TextColor="White" />
+                        <Image
+                            HeightRequest="15"
+                            HorizontalOptions="EndAndExpand"
+                            Source="{images:EmbeddedImage NewDuraApp.Images.proceed.png}"
+                            VerticalOptions="CenterAndExpand"
+                            WidthRequest="15" />
+                    </StackLayout>
+                </StackLayout>
+            </yummy:PancakeView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

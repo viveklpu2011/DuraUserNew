@@ -1,0 +1,255 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="NewDuraApp.Areas.DuraEats.Home.Views.DuraEatsHomePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:control="clr-namespace:NewDuraApp.Controls"
+    xmlns:fonticon="clr-namespace:NewDuraApp.FontIcons"
+    xmlns:images="clr-namespace:NewDuraApp.Extensions"
+    BackgroundColor="White"
+    BindingContext="{Binding DuraEatsHomePage, Source={StaticResource Locator}}"
+    NavigationPage.HasBackButton="True"
+    Shell.NavBarHasShadow="False"
+    Shell.NavBarIsVisible="True"
+    Shell.TabBarIsVisible="False"
+    Visual="Material">
+    <Shell.TitleView>
+        <Grid ColumnDefinitions="*,Auto,Auto" HorizontalOptions="FillAndExpand">
+            <Label
+                Grid.Column="0"
+                FontFamily="ProximaSemiBold"
+                FontSize="22"
+                HorizontalOptions="FillAndExpand"
+                Text="Dura Eats"
+                TextColor="Black"
+                VerticalOptions="CenterAndExpand"
+                VerticalTextAlignment="Center" />
+            <ImageButton
+                Grid.Column="1"
+                Aspect="Fill"
+                BackgroundColor="Transparent"
+                HeightRequest="18"
+                HorizontalOptions="End"
+                Rotation="30"
+                VerticalOptions="CenterAndExpand"
+                WidthRequest="15">
+                <ImageButton.Source>
+                    <FontImageSource
+                        FontFamily="UserIcons"
+                        Glyph="{x:Static fonticon:FontIconsClass.Navigation}"
+                        Size="15"
+                        Color="Black" />
+
+                </ImageButton.Source>
+            </ImageButton>
+            <Label
+                Grid.Column="2"
+                Margin="0,0,10,0"
+                FontFamily="ProximaRegular"
+                FontSize="12"
+                HorizontalOptions="End"
+                HorizontalTextAlignment="End"
+                Text="Makati Avenue 1200"
+                TextColor="Black"
+                VerticalOptions="CenterAndExpand"
+                VerticalTextAlignment="Center" />
+
+        </Grid>
+    </Shell.TitleView>
+    <ContentPage.Content>
+        <Grid
+            Margin="15"
+            ColumnDefinitions="*,Auto"
+            ColumnSpacing="10"
+            RowDefinitions="40,172,65,0,25,0,*"
+            RowSpacing="15">
+            <Frame
+                Grid.Row="0"
+                Grid.Column="0"
+                Margin="2"
+                Padding="8,0"
+                HeightRequest="40">
+                <Grid ColumnDefinitions="14,*" ColumnSpacing="5">
+                    <Image
+                        HeightRequest="14"
+                        Source="{images:EmbeddedImage NewDuraApp.Images.search_product_placeholder.png}"
+                        WidthRequest="14" />
+                    <control:CustomEntry
+                        Grid.Column="1"
+                        FontFamily="ProximaRegular"
+                        FontSize="14"
+                        Placeholder="Search Restaurant, Dish etc..."
+                        PlaceholderColor="{StaticResource PlaceholderColor}"
+                        TextColor="Black"
+                        VerticalOptions="Center" />
+                </Grid>
+            </Frame>
+            <ImageButton
+                Grid.Row="0"
+                Grid.Column="1"
+                BackgroundColor="Transparent"
+                Command="{Binding GoToMyCartCmd}"
+                HeightRequest="24"
+                Source="{images:EmbeddedImage NewDuraApp.Images.cart.png}"
+                VerticalOptions="CenterAndExpand"
+                WidthRequest="24" />
+            <AbsoluteLayout
+                Grid.Row="1"
+                Grid.Column="0"
+                Grid.ColumnSpan="2">
+                <CarouselView
+                    x:Name="TheCarousel"
+                    AbsoluteLayout.LayoutBounds="0,0,1,1"
+                    AbsoluteLayout.LayoutFlags="All"
+                    HorizontalScrollBarVisibility="Never"
+                    IndicatorView="indicatorview"
+                    ItemsSource="{Binding DuraEatsBannerList}"
+                    VerticalOptions="CenterAndExpand">
+                    <CarouselView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame
+                                Padding="0"
+                                HasShadow="False"
+                                IsClippedToBounds="True">
+                                <Image Source="{Binding ImageName}" />
+                            </Frame>
+                        </DataTemplate>
+                    </CarouselView.ItemTemplate>
+                </CarouselView>
+                <IndicatorView
+                    x:Name="indicatorview"
+                    Margin="0,0,0,10"
+                    AbsoluteLayout.LayoutBounds="0.5,1"
+                    AbsoluteLayout.LayoutFlags="PositionProportional"
+                    HorizontalOptions="CenterAndExpand"
+                    IndicatorColor="LightGray"
+                    IndicatorSize="6"
+                    SelectedIndicatorColor="Black"
+                    TranslationY="-5" />
+
+            </AbsoluteLayout>
+            <ScrollView
+                Grid.Row="2"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                HorizontalScrollBarVisibility="Never"
+                Orientation="Horizontal">
+                <StackLayout
+                    BindableLayout.ItemsSource="{Binding MenuTypeList}"
+                    Orientation="Horizontal"
+                    Spacing="26">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout Spacing="3">
+                                <Image
+                                    Aspect="Fill"
+                                    HeightRequest="46"
+                                    Source="{Binding MenuImage}"
+                                    WidthRequest="46" />
+                                <Label
+                                    FontSize="11"
+                                    HorizontalOptions="CenterAndExpand"
+                                    HorizontalTextAlignment="Center"
+                                    Text="{Binding MenuName}"
+                                    TextColor="Black" />
+                            </StackLayout>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
+            </ScrollView>
+            <Label
+                Grid.Row="4"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                FontFamily="ProximaSemiBold"
+                FontSize="22"
+                Text="Explore Restaurants"
+                TextColor="Black" />
+            <CollectionView
+                x:Name="collectionRestaurent"
+                Grid.Row="6"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                ItemsSource="{Binding RestaurentList}">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout
+                        HorizontalItemSpacing="15"
+                        Orientation="Vertical"
+                        Span="2"
+                        VerticalItemSpacing="15" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame
+                            Padding="0"
+                            BorderColor="LightGray"
+                            CornerRadius="8"
+                            HasShadow="False"
+                            HeightRequest="173"
+                            IsClippedToBounds="True">
+                            <Grid RowDefinitions="120,Auto">
+                                <AbsoluteLayout Grid.Row="0">
+                                    <Image
+                                        AbsoluteLayout.LayoutBounds="0,0,1,Autosize"
+                                        AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional"
+                                        Aspect="Fill"
+                                        HeightRequest="112"
+                                        Source="{Binding RestarentImage}" />
+                                    <StackLayout
+                                        Margin="10,0"
+                                        AbsoluteLayout.LayoutBounds="1,1"
+                                        AbsoluteLayout.LayoutFlags="PositionProportional"
+                                        BackgroundColor="#FFB114"
+                                        HeightRequest="16"
+                                        Orientation="Horizontal"
+                                        WidthRequest="40">
+                                        <Image
+                                            Margin="5,3,-3,3"
+                                            Aspect="Fill"
+                                            HeightRequest="11"
+                                            HorizontalOptions="Start"
+                                            Source="{images:EmbeddedImage NewDuraApp.Images.star_white.png}"
+                                            VerticalOptions="Center"
+                                            WidthRequest="11" />
+                                        <Label
+                                            FontFamily="ProximaRegular"
+                                            FontSize="9"
+                                            Text="4.3"
+                                            TextColor="White"
+                                            VerticalOptions="Center"
+                                            VerticalTextAlignment="Center" />
+                                    </StackLayout>
+                                </AbsoluteLayout>
+
+                                <StackLayout
+                                    Grid.Row="1"
+                                    Margin="5,0,5,5"
+                                    Spacing="0">
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontFamily="ProximaRegular"
+                                        FontSize="12"
+                                        Text="{Binding RestaurentName}"
+                                        TextColor="Black" />
+                                    <Label
+                                        FontFamily="ProximaRegular"
+                                        FontSize="10"
+                                        Text="{Binding RestaurentLocation}"
+                                        TextColor="Black" />
+                                    <Label
+                                        FontFamily="ProximaRegular"
+                                        FontSize="10"
+                                        Text="{Binding RestaurentDistance}"
+                                        TextColor="#1352D1" />
+                                </StackLayout>
+                            </Grid>
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding BindingContext.RestaurentDetails, Source={x:Reference collectionRestaurent}}" CommandParameter="{Binding .}" />
+                            </Frame.GestureRecognizers>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

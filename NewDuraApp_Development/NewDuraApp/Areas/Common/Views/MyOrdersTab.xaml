@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="NewDuraApp.Areas.Common.Views.MyOrdersTab"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:translate="clr-namespace:NewDuraApp.Resources"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit">
+    <ContentPage.Content>
+        <StackLayout>
+            <xct:TabView
+                TabIndicatorColor="Black"
+                TabIndicatorHeight="2"
+                TabStripHeight="50">
+                <xct:TabViewItem
+                    FontAttributesSelected="Bold"
+                    FontFamily="ProximaRegular"
+                    FontSize="18"
+                    FontSizeSelected="20"
+                    Text="Dura Express"
+                    TextColor="#606060"
+                    TextColorSelected="Black">
+                    <xct:TabViewItem.Content>
+                        <StackLayout />
+                    </xct:TabViewItem.Content>
+                </xct:TabViewItem>
+                <xct:TabViewItem
+                    FontAttributesSelected="Bold"
+                    FontFamily="ProximaRegular"
+                    FontSize="18"
+                    FontSizeSelected="20"
+                    Text="{translate:Translate DuraShops}"
+                    TextColor="#606060"
+                    TextColorSelected="Black">
+                    <xct:TabViewItem.Content>
+                        <StackLayout />
+                    </xct:TabViewItem.Content>
+                </xct:TabViewItem>
+                <xct:TabViewItem
+                    FontAttributesSelected="Bold"
+                    FontFamily="ProximaRegular"
+                    FontSize="18"
+                    FontSizeSelected="20"
+                    Text="{translate:Translate Dura_eat}"
+                    TextColor="#606060"
+                    TextColorSelected="Black">
+                    <xct:TabViewItem.Content>
+                        <StackLayout />
+                    </xct:TabViewItem.Content>
+                </xct:TabViewItem>
+            </xct:TabView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

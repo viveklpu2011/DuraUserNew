@@ -1,0 +1,201 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="NewDuraApp.Areas.Orders.Views.StopLocationView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:images="clr-namespace:NewDuraApp.Extensions"
+    xmlns:translate="clr-namespace:NewDuraApp.Resources">
+    <ContentView.Content>
+        <Grid
+            Margin="5,0"
+            ColumnSpacing="0"
+            RowDefinitions="Auto,Auto,Auto"
+            RowSpacing="0">
+            <StackLayout Grid.Row="0" Padding="0">
+                <Grid ColumnDefinitions="15,*">
+                    <Frame
+                        Grid.Column="0"
+                        Margin="0,8,0,0"
+                        Padding="0"
+                        BackgroundColor="#423A95"
+                        CornerRadius="5"
+                        HeightRequest="10"
+                        HorizontalOptions="CenterAndExpand"
+                        VerticalOptions="Start"
+                        WidthRequest="10" />
+                    <BoxView
+                        Grid.Column="0"
+                        Margin="0,15,0,0"
+                        BackgroundColor="#423A95"
+                        HorizontalOptions="CenterAndExpand"
+                        VerticalOptions="FillAndExpand"
+                        WidthRequest=".5" />
+                    <StackLayout
+                        Grid.Column="1"
+                        Margin="5"
+                        Spacing="5">
+                        <Label
+                            Margin="5,0,0,0"
+                            FontFamily="ProximaSemiBold"
+                            FontSize="16"
+                            Text="{Binding pickupaddress}"
+                            TextColor="#3D3D3D" />
+                        <Label
+                            Margin="5,0,5,0"
+                            FontFamily="ProximaRegular"
+                            FontSize="14"
+                            TextColor="#3D3D3D">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{translate:Translate Block}" />
+                                    <Span Text=" " />
+                                    <Span Text="{Binding pickupaddresssub}" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label
+                            Margin="5,0,5,0"
+                            FontFamily="ProximaRegular"
+                            FontSize="14"
+                            TextColor="#3D3D3D">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{Binding pickup_name}" />
+                                    <Span Text=" | " />
+                                    <Span Text="{Binding pickup_mobile}" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </StackLayout>
+                </Grid>
+            </StackLayout>
+            <StackLayout
+                Grid.Row="1"
+                Padding="0"
+                BindableLayout.ItemsSource="{Binding stopdata}"
+                IsVisible="{Binding IsAvailableStopData}"
+                VerticalOptions="Start">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Grid.Row="0">
+                            <Grid ColumnDefinitions="15,*">
+                                <Frame
+                                    Grid.Column="0"
+                                    Margin="0,8,0,0"
+                                    Padding="0"
+                                    BackgroundColor="#423A95"
+                                    CornerRadius="5"
+                                    HeightRequest="10"
+                                    HorizontalOptions="CenterAndExpand"
+                                    VerticalOptions="Start"
+                                    WidthRequest="10" />
+                                <BoxView
+                                    Grid.Column="0"
+                                    Margin="0,15,0,0"
+                                    BackgroundColor="#423A95"
+                                    HorizontalOptions="CenterAndExpand"
+                                    VerticalOptions="FillAndExpand"
+                                    WidthRequest=".5" />
+                                <StackLayout
+                                    Grid.Column="1"
+                                    Margin="5"
+                                    Spacing="5">
+                                    <Label
+                                        Margin="5,0,0,0"
+                                        FontFamily="ProximaSemiBold"
+                                        FontSize="16"
+                                        Text="{Binding stop_address1}"
+                                        TextColor="#3D3D3D" />
+                                    <Label
+                                        Margin="5,0,5,0"
+                                        FontFamily="ProximaRegular"
+                                        FontSize="14"
+                                        TextColor="#3D3D3D">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{translate:Translate Block}" />
+                                                <Span Text=" " />
+                                                <Span Text="{Binding stop_address2}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label
+                                        Margin="5,0,5,0"
+                                        FontFamily="ProximaRegular"
+                                        FontSize="14"
+                                        TextColor="#3D3D3D">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{Binding stop_name}" />
+                                                <Span Text=" | " />
+                                                <Span Text="{Binding stop_mobile}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                </StackLayout>
+                            </Grid>
+                        </StackLayout>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </StackLayout>
+            <StackLayout Grid.Row="2" Padding="0">
+                <Grid ColumnDefinitions="15,*">
+                    <Image
+                        Grid.Column="0"
+                        Margin="0,8,0,0"
+                        BackgroundColor="Transparent"
+                        HeightRequest="14"
+                        HorizontalOptions="CenterAndExpand"
+                        Source="{images:EmbeddedImage NewDuraApp.Images.map_locaiton.png}"
+                        VerticalOptions="Start"
+                        WidthRequest="14" />
+                    <BoxView
+                        Grid.Column="0"
+                        Margin="0,15,0,0"
+                        BackgroundColor="#423A95"
+                        HorizontalOptions="CenterAndExpand"
+                        IsVisible="False"
+                        VerticalOptions="FillAndExpand"
+                        WidthRequest=".5" />
+                    <StackLayout
+                        Grid.Column="1"
+                        Margin="5"
+                        Spacing="5">
+                        <Label
+                            Margin="5,0,0,0"
+                            FontFamily="ProximaSemiBold"
+                            FontSize="16"
+                            Text="{Binding wheretoaddress}"
+                            TextColor="#3D3D3D" />
+                        <Label
+                            Margin="5,0,5,0"
+                            FontFamily="ProximaRegular"
+                            FontSize="14"
+                            TextColor="#3D3D3D">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{translate:Translate Block}" />
+                                    <Span Text=" " />
+                                    <Span Text="{Binding wheretoaddresssub}" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label
+                            Margin="5,0,5,0"
+                            FontFamily="ProximaRegular"
+                            FontSize="14"
+                            TextColor="#3D3D3D">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{Binding wheretoname}" />
+                                    <Span Text=" | " />
+                                    <Span Text="{Binding wheretomobile}" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </StackLayout>
+                </Grid>
+            </StackLayout>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

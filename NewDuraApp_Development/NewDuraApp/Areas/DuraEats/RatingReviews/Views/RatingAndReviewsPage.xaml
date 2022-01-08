@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="NewDuraApp.Areas.DuraEats.RatingReviews.Views.RatingAndReviewsPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:control="clr-namespace:NewDuraApp.Controls"
+    xmlns:fonticon="clr-namespace:NewDuraApp.FontIcons"
+    xmlns:images="clr-namespace:NewDuraApp.Extensions"
+    xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    BackgroundColor="White"
+    BindingContext="{Binding RatingAndReviewsPage, Source={StaticResource Locator}}"
+    NavigationPage.HasBackButton="True"
+    Shell.NavBarHasShadow="False"
+    Shell.NavBarIsVisible="True"
+    Shell.TabBarIsVisible="False"
+    Visual="Material">
+    <Shell.TitleView>
+
+        <Label
+            Grid.Column="0"
+            FontAttributes="Bold"
+            FontFamily="ProximaRegular"
+            FontSize="18"
+            Text="Rating and Review"
+            TextColor="Black"
+            VerticalOptions="CenterAndExpand"
+            VerticalTextAlignment="Center"
+            WidthRequest="150" />
+
+    </Shell.TitleView>
+    <ContentPage.Content>
+        <Grid Margin="15" RowDefinitions="*,70">
+            <ScrollView Grid.Row="0">
+                <Grid RowDefinitions="116,72,72,145" RowSpacing="40">
+                    <Frame
+                        Grid.Row="0"
+                        Padding="15"
+                        BackgroundColor="#FBFBFF"
+                        IsClippedToBounds="True">
+                        <Grid ColumnDefinitions="87,*" ColumnSpacing="0">
+                            <Frame
+                                Grid.Column="0"
+                                Padding="0"
+                                CornerRadius="8"
+                                HeightRequest="87"
+                                IsClippedToBounds="True"
+                                WidthRequest="87">
+                                <Image Aspect="AspectFill" Source="{images:EmbeddedImage NewDuraApp.Images.McDonalds.png}" />
+                            </Frame>
+                            <StackLayout
+                                Grid.Column="1"
+                                Margin="15,0,0,0"
+                                Spacing="2">
+                                <Label
+                                    FontFamily="ProximaRegular"
+                                    FontSize="16"
+                                    Text="Order Number"
+                                    TextColor="Black"
+                                    VerticalTextAlignment="Center" />
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontFamily="ProximaRegular"
+                                    FontSize="16"
+                                    Text="1566565656544"
+                                    TextColor="Black"
+                                    VerticalTextAlignment="Center" />
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontFamily="ProximaRegular"
+                                    FontSize="16"
+                                    Text="Mc Donald's"
+                                    TextColor="Black"
+                                    VerticalTextAlignment="Center" />
+                                <Label
+                                    FontFamily="ProximaRegular"
+                                    FontSize="16"
+                                    Text="1 x Mc French Fries"
+                                    TextColor="Black"
+                                    VerticalTextAlignment="Center" />
+                            </StackLayout>
+                        </Grid>
+                    </Frame>
+                    <StackLayout Grid.Row="1">
+                        <Label
+                            FontAttributes="Bold"
+                            FontFamily="ProximaRegular"
+                            FontSize="16"
+                            Text="Please rate restaurant by filling star"
+                            TextColor="Black"
+                            VerticalTextAlignment="Center" />
+
+                        <control:RattingBar
+                            Margin="0,5"
+                            EmptyStarImage="rating_inactive_star.png"
+                            FillStarImage="rating_active_star"
+                            ImageHeight="39"
+                            ImageWidth="42"
+                            SelectedStarValue="2" />
+                    </StackLayout>
+                    <StackLayout Grid.Row="2">
+                        <Label
+                            FontAttributes="Bold"
+                            FontFamily="ProximaRegular"
+                            FontSize="16"
+                            Text="Please rate food"
+                            TextColor="Black"
+                            VerticalTextAlignment="Center" />
+
+                        <control:RattingBar
+                            Margin="0,5"
+                            EmptyStarImage="rating_inactive_star.png"
+                            FillStarImage="rating_active_star"
+                            ImageHeight="39"
+                            ImageWidth="42"
+                            SelectedStarValue="2" />
+                    </StackLayout>
+                    <Frame
+                        Grid.Row="3"
+                        Padding="3"
+                        BackgroundColor="Transparent"
+                        BorderColor="#211E66"
+                        HasShadow="False">
+                        <control:BorderlessEditor
+                            BackgroundColor="Transparent"
+                            FontSize="12"
+                            Placeholder="Write a review...…….." />
+                    </Frame>
+                </Grid>
+            </ScrollView>
+            <Button
+                Grid.Row="1"
+                Margin="0,10"
+                BackgroundColor="#211E66"
+                Command="{Binding NavigateBackCommand}"
+                CornerRadius="5"
+                FontFamily="ProximaRegular"
+                FontSize="17"
+                HeightRequest="50"
+                HorizontalOptions="FillAndExpand"
+                Text="Submit"
+                TextColor="White" />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="NewDuraApp.Areas.DuraExpress.DuraExpressView.FindingDriver"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:images="clr-namespace:NewDuraApp.Extensions"
+    xmlns:translate="clr-namespace:NewDuraApp.Resources"
+    BindingContext="{Binding FindingDriver, Source={StaticResource Locator}}"
+    NavigationPage.HasBackButton="True"
+    Shell.NavBarHasShadow="False"
+    Shell.NavBarIsVisible="True"
+    Shell.TabBarIsVisible="False"
+    Visual="Material">
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior IsEnabled="{Binding IsBackEnabled}" />
+    </Shell.BackButtonBehavior>
+    <Shell.TitleView>
+        <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand">
+            <Label
+                FontFamily="ProximaSemiBold"
+                FontSize="22"
+                Text="{translate:Translate Finding_Driver}"
+                TextColor="Black"
+                VerticalOptions="CenterAndExpand" />
+            <ImageButton
+                Margin="0,0,20,0"
+                BackgroundColor="Transparent"
+                HeightRequest="20"
+                HorizontalOptions="EndAndExpand"
+                Source="{images:EmbeddedImage NewDuraApp.Images.help.png}"
+                VerticalOptions="CenterAndExpand"
+                WidthRequest="20" />
+        </StackLayout>
+    </Shell.TitleView>
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70*" />
+                <RowDefinition Height="25*" />
+            </Grid.RowDefinitions>
+
+            <Grid
+                Grid.Row="0"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand">
+                <Image
+                    Aspect="Fill"
+                    HorizontalOptions="FillAndExpand"
+                    Source="{images:EmbeddedImage NewDuraApp.Images.map.png}"
+                    VerticalOptions="FillAndExpand" />
+                <Frame
+                    Padding="0"
+                    BackgroundColor="#EBE9FF"
+                    CornerRadius="35"
+                    HeightRequest="70"
+                    HorizontalOptions="CenterAndExpand"
+                    IsVisible="{Binding IsVisibleSearchImage}"
+                    VerticalOptions="CenterAndExpand"
+                    WidthRequest="70">
+                    <Image
+                        HeightRequest="50"
+                        HorizontalOptions="CenterAndExpand"
+                        Source="{images:EmbeddedImage NewDuraApp.Images.finding_driver.png}"
+                        VerticalOptions="CenterAndExpand"
+                        WidthRequest="50" />
+                </Frame>
+            </Grid>
+            <StackLayout
+                Grid.Row="1"
+                BackgroundColor="White"
+                VerticalOptions="CenterAndExpand">
+                <Label
+                    FontFamily="ProximaSemiBold"
+                    FontSize="16"
+                    HorizontalOptions="CenterAndExpand"
+                    Text="{Binding SearchText}"
+                    TextColor="#606060"
+                    VerticalOptions="CenterAndExpand" />
+                <Label
+                    FontFamily="RobotoMedium"
+                    FontSize="16"
+                    HorizontalOptions="CenterAndExpand"
+                    Text="{Binding CancelButtonText}"
+                    TextColor="#211E66"
+                    VerticalOptions="CenterAndExpand">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding GoToCancelDriverCmd}" />
+                    </Label.GestureRecognizers>
+                </Label>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

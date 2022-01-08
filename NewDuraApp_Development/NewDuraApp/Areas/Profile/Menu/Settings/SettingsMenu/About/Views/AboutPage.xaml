@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="NewDuraApp.Areas.Profile.Menu.Settings.SettingsMenu.About.Views.AboutPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    BackgroundColor="White" xmlns:translate="clr-namespace:NewDuraApp.Resources"
+    BindingContext="{Binding AboutPage, Source={StaticResource Locator}}"
+    NavigationPage.HasBackButton="True"
+    Shell.NavBarHasShadow="False"
+    Shell.NavBarIsVisible="True"
+    Shell.TabBarIsVisible="False"
+    Visual="Material">
+    <Shell.TitleView>
+
+        <Label
+            FontFamily="ProximaSemiBold"
+            FontSize="22"
+            HorizontalOptions="FillAndExpand"
+            Text="{translate:Translate About_Us}"
+            TextColor="Black"
+            VerticalOptions="CenterAndExpand"
+            VerticalTextAlignment="Center" />
+
+
+    </Shell.TitleView>
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid Padding="10" RowDefinitions="Auto,*,Auto">
+                <Image
+                    Grid.Row="0"
+                    HeightRequest="100"
+                    HorizontalOptions="Center"
+                    Source="AppLogo.png"
+                    VerticalOptions="Center"
+                    WidthRequest="130" />
+                <Label
+                    x:Name="Webview"
+                    Grid.Row="1"
+                    Margin="5"
+                    CharacterSpacing="1"
+                    FontSize="14"
+                    LineBreakMode="WordWrap"
+                    MaxLines="100"
+                    Text="DURADRIVE IS A TECHNOLOGY COMPANY WHICH PROVIDES A PLATFORM FOR USERS TO OBTAIN OR PROCURE SERVICES. DEPENDING ON THE SERVICE IN QUESTION, THE SERVICES MAY BE SUPPLIED BY DURADRIVE OR A THIRD PARTY PROVIDER. WHERE THE SERVICE IS PROVIDED BY A THIRD PARTY PROVIDER, DURADRIVE'S ROLE IS MERELY TO LINK THE USER WITH SUCH THIRD PARTY PROVIDER. DURADRIVE IS NOT RESPONSIBLE FOR THE ACTS AND/OR OMISSIONS OF ANY THIRD PARTY PROVIDER, AND ANY LIABILITY IN RELATION TO SUCH SERVICES SHALL BE BORNE BY THE THIRD PARTY PROVIDER. THIRD PARTY PROVIDERS SHALL NOT REPRESENT TO BE AN AGENT, EMPLOYEE OR STAFF OF DURADRIVE AND THE SOLUTIONS PROVIDED BY THIRD PARTY PROVIDERS SHALL NOT BE DEEMED TO BE PROVIDED BY DURADRIVE."
+                    TextColor="Black"
+                    TextDecorations="None"
+                    TextTransform="Default"
+                    VerticalOptions="FillAndExpand" />
+
+                <Label
+                    Grid.Row="2"
+                    Margin="{OnPlatform iOS='0,0,0,20'}"
+                    FontSize="15"
+                    HorizontalOptions="CenterAndExpand"
+                    HorizontalTextAlignment="Center"
+                    TextColor="Black"
+                    VerticalOptions="EndAndExpand">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="v(" />
+                            <Span Text="{Binding AppVersion}" />
+                            <Span Text=")" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

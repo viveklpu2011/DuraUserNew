@@ -1,0 +1,386 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="NewDuraApp.Areas.DuraShop.View.DuraShop"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:control="clr-namespace:NewDuraApp.Controls"
+    xmlns:images="clr-namespace:NewDuraApp.Extensions"
+    xmlns:sh="http://sharpnado.com"
+    x:Name="thispage"
+    BindingContext="{Binding DuraShop, Source={StaticResource Locator}}"
+    NavigationPage.HasBackButton="False"
+    NavigationPage.HasNavigationBar="False"
+    Shell.NavBarHasShadow="False"
+    Shell.NavBarIsVisible="True"
+    Shell.TabBarIsVisible="False"
+    Visual="Material">
+    <Shell.TitleView>
+        <StackLayout
+            Padding="0"
+            Orientation="Horizontal"
+            VerticalOptions="CenterAndExpand">
+            <Label
+                FontFamily="ProximaSemiBold"
+                FontSize="20"
+                Text="Dura Shop"
+                TextColor="Black"
+                VerticalOptions="CenterAndExpand"
+                VerticalTextAlignment="Center" />
+            <StackLayout
+                HorizontalOptions="EndAndExpand"
+                Orientation="Horizontal"
+                VerticalOptions="CenterAndExpand">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding GoToSearchLoactionPopupCmd}" />
+                </StackLayout.GestureRecognizers>
+                <Image
+                    BackgroundColor="Transparent"
+                    HeightRequest="20"
+                    Source="{images:EmbeddedImage NewDuraApp.Images.user_location.png}"
+                    WidthRequest="20" />
+                <Label
+                    Margin="0,0,10,0"
+                    FontFamily="ProximaRegular"
+                    Text="San Agustin Church"
+                    TextColor="Black" />
+            </StackLayout>
+        </StackLayout>
+    </Shell.TitleView>
+    <ContentPage.Content>
+        <Grid Margin="20,0,20,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <StackLayout>
+                <Grid Margin="0,10,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="85*" />
+                        <ColumnDefinition Width="15*" />
+                    </Grid.ColumnDefinitions>
+                    <Frame
+                        Grid.Column="0"
+                        Margin="2"
+                        Padding="8,0"
+                        HeightRequest="40">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding GoToSearchCmd}" />
+                        </Frame.GestureRecognizers>
+                        <Grid ColumnDefinitions="14,*" ColumnSpacing="5">
+                            <Image
+                                HeightRequest="14"
+                                Source="{images:EmbeddedImage NewDuraApp.Images.search_product_placeholder.png}"
+                                WidthRequest="14" />
+                            <control:CustomEntry
+                                Grid.Column="1"
+                                FontFamily="ProximaRegular"
+                                FontSize="14"
+                                InputTransparent="True"
+                                Placeholder="Search Restaurant, Dish etc..."
+                                PlaceholderColor="{StaticResource PlaceholderColor}"
+                                TextColor="Black"
+                                VerticalOptions="Center" />
+                        </Grid>
+                    </Frame>
+
+                    <ImageButton
+                        Grid.Column="1"
+                        Margin="0,5,10,0"
+                        BackgroundColor="Transparent"
+                        Command="{Binding GoToMyCartCmd}"
+                        HeightRequest="30"
+                        HorizontalOptions="EndAndExpand"
+                        Source="{images:EmbeddedImage NewDuraApp.Images.cart.png}"
+                        VerticalOptions="CenterAndExpand"
+                        WidthRequest="30" />
+                </Grid>
+            </StackLayout>
+            <ScrollView Grid.Row="1" VerticalScrollBarVisibility="Never">
+                <StackLayout>
+                    <StackLayout HeightRequest="200">
+                        <CarouselView
+                            HorizontalOptions="CenterAndExpand"
+                            HorizontalScrollBarVisibility="Never"
+                            IndicatorView="indicatorView"
+                            ItemsSource="{Binding BannerList}"
+                            VerticalOptions="CenterAndExpand">
+                            <!--<CarouselView.ItemsLayout>
+                                <LinearItemsLayout ItemSpacing="10" Orientation="Horizontal" />
+                            </CarouselView.ItemsLayout>-->
+                            <CarouselView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackLayout Margin="20,0">
+                                        <Image
+                                            HeightRequest="200"
+                                            Source="{Binding BannerImage}"
+                                            WidthRequest="200" />
+                                    </StackLayout>
+                                </DataTemplate>
+                            </CarouselView.ItemTemplate>
+                        </CarouselView>
+                        <IndicatorView
+                            x:Name="indicatorView"
+                            HorizontalOptions="Center"
+                            IndicatorColor="#FFE9E9"
+                            SelectedIndicatorColor="Black"
+                            TranslationY="-30" />
+                    </StackLayout>
+                    <Grid ColumnDefinitions="*,*,*" HeightRequest="45">
+
+                        <Frame
+                            Grid.Column="0"
+                            Padding="0"
+                            CornerRadius="17.5"
+                            HeightRequest="35"
+                            HorizontalOptions="FillAndExpand"
+                            IsClippedToBounds="True"
+                            VerticalOptions="CenterAndExpand">
+                            <StackLayout
+                                Padding="0"
+                                HorizontalOptions="CenterAndExpand"
+                                Orientation="Horizontal">
+
+                                <Image
+                                    Margin="2,0,0,0"
+                                    HeightRequest="17"
+                                    Source="{images:EmbeddedImage NewDuraApp.Images.essential_goods.png}"
+                                    VerticalOptions="CenterAndExpand"
+                                    WidthRequest="17" />
+                                <Label
+                                    Margin="3,3,3,0"
+                                    FontFamily="ProximaSemiBold"
+                                    FontSize="10"
+                                    Text="Essential Goods"
+                                    TextColor="Black"
+                                    VerticalOptions="CenterAndExpand"
+                                    VerticalTextAlignment="Center" />
+                            </StackLayout>
+                        </Frame>
+                        <Frame
+                            Grid.Column="1"
+                            Padding="0"
+                            CornerRadius="17.5"
+                            HeightRequest="35"
+                            HorizontalOptions="FillAndExpand"
+                            IsClippedToBounds="True"
+                            VerticalOptions="CenterAndExpand">
+                            <StackLayout
+                                Padding="0"
+                                HorizontalOptions="CenterAndExpand"
+                                Orientation="Horizontal">
+                                <Image
+                                    Margin="2,0,0,0"
+                                    HeightRequest="17"
+                                    Source="{images:EmbeddedImage NewDuraApp.Images.appliances.png}"
+                                    VerticalOptions="CenterAndExpand"
+                                    WidthRequest="17" />
+                                <Label
+                                    Margin="3,3,3,0"
+                                    FontFamily="ProximaSemiBold"
+                                    FontSize="10"
+                                    Text="Appliances"
+                                    TextColor="Black"
+                                    VerticalOptions="CenterAndExpand" />
+                            </StackLayout>
+                        </Frame>
+                        <Frame
+                            Grid.Column="2"
+                            Padding="0"
+                            CornerRadius="17.5"
+                            HeightRequest="35"
+                            HorizontalOptions="FillAndExpand"
+                            IsClippedToBounds="True"
+                            VerticalOptions="CenterAndExpand">
+                            <StackLayout
+                                Padding="0"
+                                HorizontalOptions="CenterAndExpand"
+                                Orientation="Horizontal">
+                                <Image
+                                    Margin="2,0,0,0"
+                                    HeightRequest="17"
+                                    Source="{images:EmbeddedImage NewDuraApp.Images.gadgets.png}"
+                                    VerticalOptions="CenterAndExpand"
+                                    WidthRequest="17" />
+                                <Label
+                                    Margin="3,3,3,0"
+                                    FontFamily="ProximaSemiBold"
+                                    FontSize="10"
+                                    Text="Gadgets"
+                                    TextColor="Black"
+                                    VerticalOptions="CenterAndExpand" />
+                            </StackLayout>
+                        </Frame>
+
+                    </Grid>
+                    <StackLayout Margin="0,10,0,5" Orientation="Horizontal">
+                        <Label
+                            FontFamily="ProximaSemiBold"
+                            FontSize="22"
+                            Text="Featured"
+                            TextColor="Black"
+                            VerticalOptions="CenterAndExpand" />
+                        <Label
+                            FontFamily="RobotoMedium"
+                            FontSize="16"
+                            HorizontalOptions="EndAndExpand"
+                            Text="See All"
+                            TextColor="#211E66"
+                            VerticalOptions="CenterAndExpand">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding GoToFeaturedCmd}" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </StackLayout>
+                    <StackLayout HeightRequest="200">
+                        <CollectionView
+                            Margin="0,10"
+                            HeightRequest="180"
+                            HorizontalScrollBarVisibility="Never"
+                            ItemsSource="{Binding ProductList}">
+                            <CollectionView.ItemsLayout>
+                                <GridItemsLayout HorizontalItemSpacing="5" Orientation="Horizontal" />
+                            </CollectionView.ItemsLayout>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    
+                                        <StackLayout
+                                            Margin="10,5"
+                                            HeightRequest="160"
+                                            WidthRequest="150">
+                                            <sh:Shadows
+                                        Padding="0"
+                                        BackgroundColor="#FFFFFF"
+                                        CornerRadius="5"
+                                        HorizontalOptions="FillAndExpand">
+                                        <sh:Shadows.Shades>
+                                            <sh:ImmutableShades>
+
+                                                <sh:Shade
+                                                    BlurRadius="10"
+                                                    Opacity="0.5"
+                                                    Offset="2,2"
+                                                    Color="Gray" />
+                                            </sh:ImmutableShades>
+                                        </sh:Shadows.Shades>
+                                            <Frame
+                                                Margin="5"
+                                                Padding="0"
+                                                CornerRadius="10"
+                                                HasShadow="False"
+                                                HeightRequest="180"
+                                                IsClippedToBounds="True"
+                                                WidthRequest="130">
+                                                <Frame.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding Path=BindingContext.GoToItemDetailsCmd, Source={x:Reference thispage}}" CommandParameter="{Binding .}" />
+                                                </Frame.GestureRecognizers>
+                                                <StackLayout Spacing="0">
+                                                    <Image
+                                                        HeightRequest="120"
+                                                        Source="{Binding ProductImage}"
+                                                        VerticalOptions="CenterAndExpand" />
+                                                    <Label
+                                                        Margin="10,0"
+                                                        FontFamily="ProximaSemiBold"
+                                                        FontSize="12"
+                                                        LineBreakMode="TailTruncation"
+                                                        Text="{Binding ProductName}"
+                                                        TextColor="#292B3A"
+                                                        VerticalOptions="EndAndExpand" />
+                                                    <Label
+                                                        Margin="10,0,0,5"
+                                                        FontFamily="ProximaSemiBold"
+                                                        FontSize="14"
+                                                        Text="{Binding ProductPrice}"
+                                                        TextColor="#363636" />
+                                                </StackLayout>
+                                            </Frame>
+                                                 </sh:Shadows>
+                                        </StackLayout>
+                                   
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </StackLayout>
+
+                    <StackLayout Margin="0,20,0,5" Orientation="Horizontal">
+                        <Label
+                            FontFamily="ProximaSemiBold"
+                            FontSize="22"
+                            Text="New Product"
+                            TextColor="Black"
+                            VerticalOptions="CenterAndExpand" />
+                        <Label
+                            FontFamily="RobotoMedium"
+                            FontSize="16"
+                            HorizontalOptions="EndAndExpand"
+                            Text="See All"
+                            TextColor="#211E66"
+                            VerticalOptions="CenterAndExpand" />
+                    </StackLayout>
+                    <StackLayout HeightRequest="200">
+                        <CollectionView
+                            Margin="0,0,0,20"
+                            HeightRequest="180"
+                            HorizontalScrollBarVisibility="Never"
+                            ItemsSource="{Binding NewProductList}">
+                            <CollectionView.ItemsLayout>
+                                <GridItemsLayout HorizontalItemSpacing="5" Orientation="Horizontal" />
+                            </CollectionView.ItemsLayout>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackLayout HeightRequest="160" WidthRequest="150">
+                                        <sh:Shadows
+                                            Padding="0"
+                                            BackgroundColor="#FFFFFF"
+                                            CornerRadius="5"
+                                            HorizontalOptions="FillAndExpand">
+                                            <sh:Shadows.Shades>
+                                                <sh:ImmutableShades>
+
+                                                    <sh:Shade
+                                                        BlurRadius="10"
+                                                        Opacity="0.5"
+                                                        Offset="2,2"
+                                                        Color="Gray" />
+                                                </sh:ImmutableShades>
+                                            </sh:Shadows.Shades>
+                                            <Frame
+                                                Margin="5"
+                                                Padding="0"
+                                                CornerRadius="10"
+                                                HasShadow="False"
+                                                HeightRequest="180"
+                                                IsClippedToBounds="True"
+                                                WidthRequest="130">
+                                                <StackLayout Spacing="0">
+                                                    <Image
+                                                        HeightRequest="120"
+                                                        Source="{Binding NewProductImage}"
+                                                        VerticalOptions="CenterAndExpand" />
+                                                    <Label
+                                                        Margin="10,0"
+                                                        FontFamily="ProximaSemiBold"
+                                                        FontSize="12"
+                                                        LineBreakMode="TailTruncation"
+                                                        Text="{Binding NewProductName}"
+                                                        TextColor="#292B3A"
+                                                        VerticalOptions="EndAndExpand" />
+                                                    <Label
+                                                        Margin="10,0,0,5"
+                                                        FontFamily="ProximaSemiBold"
+                                                        FontSize="14"
+                                                        Text="{Binding NewProductPrice}"
+                                                        TextColor="#363636" />
+                                                </StackLayout>
+                                            </Frame>
+                                        </sh:Shadows>
+                                    </StackLayout>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

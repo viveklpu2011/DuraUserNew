@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<rgPages:PopupPage
+    x:Class="NewDuraApp.Areas.DuraEats.PaymentMethod.Popups.Views.ThanksForOrderPopup"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:fonticon="clr-namespace:NewDuraApp.FontIcons"
+    xmlns:images="clr-namespace:NewDuraApp.Extensions"
+    xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:rgAnimations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+    xmlns:rgPages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    BindingContext="{Binding ThanksForOrderPopup, Source={StaticResource Locator}}"
+    CloseWhenBackgroundIsClicked="True">
+    <rgPages:PopupPage.Animation>
+        <rgAnimations:MoveAnimation
+            DurationIn="500"
+            DurationOut="400"
+            PositionIn="Bottom"
+            PositionOut="Bottom" />
+    </rgPages:PopupPage.Animation>
+    <ContentPage.Content>
+        <Frame
+            Margin="50,0"
+            Padding="15"
+            CornerRadius="15"
+            HasShadow="False"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="CenterAndExpand">
+            <StackLayout Margin="15,0">
+                <Image
+                    Aspect="Fill"
+                    HeightRequest="41"
+                    HorizontalOptions="Center"
+                    Source="{images:EmbeddedImage NewDuraApp.Images.success.png}"
+                    WidthRequest="41" />
+                <Label
+                    FontAttributes="Bold"
+                    FontFamily="ProximaRegular"
+                    FontSize="18"
+                    HorizontalOptions="CenterAndExpand"
+                    HorizontalTextAlignment="Center"
+                    Text="Thank you for your order"
+                    TextColor="#0C9E1A" />
+                <Label
+                    Margin="0,5"
+                    FontAttributes="Bold"
+                    FontFamily="ProximaRegular"
+                    FontSize="14"
+                    HorizontalOptions="CenterAndExpand"
+                    HorizontalTextAlignment="Center"
+                    Text="Your order successfully placed!"
+                    TextColor="Black" />
+                <StackLayout Padding="0" Spacing="0">
+                    <Label
+                        FontAttributes="Bold"
+                        FontFamily="ProximaRegular"
+                        FontSize="14"
+                        HorizontalOptions="CenterAndExpand"
+                        HorizontalTextAlignment="Center"
+                        Text="-----------------------------------------"
+                        TextColor="#928A8A"
+                        VerticalOptions="Start" />
+                    <Label HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span
+                                    FontSize="10"
+                                    Text="Your Order no. "
+                                    TextColor="#928A8A" />
+                                <Span
+                                    FontAttributes="Bold"
+                                    FontSize="14"
+                                    Text="200145778545"
+                                    TextColor="Black" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label
+                        FontAttributes="Bold"
+                        FontFamily="ProximaRegular"
+                        FontSize="14"
+                        HorizontalOptions="CenterAndExpand"
+                        HorizontalTextAlignment="Center"
+                        Text="-----------------------------------------"
+                        TextColor="#928A8A"
+                        VerticalOptions="End" />
+                </StackLayout>
+                <Button
+                    Margin="20,0,20,10"
+                    BackgroundColor="#211E66"
+                    Command="{Binding NavigateToTrackOrder}"
+                    CornerRadius="5"
+                    FontFamily="ProximaRegular"
+                    FontSize="17"
+                    HeightRequest="40"
+                    HorizontalOptions="FillAndExpand"
+                    Text="Track Order"
+                    TextColor="White" />
+            </StackLayout>
+        </Frame>
+    </ContentPage.Content>
+</rgPages:PopupPage>

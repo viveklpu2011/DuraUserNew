@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="NewDuraApp.Areas.Profile.Menu.Settings.SettingsMenu.Notifications.Views.NotificationsPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:control="clr-namespace:NewDuraApp.Controls"
+    xmlns:fonticon="clr-namespace:NewDuraApp.FontIcons"
+    xmlns:images="clr-namespace:NewDuraApp.Extensions"
+    xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:sh="http://sharpnado.com"
+    xmlns:translate="clr-namespace:NewDuraApp.Resources"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    BackgroundColor="White"
+    BindingContext="{Binding NotificationsPage, Source={StaticResource Locator}}"
+    NavigationPage.HasBackButton="True"
+    Shell.NavBarHasShadow="False"
+    Shell.NavBarIsVisible="True"
+    Shell.TabBarIsVisible="False"
+    Visual="Material">
+    <Shell.TitleView>
+
+        <Label
+            FontFamily="ProximaSemiBold"
+            FontSize="22"
+            HorizontalOptions="FillAndExpand"
+            Text="{translate:Translate Notifications}"
+            TextColor="Black"
+            VerticalOptions="CenterAndExpand"
+            VerticalTextAlignment="Center" />
+
+
+    </Shell.TitleView>
+    <ContentPage.Content>
+        <Grid
+            Margin="15,30"
+            ColumnDefinitions="*,Auto"
+            RowDefinitions="28,25,25"
+            RowSpacing="20">
+            <Label
+                Grid.Row="0"
+                Grid.Column="0"
+                FontFamily="ProximaRegular"
+                FontSize="14"
+                HorizontalOptions="FillAndExpand"
+                Text="{translate:Translate Enable_all_to_push_notifications}"
+                TextColor="#4C4C4C"
+                VerticalOptions="CenterAndExpand"
+                VerticalTextAlignment="Center" />
+
+            <Switch
+                Grid.Row="0"
+                Grid.Column="1"
+                OnColor="WhiteSmoke"
+                Scale="0.8"
+                ThumbColor="#0ABB21" />
+
+            <Label
+                Grid.Row="1"
+                Grid.Column="0"
+                FontFamily="ProximaRegular"
+                FontSize="14"
+                HorizontalOptions="FillAndExpand"
+                Text="{translate:Translate Offers_Promo}"
+                TextColor="#4C4C4C"
+                VerticalOptions="CenterAndExpand"
+                VerticalTextAlignment="Center" />
+            <Switch
+                Grid.Row="1"
+                Grid.Column="1"
+                OnColor="WhiteSmoke"
+                Scale="0.8"
+                ThumbColor="#0ABB21" />
+            <Label
+                Grid.Row="2"
+                Grid.Column="0"
+                FontFamily="ProximaRegular"
+                FontSize="14"
+                HorizontalOptions="FillAndExpand"
+                Text="{translate:Translate Orders_purchased}"
+                TextColor="#4C4C4C"
+                VerticalOptions="CenterAndExpand"
+                VerticalTextAlignment="Center" />
+            <Switch
+                Grid.Row="2"
+                Grid.Column="1"
+                OnColor="WhiteSmoke"
+                Scale="0.8"
+                ThumbColor="#0ABB21" />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

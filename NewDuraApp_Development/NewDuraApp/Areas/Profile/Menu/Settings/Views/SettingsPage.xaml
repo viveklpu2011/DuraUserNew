@@ -1,0 +1,285 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="NewDuraApp.Areas.Profile.Menu.Settings.Views.SettingsPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:control="clr-namespace:NewDuraApp.Controls"
+    xmlns:fonticon="clr-namespace:NewDuraApp.FontIcons"
+    xmlns:images="clr-namespace:NewDuraApp.Extensions"
+    xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:translate="clr-namespace:NewDuraApp.Resources"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    BackgroundColor="White"
+    BindingContext="{Binding SettingsPage, Source={StaticResource Locator}}"
+    NavigationPage.HasBackButton="True"
+    Shell.NavBarHasShadow="False"
+    Shell.NavBarIsVisible="True"
+    Shell.TabBarIsVisible="False"
+    Visual="Material">
+    <Shell.TitleView>
+
+        <Label
+            FontFamily="ProximaSemiBold"
+            FontSize="22"
+            HorizontalOptions="FillAndExpand"
+            Text="{translate:Translate Settings}"
+            TextColor="Black"
+            VerticalOptions="CenterAndExpand"
+            VerticalTextAlignment="Center" />
+
+
+    </Shell.TitleView>
+    <ContentPage.Content>
+        <ScrollView Margin="15" VerticalScrollBarVisibility="Never">
+            <Grid
+                Margin="0,10"
+                RowDefinitions="42,42,42,42,42,*"
+                RowSpacing="15">
+                <Frame
+                    Grid.Row="0"
+                    Padding="20,0,5,0"
+                    BackgroundColor="#EBE9FF"
+                    CornerRadius="5"
+                    HeightRequest="42"
+                    IsEnabled="True">
+                    <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand">
+                        <Label
+                            FontFamily="ProximaRegular"
+                            FontSize="14"
+                            HorizontalOptions="StartAndExpand"
+                            Text="{translate:Translate Notifications}"
+                            TextColor="Black"
+                            VerticalOptions="CenterAndExpand"
+                            VerticalTextAlignment="Center" />
+                        <ImageButton
+                            Aspect="Fill"
+                            BackgroundColor="Transparent"
+                            HeightRequest="20"
+                            HorizontalOptions="End"
+                            VerticalOptions="CenterAndExpand"
+                            WidthRequest="20">
+                            <ImageButton.Source>
+                                <FontImageSource
+                                    FontFamily="UserIcons"
+                                    Glyph="{x:Static fonticon:FontIconsClass.MenuRight}"
+                                    Size="30"
+                                    Color="Black" />
+                            </ImageButton.Source>
+                        </ImageButton>
+                    </StackLayout>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding NavigateToNotifications}" />
+                    </Frame.GestureRecognizers>
+                </Frame>
+                <Frame
+                    Grid.Row="1"
+                    Padding="20,0,5,0"
+                    BackgroundColor="#EBE9FF"
+                    CornerRadius="5"
+                    HeightRequest="42"
+                    IsEnabled="True">
+                    <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand">
+                        <Label
+                            FontFamily="ProximaRegular"
+                            FontSize="14"
+                            HorizontalOptions="StartAndExpand"
+                            Text="{translate:Translate Language}"
+                            TextColor="Black"
+                            VerticalOptions="CenterAndExpand"
+                            VerticalTextAlignment="Center" />
+                        <ImageButton
+                            Aspect="Fill"
+                            BackgroundColor="Transparent"
+                            HeightRequest="20"
+                            HorizontalOptions="End"
+                            VerticalOptions="CenterAndExpand"
+                            WidthRequest="20">
+                            <ImageButton.Source>
+                                <FontImageSource
+                                    FontFamily="UserIcons"
+                                    Glyph="{x:Static fonticon:FontIconsClass.MenuRight}"
+                                    Size="30"
+                                    Color="Black" />
+
+                            </ImageButton.Source>
+                        </ImageButton>
+                    </StackLayout>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding NavigateToLanguage}" />
+                    </Frame.GestureRecognizers>
+                </Frame>
+                <!--<Frame
+                    Grid.Row="2"
+                    Padding="20,0,5,0"
+                    BackgroundColor="#EBE9FF"
+                    CornerRadius="5"
+                    HeightRequest="42"
+                    IsEnabled="False"
+                    IsVisible="False">
+                    <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand">
+                        <Label
+                            FontFamily="ProximaRegular"
+                            FontSize="14"
+                            HorizontalOptions="StartAndExpand"
+                            Text="Standard Rates"
+                            TextColor="Black"
+                            VerticalOptions="CenterAndExpand"
+                            VerticalTextAlignment="Center" />
+                        <ImageButton
+                            Aspect="Fill"
+                            BackgroundColor="Transparent"
+                            HeightRequest="20"
+                            HorizontalOptions="End"
+                            VerticalOptions="CenterAndExpand"
+                            WidthRequest="20">
+                            <ImageButton.Source>
+                                <FontImageSource
+                                    FontFamily="UserIcons"
+                                    Glyph="{x:Static fonticon:FontIconsClass.MenuRight}"
+                                    Size="30"
+                                    Color="Black" />
+
+                            </ImageButton.Source>
+                        </ImageButton>
+                    </StackLayout>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding NavigateToPersonalUploadDocument}" />
+                    </Frame.GestureRecognizers>
+                </Frame>-->
+                <Frame
+                    Grid.Row="2"
+                    Padding="20,0,5,0"
+                    BackgroundColor="#EBE9FF"
+                    CornerRadius="5"
+                    HeightRequest="42">
+                    <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand">
+                        <Label
+                            FontFamily="ProximaRegular"
+                            FontSize="14"
+                            HorizontalOptions="StartAndExpand"
+                            Text="{translate:Translate About}"
+                            TextColor="Black"
+                            VerticalOptions="CenterAndExpand"
+                            VerticalTextAlignment="Center" />
+                        <ImageButton
+                            Aspect="Fill"
+                            BackgroundColor="Transparent"
+                            HeightRequest="20"
+                            HorizontalOptions="End"
+                            VerticalOptions="CenterAndExpand"
+                            WidthRequest="20">
+                            <ImageButton.Source>
+                                <FontImageSource
+                                    FontFamily="UserIcons"
+                                    Glyph="{x:Static fonticon:FontIconsClass.MenuRight}"
+                                    Size="30"
+                                    Color="Black" />
+
+                            </ImageButton.Source>
+                        </ImageButton>
+                    </StackLayout>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding NavigateToAboutUs}" />
+                    </Frame.GestureRecognizers>
+                </Frame>
+                <Frame
+                    Grid.Row="3"
+                    Padding="20,0,5,0"
+                    BackgroundColor="#EBE9FF"
+                    CornerRadius="5"
+                    HeightRequest="42">
+                    <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand">
+                        <Label
+                            FontFamily="ProximaRegular"
+                            FontSize="14"
+                            HorizontalOptions="StartAndExpand"
+                            Text="{translate:Translate TermAndConditions}"
+                            TextColor="Black"
+                            VerticalOptions="CenterAndExpand"
+                            VerticalTextAlignment="Center" />
+                        <ImageButton
+                            Aspect="Fill"
+                            BackgroundColor="Transparent"
+                            HeightRequest="20"
+                            HorizontalOptions="End"
+                            VerticalOptions="CenterAndExpand"
+                            WidthRequest="20">
+                            <ImageButton.Source>
+                                <FontImageSource
+                                    FontFamily="UserIcons"
+                                    Glyph="{x:Static fonticon:FontIconsClass.MenuRight}"
+                                    Size="30"
+                                    Color="Black" />
+
+                            </ImageButton.Source>
+                        </ImageButton>
+                    </StackLayout>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding NavigateToTermsCondition}" />
+                    </Frame.GestureRecognizers>
+                </Frame>
+                <Frame
+                    Grid.Row="4"
+                    Padding="20,0,5,0"
+                    BackgroundColor="#EBE9FF"
+                    CornerRadius="5"
+                    HeightRequest="42">
+                    <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand">
+                        <Label
+                            FontFamily="ProximaRegular"
+                            FontSize="14"
+                            HorizontalOptions="StartAndExpand"
+                            Text="{translate:Translate Privacy_Policy}"
+                            TextColor="Black"
+                            VerticalOptions="CenterAndExpand"
+                            VerticalTextAlignment="Center" />
+                        <ImageButton
+                            Aspect="Fill"
+                            BackgroundColor="Transparent"
+                            HeightRequest="20"
+                            HorizontalOptions="End"
+                            VerticalOptions="CenterAndExpand"
+                            WidthRequest="20">
+                            <ImageButton.Source>
+                                <FontImageSource
+                                    FontFamily="UserIcons"
+                                    Glyph="{x:Static fonticon:FontIconsClass.MenuRight}"
+                                    Size="30"
+                                    Color="Black" />
+
+                            </ImageButton.Source>
+                        </ImageButton>
+                    </StackLayout>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding NavigateToPrivacyPoliccy}" />
+                    </Frame.GestureRecognizers>
+                </Frame>
+                <StackLayout
+                    Grid.Row="5"
+                    xct:TouchEffect.Command="{Binding LogoutCommand}"
+                    HeightRequest="25"
+                    HorizontalOptions="CenterAndExpand"
+                    Orientation="Horizontal"
+                    VerticalOptions="EndAndExpand">
+                    <ImageButton
+                        Aspect="Fill"
+                        BackgroundColor="Transparent"
+                        HeightRequest="20"
+                        HorizontalOptions="Start"
+                        Source="{images:EmbeddedImage NewDuraApp.Images.logout.png}"
+                        VerticalOptions="CenterAndExpand"
+                        WidthRequest="20" />
+
+                    <Label
+                        FontFamily="ProximaRegular"
+                        FontSize="14"
+                        HorizontalOptions="StartAndExpand"
+                        Text="{translate:Translate Logout}"
+                        TextColor="Black"
+                        VerticalOptions="CenterAndExpand"
+                        VerticalTextAlignment="Center" />
+                </StackLayout>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

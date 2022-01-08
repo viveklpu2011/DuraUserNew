@@ -1,0 +1,727 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="NewDuraApp.Areas.DuraExpress.DuraExpressView.OrderDetails2"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Helpers="clr-namespace:NewDuraApp.Converters"
+    xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:fonticon="clr-namespace:NewDuraApp.FontIcons"
+    xmlns:images="clr-namespace:NewDuraApp.Extensions"
+    xmlns:translate="clr-namespace:NewDuraApp.Resources"
+    BindingContext="{Binding OrderDetails2, Source={StaticResource Locator}}"
+    NavigationPage.HasBackButton="True"
+    Shell.NavBarHasShadow="False"
+    Shell.NavBarIsVisible="True"
+    Shell.TabBarIsVisible="False"
+    Visual="Material">
+    <Shell.TitleView>
+        <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand">
+            <Label
+                FontFamily="ProximaSemiBold"
+                FontSize="22"
+                Text="{translate:Translate Order_Details}"
+                TextColor="Black"
+                VerticalOptions="CenterAndExpand" />
+            <ImageButton
+                Margin="0,0,-40,0"
+                BackgroundColor="Transparent"
+                Command="{Binding GoToHomeCmd}"
+                HeightRequest="25"
+                HorizontalOptions="EndAndExpand"
+                IsVisible="{Binding IsVisibleHome}"
+                VerticalOptions="CenterAndExpand"
+                WidthRequest="25">
+                <ImageButton.Source>
+                    <FontImageSource
+                        FontFamily="UserIcons"
+                        Glyph="{x:Static fonticon:FontIconsClass.Home}"
+                        Size="25"
+                        Color="#423A95" />
+                </ImageButton.Source>
+            </ImageButton>
+            <ImageButton
+                x:Name="btnHelp"
+                Margin="{OnPlatform Android='0,0,20,0',
+                                    iOS='0,0,70,0'}"
+                BackgroundColor="Transparent"
+                Command="{Binding DuraHelpCommand}"
+                HeightRequest="20"
+                HorizontalOptions="EndAndExpand"
+                Source="{images:EmbeddedImage NewDuraApp.Images.help.png}"
+                VerticalOptions="CenterAndExpand"
+                WidthRequest="20" />
+        </StackLayout>
+    </Shell.TitleView>
+    <ContentPage.Content>
+        <ScrollView Margin="20,0,20,0" VerticalScrollBarVisibility="Never">
+            <StackLayout>
+                <Image
+                    Margin="10,0,0,0"
+                    HeightRequest="30"
+                    HorizontalOptions="StartAndExpand"
+                    Source="{images:EmbeddedImage NewDuraApp.Images.smilly.png}"
+                    WidthRequest="30" />
+                <Label
+                    Margin="10,0,0,0"
+                    FontFamily="ProximaRegular"
+                    FontSize="18"
+                    Text="{translate:Translate Hope_you_are_satisfied_by_our_services}"
+                    TextColor="Black" />
+                <StackLayout Margin="10,10,0,0" Orientation="Horizontal">
+                    <Label
+                        FontFamily="ProximaRegular"
+                        FontSize="16"
+                        Text="{translate:Translate Order_Number}"
+                        TextColor="Black" />
+                    <Label
+                        FontFamily="ProximaSemiBold"
+                        FontSize="16"
+                        TextColor="Black">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="#" />
+                                <Span Text="{Binding GetOrderData.order_no}" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </StackLayout>
+                <StackLayout Margin="10,0,0,10" Orientation="Horizontal">
+                    <Label
+                        FontFamily="ProximaRegular"
+                        FontSize="16"
+                        Text="{translate:Translate Ordered_on}"
+                        TextColor="Black" />
+                    <Label
+                        FontFamily="ProximaSemiBold"
+                        FontSize="16"
+                        Text="{Binding GetOrderData.orderdate}"
+                        TextColor="Black" />
+                </StackLayout>
+                <Label
+                    Margin="10,0,0,10"
+                    FontFamily="ProximaSemiBold"
+                    FontSize="16">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="{translate:Translate Status}" />
+                            <Span Text=" : " />
+                            <Span Text="{Binding GetOrderData.displaystatus}" TextColor="{Binding GetOrderData.displaystatustextcolor}" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Grid
+                    ColumnSpacing="0"
+                    RowDefinitions="Auto,Auto,Auto"
+                    RowSpacing="0">
+                    <StackLayout Grid.Row="0" Padding="0">
+                        <Grid ColumnDefinitions="15,*">
+                            <Frame
+                                Grid.Column="0"
+                                Margin="0,8,0,0"
+                                Padding="0"
+                                BackgroundColor="#423A95"
+                                CornerRadius="5"
+                                HeightRequest="10"
+                                HorizontalOptions="CenterAndExpand"
+                                VerticalOptions="Start"
+                                WidthRequest="10" />
+                            <BoxView
+                                Grid.Column="0"
+                                Margin="0,15,0,0"
+                                BackgroundColor="#423A95"
+                                HorizontalOptions="CenterAndExpand"
+                                VerticalOptions="FillAndExpand"
+                                WidthRequest=".5" />
+                            <StackLayout
+                                Grid.Column="1"
+                                Margin="5"
+                                Spacing="0">
+                                <Label
+                                    Margin="5,0,0,0"
+                                    FontFamily="ProximaSemiBold"
+                                    FontSize="16"
+                                    Text="{Binding GetOrderData.pickupaddress}"
+                                    TextColor="#3D3D3D" />
+                                <Label
+                                    Margin="5,0,5,0"
+                                    FontFamily="ProximaRegular"
+                                    FontSize="14"
+                                    TextColor="#3D3D3D">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{translate:Translate Block}" />
+                                            <Span Text=" : " />
+                                            <Span Text="{Binding GetOrderData.pickupaddresssub}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label
+                                    Margin="5,0,5,0"
+                                    FontFamily="ProximaRegular"
+                                    FontSize="14"
+                                    TextColor="#3D3D3D">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{Binding GetOrderData.pickup_name}" />
+                                            <Span Text=" | " />
+                                            <Span Text="{Binding GetOrderData.pickup_mobile}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </StackLayout>
+                        </Grid>
+                    </StackLayout>
+                    <StackLayout
+                        Grid.Row="1"
+                        Padding="0"
+                        BindableLayout.ItemsSource="{Binding GetOrderData.stopdata}"
+                        IsVisible="{Binding GetOrderData.IsAvailableStopData}"
+                        VerticalOptions="Start">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout Grid.Row="0">
+                                    <Grid ColumnDefinitions="15,*">
+                                        <Frame
+                                            Grid.Column="0"
+                                            Margin="0,8,0,0"
+                                            Padding="0"
+                                            BackgroundColor="#423A95"
+                                            CornerRadius="5"
+                                            HeightRequest="10"
+                                            HorizontalOptions="CenterAndExpand"
+                                            VerticalOptions="Start"
+                                            WidthRequest="10" />
+                                        <BoxView
+                                            Grid.Column="0"
+                                            Margin="0,15,0,0"
+                                            BackgroundColor="#423A95"
+                                            HorizontalOptions="CenterAndExpand"
+                                            VerticalOptions="FillAndExpand"
+                                            WidthRequest=".5" />
+                                        <StackLayout
+                                            Grid.Column="1"
+                                            Margin="5"
+                                            Spacing="0">
+                                            <Label
+                                                Margin="5,0,0,0"
+                                                FontFamily="ProximaSemiBold"
+                                                FontSize="16"
+                                                Text="{Binding stop_address1}"
+                                                TextColor="#3D3D3D" />
+                                            <Label
+                                                Margin="5,0,5,0"
+                                                FontFamily="ProximaRegular"
+                                                FontSize="14"
+                                                TextColor="#3D3D3D">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="{translate:Translate Block}" />
+                                                        <Span Text=" : " />
+                                                        <Span Text="{Binding stop_address2}" />
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                            <Label
+                                                Margin="5,0,5,0"
+                                                FontFamily="ProximaRegular"
+                                                FontSize="14"
+                                                TextColor="#3D3D3D">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="{Binding stop_name}" />
+                                                        <Span Text=" | " />
+                                                        <Span Text="{Binding stop_mobile}" />
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                        </StackLayout>
+                                    </Grid>
+                                </StackLayout>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </StackLayout>
+                    <StackLayout Grid.Row="2" Padding="0">
+                        <Grid ColumnDefinitions="15,*">
+                            <Image
+                                Grid.Column="0"
+                                Margin="0,8,0,0"
+                                BackgroundColor="Transparent"
+                                HeightRequest="14"
+                                HorizontalOptions="CenterAndExpand"
+                                Source="{images:EmbeddedImage NewDuraApp.Images.map_locaiton.png}"
+                                VerticalOptions="Start"
+                                WidthRequest="14" />
+                            <BoxView
+                                Grid.Column="0"
+                                Margin="0,15,0,0"
+                                BackgroundColor="#423A95"
+                                HorizontalOptions="CenterAndExpand"
+                                IsVisible="False"
+                                VerticalOptions="FillAndExpand"
+                                WidthRequest=".5" />
+                            <StackLayout
+                                Grid.Column="1"
+                                Margin="5"
+                                Spacing="0">
+                                <Label
+                                    Margin="5,0,0,0"
+                                    FontFamily="ProximaSemiBold"
+                                    FontSize="16"
+                                    Text="{Binding GetOrderData.wheretoaddress}"
+                                    TextColor="#3D3D3D" />
+                                <Label
+                                    Margin="5,0,5,0"
+                                    FontFamily="ProximaRegular"
+                                    FontSize="14"
+                                    TextColor="#3D3D3D">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{translate:Translate Block}" />
+                                            <Span Text=" : " />
+                                            <Span Text="{Binding GetOrderData.wheretoaddresssub}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label
+                                    Margin="5,0,5,0"
+                                    FontFamily="ProximaRegular"
+                                    FontSize="14"
+                                    TextColor="#3D3D3D">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{Binding GetOrderData.wheretoname}" />
+                                            <Span Text=" | " />
+                                            <Span Text="{Binding GetOrderData.wheretomobile}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </StackLayout>
+                        </Grid>
+                    </StackLayout>
+                </Grid>
+                <StackLayout Spacing="0">
+                    <StackLayout Margin="5" Orientation="Horizontal">
+                        <Label
+                            FontFamily="ProximaSemiBold"
+                            FontSize="16"
+                            Text="{translate:Translate Vehicle_Type}"
+                            TextColor="#3D3D3D" />
+                        <Label
+                            FontFamily="ProximaRegular"
+                            FontSize="16"
+                            HorizontalOptions="EndAndExpand"
+                            Text="{Binding GetOrderData.vehicle}"
+                            TextColor="#3D3D3D" />
+                    </StackLayout>
+                    <StackLayout Margin="5" Orientation="Horizontal">
+                        <Label
+                            FontFamily="ProximaSemiBold"
+                            FontSize="16"
+                            Text="{translate:Translate Issued_by_Driver}"
+                            TextColor="#3D3D3D" />
+                        <Label
+                            FontFamily="ProximaRegular"
+                            FontSize="16"
+                            HorizontalOptions="EndAndExpand"
+                            Text="{Binding GetOrderData.drivername}"
+                            TextColor="#3D3D3D" />
+                    </StackLayout>
+                    <StackLayout Margin="5" Orientation="Horizontal">
+                        <Label
+                            FontFamily="ProximaSemiBold"
+                            FontSize="16"
+                            Text="{translate:Translate Issued_to}"
+                            TextColor="#3D3D3D" />
+                        <Label
+                            FontFamily="ProximaRegular"
+                            FontSize="16"
+                            HorizontalOptions="EndAndExpand"
+                            Text="{Binding GetOrderData.username}"
+                            TextColor="#3D3D3D" />
+                    </StackLayout>
+                    <StackLayout Margin="5" Orientation="Horizontal">
+                        <Label
+                            FontFamily="ProximaSemiBold"
+                            FontSize="16"
+                            Text="Account"
+                            TextColor="#3D3D3D" />
+                        <Label
+                            FontFamily="ProximaRegular"
+                            FontSize="16"
+                            HorizontalOptions="EndAndExpand"
+                            Text="{Binding GetOrderData.accounttype}"
+                            TextColor="#3D3D3D" />
+                    </StackLayout>
+                    <StackLayout Margin="5" Orientation="Horizontal">
+                        <Label
+                            FontFamily="ProximaSemiBold"
+                            FontSize="16"
+                            Text="{translate:Translate Travel_Time_Source_to_Destination}"
+                            TextColor="#3D3D3D" />
+                        <Label
+                            FontFamily="ProximaRegular"
+                            FontSize="16"
+                            HorizontalOptions="EndAndExpand"
+                            Text="{Binding GetOrderData.time}"
+                            TextColor="#3D3D3D" />
+                    </StackLayout>
+                </StackLayout>
+                <!--  IsVisible="{Binding GetOrderData.IsOngoingViewVisible}"  -->
+                <Frame
+                    Margin="5,10,5,10"
+                    Padding="0"
+                    BackgroundColor="#FBFBFF"
+                    CornerRadius="5"
+                    HeightRequest="65"
+                    IsVisible="{Binding IsVisibleDriverView}">
+                    <StackLayout
+                        Margin="10,5"
+                        Orientation="Horizontal"
+                        Spacing="0">
+                        <Frame
+                            Padding="0"
+                            BackgroundColor="Transparent"
+                            CornerRadius="30"
+                            HeightRequest="60"
+                            VerticalOptions="CenterAndExpand"
+                            WidthRequest="54">
+                            <ff:CachedImage
+                                Aspect="AspectFit"
+                                BackgroundColor="Transparent"
+                                CacheDuration="50000"
+                                HeightRequest="60"
+                                HorizontalOptions="CenterAndExpand"
+                                LoadingPlaceholder="user_pic_placeholder.png"
+                                Source="{Binding GetOrderData.driverphoto}"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="60" />
+                        </Frame>
+                        <StackLayout
+                            Margin="10,0,0,0"
+                            Spacing="0"
+                            VerticalOptions="CenterAndExpand">
+                            <Label
+                                FontFamily="ProximaSemiBold"
+                                FontSize="10"
+                                Text="Driver" />
+                            <Label
+                                FontFamily="ProximaSemiBold"
+                                FontSize="14"
+                                Text="{Binding GetOrderData.drivername}"
+                                TextColor="Black" />
+                        </StackLayout>
+                        <ImageButton
+                            BackgroundColor="Transparent"
+                            Command="{Binding SMSCommand}"
+                            HeightRequest="35"
+                            HorizontalOptions="EndAndExpand"
+                            Source="{images:EmbeddedImage NewDuraApp.Images.chat_driver.png}"
+                            VerticalOptions="CenterAndExpand"
+                            WidthRequest="35" />
+                        <ImageButton
+                            Margin="15,0,10,0"
+                            BackgroundColor="Transparent"
+                            Command="{Binding CallNowCommand}"
+                            HeightRequest="35"
+                            Source="{images:EmbeddedImage NewDuraApp.Images.call_driver.png}"
+                            VerticalOptions="CenterAndExpand"
+                            WidthRequest="35" />
+                    </StackLayout>
+                </Frame>
+                <StackLayout>
+                    <Button
+                        BackgroundColor="White"
+                        BorderColor="#423A95"
+                        BorderWidth="1"
+                        Command="{Binding TrackNowCommand}"
+                        HorizontalOptions="EndAndExpand"
+                        Text="{translate:Translate Track_Now}"
+                        TextColor="#423A95" />
+                </StackLayout>
+                <Frame
+                    Margin="5,20,5,20"
+                    Padding="0"
+                    BackgroundColor="#FBFBFF"
+                    CornerRadius="5">
+                    <StackLayout Spacing="0">
+                        <Label
+                            Margin="7"
+                            FontFamily="ProximaSemiBold"
+                            FontSize="16"
+                            Text="{translate:Translate Price}"
+                            TextColor="#3D3D3D" />
+                        <StackLayout Margin="15,5" Orientation="Horizontal">
+                            <Label
+                                FontFamily="ProximaRegular"
+                                FontSize="16"
+                                Text="{translate:Translate Payment_Method}"
+                                TextColor="#3D3D3D" />
+                            <Label
+                                FontFamily="ProximaSemiBold"
+                                FontSize="16"
+                                HorizontalOptions="EndAndExpand"
+                                Text="{Binding GetOrderData.paymentmode}"
+                                TextColor="#3D3D3D" />
+                        </StackLayout>
+                        <Grid
+                            Margin="15,5"
+                            ColumnDefinitions="*,*"
+                            IsVisible="{Binding IsVisibleCouponView}"
+                            RowDefinitions="Auto,Auto"
+                            RowSpacing="10">
+                            <Label
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                FontFamily="ProximaRegular"
+                                FontSize="16"
+                                Text="{translate:Translate Coupon}"
+                                TextColor="Black"
+                                VerticalOptions="CenterAndExpand" />
+                            <Label
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                FontFamily="ProximaRegular"
+                                FontSize="16"
+                                Text="{translate:Translate Coupon_Discount}"
+                                TextColor="Black"
+                                VerticalOptions="CenterAndExpand" />
+                            <Label
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                FontFamily="ProximaRegular"
+                                FontSize="16"
+                                HorizontalOptions="End"
+                                HorizontalTextAlignment="End"
+                                Text="{Binding GetOrderData.coupon.couponname}"
+                                TextColor="Black"
+                                VerticalOptions="CenterAndExpand" />
+                            <Label
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                FontFamily="ProximaRegular"
+                                FontSize="16"
+                                HorizontalOptions="EndAndExpand"
+                                HorizontalTextAlignment="End"
+                                Text="{Binding GetOrderData.coupon.couponname}"
+                                TextColor="Black"
+                                VerticalOptions="CenterAndExpand">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding GetOrderData.coupon.discount}" />
+                                        <Span Text="%" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </Grid>
+                        <StackLayout Margin="15,5" Orientation="Horizontal">
+                            <Label
+                                FontFamily="ProximaRegular"
+                                FontSize="16"
+                                Text="{translate:Translate Base_Fare}"
+                                TextColor="#3D3D3D" />
+                            <Label
+                                FontFamily="ProximaSemiBold"
+                                FontSize="16"
+                                HorizontalOptions="EndAndExpand"
+                                TextColor="#363636">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding GetOrderData.price.currency}" />
+                                        <Span Text="{Binding GetOrderData.price.basefare}" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </StackLayout>
+                        <StackLayout Margin="15,5" Orientation="Horizontal">
+                            <Label
+                                FontFamily="ProximaRegular"
+                                FontSize="16"
+                                Text="{translate:Translate Distance}"
+                                TextColor="#3D3D3D" />
+                            <Label
+                                FontFamily="ProximaSemiBold"
+                                FontSize="16"
+                                HorizontalOptions="EndAndExpand"
+                                TextColor="#363636">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding GetOrderData.price.distance}" />
+                                        <Span Text=" KM" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </StackLayout>
+                        <StackLayout Margin="15,5" Orientation="Horizontal">
+                            <Label
+                                FontFamily="ProximaRegular"
+                                FontSize="16"
+                                Text="{translate:Translate TipAmount}"
+                                TextColor="#3D3D3D" />
+                            <Label
+                                FontFamily="ProximaSemiBold"
+                                FontSize="16"
+                                HorizontalOptions="EndAndExpand"
+                                TextColor="#363636">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding GetOrderData.price.currency}" />
+                                        <Span Text="{Binding GetOrderData.price.tip}" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </StackLayout>
+                        <StackLayout Margin="15,5" Orientation="Horizontal">
+                            <Label
+                                FontFamily="ProximaRegular"
+                                FontSize="16"
+                                Text="{translate:Translate Services}"
+                                TextColor="#3D3D3D" />
+                            <Label
+                                FontFamily="ProximaSemiBold"
+                                FontSize="16"
+                                HorizontalOptions="EndAndExpand"
+                                TextColor="#363636">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding GetOrderData.price.currency}" />
+                                        <Span Text="{Binding GetOrderData.price.TotalAmount}" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </StackLayout>
+                        <StackLayout Margin="15,5" Orientation="Horizontal">
+                            <Label
+                                FontFamily="ProximaRegular"
+                                FontSize="16"
+                                Text="{translate:Translate Time}"
+                                TextColor="#3D3D3D" />
+                            <Label
+                                FontFamily="ProximaSemiBold"
+                                FontSize="16"
+                                HorizontalOptions="EndAndExpand"
+                                TextColor="#3D3D3D">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding GetOrderData.time}" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </StackLayout>
+                        <StackLayout Margin="15,5" Orientation="Horizontal">
+                            <Label
+                                FontFamily="ProximaRegular"
+                                FontSize="16"
+                                Text="{translate:Translate Surcharge}"
+                                TextColor="#3D3D3D" />
+                            <Label
+                                FontFamily="ProximaSemiBold"
+                                FontSize="16"
+                                HorizontalOptions="EndAndExpand"
+                                TextColor="#3D3D3D">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding GetOrderData.price.currency}" />
+                                        <Span Text="{Binding GetOrderData.price.surgecharge}" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </StackLayout>
+                        <StackLayout Margin="15,5" Orientation="Horizontal">
+                            <Label
+                                FontFamily="ProximaRegular"
+                                FontSize="16"
+                                TextColor="#3D3D3D">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{translate:Translate Dist_Travelled_Amount}" />
+                                        <Span Text=" &#x0a;(" />
+                                        <Span Text="{Binding GetOrderData.price.distance}" />
+                                        <Span Text="km)" />
+                                        <Span Text="(" />
+                                        <Span Text="{Binding GetOrderData.price.currency}" />
+                                        <Span Text="{Binding GetOrderData.price.per_km}" />
+                                        <Span Text="/km)" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label
+                                FontFamily="ProximaSemiBold"
+                                FontSize="16"
+                                HorizontalOptions="EndAndExpand"
+                                TextColor="#3D3D3D">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding GetOrderData.price.currency}" />
+                                        <Span Text="{Binding GetOrderData.price.kmprice}" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </StackLayout>
+                        <BoxView
+                            Margin="10"
+                            BackgroundColor="LightGray"
+                            HeightRequest="1"
+                            HorizontalOptions="FillAndExpand" />
+                        <Grid Margin="15,5,15,20" ColumnDefinitions="*,Auto,Auto">
+                            <Label
+                                Grid.Column="0"
+                                FontFamily="ProximaRegular"
+                                FontSize="16"
+                                Text="{translate:Translate Total}"
+                                TextColor="Black"
+                                VerticalOptions="CenterAndExpand" />
+                            <Label
+                                Grid.Column="1"
+                                FontFamily="ProximaSemiBold"
+                                FontSize="16"
+                                HorizontalOptions="EndAndExpand"
+                                TextColor="Gray"
+                                VerticalOptions="CenterAndExpand">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding GetOrderData.price.currency}" />
+                                        <Span Text="{Binding GetOrderData.price.total}" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label
+                                Grid.Column="2"
+                                FontFamily="ProximaSemiBold"
+                                FontSize="16"
+                                HorizontalOptions="EndAndExpand"
+                                HorizontalTextAlignment="End"
+                                IsVisible="False"
+                                Text="{Binding GetOrderData.DiscountedAmount}"
+                                TextColor="Black"
+                                VerticalOptions="CenterAndExpand" />
+                        </Grid>
+                    </StackLayout>
+                </Frame>
+                <Button
+                    Margin="0,20"
+                    BackgroundColor="#423A95"
+                    Command="{Binding GoToHomeCmd}"
+                    CornerRadius="5"
+                    FontFamily="ProximaRegular"
+                    FontSize="16"
+                    HeightRequest="50"
+                    HorizontalOptions="FillAndExpand"
+                    IsVisible="{Binding IsVisibleHome}"
+                    Text="{translate:Translate Home}"
+                    TextColor="White" />
+                <Button
+                    Margin="0,20"
+                    BackgroundColor="#423A95"
+                    Command="{Binding RateCommand}"
+                    CornerRadius="5"
+                    FontFamily="ProximaRegular"
+                    FontSize="16"
+                    HeightRequest="50"
+                    HorizontalOptions="FillAndExpand"
+                    IsVisible="{Binding IsVisibleRateButton}"
+                    Text="{translate:Translate Rate_Review}"
+                    TextColor="White" />
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

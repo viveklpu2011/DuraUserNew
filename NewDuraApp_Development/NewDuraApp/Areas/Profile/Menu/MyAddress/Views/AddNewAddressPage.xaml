@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="NewDuraApp.Areas.Profile.Menu.MyAddress.Views.AddNewAddressPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:behaviours="clr-namespace:NewDuraApp.Behaviours"
+    xmlns:control="clr-namespace:NewDuraApp.Controls"
+    xmlns:fonticon="clr-namespace:NewDuraApp.FontIcons"
+    xmlns:images="clr-namespace:NewDuraApp.Extensions"
+    xmlns:map="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+    xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:translate="clr-namespace:NewDuraApp.Resources"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    BackgroundColor="White"
+    BindingContext="{Binding AddNewAddressPage, Source={StaticResource Locator}}"
+    NavigationPage.HasBackButton="True"
+    Shell.NavBarHasShadow="False"
+    Shell.NavBarIsVisible="True"
+    Shell.TabBarIsVisible="False"
+    Visual="Material">
+    <Shell.TitleView>
+
+        <Label
+            FontFamily="ProximaSemiBold"
+            FontSize="22"
+            HorizontalOptions="FillAndExpand"
+            Text="{Binding HeaderText}"
+            TextColor="Black"
+            VerticalOptions="CenterAndExpand"
+            VerticalTextAlignment="Center" />
+
+
+    </Shell.TitleView>
+    <ContentPage.Content>
+        <Grid
+            Margin="0,15"
+            RowDefinitions="0,*,50"
+            RowSpacing="0">
+            <Frame
+                Grid.Row="0"
+                Margin="15,2"
+                Padding="0"
+                IsVisible="False">
+                <Grid
+                    Margin="10,0,0,0"
+                    ColumnDefinitions="14,*"
+                    ColumnSpacing="5">
+                    <Image
+                        HeightRequest="14"
+                        Source="{images:EmbeddedImage NewDuraApp.Images.search_product_placeholder.png}"
+                        WidthRequest="14" />
+                    <control:CustomEntry
+                        Grid.Column="1"
+                        FontFamily="ProximaRegular"
+                        FontSize="14"
+                        Placeholder="{translate:Translate Search_Location}"
+                        PlaceholderColor="{StaticResource PlaceholderColor}"
+                        ReturnCommand="{Binding AddressReturnCommand}"
+                        ReturnType="Search"
+                        Text="{Binding Address1}"
+                        TextColor="Black"
+                        Unfocused="CustomEntry_Unfocused"
+                        VerticalOptions="Center" />
+                </Grid>
+            </Frame>
+            <ScrollView Grid.Row="1" VerticalScrollBarVisibility="Never">
+                <StackLayout Spacing="10">
+                    <map:Map
+                        x:Name="mapPickupLocation"
+                        HeightRequest="218"
+                        HorizontalOptions="FillAndExpand" />
+                    <StackLayout Margin="15,0" Spacing="5">
+                        <Frame
+                            Padding="0"
+                            BackgroundColor="#FBFBFF"
+                            CornerRadius="5"
+                            HeightRequest="40">
+                            <Label
+                                Margin="10,0,0,0"
+                                xct:TouchEffect.Command="{Binding OpenMapCommand}"
+                                FontSize="14"
+                                LineBreakMode="TailTruncation"
+                                MaxLines="2"
+                                Text="{Binding HomeAddress}"
+                                TextColor="Black"
+                                VerticalOptions="CenterAndExpand"
+                                VerticalTextAlignment="Center" />
+                        </Frame>
+                        <Label
+                            FontSize="12"
+                            IsVisible="{Binding IsHomeAddressErrorVisible}"
+                            Text="{translate:Translate Please_enter_home_address}"
+                            TextColor="Red" />
+                        <Frame
+                            Margin="0,5,0,0"
+                            Padding="0"
+                            BackgroundColor="#FBFBFF"
+                            CornerRadius="5"
+                            HeightRequest="40">
+                            <control:CustomEntry
+                                Margin="10,0,0,0"
+                                FontSize="14"
+                                Placeholder="Block, Street, Area"
+                                PlaceholderColor="{StaticResource PlaceholderColor}"
+                                Text="{Binding BlockAddress}"
+                                TextColor="Black" />
+                        </Frame>
+                        <Label
+                            FontSize="12"
+                            IsVisible="{Binding IsBlockAddressErrorVisible}"
+                            Text="{translate:Translate Please_enter_block_address}"
+                            TextColor="Red" />
+                        <Frame
+                            Margin="0,5,0,0"
+                            Padding="0"
+                            BackgroundColor="#FBFBFF"
+                            CornerRadius="5"
+                            HeightRequest="40"
+                            IsVisible="False">
+                            <control:CustomEntry
+                                Margin="10,0,0,0"
+                                FontSize="14"
+                                Placeholder="{translate:Translate City}"
+                                PlaceholderColor="{StaticResource PlaceholderColor}"
+                                Text="{Binding City}"
+                                TextColor="Black" />
+                        </Frame>
+                        <Label
+                            FontSize="12"
+                            IsVisible="False"
+                            Text="Please enter city"
+                            TextColor="Red" />
+                        <Frame
+                            Margin="0,5,0,0"
+                            Padding="0"
+                            BackgroundColor="#FBFBFF"
+                            CornerRadius="5"
+                            HeightRequest="40">
+                            <control:CustomEntry
+                                Margin="10,0,0,0"
+                                FontSize="14"
+                                Placeholder="{translate:Translate Contact_Person}"
+                                PlaceholderColor="{StaticResource PlaceholderColor}"
+                                Text="{Binding ContactPerson}"
+                                TextColor="Black" />
+                        </Frame>
+                        <Label
+                            FontSize="12"
+                            IsVisible="{Binding IsContactPersonErrorVisible}"
+                            Text="{translate:Translate Please_enter_name}"
+                            TextColor="Red" />
+                        <Grid>
+                            <Frame
+                                Margin="0,5,0,0"
+                                Padding="0"
+                                BackgroundColor="#FBFBFF"
+                                CornerRadius="5"
+                                HeightRequest="40">
+                                <control:CustomEntry
+                                    Margin="10,0,0,0"
+                                    FontSize="14"
+                                    Keyboard="Telephone"
+                                    MaxLength="15"
+                                    Placeholder="09xxxxxxxx"
+                                    PlaceholderColor="{StaticResource PlaceholderColor}"
+                                    Text="{Binding ContactNumber}"
+                                    TextColor="Black">
+                                    <control:CustomEntry.Behaviors>
+                                        <behaviours:NumericValidationBehaviorNumberOnly />
+                                    </control:CustomEntry.Behaviors>
+                                </control:CustomEntry>
+                            </Frame>
+                            <ImageButton
+                                Margin="0,0,20,0"
+                                BackgroundColor="Transparent"
+                                Command="{Binding SelectContactCommand}"
+                                HeightRequest="26"
+                                HorizontalOptions="EndAndExpand"
+                                Source="{images:EmbeddedImage NewDuraApp.Images.contact_book.png}"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="26" />
+                        </Grid>
+
+                        <Label
+                            FontSize="12"
+                            IsVisible="{Binding IsPhoneErrorVisible}"
+                            Text="{translate:Translate Please_enter_valid_phone_number}"
+                            TextColor="Red" />
+                        <Frame
+                            Margin="0,5,0,0"
+                            Padding="0"
+                            BackgroundColor="#FBFBFF"
+                            CornerRadius="5"
+                            HeightRequest="40"
+                            IsVisible="False">
+
+                            <Grid ColumnDefinitions="*,Auto">
+                                <control:BorderlessPicker
+                                    x:Name="pickertype"
+                                    Title="Choose Type"
+                                    Grid.Column="0"
+                                    Margin="10,0,0,0"
+                                    FontFamily="ProximaRegular"
+                                    FontSize="14"
+                                    SelectedIndex="{Binding SelectedTypeIndex}"
+                                    SelectedIndexChanged="pickertype_SelectedIndexChanged"
+                                    TextColor="Black"
+                                    TitleColor="{StaticResource PlaceholderColor}">
+                                    <Picker.Items>
+                                        <x:String>Home</x:String>
+                                        <x:String>Work</x:String>
+                                    </Picker.Items>
+                                </control:BorderlessPicker>
+                                <Image
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    Margin="0,0,10,0"
+                                    HeightRequest="13"
+                                    HorizontalOptions="EndAndExpand"
+                                    InputTransparent="True"
+                                    Source="{images:EmbeddedImage NewDuraApp.Images.drop_down_arrow.png}"
+                                    VerticalOptions="CenterAndExpand"
+                                    WidthRequest="13" />
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TapGestureRecognizer_Tapped" />
+                                </Grid.GestureRecognizers>
+                            </Grid>
+
+                        </Frame>
+                        <Label
+                            FontSize="12"
+                            IsVisible="False"
+                            Text="{translate:Translate Please_select_type}"
+                            TextColor="Red" />
+                        <StackLayout
+                            Margin="0,5,0,0"
+                            Orientation="Horizontal"
+                            Spacing="0">
+                            <CheckBox
+                                x:Name="chkDefault"
+                                CheckedChanged="chkDefault_CheckedChanged"
+                                IsChecked="{Binding IsCheckedDefault}"
+                                Visual="Default"
+                                Color="Black" />
+                            <Label
+                                FontFamily="ProximaRegular"
+                                FontSize="14"
+                                HorizontalOptions="FillAndExpand"
+                                Text="{translate:Translate Make_It_Default}"
+                                TextColor="Black"
+                                VerticalOptions="CenterAndExpand"
+                                VerticalTextAlignment="Center" />
+
+                        </StackLayout>
+                        <Label
+                            Margin="10"
+                            FontAttributes="Italic"
+                            FontFamily="ProximaRegular"
+                            FontSize="14"
+                            HorizontalOptions="FillAndExpand"
+                            Text="{translate:Translate All_fields_are_mandatory}"
+                            TextColor="Red"
+                            VerticalOptions="CenterAndExpand"
+                            VerticalTextAlignment="Center" />
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+            <Button
+                Grid.Row="2"
+                Margin="10,0"
+                BackgroundColor="#211E66"
+                Command="{Binding SaveAddress}"
+                CornerRadius="5"
+                FontFamily="ProximaRegular"
+                FontSize="17"
+                HeightRequest="50"
+                HorizontalOptions="FillAndExpand"
+                IsEnabled="{Binding IsButtonEnabled}"
+                Text="{Binding ButtonText}"
+                TextColor="White" />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

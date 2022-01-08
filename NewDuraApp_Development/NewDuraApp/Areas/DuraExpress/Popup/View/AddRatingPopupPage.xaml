@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<pages:PopupPage
+    x:Class="NewDuraApp.Areas.DuraExpress.Popup.View.AddRatingPopupPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+    xmlns:control="clr-namespace:NewDuraApp.Controls"
+    xmlns:images="clr-namespace:NewDuraApp.Extensions"
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    xmlns:translate="clr-namespace:NewDuraApp.Resources"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    BindingContext="{Binding AddRatingPopupPage, Source={StaticResource Locator}}"
+    CloseWhenBackgroundIsClicked="False"
+    NavigationPage.HasNavigationBar="False"
+    Shell.NavBarHasShadow="False"
+    Shell.NavBarIsVisible="False"
+    Shell.TabBarIsVisible="False"
+    Visual="Material">
+    <pages:PopupPage.Animation>
+        <animations:ScaleAnimation
+            DurationIn="400"
+            DurationOut="300"
+            EasingIn="SinOut"
+            EasingOut="SinIn"
+            HasBackgroundAnimation="True"
+            PositionIn="Bottom"
+            PositionOut="Bottom"
+            ScaleIn="1.2"
+            ScaleOut="0.8" />
+    </pages:PopupPage.Animation>
+    <pages:PopupPage.Content>
+        <yummy:PancakeView
+            Margin="10,0"
+            Padding="0,0,0,0"
+            BackgroundColor="White"
+            CornerRadius="10,10,0,0"
+            HeightRequest="450"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="EndAndExpand">
+            <yummy:PancakeView.Border>
+                <yummy:Border Color="WhiteSmoke" />
+            </yummy:PancakeView.Border>
+            <StackLayout Margin="10">
+                <StackLayout Margin="10" Orientation="Horizontal">
+                    <Label
+                        FontFamily="ProximaSemiBold"
+                        FontSize="18"
+                        Text="{translate:Translate Rate_Review}"
+                        TextColor="Black"
+                        VerticalOptions="CenterAndExpand" />
+                </StackLayout>
+                <StackLayout>
+                    <Frame
+                        Padding="0"
+                        BackgroundColor="Gray"
+                        CornerRadius="50"
+                        HeightRequest="100"
+                        HorizontalOptions="CenterAndExpand"
+                        IsClippedToBounds="True"
+                        VerticalOptions="CenterAndExpand"
+                        WidthRequest="80">
+                        <Image
+                            Aspect="AspectFit"
+                            HeightRequest="100"
+                            Source="{Binding ProfileImage}"
+                            WidthRequest="100" />
+                    </Frame>
+                    <Label
+                        Margin="0,5"
+                        FontFamily="ProximaBold"
+                        FontSize="18"
+                        HorizontalOptions="CenterAndExpand"
+                        Text="{Binding GetOrderData.drivername}"
+                        TextColor="Black" />
+                    <control:RattingBar
+                        EmptyStarImage="rating_inactive_star"
+                        FillStarImage="rating_active_star"
+                        HorizontalOptions="CenterAndExpand"
+                        ImageHeight="30"
+                        ImageWidth="30"
+                        SelectedStarValue="{Binding SelectedRating}" />
+                    <Label
+                        Margin="0,5"
+                        FontFamily="Proxima"
+                        FontSize="12"
+                        HorizontalOptions="CenterAndExpand"
+                        IsVisible="{Binding IsVisibleRatingError}"
+                        Text="{translate:Translate Please_provide_rating}"
+                        TextColor="Red" />
+                    <Frame
+                        Margin="0,10,0,0"
+                        Padding="0"
+                        BackgroundColor="White"
+                        BorderColor="#211E66"
+                        CornerRadius="5"
+                        HeightRequest="100"
+                        HorizontalOptions="FillAndExpand">
+                        <control:BorderlessEditor
+                            Margin="10,5"
+                            FontFamily="ProximaRegular"
+                            FontSize="14"
+                            MaxLength="100"
+                            Placeholder="{translate:Translate Type_notes_to_your_driver_Optional}"
+                            Text="{Binding Remarks}"
+                            TextColor="#7D7D7F" />
+                    </Frame>
+                    <Label
+                        Margin="0,3"
+                        FontFamily="ProximaSemiBold"
+                        FontSize="10"
+                        HorizontalOptions="FillAndExpand"
+                        Opacity=".5"
+                        Text="{translate:Translate max_length_100}"
+                        TextColor="Black" />
+                </StackLayout>
+                <Button
+                    Margin="10"
+                    Padding="0"
+                    BackgroundColor="#211E66"
+                    BorderColor="#211E66"
+                    BorderWidth="1"
+                    Command="{Binding RateCommand}"
+                    CornerRadius="5"
+                    FontFamily="ProximaRegular"
+                    FontSize="16"
+                    HeightRequest="50"
+                    HorizontalOptions="FillAndExpand"
+                    Text="{translate:Translate Submit}"
+                    TextColor="White"
+                    VerticalOptions="EndAndExpand" />
+                <Label
+                    Margin="0,0,0,10"
+                    xct:TouchEffect.Command="{Binding CloseCommand}"
+                    FontFamily="ProximaSemiBold"
+                    FontSize="14"
+                    HorizontalOptions="CenterAndExpand"
+                    HorizontalTextAlignment="Center"
+                    Text="{translate:Translate will_review_later}"
+                    TextColor="Red"
+                    TextDecorations="Underline"
+                    VerticalOptions="End" />
+            </StackLayout>
+        </yummy:PancakeView>
+    </pages:PopupPage.Content>
+</pages:PopupPage>

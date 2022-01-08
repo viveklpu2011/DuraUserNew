@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<rgPages:PopupPage
+    x:Class="NewDuraApp.Areas.Profile.Menu.MyWalllet.Popups.Views.TopupAmuntPopupPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:control="clr-namespace:NewDuraApp.Controls"
+    xmlns:fonticon="clr-namespace:NewDuraApp.FontIcons"
+    xmlns:images="clr-namespace:NewDuraApp.Extensions"
+    xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:rgAnimations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+    xmlns:rgPages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    BindingContext="{Binding TopupAmuntPopupPage, Source={StaticResource Locator}}"
+    CloseWhenBackgroundIsClicked="True">
+    <rgPages:PopupPage.Animation>
+        <rgAnimations:MoveAnimation
+            DurationIn="500"
+            DurationOut="400"
+            PositionIn="Bottom"
+            PositionOut="Bottom" />
+    </rgPages:PopupPage.Animation>
+    <ContentPage.Content>
+        <Frame
+            Margin="40,0"
+            Padding="16,14"
+            BackgroundColor="White"
+            CornerRadius="18"
+            HasShadow="False"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="Center">
+            <Grid
+                ColumnDefinitions="*,24"
+                RowDefinitions="24,Auto,46"
+                RowSpacing="15">
+                <Label
+                    FontFamily="ProximaRegular"
+                    FontSize="14"
+                    HorizontalOptions="FillAndExpand"
+                    Text="Select an Amount"
+                    TextColor="#4C4C4C"
+                    VerticalOptions="CenterAndExpand"
+                    VerticalTextAlignment="Center" />
+                <ImageButton
+                    Grid.Column="1"
+                    Aspect="Fill"
+                    Command="{Binding ClosePopup}"
+                    HeightRequest="24"
+                    HorizontalOptions="End"
+                    VerticalOptions="CenterAndExpand"
+                    WidthRequest="24">
+                    <ImageButton.Source>
+                        <FontImageSource
+                            FontFamily="UserIcons"
+                            Glyph="{x:Static fonticon:FontIconsClass.CloseCircle}"
+                            Size="30"
+                            Color="#211E66" />
+
+                    </ImageButton.Source>
+                </ImageButton>
+                <CollectionView
+                    x:Name="amountCollection"
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    Margin="0,10"
+                    HeightRequest="100"
+                    HorizontalOptions="FillAndExpand"
+                    ItemsSource="{Binding TopUpAmountModelList}"
+                    SelectionMode="Single"
+                    VerticalScrollBarVisibility="Never">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout
+                            HorizontalItemSpacing="10"
+                            Orientation="Vertical"
+                            Span="2"
+                            VerticalItemSpacing="10" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+
+                            <StackLayout Padding="1" BackgroundColor="White">
+                                <Frame
+                                    Padding="20,8"
+                                    xct:TouchEffect.AnimationDuration="250"
+                                    xct:TouchEffect.AnimationEasing="{x:Static Easing.CubicIn}"
+                                    xct:TouchEffect.Command="{Binding BindingContext.AmountDetails, Source={x:Reference amountCollection}}"
+                                    xct:TouchEffect.CommandParameter="{Binding .}"
+                                    xct:TouchEffect.PressedOpacity="0.6"
+                                    xct:TouchEffect.PressedScale="0.7"
+                                    BackgroundColor="{Binding Backgrondcolor}"
+                                    BorderColor="{Binding Bordercolor}"
+                                    CornerRadius="5"
+                                    HasShadow="False"
+                                    WidthRequest="250">
+                                    <Label
+                                        FontFamily="ProximaRegular"
+                                        FontSize="15"
+                                        HorizontalOptions="CenterAndExpand"
+                                        HorizontalTextAlignment="Center"
+                                        Text="{Binding AmountWithCurrency}"
+                                        TextColor="#4C4C4C"
+                                        VerticalOptions="CenterAndExpand"
+                                        VerticalTextAlignment="Center"
+                                        WidthRequest="150" />
+                                </Frame>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                <Button
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    BackgroundColor="#211E66"
+                    Command="{Binding TopupWalletCommand}"
+                    CornerRadius="5"
+                    FontFamily="ProximaRegular"
+                    FontSize="17"
+                    HeightRequest="46"
+                    HorizontalOptions="FillAndExpand"
+                    IsEnabled="{Binding IsEnabledButton}"
+                    Text="Top-up wallet"
+                    TextColor="White"
+                    VerticalOptions="EndAndExpand"
+                    WidthRequest="380" />
+            </Grid>
+        </Frame>
+    </ContentPage.Content>
+</rgPages:PopupPage>

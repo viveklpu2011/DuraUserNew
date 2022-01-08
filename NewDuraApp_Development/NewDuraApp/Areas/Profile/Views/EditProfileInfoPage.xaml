@@ -1,0 +1,258 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="NewDuraApp.Areas.Profile.Views.EditProfileInfoPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:behaviours="clr-namespace:NewDuraApp.Behaviours"
+    xmlns:control="clr-namespace:NewDuraApp.Controls"
+    xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+    xmlns:fonticon="clr-namespace:NewDuraApp.FontIcons"
+    xmlns:images="clr-namespace:NewDuraApp.Extensions"
+    xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:translate="clr-namespace:NewDuraApp.Resources"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    BackgroundColor="White"
+    BindingContext="{Binding EditProfileInfoPage, Source={StaticResource Locator}}"
+    NavigationPage.HasBackButton="True"
+    Shell.NavBarHasShadow="False"
+    Shell.NavBarIsVisible="True"
+    Shell.TabBarIsVisible="False"
+    Visual="Material">
+    <Shell.TitleView>
+
+        <Label
+            FontFamily="ProximaSemiBold"
+            FontSize="22"
+            HorizontalOptions="FillAndExpand"
+            Text="{Binding TitleText}"
+            TextColor="Black"
+            VerticalOptions="CenterAndExpand"
+            VerticalTextAlignment="Center" />
+
+
+    </Shell.TitleView>
+    <ContentPage.Content>
+        <ScrollView Margin="15" VerticalScrollBarVisibility="Never">
+            <StackLayout>
+                <StackLayout IsVisible="{Binding IsVisileEditNameStack}" Spacing="20">
+                    <AbsoluteLayout
+                        HeightRequest="115"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Start"
+                        WidthRequest="115">
+                        <ff:CachedImage
+                            AbsoluteLayout.LayoutBounds="0,0,1,1"
+                            AbsoluteLayout.LayoutFlags="All"
+                            Aspect="Fill"
+                            BackgroundColor="Transparent"
+                            CacheDuration="50000"
+                            HeightRequest="115"
+                            HorizontalOptions="CenterAndExpand"
+                            LoadingPlaceholder="user_pic_placeholder.png"
+                            Source="{Binding ProfileImage}"
+                            VerticalOptions="CenterAndExpand"
+                            WidthRequest="115">
+                            <ff:CachedImage.Transformations>
+                                <fftransformations:CircleTransformation BorderHexColor="#ffffff" BorderSize="2" />
+                            </ff:CachedImage.Transformations>
+                        </ff:CachedImage>
+
+                        <Frame
+                            Padding="0"
+                            AbsoluteLayout.LayoutBounds="1,1"
+                            AbsoluteLayout.LayoutFlags="PositionProportional"
+                            BorderColor="#211E66"
+                            CornerRadius="14"
+                            HeightRequest="28"
+                            WidthRequest="28">
+                            <ImageButton
+                                Margin="4"
+                                Aspect="Fill"
+                                BackgroundColor="Transparent"
+                                Command="{Binding PickImageCommand}"
+                                HorizontalOptions="CenterAndExpand"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="28">
+                                <ImageButton.Source>
+                                    <FontImageSource
+                                        FontFamily="UserIcons"
+                                        Glyph="{x:Static fonticon:FontIconsClass.Camera}"
+                                        Color="#211E66" />
+                                </ImageButton.Source>
+                            </ImageButton>
+
+                        </Frame>
+
+                    </AbsoluteLayout>
+                    <Frame
+                        Padding="20,2"
+                        BackgroundColor="#FBFBFF"
+                        CornerRadius="5"
+                        HeightRequest="44">
+                        <control:CustomEntry
+                            FontSize="14"
+                            Placeholder="Full Name*"
+                            PlaceholderColor="{StaticResource PlaceholderColor}"
+                            Text="{Binding ProfileDetails.name}"
+                            TextColor="Black">
+                            <control:CustomEntry.Behaviors>
+                                <behaviours:NumericValidationBehaviorAlphOnly />
+                            </control:CustomEntry.Behaviors>
+                        </control:CustomEntry>
+                    </Frame>
+                    <Button
+                        Margin="0,20"
+                        BackgroundColor="#211E66"
+                        Command="{Binding UpdateUserNameCommand}"
+                        CornerRadius="5"
+                        FontFamily="ProximaRegular"
+                        FontSize="17"
+                        HeightRequest="50"
+                        HorizontalOptions="FillAndExpand"
+                        Text="{translate:Translate Save}"
+                        TextColor="White" />
+                </StackLayout>
+                <StackLayout IsVisible="{Binding IsVisibleEditPhoneStack}" Spacing="20">
+
+                    <Frame
+                        Padding="20,2"
+                        BackgroundColor="#FBFBFF"
+                        CornerRadius="5"
+                        HeightRequest="44">
+                        <Grid ColumnDefinitions="Auto,1,*">
+                            <Grid
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                WidthRequest="65">
+                                <Label
+                                    Margin="2,0,5,0"
+                                    FontSize="16"
+                                    HorizontalOptions="CenterAndExpand"
+                                    HorizontalTextAlignment="Start"
+                                    Text="{Binding CountriesTitle}"
+                                    TextColor="Black"
+                                    VerticalOptions="CenterAndExpand" />
+                                <Picker
+                                    x:Name="pickerCountryCode"
+                                    Margin="2,0,5,0"
+                                    IsVisible="False"
+                                    ItemDisplayBinding="{Binding country_code}"
+                                    ItemsSource="{Binding AllLocationListCode}"
+                                    SelectedItem="{Binding SelectedCountries}"
+                                    TitleColor="Black" />
+                                <Image
+                                    Margin="0,0,8,0"
+                                    BackgroundColor="Transparent"
+                                    HeightRequest="10"
+                                    HorizontalOptions="EndAndExpand"
+                                    InputTransparent="True"
+                                    Source="{images:EmbeddedImage NewDuraApp.Images.drop_down_arrow.png}"
+                                    VerticalOptions="CenterAndExpand"
+                                    WidthRequest="10" />
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TapGestureRecognizer_Tapped" />
+                                </Grid.GestureRecognizers>
+                            </Grid>
+                            <BoxView
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                BackgroundColor="LightGray"
+                                HeightRequest="30"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="1" />
+                            <control:CustomEntry
+                                Grid.Row="0"
+                                Grid.Column="2"
+                                FontSize="14"
+                                Keyboard="Telephone"
+                                MaxLength="15"
+                                Placeholder="09xxxxxxxx"
+                                PlaceholderColor="{StaticResource PlaceholderColor}"
+                                Text="{Binding ProfileDetails.phone}"
+                                TextColor="Black">
+                                <control:CustomEntry.Behaviors>
+                                    <behaviours:NumericValidationBehaviorNumberOnly />
+                                </control:CustomEntry.Behaviors>
+                            </control:CustomEntry>
+
+                        </Grid>
+
+                    </Frame>
+                    <Label
+                        FontFamily="ProximaRegular"
+                        FontSize="14"
+                        HorizontalOptions="StartAndExpand"
+                        Text="{translate:Translate By_clicking_on_send_OTP_button_you_get_4_digit_OTP_to_verify_that_you_are_real}"
+                        TextColor="Black"
+                        VerticalOptions="CenterAndExpand"
+                        VerticalTextAlignment="Center" />
+
+                    <Button
+                        Margin="0,20"
+                        BackgroundColor="#211E66"
+                        Command="{Binding NavigateToOTP}"
+                        CornerRadius="5"
+                        FontFamily="ProximaRegular"
+                        FontSize="17"
+                        HeightRequest="50"
+                        HorizontalOptions="FillAndExpand"
+                        Text="{Binding ButtonTextOTP}"
+                        TextColor="White" />
+                </StackLayout>
+                <StackLayout IsVisible="{Binding IsVisibleEditCityStack}" Spacing="20">
+                    <Frame
+                        Padding="20,2"
+                        BackgroundColor="#FBFBFF"
+                        CornerRadius="5"
+                        HeightRequest="44">
+                        <Grid
+                            ColumnDefinitions="*"
+                            RowDefinitions="Auto"
+                            VerticalOptions="CenterAndExpand">
+                            <control:BorderlessPicker
+                                x:Name="pickLocation"
+                                Title="{translate:Translate ChooseLocation}"
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                FontFamily="ProximaRegular"
+                                FontSize="16"
+                                ItemDisplayBinding="{Binding country_name}"
+                                ItemsSource="{Binding CountriesList}"
+                                SelectedItem="{Binding SelectedLocation, Mode=TwoWay}"
+                                TextColor="Black"
+                                TitleColor="{StaticResource PlaceholderColor}" />
+                            <Image
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                Margin="0,0,10,0"
+                                HeightRequest="13"
+                                HorizontalOptions="EndAndExpand"
+                                InputTransparent="True"
+                                Source="{images:EmbeddedImage NewDuraApp.Images.drop_down_arrow.png}"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="13" />
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TapGestureRecognizer_Tapped_1" />
+                            </Grid.GestureRecognizers>
+                        </Grid>
+
+                    </Frame>
+
+                    <Button
+                        Margin="0,20"
+                        BackgroundColor="#211E66"
+                        Command="{Binding SaveLocationCommand}"
+                        CornerRadius="5"
+                        FontFamily="ProximaRegular"
+                        FontSize="17"
+                        HeightRequest="50"
+                        HorizontalOptions="FillAndExpand"
+                        IsEnabled="{Binding IsLocationSaveButtonEnabled}"
+                        Text="{translate:Translate Save}"
+                        TextColor="White" />
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

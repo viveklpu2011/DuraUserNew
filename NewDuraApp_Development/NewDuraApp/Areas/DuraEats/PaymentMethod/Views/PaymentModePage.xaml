@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="NewDuraApp.Areas.DuraEats.PaymentMethod.Views.PaymentModePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:control="clr-namespace:NewDuraApp.Controls"
+    xmlns:fonticon="clr-namespace:NewDuraApp.FontIcons"
+    xmlns:images="clr-namespace:NewDuraApp.Extensions"
+    xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    BackgroundColor="White"
+    BindingContext="{Binding PaymentModePage, Source={StaticResource Locator}}"
+    NavigationPage.HasBackButton="True"
+    Shell.NavBarHasShadow="False"
+    Shell.NavBarIsVisible="True"
+    Shell.TabBarIsVisible="False"
+    Visual="Material">
+    <Shell.TitleView>
+        <Label
+            FontFamily="ProximaSemiBold"
+            FontSize="22"
+            HorizontalOptions="FillAndExpand"
+            Text="Payment"
+            TextColor="Black"
+            VerticalOptions="CenterAndExpand"
+            VerticalTextAlignment="Center" />
+
+    </Shell.TitleView>
+    <ContentPage.Content>
+        <ScrollView VerticalScrollBarVisibility="Never">
+            <Grid
+                Margin="15"
+                RowDefinitions="74,Auto,58,42"
+                RowSpacing="15">
+                <Frame
+                    Grid.Row="0"
+                    Padding="10"
+                    xct:ShadowEffect.Color="LightGray"
+                    xct:ShadowEffect.OffsetX="1"
+                    xct:ShadowEffect.OffsetY="1"
+                    xct:ShadowEffect.Radius="8"
+                    BackgroundColor="#FBFBFF"
+                    CornerRadius="8"
+                    HasShadow="{OnPlatform Android='True',
+                                           iOS='False'}">
+                    <Grid ColumnDefinitions="*,Auto" VerticalOptions="CenterAndExpand">
+                        <Label
+                            Grid.Column="0"
+                            FontAttributes="Bold"
+                            FontFamily="ProximaSemiBold"
+                            FontSize="28"
+                            HeightRequest="37"
+                            HorizontalOptions="StartAndExpand"
+                            HorizontalTextAlignment="Start"
+                            Text="₱ 23"
+                            TextColor="Black"
+                            VerticalOptions="CenterAndExpand"
+                            VerticalTextAlignment="Center" />
+                        <Button
+                            Grid.Column="1"
+                            BackgroundColor="#211E66"
+                            Command="{Binding NavigateToSelectAmount}"
+                            FontAttributes="Bold"
+                            FontSize="16"
+                            HeightRequest="42"
+                            Text="Top-up Wallet"
+                            TextColor="White" />
+                    </Grid>
+                </Frame>
+                <Label
+                    Grid.Row="1"
+                    Margin="0,20,0,0"
+                    FontFamily="ProximaRegular"
+                    FontSize="14"
+                    Text="Select Payment Mode"
+                    TextColor="Black" />
+                <Frame
+                    Grid.Row="2"
+                    Padding="20,8"
+                    xct:ShadowEffect.Color="LightGray"
+                    xct:ShadowEffect.OffsetX="1"
+                    xct:ShadowEffect.OffsetY="1"
+                    xct:ShadowEffect.Radius="8"
+                    BackgroundColor="#EBE9FF"
+                    HasShadow="{OnPlatform Android='True',
+                                           iOS='False'}">
+                    <Grid
+                        ColumnDefinitions="*,12"
+                        RowDefinitions="Auto,Auto"
+                        RowSpacing="0"
+                        VerticalOptions="CenterAndExpand">
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            FontFamily="ProximaRegular"
+                            FontSize="16"
+                            Text="E-Wallet"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            FontAttributes="Bold"
+                            FontFamily="ProximaRegular"
+                            FontSize="16"
+                            TextColor="Black">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="Balance : " />
+                                    <Span Text="₱ 100" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <ImageButton
+                            Grid.Row="0"
+                            Grid.RowSpan="2"
+                            Grid.Column="1"
+                            Aspect="AspectFill"
+                            BackgroundColor="Transparent"
+                            HeightRequest="20"
+                            HorizontalOptions="End"
+                            VerticalOptions="CenterAndExpand"
+                            WidthRequest="20">
+                            <ImageButton.Source>
+                                <FontImageSource
+                                    FontFamily="UserIcons"
+                                    Glyph="{x:Static fonticon:FontIconsClass.MenuRight}"
+                                    Size="30"
+                                    Color="Black" />
+
+                            </ImageButton.Source>
+                        </ImageButton>
+                    </Grid>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding NavigateToThanksForOrder}" />
+                    </Frame.GestureRecognizers>
+                </Frame>
+                <Frame
+                    Grid.Row="3"
+                    Padding="20,8"
+                    xct:ShadowEffect.Color="LightGray"
+                    xct:ShadowEffect.OffsetX="1"
+                    xct:ShadowEffect.OffsetY="1"
+                    xct:ShadowEffect.Radius="8"
+                    BackgroundColor="#EBE9FF"
+                    HasShadow="{OnPlatform Android='True',
+                                           iOS='False'}">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding GoToCashOnDeliveryPopup}" />
+                    </Frame.GestureRecognizers>
+                    <Grid
+                        ColumnDefinitions="*,12"
+                        RowSpacing="0"
+                        VerticalOptions="CenterAndExpand">
+                        <Label
+                            Grid.Column="0"
+                            FontFamily="ProximaRegular"
+                            FontSize="16"
+                            Text="Cash On Delivery"
+                            TextColor="Black" />
+
+                        <ImageButton
+                            Grid.Column="1"
+                            Aspect="AspectFill"
+                            BackgroundColor="Transparent"
+                            HeightRequest="20"
+                            HorizontalOptions="End"
+                            VerticalOptions="CenterAndExpand"
+                            WidthRequest="20">
+                            <ImageButton.Source>
+                                <FontImageSource
+                                    FontFamily="UserIcons"
+                                    Glyph="{x:Static fonticon:FontIconsClass.MenuRight}"
+                                    Size="30"
+                                    Color="Black" />
+
+                            </ImageButton.Source>
+                        </ImageButton>
+                    </Grid>
+                </Frame>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

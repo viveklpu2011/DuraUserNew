@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<Shell
+    x:Class="NewDuraApp.AppShell"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:images="clr-namespace:NewDuraApp.Extensions"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:tralate="clr-namespace:NewDuraApp.Resources"
+    xmlns:views="clr-namespace:NewDuraApp.Areas.Common.Views"
+    xmlns:views1="clr-namespace:NewDuraApp.Areas.Profile.Views"
+    xmlns:views11="clr-namespace:NewDuraApp.Areas.Orders.Views"
+    Title="DuraApp"
+    BindingContext="{Binding AppShell, Source={StaticResource Locator}}"
+    FlyoutBehavior="Disabled"
+    Shell.NavBarIsVisible="False"
+    Style="{StaticResource ShellBaseStyle}"
+    mc:Ignorable="d">
+
+    <TabBar x:Name="mainTabBar">
+        <Tab
+            x:Name="home"
+            Title="{tralate:Translate Home}"
+            Icon="{images:EmbeddedImage NewDuraApp.Images.home_active.png}">
+            <ShellContent>
+                <views:HomePage />
+            </ShellContent>
+        </Tab>
+        <Tab
+            Title="{tralate:Translate My_Orders}"
+            Icon="{images:EmbeddedImage NewDuraApp.Images.my_orders_active.png}"
+            Route="MyOrder12">
+            <ShellContent>
+                <views11:MyOrders />
+            </ShellContent>
+        </Tab>
+        <Tab Title="{tralate:Translate My_Profile}" Icon="{images:EmbeddedImage NewDuraApp.Images.my_profile_active.png}">
+            <ShellContent>
+                <views1:MyProfile />
+            </ShellContent>
+        </Tab>
+    </TabBar>
+</Shell>

@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="NewDuraApp.Areas.Profile.Menu.MyWalllet.Views.AddMoneyPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:control="clr-namespace:NewDuraApp.Controls"
+    xmlns:fonticon="clr-namespace:NewDuraApp.FontIcons"
+    xmlns:images="clr-namespace:NewDuraApp.Extensions"
+    xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    BackgroundColor="White"
+    BindingContext="{Binding AddMoneyPage, Source={StaticResource Locator}}"
+    NavigationPage.HasBackButton="True"
+    Shell.NavBarHasShadow="False"
+    Shell.NavBarIsVisible="True"
+    Shell.TabBarIsVisible="False"
+    Visual="Material">
+    <Shell.TitleView>
+
+        <Label
+            FontAttributes="Bold"
+            FontFamily="ProximaRegular"
+            FontSize="18"
+            HorizontalOptions="FillAndExpand"
+            Text="Add Money"
+            TextColor="Black"
+            VerticalOptions="CenterAndExpand"
+            VerticalTextAlignment="Center" />
+
+
+    </Shell.TitleView>
+    <ContentPage.Content>
+        <Grid
+            Margin="15,20"
+            ColumnDefinitions="Auto,*"
+            RowDefinitions="37,Auto">
+            <Label
+                Grid.Row="0"
+                Grid.Column="0"
+                FontFamily="ProximaRegular"
+                FontSize="14"
+                HorizontalOptions="Start"
+                Text="Amount to be added"
+                TextColor="Black"
+                VerticalOptions="CenterAndExpand"
+                VerticalTextAlignment="Center" />
+            <Label
+                Grid.Row="0"
+                Grid.Column="1"
+                FontAttributes="Bold"
+                FontFamily="ProximaRegular"
+                FontSize="28"
+                HorizontalOptions="Start"
+                Text="{Binding WalletAmount.AmountWithCurrency}"
+                TextColor="Black"
+                VerticalOptions="CenterAndExpand"
+                VerticalTextAlignment="Center" />
+            <StackLayout
+                Grid.Row="1"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Margin="0,20"
+                Spacing="10">
+                <Label
+                    FontFamily="ProximaRegular"
+                    FontSize="14"
+                    HorizontalOptions="Start"
+                    Text="Select Payment Mode"
+                    TextColor="Black"
+                    VerticalOptions="CenterAndExpand"
+                    VerticalTextAlignment="Center" />
+                <Frame
+                    Padding="20,0,5,0"
+                    BackgroundColor="#EBE9FF"
+                    CornerRadius="5"
+                    HeightRequest="42">
+                    <StackLayout
+                        xct:TouchEffect.Command="{Binding NavigateToRechargeTopup}"
+                        Orientation="Horizontal"
+                        VerticalOptions="CenterAndExpand">
+                        <Label
+                            FontFamily="ProximaRegular"
+                            FontSize="14"
+                            HorizontalOptions="StartAndExpand"
+                            Text="GCash"
+                            TextColor="Black"
+                            VerticalOptions="CenterAndExpand"
+                            VerticalTextAlignment="Center" />
+                        <ImageButton
+                            Aspect="Fill"
+                            HeightRequest="20"
+                            HorizontalOptions="End"
+                            VerticalOptions="CenterAndExpand"
+                            WidthRequest="20">
+                            <ImageButton.Source>
+                                <FontImageSource
+                                    FontFamily="UserIcons"
+                                    Glyph="{x:Static fonticon:FontIconsClass.MenuRight}"
+                                    Size="30"
+                                    Color="Black" />
+
+                            </ImageButton.Source>
+                        </ImageButton>
+                    </StackLayout>
+
+                </Frame>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

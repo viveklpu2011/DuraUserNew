@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="NewDuraApp.Areas.Common.Views.LandingPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:images="clr-namespace:NewDuraApp.Extensions"
+    xmlns:translate="clr-namespace:NewDuraApp.Resources"
+    BackgroundColor="White"
+    BindingContext="{Binding LandingPage, Source={StaticResource Locator}}"
+    NavigationPage.HasNavigationBar="False"
+    Visual="Material">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80*" />
+                <RowDefinition Height="20*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Image
+                Grid.Row="0"
+                Margin="20"
+                HeightRequest="220"
+                HorizontalOptions="CenterAndExpand"
+                Source="{images:EmbeddedImage NewDuraApp.Images.logo.png}"
+                VerticalOptions="CenterAndExpand"
+                WidthRequest="220" />
+            <Button
+                Grid.Row="1"
+                Margin="20"
+                BackgroundColor="#211E66"
+                Command="{Binding SignupPageCommand}"
+                CornerRadius="5"
+                FontFamily="ProximaRegular"
+                FontSize="17"
+                HeightRequest="50"
+                HorizontalOptions="FillAndExpand"
+                Text="{translate:Translate GetStarted}"
+                TextColor="White"
+                VerticalOptions="EndAndExpand"
+                WidthRequest="250" />
+            <Label
+                Grid.Row="2"
+                Margin="{OnPlatform iOS='0,0,0,20'}"
+                FontSize="15"
+                HorizontalOptions="CenterAndExpand"
+                HorizontalTextAlignment="Center"
+                TextColor="Black">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="V(" />
+                        <Span Text="{Binding AppVersion}" />
+                        <Span Text=")" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

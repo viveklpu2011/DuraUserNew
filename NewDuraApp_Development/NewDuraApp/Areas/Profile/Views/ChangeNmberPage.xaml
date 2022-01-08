@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="NewDuraApp.Areas.Profile.Views.ChangeNmberPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:control="clr-namespace:NewDuraApp.Controls"
+    xmlns:fonticon="clr-namespace:NewDuraApp.FontIcons"
+    xmlns:images="clr-namespace:NewDuraApp.Extensions"
+    xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:translate="clr-namespace:NewDuraApp.Resources"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    BackgroundColor="White"
+    BindingContext="{Binding ChangeNmberPage, Source={StaticResource Locator}}"
+    NavigationPage.HasBackButton="True"
+    Shell.NavBarHasShadow="False"
+    Shell.NavBarIsVisible="True"
+    Shell.TabBarIsVisible="False"
+    Visual="Material">
+    <Shell.TitleView>
+
+        <Label
+            FontAttributes="Bold"
+            FontFamily="ProximaRegular"
+            FontSize="18"
+            HorizontalOptions="FillAndExpand"
+            Text="{translate:Translate Change_Password}"
+            TextColor="Black"
+            VerticalOptions="CenterAndExpand"
+            VerticalTextAlignment="Center" />
+
+
+    </Shell.TitleView>
+    <ContentPage.Content>
+        <StackLayout Margin="15" Spacing="20">
+            <Frame
+                Padding="20,2"
+                BackgroundColor="#FBFBFF"
+                CornerRadius="5"
+                HeightRequest="44">
+                <control:CustomEntry
+                    FontSize="14"
+                    Keyboard="Telephone"
+                    Placeholder="{translate:Translate Enter_New_Phone_Number}"
+                    PlaceholderColor="{StaticResource PlaceholderColor}"
+                    TextColor="Black" />
+            </Frame>
+
+            <Button
+                Margin="0,20"
+                BackgroundColor="#211E66"
+                Command="{Binding NavigateBackToProfileHome}"
+                CornerRadius="5"
+                FontFamily="ProximaRegular"
+                FontSize="17"
+                HeightRequest="50"
+                HorizontalOptions="FillAndExpand"
+                Text="{translate:Translate Save}"
+                TextColor="White" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

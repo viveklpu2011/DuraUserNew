@@ -1,0 +1,590 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="NewDuraApp.Areas.DuraShop.View.TrackOrderShop"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:images="clr-namespace:NewDuraApp.Extensions"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    x:Name="thispage"
+    BindingContext="{Binding TrackOrderShop, Source={StaticResource Locator}}"
+    NavigationPage.HasBackButton="True"
+    Shell.NavBarHasShadow="False"
+    Shell.NavBarIsVisible="True"
+    Shell.TabBarIsVisible="False"
+    Visual="Material">
+    <Shell.TitleView>
+        <StackLayout
+            Padding="0"
+            Orientation="Horizontal"
+            VerticalOptions="CenterAndExpand">
+            <Label
+                FontFamily="ProximaSemiBold"
+                FontSize="22"
+                Text="Track Order"
+                TextColor="Black"
+                VerticalOptions="CenterAndExpand" />
+            <ImageButton
+                Margin="0,0,10,0"
+                BackgroundColor="Transparent"
+                HeightRequest="20"
+                HorizontalOptions="EndAndExpand"
+                Source="{images:EmbeddedImage NewDuraApp.Images.help.png}"
+                VerticalOptions="CenterAndExpand"
+                WidthRequest="20" />
+        </StackLayout>
+    </Shell.TitleView>
+    <ContentPage.Content>
+
+        <ScrollView Margin="20,0,20,0" VerticalScrollBarVisibility="Never">
+            <StackLayout HorizontalOptions="FillAndExpand">
+                <StackLayout>
+                    <Frame
+                        Margin="3"
+                        Padding="0"
+                        BackgroundColor="#FBFBFF"
+                        CornerRadius="5"
+                        VerticalOptions="StartAndExpand">
+                        <StackLayout>
+                            <StackLayout
+                                Margin="10,20,10,0"
+                                Orientation="Horizontal"
+                                Spacing="0">
+                                <Label
+                                    FontFamily="ProximaSemiBold"
+                                    FontSize="14"
+                                    Text="Order Number" />
+                                <Label
+                                    FontFamily="ProximaSemiBold"
+                                    FontSize="14"
+                                    HorizontalOptions="EndAndExpand"
+                                    Text="Ordered on" />
+                            </StackLayout>
+                            <StackLayout
+                                Margin="10,0,10,0"
+                                Orientation="Horizontal"
+                                Spacing="0">
+                                <Label
+                                    FontFamily="ProximaSemiBold"
+                                    FontSize="16"
+                                    Text="#1566565644"
+                                    TextColor="Black" />
+                                <Label
+                                    FontFamily="ProximaRegular"
+                                    FontSize="12"
+                                    HorizontalOptions="EndAndExpand"
+                                    Text="July 25 2020 at 05:30 pm"
+                                    TextColor="Black" />
+                            </StackLayout>
+                            <StackLayout
+                                Padding="0"
+                                Orientation="Horizontal"
+                                Spacing="0">
+                                <Image
+                                    Margin="10,10,10,10"
+                                    HeightRequest="120"
+                                    Source="{images:EmbeddedImage NewDuraApp.Images.t_shirt.png}"
+                                    VerticalOptions="CenterAndExpand"
+                                    WidthRequest="90" />
+                                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                                    <StackLayout
+                                        HorizontalOptions="FillAndExpand"
+                                        Orientation="Horizontal"
+                                        Spacing="0">
+                                        <Label
+                                            FontFamily="ProximaSemiBold"
+                                            FontSize="16"
+                                            Text="Men's Fit T-Shirt"
+                                            TextColor="#3D3D3D" />
+                                        <Label
+                                            Margin="0,0,10,0"
+                                            FontFamily="ProximaSemiBold"
+                                            FontSize="16"
+                                            HorizontalOptions="EndAndExpand"
+                                            Text="₱ 200"
+                                            TextColor="#3D3D3D" />
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal">
+                                        <StackLayout Spacing="0">
+                                            <Label
+                                                FontFamily="ProximaRegular"
+                                                FontSize="16"
+                                                TextColor="#3D3D3D">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="Color : " />
+                                                        <Span Text="Red" />
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                            <Label
+                                                FontFamily="ProximaRegular"
+                                                FontSize="16"
+                                                TextColor="#3D3D3D">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="Size : " />
+                                                        <Span Text="M" />
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </StackLayout>
+                            </StackLayout>
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+                <StackLayout Margin="0,10,0,0">
+                    <Frame
+                        Margin="3,3,3,10"
+                        Padding="0"
+                        BackgroundColor="#FBFBFF"
+                        CornerRadius="5"
+                        VerticalOptions="StartAndExpand">
+                        <StackLayout>
+                            <Frame
+                                Margin="20"
+                                Padding="0"
+                                BackgroundColor="#D72625"
+                                CornerRadius="5"
+                                HeightRequest="40">
+                                <Label
+                                    Margin="10,0,0,0"
+                                    FontFamily="ProximaRegular"
+                                    FontSize="14"
+                                    Text="Out for Delivery"
+                                    TextColor="White"
+                                    VerticalOptions="CenterAndExpand" />
+                            </Frame>
+                            <Grid ColumnSpacing="0" RowSpacing="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="10*" />
+                                    <ColumnDefinition Width="90*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="15" />
+                                    <RowDefinition Height="35" />
+                                    <RowDefinition Height="15" />
+                                    <RowDefinition Height="35" />
+                                    <RowDefinition Height="15" />
+                                    <RowDefinition Height="35" />
+                                    <RowDefinition Height="15" />
+                                    <RowDefinition Height="35" />
+                                    <RowDefinition Height="15" />
+                                </Grid.RowDefinitions>
+                                <Frame
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Padding="0"
+                                    BackgroundColor="Transparent"
+                                    BorderColor="#A7A7A7"
+                                    CornerRadius="7.5"
+                                    HeightRequest="15"
+                                    HorizontalOptions="CenterAndExpand"
+                                    VerticalOptions="CenterAndExpand"
+                                    WidthRequest="15">
+                                    <Frame
+                                        Padding="0"
+                                        BackgroundColor="#A7A7A7"
+                                        CornerRadius="5"
+                                        HeightRequest="10"
+                                        HorizontalOptions="CenterAndExpand"
+                                        VerticalOptions="CenterAndExpand"
+                                        WidthRequest="10" />
+                                </Frame>
+                                <StackLayout
+                                    Grid.Row="0"
+                                    Grid.RowSpan="2"
+                                    Grid.Column="1"
+                                    Margin="0"
+                                    Spacing="0">
+                                    <Label
+                                        Margin="5,0,0,0"
+                                        FontFamily="ProximaSemiBold"
+                                        FontSize="16"
+                                        Text="Delivered"
+                                        TextColor="#9E9E9E" />
+
+                                </StackLayout>
+                                <BoxView
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    BackgroundColor="#A7A7A7"
+                                    HorizontalOptions="CenterAndExpand"
+                                    VerticalOptions="FillAndExpand"
+                                    WidthRequest=".5" />
+                                <StackLayout
+                                    Grid.Row="2"
+                                    Grid.RowSpan="2"
+                                    Grid.Column="1"
+                                    Margin="5,0,0,0"
+                                    Spacing="0">
+                                    <Label
+                                        Margin="5,0,0,0"
+                                        FontFamily="ProximaSemiBold"
+                                        FontSize="16"
+                                        Text="Out for Delivery"
+                                        TextColor="#3D3D3D" />
+                                    <Label
+                                        Margin="5,0,5,0"
+                                        FontFamily="ProximaRegular"
+                                        FontSize="10"
+                                        Opacity=".4"
+                                        Text="July, 27 2020 at 05:30 pm"
+                                        TextColor="#3D3D3D" />
+                                </StackLayout>
+                                <Frame
+                                    Grid.Row="2"
+                                    Grid.Column="0"
+                                    Padding="0"
+                                    BackgroundColor="Transparent"
+                                    BorderColor="#D72625"
+                                    CornerRadius="7.5"
+                                    HeightRequest="15"
+                                    HorizontalOptions="CenterAndExpand"
+                                    VerticalOptions="CenterAndExpand"
+                                    WidthRequest="15">
+                                    <Frame
+                                        Padding="0"
+                                        BackgroundColor="#D72625"
+                                        CornerRadius="5"
+                                        HeightRequest="10"
+                                        HorizontalOptions="CenterAndExpand"
+                                        VerticalOptions="CenterAndExpand"
+                                        WidthRequest="10" />
+                                </Frame>
+                                <BoxView
+                                    Grid.Row="3"
+                                    Grid.Column="0"
+                                    BackgroundColor="#D72625"
+                                    HorizontalOptions="CenterAndExpand"
+                                    VerticalOptions="FillAndExpand"
+                                    WidthRequest=".5" />
+                                <StackLayout
+                                    Grid.Row="4"
+                                    Grid.RowSpan="2"
+                                    Grid.Column="1"
+                                    Margin="5,0,0,0"
+                                    Spacing="0">
+                                    <Label
+                                        Margin="5,0,0,0"
+                                        FontFamily="ProximaSemiBold"
+                                        FontSize="16"
+                                        Text="In Transit"
+                                        TextColor="#3D3D3D" />
+                                    <Label
+                                        Margin="5,0,5,0"
+                                        FontFamily="ProximaRegular"
+                                        FontSize="10"
+                                        Opacity=".4"
+                                        Text="July 26, 2020"
+                                        TextColor="#3D3D3D" />
+                                </StackLayout>
+                                <Frame
+                                    Grid.Row="4"
+                                    Grid.Column="0"
+                                    Padding="0"
+                                    BackgroundColor="Transparent"
+                                    BorderColor="#D72625"
+                                    CornerRadius="7.5"
+                                    HeightRequest="15"
+                                    HorizontalOptions="CenterAndExpand"
+                                    VerticalOptions="CenterAndExpand"
+                                    WidthRequest="15">
+                                    <Frame
+                                        Padding="0"
+                                        BackgroundColor="#D72625"
+                                        CornerRadius="5"
+                                        HeightRequest="10"
+                                        HorizontalOptions="CenterAndExpand"
+                                        VerticalOptions="CenterAndExpand"
+                                        WidthRequest="10" />
+                                </Frame>
+                                <BoxView
+                                    Grid.Row="5"
+                                    Grid.Column="0"
+                                    BackgroundColor="#D72625"
+                                    HorizontalOptions="CenterAndExpand"
+                                    VerticalOptions="FillAndExpand"
+                                    WidthRequest=".5" />
+                                <StackLayout
+                                    Grid.Row="6"
+                                    Grid.RowSpan="2"
+                                    Grid.Column="1"
+                                    Margin="5,0,0,0"
+                                    Spacing="0">
+                                    <Label
+                                        Margin="5,0,0,0"
+                                        FontFamily="ProximaSemiBold"
+                                        FontSize="16"
+                                        Text="Dispatched"
+                                        TextColor="#3D3D3D" />
+                                    <Label
+                                        Margin="5,0,5,0"
+                                        FontFamily="ProximaRegular"
+                                        FontSize="10"
+                                        Opacity=".4"
+                                        Text="July 26, 2020"
+                                        TextColor="#3D3D3D" />
+                                </StackLayout>
+                                <Frame
+                                    Grid.Row="6"
+                                    Grid.Column="0"
+                                    Padding="0"
+                                    BackgroundColor="Transparent"
+                                    BorderColor="#D72625"
+                                    CornerRadius="7.5"
+                                    HeightRequest="15"
+                                    HorizontalOptions="CenterAndExpand"
+                                    VerticalOptions="CenterAndExpand"
+                                    WidthRequest="15">
+                                    <Frame
+                                        Padding="0"
+                                        BackgroundColor="#D72625"
+                                        CornerRadius="5"
+                                        HeightRequest="10"
+                                        HorizontalOptions="CenterAndExpand"
+                                        VerticalOptions="CenterAndExpand"
+                                        WidthRequest="10" />
+                                </Frame>
+                                <BoxView
+                                    Grid.Row="7"
+                                    Grid.Column="0"
+                                    BackgroundColor="#D72625"
+                                    HorizontalOptions="CenterAndExpand"
+                                    VerticalOptions="FillAndExpand"
+                                    WidthRequest=".5" />
+                                <Frame
+                                    Grid.Row="8"
+                                    Grid.Column="0"
+                                    Padding="0"
+                                    BackgroundColor="Transparent"
+                                    BorderColor="#D72625"
+                                    CornerRadius="7.5"
+                                    HeightRequest="15"
+                                    HorizontalOptions="CenterAndExpand"
+                                    VerticalOptions="CenterAndExpand"
+                                    WidthRequest="15">
+                                    <Frame
+                                        Padding="0"
+                                        BackgroundColor="#D72625"
+                                        CornerRadius="5"
+                                        HeightRequest="10"
+                                        HorizontalOptions="CenterAndExpand"
+                                        VerticalOptions="CenterAndExpand"
+                                        WidthRequest="10" />
+                                </Frame>
+                                <StackLayout
+                                    Grid.Row="8"
+                                    Grid.RowSpan="2"
+                                    Grid.Column="1"
+                                    Margin="5,0,0,0"
+                                    Spacing="0">
+                                    <Label
+                                        Margin="5,0,0,0"
+                                        FontFamily="ProximaSemiBold"
+                                        FontSize="16"
+                                        Text="Order Confirmed"
+                                        TextColor="#3D3D3D" />
+                                    <Label
+                                        Margin="5,0,5,0"
+                                        FontFamily="ProximaRegular"
+                                        FontSize="10"
+                                        Opacity=".4"
+                                        Text="July 26, 2020"
+                                        TextColor="#3D3D3D" />
+                                </StackLayout>
+                            </Grid>
+                            <Label
+                                Margin="10,10,0,0"
+                                FontFamily="ProximaSemiBold"
+                                FontSize="16"
+                                Text="Delivery Rider Details"
+                                TextColor="Black" />
+
+                            <StackLayout
+                                Margin="10,5"
+                                Orientation="Horizontal"
+                                Spacing="0">
+                                <Frame
+                                    Padding="0"
+                                    BackgroundColor="Transparent"
+                                    CornerRadius="20"
+                                    HeightRequest="40"
+                                    VerticalOptions="CenterAndExpand"
+                                    WidthRequest="40">
+                                    <Image
+                                        HeightRequest="40"
+                                        Source="{images:EmbeddedImage NewDuraApp.Images.profile.png}"
+                                        WidthRequest="40" />
+                                </Frame>
+                                <StackLayout
+                                    Margin="10,0,0,0"
+                                    Spacing="0"
+                                    VerticalOptions="CenterAndExpand">
+                                    <Label
+                                        FontFamily="ProximaSemiBold"
+                                        FontSize="14"
+                                        Text="James Trump"
+                                        TextColor="Black" />
+                                    <Label
+                                        FontFamily="ProximaSemiBold"
+                                        FontSize="10"
+                                        Text="Rider is on the way" />
+
+                                </StackLayout>
+                                <ImageButton
+                                    BackgroundColor="Transparent"
+                                    HeightRequest="35"
+                                    HorizontalOptions="EndAndExpand"
+                                    Source="{images:EmbeddedImage NewDuraApp.Images.chat_driver.png}"
+                                    VerticalOptions="CenterAndExpand"
+                                    WidthRequest="35" />
+                                <ImageButton
+                                    Margin="15,0,10,0"
+                                    BackgroundColor="Transparent"
+                                    Command="{Binding CallNowCommand}"
+                                    HeightRequest="35"
+                                    Source="{images:EmbeddedImage NewDuraApp.Images.call_driver.png}"
+                                    VerticalOptions="CenterAndExpand"
+                                    WidthRequest="35" />
+                            </StackLayout>
+                            <Label
+                                Margin="10,0,0,0"
+                                FontFamily="ProximaSemiBold"
+                                FontSize="16"
+                                Opacity=".8"
+                                Text="Delivery Address"
+                                TextColor="Black" />
+                            <Label
+                                Margin="10,0,0,10"
+                                FontFamily="ProximaSemiBold"
+                                FontSize="16"
+                                Text="16/F Cocobank Building Makati Avenue 1200"
+                                TextColor="Black" />
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+                <Frame
+                    Margin="0,0,0,20"
+                    Padding="10,20"
+                    xct:ShadowEffect.Color="LightGray"
+                    xct:ShadowEffect.OffsetX="1"
+                    xct:ShadowEffect.OffsetY="1"
+                    xct:ShadowEffect.Radius="8"
+                    BackgroundColor="#FBFBFF"
+                    CornerRadius="8"
+                    HasShadow="{OnPlatform Android='True',
+                                           iOS='False'}">
+                    <StackLayout>
+                        <Label
+                            FontFamily="ProximaSemiBold"
+                            FontSize="16"
+                            Opacity=".8"
+                            Text="Payment Details"
+                            TextColor="Black" />
+                        <Grid Margin="0,10,0,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="20" />
+                                <RowDefinition Height="20" />
+                                <RowDefinition Height="20" />
+                                <RowDefinition Height="20" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50*" />
+                                <ColumnDefinition Width="50*" />
+                            </Grid.ColumnDefinitions>
+                            <Label
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                FontFamily="ProximaRegular"
+                                FontSize="16"
+                                Text="Payment Method"
+                                TextColor="#363636" />
+                            <Label
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                FontFamily="ProximaSemiBold"
+                                FontSize="16"
+                                HorizontalOptions="EndAndExpand"
+                                Text="Online"
+                                TextColor="#363636" />
+                            <Label
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                FontFamily="ProximaRegular"
+                                FontSize="16"
+                                Text="Subtotal"
+                                TextColor="#363636" />
+                            <Label
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                FontFamily="ProximaSemiBold"
+                                FontSize="16"
+                                HorizontalOptions="EndAndExpand"
+                                Text="₱13"
+                                TextColor="#363636" />
+                            <Label
+                                Grid.Row="2"
+                                Grid.Column="0"
+                                FontFamily="ProximaRegular"
+                                FontSize="16"
+                                Text="Subtotal"
+                                TextColor="#363636" />
+                            <Label
+                                Grid.Row="2"
+                                Grid.Column="1"
+                                FontFamily="ProximaSemiBold"
+                                FontSize="16"
+                                HorizontalOptions="EndAndExpand"
+                                Text="₱3"
+                                TextColor="#363636" />
+                            <Label
+                                Grid.Row="3"
+                                Grid.Column="0"
+                                FontFamily="ProximaSemiBold"
+                                FontSize="16"
+                                Text="Total"
+                                TextColor="#363636" />
+                            <Label
+                                Grid.Row="3"
+                                Grid.Column="1"
+                                FontFamily="ProximaSemiBold"
+                                FontSize="16"
+                                HorizontalOptions="EndAndExpand"
+                                Text="₱3"
+                                TextColor="#363636" />
+                        </Grid>
+                    </StackLayout>
+                </Frame>
+                <StackLayout
+                    Margin="0,0,0,10"
+                    HorizontalOptions="CenterAndExpand"
+                    Orientation="Horizontal">
+                    <Image
+                        HeightRequest="20"
+                        Source="{images:EmbeddedImage NewDuraApp.Images.call.png}"
+                        WidthRequest="20" />
+                    <Label
+                        Margin="10,0,0,0"
+                        FontFamily="ProximaSemiBold"
+                        FontSize="16"
+                        Text="Call Shop Merchent"
+                        TextColor="#D72625" />
+                </StackLayout>
+                <Button
+                    Margin="0,10,0,20"
+                    BackgroundColor="#211E66"
+                    Command="{Binding GoToMyOrderDuraShop}"
+                    CornerRadius="5"
+                    FontFamily="ProximaRegular"
+                    FontSize="16"
+                    HeightRequest="50"
+                    IsVisible="{Binding GoToMyOrderIsVisible}"
+                    Text="Goto My Orders"
+                    TextColor="White" />
+            </StackLayout>
+        </ScrollView>
+
+    </ContentPage.Content>
+</ContentPage>

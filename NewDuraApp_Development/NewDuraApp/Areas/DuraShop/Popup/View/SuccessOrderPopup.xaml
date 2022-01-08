@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage
+    x:Class="NewDuraApp.Areas.DuraShop.Popup.View.SuccessOrderPopup"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+    xmlns:images="clr-namespace:NewDuraApp.Extensions"
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    BindingContext="{Binding SuccessOrderPopup, Source={StaticResource Locator}}"
+    NavigationPage.HasNavigationBar="False"
+    Shell.NavBarHasShadow="False"
+    Shell.NavBarIsVisible="False"
+    Shell.TabBarIsVisible="False"
+    Visual="Material">
+    <pages:PopupPage.Animation>
+        <animations:ScaleAnimation
+            DurationIn="400"
+            DurationOut="300"
+            EasingIn="SinOut"
+            EasingOut="SinIn"
+            HasBackgroundAnimation="True"
+            PositionIn="Center"
+            PositionOut="Center"
+            ScaleIn="1.2"
+            ScaleOut="0.8" />
+    </pages:PopupPage.Animation>
+    <pages:PopupPage.Content>
+        <yummy:PancakeView
+            Padding="30,20,30,20"
+            BackgroundColor="White"
+            CornerRadius="10"
+            HorizontalOptions="CenterAndExpand"
+            VerticalOptions="CenterAndExpand"
+            WidthRequest="250">
+            <yummy:PancakeView.Border>
+                <yummy:Border Color="WhiteSmoke" />
+            </yummy:PancakeView.Border>
+            <StackLayout>
+                <Image
+                    HeightRequest="40"
+                    HorizontalOptions="CenterAndExpand"
+                    Source="{images:EmbeddedImage NewDuraApp.Images.success.png}"
+                    WidthRequest="40" />
+                <Label
+                    FontFamily="ProximaSemiBold"
+                    FontSize="18"
+                    HorizontalOptions="CenterAndExpand"
+                    HorizontalTextAlignment="Center"
+                    Text="Thank you for your order"
+                    TextColor="#0C9E1A" />
+                <Label
+                    FontFamily="ProximaSemiBold"
+                    FontSize="14"
+                    HorizontalOptions="CenterAndExpand"
+                    HorizontalTextAlignment="Center"
+                    Text="Your order successfully placed!"
+                    TextColor="Black" />
+                <Line
+                    Margin="0,10,0,0"
+                    HorizontalOptions="CenterAndExpand"
+                    Stroke="DarkBlue"
+                    StrokeDashArray="1,1"
+                    StrokeDashOffset="6"
+                    X1="0"
+                    X2="200"
+                    Y1="0"
+                    Y2="0" />
+                <Label
+                    Margin="0,5,0,0"
+                    HorizontalOptions="CenterAndExpand"
+                    HorizontalTextAlignment="Center"
+                    VerticalOptions="CenterAndExpand">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span
+                                FontFamily="ProximaRegular"
+                                FontSize="10"
+                                Text="Your Order no"
+                                TextColor="#928A8A" />
+                            <Span
+                                FontFamily="ProximaSemiBold"
+                                FontSize="14"
+                                Text=" 200145778545"
+                                TextColor="Black" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Line
+                    Margin="0,5,0,0"
+                    HorizontalOptions="CenterAndExpand"
+                    Stroke="DarkBlue"
+                    StrokeDashArray="1,1"
+                    StrokeDashOffset="6"
+                    X1="0"
+                    X2="200"
+                    Y1="0"
+                    Y2="0" />
+                <Button
+                    Margin="10,15,10,30"
+                    Padding="0"
+                    BackgroundColor="#211E66"
+                    Command="{Binding GoToTrackOrderCmd}"
+                    CornerRadius="5"
+                    FontFamily="ProximaRegular"
+                    HeightRequest="40"
+                    Text="Track order"
+                    TextColor="White" />
+            </StackLayout>
+        </yummy:PancakeView>
+    </pages:PopupPage.Content>
+</pages:PopupPage>

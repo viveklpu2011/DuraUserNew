@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="NewDuraApp.Areas.Common.Views.SearchScreen"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:control="clr-namespace:NewDuraApp.Controls"
+    xmlns:images="clr-namespace:NewDuraApp.Extensions"
+    xmlns:translate="clr-namespace:NewDuraApp.Resources"
+    BindingContext="{Binding SearchScreen, Source={StaticResource Locator}}"
+    NavigationPage.HasBackButton="False"
+    NavigationPage.HasNavigationBar="False"
+    Shell.NavBarHasShadow="False"
+    Shell.NavBarIsVisible="False"
+    Shell.TabBarIsVisible="False"
+    Visual="Material">
+    <ContentPage.Content>
+        <Grid Margin="20,20,20,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <StackLayout>
+                <Grid Margin="0,10,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="85*" />
+                        <ColumnDefinition Width="15*" />
+                    </Grid.ColumnDefinitions>
+                    <Frame
+                        Grid.Column="0"
+                        Margin="2"
+                        Padding="8,0"
+                        HeightRequest="40">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding GoToSearchCmd}" />
+                        </Frame.GestureRecognizers>
+                        <Grid ColumnDefinitions="14,*" ColumnSpacing="5">
+                            <Image
+                                HeightRequest="14"
+                                Source="{images:EmbeddedImage NewDuraApp.Images.search_product_placeholder.png}"
+                                WidthRequest="14" />
+                            <control:CustomEntry
+                                Grid.Column="1"
+                                FontFamily="ProximaRegular"
+                                FontSize="14"
+                                InputTransparent="True"
+                                Placeholder="{translate:Translate Search_Restaurant}"
+                                PlaceholderColor="{StaticResource PlaceholderColor}"
+                                TextColor="Black"
+                                VerticalOptions="Center" />
+                        </Grid>
+                    </Frame>
+                    <ImageButton
+                        Grid.Column="1"
+                        Margin="0,5,10,0"
+                        BackgroundColor="Transparent"
+                        Command="{Binding GoToDuraShop}"
+                        HeightRequest="25"
+                        HorizontalOptions="EndAndExpand"
+                        Source="{images:EmbeddedImage NewDuraApp.Images.close_circle.png}"
+                        VerticalOptions="CenterAndExpand"
+                        WidthRequest="25" />
+                </Grid>
+            </StackLayout>
+            <StackLayout Grid.Row="1" Margin="0,10,0,0">
+                <Label
+                    FontFamily="ProximaRegular"
+                    FontSize="14"
+                    Text="Recent Searched"
+                    TextColor="#7C7C7E" />
+                <Label
+                    FontFamily="ProximaSemiBold"
+                    FontSize="14"
+                    Text="Men's Fit T-Shirt"
+                    TextColor="Black" />
+                <Label
+                    FontFamily="ProximaSemiBold"
+                    FontSize="14"
+                    Text="Regrigerator"
+                    TextColor="Black" />
+                <Label
+                    FontFamily="ProximaSemiBold"
+                    FontSize="14"
+                    Text="Men's &amp; Boy's Watch"
+                    TextColor="Black" />
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,1288 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="About" xml:space="preserve">
+    <value>Tungkol sa</value>
+  </data>
+  <data name="About_Us" xml:space="preserve">
+    <value>Tungkol sa atin</value>
+  </data>
+  <data name="Account_Type" xml:space="preserve">
+    <value>Uri ng Account</value>
+  </data>
+  <data name="Add" xml:space="preserve">
+    <value>Idagdag pa</value>
+  </data>
+  <data name="Additiontal_Service" xml:space="preserve">
+    <value>Serbisyo ng Additiontal</value>
+  </data>
+  <data name="Address_are_mandatory" xml:space="preserve">
+    <value>Mandatory ang address</value>
+  </data>
+  <data name="Address_removed" xml:space="preserve">
+    <value>Inalis ang address</value>
+  </data>
+  <data name="Address_Updated" xml:space="preserve">
+    <value>Na-update ang Address</value>
+  </data>
+  <data name="Add_Item_Photo" xml:space="preserve">
+    <value>Magdagdag ng Larawan ng Item</value>
+  </data>
+  <data name="Add_More_Details" xml:space="preserve">
+    <value>Magdagdag ng Higit pang Mga Detalye</value>
+  </data>
+  <data name="Add_New_Address" xml:space="preserve">
+    <value>Magdagdag ng bagong address</value>
+  </data>
+  <data name="Add_New_Card" xml:space="preserve">
+    <value>Magdagdag ng Bagong Card</value>
+  </data>
+  <data name="Add_Pickup_Location" xml:space="preserve">
+    <value>Magdagdag ng Lokasyon ng pickup</value>
+  </data>
+  <data name="Add_Stop_Location" xml:space="preserve">
+    <value>Magdagdag ng Lokasyon ng Itigil</value>
+  </data>
+  <data name="Add_Tip_to_Driver" xml:space="preserve">
+    <value>Magdagdag ng Tip sa Driver</value>
+  </data>
+  <data name="Add_Where_To_Final_Drop_Location" xml:space="preserve">
+    <value>Idagdag Kung Saan (Final Drop) Lokasyon</value>
+  </data>
+  <data name="Alert" xml:space="preserve">
+    <value>Alerto</value>
+  </data>
+  <data name="All_fields_are_mandatory" xml:space="preserve">
+    <value>* Lahat ng mga patlang ay sapilitan.</value>
+  </data>
+  <data name="Already_an_User" xml:space="preserve">
+    <value>Gumagamit na ba?</value>
+  </data>
+  <data name="Already_Exist" xml:space="preserve">
+    <value>Umiiral na</value>
+  </data>
+  <data name="Amount" xml:space="preserve">
+    <value>Halaga</value>
+  </data>
+  <data name="API_Error" xml:space="preserve">
+    <value>Error sa API</value>
+  </data>
+  <data name="Apply" xml:space="preserve">
+    <value>Mag-apply</value>
+  </data>
+  <data name="Are_you_sure_you_want_to_logout" xml:space="preserve">
+    <value>Sigurado ka bang nais mong mag-logout?</value>
+  </data>
+  <data name="Are_you_sure_you_want_to_logout_from_app" xml:space="preserve">
+    <value>Sigurado ka bang nais mong mag-logout mula sa app?</value>
+  </data>
+  <data name="Available_Balance" xml:space="preserve">
+    <value>Magagamit na Balanse</value>
+  </data>
+  <data name="Available_Offer" xml:space="preserve">
+    <value>Magagamit na Alok</value>
+  </data>
+  <data name="Available_offers" xml:space="preserve">
+    <value>Magagamit na mga alok</value>
+  </data>
+  <data name="Back_Confirm_Order" xml:space="preserve">
+    <value>Bumalik at Kumpirmahin ang Order</value>
+  </data>
+  <data name="Back_Document_1_photo" xml:space="preserve">
+    <value>Bumalik sa Dokumento 1 larawan</value>
+  </data>
+  <data name="Back_Document_2_Photo" xml:space="preserve">
+    <value>Balik sa Dokumento 2 Larawan</value>
+  </data>
+  <data name="Back_side_id_card_photo" xml:space="preserve">
+    <value>Larawan sa likod ng card ng id</value>
+  </data>
+  <data name="Balance" xml:space="preserve">
+    <value>Balanse</value>
+  </data>
+  <data name="BasePrice" xml:space="preserve">
+    <value>Batayang Presyo</value>
+  </data>
+  <data name="Base_Fare" xml:space="preserve">
+    <value>Pinagbabasehan na pamasahe</value>
+  </data>
+  <data name="Base_Price" xml:space="preserve">
+    <value>Batayang Presyo (</value>
+  </data>
+  <data name="Block" xml:space="preserve">
+    <value>Harangan:</value>
+  </data>
+  <data name="Block_M_Reyes_St_Bangka_Makati_City" xml:space="preserve">
+    <value>Block: 1976 M Reyes St Bangka Makati City</value>
+  </data>
+  <data name="Business_Account" xml:space="preserve">
+    <value>Account sa Negosyo</value>
+  </data>
+  <data name="By_clicking_on_send_OTP_button_you_get_4_digit_OTP_to_verify_that_you_are_real" xml:space="preserve">
+    <value>Sa pamamagitan ng pag-click sa magpadala ng pindutan ng OTP, makakakuha ka ng isang 4 na digit na OTP upang i-verify na totoo ka</value>
+  </data>
+  <data name="By_Email" xml:space="preserve">
+    <value>Gamit ang email</value>
+  </data>
+  <data name="By_Phone" xml:space="preserve">
+    <value>Sa telepono</value>
+  </data>
+  <data name="Camera_Permission" xml:space="preserve">
+    <value>Pahintulot sa Camera</value>
+  </data>
+  <data name="Camera_Permission_Required" xml:space="preserve">
+    <value>Kinakailangan ang Pahintulot ng Camera</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Kanselahin</value>
+  </data>
+  <data name="Cancelled_OrderCancelled" xml:space="preserve">
+    <value>Kinansela-OrderCancelled</value>
+  </data>
+  <data name="Capt_M_Reyes_Makati_Metro_Manila_Phillipnes" xml:space="preserve">
+    <value>1976 Capt. M. Reyes, Makati, Metro Manila Phillipnes</value>
+  </data>
+  <data name="Card_Holder_Name" xml:space="preserve">
+    <value>Pangalan ng May-ari ng Card</value>
+  </data>
+  <data name="Card_Number" xml:space="preserve">
+    <value>Numero ng card</value>
+  </data>
+  <data name="Card_Removed" xml:space="preserve">
+    <value>Inalis ang Card</value>
+  </data>
+  <data name="Card_Updated" xml:space="preserve">
+    <value>Nai-update ang Card</value>
+  </data>
+  <data name="Cash_On_Delivery" xml:space="preserve">
+    <value>Cash Sa Paghahatid</value>
+  </data>
+  <data name="Change_Password" xml:space="preserve">
+    <value>Palitan ANG password</value>
+  </data>
+  <data name="ChooseLocation" xml:space="preserve">
+    <value>Piliin ang Lokasyon</value>
+  </data>
+  <data name="Choose_Status" xml:space="preserve">
+    <value>Piliin ang Katayuan</value>
+  </data>
+  <data name="City" xml:space="preserve">
+    <value>Lungsod</value>
+  </data>
+  <data name="Click_here_to_add_photo" xml:space="preserve">
+    <value>Mag-click dito upang magdagdag ng larawan</value>
+  </data>
+  <data name="Completed_OrderDelivered" xml:space="preserve">
+    <value>Nakumpleto-OrderDelivered</value>
+  </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>Kumpirmahin</value>
+  </data>
+  <data name="ConfirmPassword" xml:space="preserve">
+    <value>Kumpirmahin ang Password</value>
+  </data>
+  <data name="Confirm_New_password" xml:space="preserve">
+    <value>Kumpirmahin ang bagong password</value>
+  </data>
+  <data name="Confirm_Password" xml:space="preserve">
+    <value>Kumpirmahin ang password ay hindi tugma sa password.</value>
+  </data>
+  <data name="Connected" xml:space="preserve">
+    <value>Nakakonekta</value>
+  </data>
+  <data name="contacts" xml:space="preserve">
+    <value>mga contact</value>
+  </data>
+  <data name="Contact_Number" xml:space="preserve">
+    <value>Numero ng Pakikipag-ugnay</value>
+  </data>
+  <data name="Contact_Permission" xml:space="preserve">
+    <value>Pahintulot sa Pakikipag-ugnay</value>
+  </data>
+  <data name="Contact_Person" xml:space="preserve">
+    <value>Makipag-ugnay sa Tao</value>
+  </data>
+  <data name="Contact_person_name" xml:space="preserve">
+    <value>Makipag-ugnay sa pangalan ng tao</value>
+  </data>
+  <data name="Continue" xml:space="preserve">
+    <value>Magpatuloy</value>
+  </data>
+  <data name="Coupon" xml:space="preserve">
+    <value>Kupon:</value>
+  </data>
+  <data name="Coupon_Discount" xml:space="preserve">
+    <value>Discount ng Kupon:</value>
+  </data>
+  <data name="Create_Password" xml:space="preserve">
+    <value>Gumawa ng password</value>
+  </data>
+  <data name="Discounted_Amount" xml:space="preserve">
+    <value>Dami ng Discounted</value>
+  </data>
+  <data name="Distance" xml:space="preserve">
+    <value>Distansya</value>
+  </data>
+  <data name="Dist_Travelled_Amount" xml:space="preserve">
+    <value>Ilayo Naglakbay na Halaga</value>
+  </data>
+  <data name="Document_1_back_image_removed" xml:space="preserve">
+    <value>Inalis ang imahe ng pabalik na dokumento 1.</value>
+  </data>
+  <data name="Document_1_front_image_removed" xml:space="preserve">
+    <value>Inalis ang unang 1 imahe ng dokumento.</value>
+  </data>
+  <data name="Document_2_back_image_removed" xml:space="preserve">
+    <value>Inalis ang imahe ng pabalik na dokumento 2.</value>
+  </data>
+  <data name="Document_2_front_image_removed" xml:space="preserve">
+    <value>Inalis ang unang imahe ng dokumento 2.</value>
+  </data>
+  <data name="Done" xml:space="preserve">
+    <value>Tapos na</value>
+  </data>
+  <data name="Do_you_really_want_to_cancel" xml:space="preserve">
+    <value>Gusto mo ba talagang magkansela?</value>
+  </data>
+  <data name="Do_you_want_to_cancel_your_order" xml:space="preserve">
+    <value>Nais mo bang kanselahin ang iyong order "</value>
+  </data>
+  <data name="Driver_arrived" xml:space="preserve">
+    <value>Dumating ang driver</value>
+  </data>
+  <data name="Driver_License_back_photo" xml:space="preserve">
+    <value>Larawan sa likod ng Lisensya ng Driver</value>
+  </data>
+  <data name="Driver_License_front_photo" xml:space="preserve">
+    <value>Larawan sa harap ng Lisensya ng Driver</value>
+  </data>
+  <data name="Driving_license_back_image_removed" xml:space="preserve">
+    <value>Inalis ang imahe ng pabalik na lisensya sa pagmamaneho</value>
+  </data>
+  <data name="Driving_license_front_image_removed" xml:space="preserve">
+    <value>Inalis ang imahen sa harap ng lisensya sa pagmamaneho</value>
+  </data>
+  <data name="Drop_off_Final_Drop_Location" xml:space="preserve">
+    <value>I-drop off (Pangwakas na Lokasyon ng Pag-drop) ...</value>
+  </data>
+  <data name="DuraDrive_Chat_with_Admin" xml:space="preserve">
+    <value>DuraDrive - Chat with Admin</value>
+  </data>
+  <data name="DuraEatsDesc" xml:space="preserve">
+    <value>Kasosyo sa Dura Eats at maabot ang mas maraming customer kaysa dati.</value>
+  </data>
+  <data name="DuraEatsHeading" xml:space="preserve">
+    <value>Kumakain si Dura</value>
+  </data>
+  <data name="DuraExpressDesc" xml:space="preserve">
+    <value>Karanasan ang pinakamabilis at pinaka-abot-kayang serbisyo sa paghahatid ng pang-araw-araw na gamit lamang sa Dura Express.</value>
+  </data>
+  <data name="DuraExpressHeading" xml:space="preserve">
+    <value>Dura Express</value>
+  </data>
+  <data name="DuraShopDesc" xml:space="preserve">
+    <value>Kumonekta sa iyong tapat na fan base at mamangha sa kung paano namin bibigyan ng kapangyarihan ang iyong shop at maging nasa tuktok.</value>
+  </data>
+  <data name="DuraShopHeading" xml:space="preserve">
+    <value>Dura Shop</value>
+  </data>
+  <data name="DuraShops" xml:space="preserve">
+    <value>Mga tindahan ng dura</value>
+  </data>
+  <data name="Duration" xml:space="preserve">
+    <value>Tagal:</value>
+  </data>
+  <data name="Dura_Drive_ReferralCode" xml:space="preserve">
+    <value>Code ng Referral ng Dura Drive</value>
+  </data>
+  <data name="Dura_eat" xml:space="preserve">
+    <value>Dura kumain</value>
+  </data>
+  <data name="Edit_Info" xml:space="preserve">
+    <value>I-edit ang Impormasyon</value>
+  </data>
+  <data name="Edit_Location" xml:space="preserve">
+    <value>I-edit ang Lokasyon</value>
+  </data>
+  <data name="Edit_Photo" xml:space="preserve">
+    <value>Ayusin ang larawan</value>
+  </data>
+  <data name="EmailAddress" xml:space="preserve">
+    <value>Email Address *</value>
+  </data>
+  <data name="Enable_all_to_push_notifications" xml:space="preserve">
+    <value>Paganahin ang lahat upang itulak ang mga notification</value>
+  </data>
+  <data name="Enter Promocode" xml:space="preserve">
+    <value>I-Enter ang promo code</value>
+  </data>
+  <data name="Enter the otp" xml:space="preserve">
+    <value>Ipasok ang otp</value>
+  </data>
+  <data name="EnterLocation" xml:space="preserve">
+    <value>Ipasok ang Lokasyon</value>
+  </data>
+  <data name="EnterPickup" xml:space="preserve">
+    <value>Ipasok ang pickup</value>
+  </data>
+  <data name="Enter_any_referral_code_if_you_have_any" xml:space="preserve">
+    <value>Magpasok ng anumang referral code kung mayroon ka</value>
+  </data>
+  <data name="Enter_current_password" xml:space="preserve">
+    <value>Ipasok ang kasalukuyang password</value>
+  </data>
+  <data name="Enter_New_Phone_Number" xml:space="preserve">
+    <value>Ipasok ang Bagong Numero ng Telepono</value>
+  </data>
+  <data name="Enter_referral_code" xml:space="preserve">
+    <value>Ipasok ang referral code</value>
+  </data>
+  <data name="Enter_the_address" xml:space="preserve">
+    <value>Ipasok ang address</value>
+  </data>
+  <data name="Enter_the_amount" xml:space="preserve">
+    <value>Ipasok ang halaga</value>
+  </data>
+  <data name="Enter_the_drop_off_address_information" xml:space="preserve">
+    <value>Ipasok ang drop-off na impormasyon sa address</value>
+  </data>
+  <data name="Enter_the_OTP_we_sent_on" xml:space="preserve">
+    <value>Ipasok ang OTP na ipinadala namin</value>
+  </data>
+  <data name="Enter_the_pickup_address" xml:space="preserve">
+    <value>Ipasok ang address ng pickup</value>
+  </data>
+  <data name="Enter_the_pickup_address_information" xml:space="preserve">
+    <value>Ipasok ang impormasyon sa pickup address</value>
+  </data>
+  <data name="Enter_the_reason_to_cancel_this_order" xml:space="preserve">
+    <value>Ipasok ang dahilan upang kanselahin ang order na ito</value>
+  </data>
+  <data name="Enter_the_stop_address" xml:space="preserve">
+    <value>Ipasok ang stop address</value>
+  </data>
+  <data name="Enter_tip_manually" xml:space="preserve">
+    <value>Manu-manong ipasok ang tip</value>
+  </data>
+  <data name="Enter_your_drop_address" xml:space="preserve">
+    <value>Ipasok ang iyong drop address *</value>
+  </data>
+  <data name="Error_in_updating_records" xml:space="preserve">
+    <value>Error sa pag-update ng mga tala.</value>
+  </data>
+  <data name="Error_on_removing_address" xml:space="preserve">
+    <value>Error sa pag-alis ng address</value>
+  </data>
+  <data name="error_on_uploading_image_try_again" xml:space="preserve">
+    <value>error sa pag-upload ng imahe, subukang muli</value>
+  </data>
+  <data name="Exp_date" xml:space="preserve">
+    <value>Petsa ng exp (09/2022)</value>
+  </data>
+  <data name="feature_coming_soon" xml:space="preserve">
+    <value>paparating na ang tampok</value>
+  </data>
+  <data name="Fee_breakdown_details" xml:space="preserve">
+    <value>Mga detalye sa pagkasira ng bayad</value>
+  </data>
+  <data name="Finding_Driver" xml:space="preserve">
+    <value>Paghahanap ng Driver</value>
+  </data>
+  <data name="FirstName" xml:space="preserve">
+    <value>Pangalan*</value>
+  </data>
+  <data name="First_Id_Proof" xml:space="preserve">
+    <value>Katunayan ng First Id</value>
+  </data>
+  <data name="ForgotPassword" xml:space="preserve">
+    <value>Nakalimutan ang password?</value>
+  </data>
+  <data name="Forgot_Password" xml:space="preserve">
+    <value>Nakalimutan ang password</value>
+  </data>
+  <data name="Front_Document_1_Photo" xml:space="preserve">
+    <value>Harap ng Dokumento 1 Larawan</value>
+  </data>
+  <data name="Front_Document_2_Photo" xml:space="preserve">
+    <value>Harap ng Dokumento 2 Larawan</value>
+  </data>
+  <data name="Front_side_id_card_photo" xml:space="preserve">
+    <value>Larawan sa harap ng card ng id</value>
+  </data>
+  <data name="GetOTP" xml:space="preserve">
+    <value>Kumuha ng OTP</value>
+  </data>
+  <data name="GetStarted" xml:space="preserve">
+    <value>Magsimula</value>
+  </data>
+  <data name="Get_OTP_on_Email" xml:space="preserve">
+    <value>Kumuha ng OTP sa Email</value>
+  </data>
+  <data name="Get_OTP_on_Phone" xml:space="preserve">
+    <value>Kumuha ng OTP sa Telepono</value>
+  </data>
+  <data name="GivePermission" xml:space="preserve">
+    <value>Magbigay ng pahintulot</value>
+  </data>
+  <data name="Give_Permission" xml:space="preserve">
+    <value>Magbigay ng pahintulot</value>
+  </data>
+  <data name="Google_map_is_not_able_to_pick_address_currently" xml:space="preserve">
+    <value>Ang Google map ay hindi maaaring pumili ng address sa kasalukuyan, subukang muli pagkalipas ng ilang oras.</value>
+  </data>
+  <data name="Have_Coupon" xml:space="preserve">
+    <value>May Kupon?</value>
+  </data>
+  <data name="Help_Center" xml:space="preserve">
+    <value>Help Center</value>
+  </data>
+  <data name="History" xml:space="preserve">
+    <value>Kasaysayan</value>
+  </data>
+  <data name="Hi_my_name_is" xml:space="preserve">
+    <value>Kumusta, ang pangalan ko</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Bahay</value>
+  </data>
+  <data name="Hope_you_are_satisfied_by_our_services" xml:space="preserve">
+    <value>Inaasahan kong nasiyahan ka sa aming mga serbisyo Inaasahan kong nasiyahan ka sa aming mga serbisyo</value>
+  </data>
+  <data name="Id_card_back_image_removed" xml:space="preserve">
+    <value>Inalis ang imahe ng pabalik na Id card</value>
+  </data>
+  <data name="Id_card_front_image_removed" xml:space="preserve">
+    <value>Inalis ang imaheng pang-id card</value>
+  </data>
+  <data name="Invite_now" xml:space="preserve">
+    <value>Anyayahan mo na</value>
+  </data>
+  <data name="in_cash_when_delivered" xml:space="preserve">
+    <value>sa cash kapag naihatid</value>
+  </data>
+  <data name="Issued_by_Driver" xml:space="preserve">
+    <value>Inisyu ng Driver</value>
+  </data>
+  <data name="Issued_to" xml:space="preserve">
+    <value>Inisyu sa</value>
+  </data>
+  <data name="I_Accept" xml:space="preserve">
+    <value>Tinatanggap ko ang</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Wika</value>
+  </data>
+  <data name="LastName" xml:space="preserve">
+    <value>Huling pangalan*</value>
+  </data>
+  <data name="Later" xml:space="preserve">
+    <value>Mamaya</value>
+  </data>
+  <data name="Linked" xml:space="preserve">
+    <value>Naka-link</value>
+  </data>
+  <data name="Link_Social_Account" xml:space="preserve">
+    <value>I-link ang Social Account</value>
+  </data>
+  <data name="Live_Tracking_Link" xml:space="preserve">
+    <value>Link sa Live na Pagsubaybay</value>
+  </data>
+  <data name="locations" xml:space="preserve">
+    <value>lokasyon</value>
+  </data>
+  <data name="Location_not_found" xml:space="preserve">
+    <value>Hindi nahanap ang lokasyon</value>
+  </data>
+  <data name="Location_not_updated_Dura_Server_down" xml:space="preserve">
+    <value>Hindi na-update ang lokasyon! Bumaba ang DuraServer</value>
+  </data>
+  <data name="Location_Permission" xml:space="preserve">
+    <value>Pahintulot sa Lokasyon</value>
+  </data>
+  <data name="Location_service_not_enabled" xml:space="preserve">
+    <value>Hindi pinagana ang serbisyo sa lokasyon</value>
+  </data>
+  <data name="Location_updated_successfully" xml:space="preserve">
+    <value>matagumpay na na-update ang lokasyon</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Mag log in</value>
+  </data>
+  <data name="LoginSuccessful" xml:space="preserve">
+    <value>Matagumpay ang pag-login</value>
+  </data>
+  <data name="LoginWithEmail" xml:space="preserve">
+    <value>Mag-login Sa Email</value>
+  </data>
+  <data name="LoginWithPhoneNumber" xml:space="preserve">
+    <value>Pag-login Sa Numero ng Telepono</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Pag-logout</value>
+  </data>
+  <data name="Make_It_Default" xml:space="preserve">
+    <value>Gawin itong Default</value>
+  </data>
+  <data name="Map_Page" xml:space="preserve">
+    <value>Pahina ng Mapa</value>
+  </data>
+  <data name="Mark_as_Read" xml:space="preserve">
+    <value>Markahan bilang nabasa</value>
+  </data>
+  <data name="max_length_100" xml:space="preserve">
+    <value>haba ng 100</value>
+  </data>
+  <data name="MobileNumber" xml:space="preserve">
+    <value>Numero ng Mobile</value>
+  </data>
+  <data name="Multi_node_Surcharge" xml:space="preserve">
+    <value>Multi-node Surrarge</value>
+  </data>
+  <data name="My_Address" xml:space="preserve">
+    <value>Ang aking address</value>
+  </data>
+  <data name="My_Orders" xml:space="preserve">
+    <value>Ang Aking Mga Order</value>
+  </data>
+  <data name="My_Profile" xml:space="preserve">
+    <value>Ang Aking Mga Order</value>
+  </data>
+  <data name="My_Saved_Address" xml:space="preserve">
+    <value>Ang Nai-save kong Address</value>
+  </data>
+  <data name="Need_to_access_your_camera_so_that_you_can_upload_your_profile_picture_and_other_documents" xml:space="preserve">
+    <value>Kailangang i-access ang iyong camera upang ma-upload mo ang iyong larawan sa profile at iba pang mga dokumento</value>
+  </data>
+  <data name="Need_to_access_your_gallery_so_that_you_can_easily_upload_your_documents" xml:space="preserve">
+    <value>Kailangang i-access ang iyong gallery upang madali mong mai-upload ang iyong mga dokumento</value>
+  </data>
+  <data name="Newhere" xml:space="preserve">
+    <value>Bago dito?</value>
+  </data>
+  <data name="NewPassword" xml:space="preserve">
+    <value>Bagong Password</value>
+  </data>
+  <data name="New_Address_Added" xml:space="preserve">
+    <value>Naidagdag ang Bagong Address</value>
+  </data>
+  <data name="New_Card_Added" xml:space="preserve">
+    <value>Naidagdag ang Bagong Card</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Susunod</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>Hindi</value>
+  </data>
+  <data name="NoInternet" xml:space="preserve">
+    <value>Mangyaring Suriin ang iyong Koneksyon sa Internet.</value>
+  </data>
+  <data name="Notification" xml:space="preserve">
+    <value>Pag-abiso</value>
+  </data>
+  <data name="Notifications" xml:space="preserve">
+    <value>Mga Abiso</value>
+  </data>
+  <data name="Not_Connected" xml:space="preserve">
+    <value>Hindi konektado</value>
+  </data>
+  <data name="Not_connected_to_internet" xml:space="preserve">
+    <value>Hindi konektado sa internet</value>
+  </data>
+  <data name="Not_Linked" xml:space="preserve">
+    <value>Hindi Naka-link</value>
+  </data>
+  <data name="No_Additional_Service_available" xml:space="preserve">
+    <value>Walang Karagdagang Serbisyo na magagamit *</value>
+  </data>
+  <data name="No_Address_saved_to_show" xml:space="preserve">
+    <value>Walang i-save ang Address upang maipakita</value>
+  </data>
+  <data name="No_Data_Found" xml:space="preserve">
+    <value>Walang Nahanap na Data</value>
+  </data>
+  <data name="No_driver_location_link_found" xml:space="preserve">
+    <value>Walang nahanap na link ng lokasyon ng driver</value>
+  </data>
+  <data name="No_more_record_found" xml:space="preserve">
+    <value>Wala nang nakitang record!</value>
+  </data>
+  <data name="No_Notifications_data" xml:space="preserve">
+    <value>Walang data ng Mga Abiso</value>
+  </data>
+  <data name="No_offers_available" xml:space="preserve">
+    <value>Walang magagamit na mga alok</value>
+  </data>
+  <data name="No_promo_code_available" xml:space="preserve">
+    <value>Walang magagamit na promo code</value>
+  </data>
+  <data name="No_promo_code_offer_available_for_you" xml:space="preserve">
+    <value>Walang magagamit na alok na promo code para sa iyo</value>
+  </data>
+  <data name="No_records_found" xml:space="preserve">
+    <value>Walang nahanap na talaan</value>
+  </data>
+  <data name="No_saved_address" xml:space="preserve">
+    <value>Walang Nai-save na Address</value>
+  </data>
+  <data name="No_services_selected" xml:space="preserve">
+    <value>No services selected</value>
+  </data>
+  <data name="Number" xml:space="preserve">
+    <value>Bilang</value>
+  </data>
+  <data name="Offers_Promo" xml:space="preserve">
+    <value>Mga Alok at Promo</value>
+  </data>
+  <data name="Offer_Promocode_Apply" xml:space="preserve">
+    <value>Nalalapat ang alok at Promocode</value>
+  </data>
+  <data name="Ok" xml:space="preserve">
+    <value>Sige</value>
+  </data>
+  <data name="Okay_Place_Order" xml:space="preserve">
+    <value>Okay, Place Order</value>
+  </data>
+  <data name="Ongoing_OrderPicked" xml:space="preserve">
+    <value>Nagpapatuloy-OrderPick</value>
+  </data>
+  <data name="Ordered_on" xml:space="preserve">
+    <value>Umorder sa </value>
+  </data>
+  <data name="Orders_purchased" xml:space="preserve">
+    <value>Mga Order At binili</value>
+  </data>
+  <data name="Order_Details" xml:space="preserve">
+    <value>Mga Detalye ng Order</value>
+  </data>
+  <data name="Order_Number" xml:space="preserve">
+    <value>Numero ng order </value>
+  </data>
+  <data name="Order_Status" xml:space="preserve">
+    <value>Katayuan ng Order</value>
+  </data>
+  <data name="Or_Sign_in_With" xml:space="preserve">
+    <value>O Mag-sign in Gamit</value>
+  </data>
+  <data name="Our_Service_are_currently_not_available_in_this_city_We_will_notify_you_as_soon_as_we_launch" xml:space="preserve">
+    <value>Ang aming Serbisyo ay kasalukuyang hindi magagamit sa lungsod na ito. Aabisuhan ka namin sa lalong madaling ilunsad.</value>
+  </data>
+  <data name="Over_Mileage" xml:space="preserve">
+    <value>Over Mileage (</value>
+  </data>
+  <data name="Password_must_be_between_8_to_15 characters" xml:space="preserve">
+    <value>Ang password ay dapat na nasa pagitan ng 8 hanggang 15 na mga character, dapat din itong maglaman ng atleast 1 maliit na letra, 1 uppercase, 1 espesyal na character at 1 digit.</value>
+  </data>
+  <data name="Password_Reset_Successfully" xml:space="preserve">
+    <value>Matagumpay na I-reset ang Password</value>
+  </data>
+  <data name="Payment_Method" xml:space="preserve">
+    <value>Paraan ng Pagbayad</value>
+  </data>
+  <data name="Pending_OrderNotPickedYet" xml:space="preserve">
+    <value>Nakabinbin na OrderNotPickedYet</value>
+  </data>
+  <data name="PersonalDetails" xml:space="preserve">
+    <value>Personal na detalye</value>
+  </data>
+  <data name="Personal_Account" xml:space="preserve">
+    <value>Personal na Account</value>
+  </data>
+  <data name="Personal_Account_Documents" xml:space="preserve">
+    <value>Mga Dokumento ng Personal na Account</value>
+  </data>
+  <data name="Phone" xml:space="preserve">
+    <value>Telepono</value>
+  </data>
+  <data name="PhoneNumber" xml:space="preserve">
+    <value>Numero ng telepono*</value>
+  </data>
+  <data name="Phone_number_updated_successfully" xml:space="preserve">
+    <value>Matagumpay na na-update ang numero ng telepono</value>
+  </data>
+  <data name="PickupSchedule" xml:space="preserve">
+    <value>Iskedyul ng Pagkuha</value>
+  </data>
+  <data name="Pickup_Location" xml:space="preserve">
+    <value>Lokasyon ng pickup</value>
+  </data>
+  <data name="Pick_from_camera" xml:space="preserve">
+    <value>Pumili mula sa camera</value>
+  </data>
+  <data name="Pick_from_gallery" xml:space="preserve">
+    <value>Pumili mula sa gallery</value>
+  </data>
+  <data name="Please_check_your_Phone_number_It_may_be_not_reachable" xml:space="preserve">
+    <value>Mangyaring suriin ang iyong numero ng Telepono. Maaaring hindi ito maabot.</value>
+  </data>
+  <data name="Please_enter_address_1" xml:space="preserve">
+    <value>Mangyaring ipasok ang address 1</value>
+  </data>
+  <data name="Please_enter_address_2" xml:space="preserve">
+    <value>Mangyaring ipasok ang address 2</value>
+  </data>
+  <data name="Please_enter_block_address" xml:space="preserve">
+    <value>Mangyaring ipasok ang block address</value>
+  </data>
+  <data name="Please_enter_Card_Holder_Name" xml:space="preserve">
+    <value>Mangyaring ipasok ang Pangalan ng May-ari ng Card</value>
+  </data>
+  <data name="Please_enter_Card_Number" xml:space="preserve">
+    <value>Mangyaring ipasok ang Numero ng Card</value>
+  </data>
+  <data name="Please_enter_contact_person_name" xml:space="preserve">
+    <value>Mangyaring ipasok ang pangalan ng contact person</value>
+  </data>
+  <data name="Please_enter_Expiry_Date" xml:space="preserve">
+    <value>Mangyaring ipasok ang Petsa ng Pag-expire</value>
+  </data>
+  <data name="Please_enter_home_address" xml:space="preserve">
+    <value>Mangyaring ipasok ang address ng bahay</value>
+  </data>
+  <data name="Please_enter_minimum_10_digit_phone_number" xml:space="preserve">
+    <value>Mangyaring ipasok ang minimum na 10 digit na numero ng telepono.</value>
+  </data>
+  <data name="Please_enter_name" xml:space="preserve">
+    <value>Mangyaring ipasok ang pangalan</value>
+  </data>
+  <data name="Please_enter_promo_code_to_get_offer" xml:space="preserve">
+    <value>Mangyaring ipasok ang promo code upang makakuha ng alok</value>
+  </data>
+  <data name="Please_enter_reason" xml:space="preserve">
+    <value>Mangyaring ipasok ang dahilan</value>
+  </data>
+  <data name="Please_enter_Security_Code" xml:space="preserve">
+    <value>Mangyaring ipasok ang Security Code</value>
+  </data>
+  <data name="Please_enter_the_referral_code" xml:space="preserve">
+    <value>Mangyaring ipasok ang referral code</value>
+  </data>
+  <data name="Please_enter_user_full_name" xml:space="preserve">
+    <value>Mangyaring ipasok ang buong pangalan ng gumagamit.</value>
+  </data>
+  <data name="Please_enter_valid_amount" xml:space="preserve">
+    <value>Mangyaring ipasok ang wastong halaga</value>
+  </data>
+  <data name="Please_enter_valid_email_id" xml:space="preserve">
+    <value>Mangyaring ipasok ang wastong email id.</value>
+  </data>
+  <data name="Please_enter_valid_first_name" xml:space="preserve">
+    <value>Mangyaring ipasok ang wastong pangalan</value>
+  </data>
+  <data name="Please_enter_valid_last_name" xml:space="preserve">
+    <value>Mangyaring ipasok ang wastong apelyido</value>
+  </data>
+  <data name="Please_enter_valid_phone_number" xml:space="preserve">
+    <value>Mangyaring ipasok ang wastong numero ng telepono</value>
+  </data>
+  <data name="Please_enter_valid_user_name" xml:space="preserve">
+    <value>Mangyaring ipasok ang wastong pangalan ng gumagamit</value>
+  </data>
+  <data name="Please_provide_rating" xml:space="preserve">
+    <value>Mangyaring magbigay ng rating</value>
+  </data>
+  <data name="Please_recheck_your_credentials_and_selected_location" xml:space="preserve">
+    <value>Mangyaring suriin muli ang iyong mga kredensyal at napiling lokasyon</value>
+  </data>
+  <data name="Please_recheck_your_phone_number_It_is_already_present_in_dura_server" xml:space="preserve">
+    <value>Mangyaring suriin muli ang numero ng iyong telepono. Narito na ito sa dura server.</value>
+  </data>
+  <data name="Please_select_area" xml:space="preserve">
+    <value>Mangyaring pumili ng lugar</value>
+  </data>
+  <data name="Please_select_desctination_where_to_Final_Drop_location" xml:space="preserve">
+    <value>Mangyaring piliin ang paglapag / kung saan sa (Huling Pag-drop) na lokasyon</value>
+  </data>
+  <data name="Please_select_Pickup_location" xml:space="preserve">
+    <value>Mangyaring piliin ang Lokasyon ng pickup</value>
+  </data>
+  <data name="Please_select_Pickup_Schedule" xml:space="preserve">
+    <value>Mangyaring piliin ang Iskedyul ng Pagkuha</value>
+  </data>
+  <data name="Please_select_profile_pic" xml:space="preserve">
+    <value>Mangyaring piliin ang profile pic</value>
+  </data>
+  <data name="Please_select_type" xml:space="preserve">
+    <value>Mangyaring piliin ang uri</value>
+  </data>
+  <data name="Please_select_your_country_code" xml:space="preserve">
+    <value>Mangyaring piliin ang iyong country code</value>
+  </data>
+  <data name="Please_tell_us_your_Mobile_number_to_proceed_further" xml:space="preserve">
+    <value>Mangyaring sabihin sa amin ang iyong numero sa Mobile upang magpatuloy sa karagdagang.</value>
+  </data>
+  <data name="Please_upload_a_picture" xml:space="preserve">
+    <value>Mangyaring sabihin sa amin ang tungkol sa iyong sarili at mag-upload ng isang larawan.</value>
+  </data>
+  <data name="Please_wait" xml:space="preserve">
+    <value>Hintay lang po</value>
+  </data>
+  <data name="Please_Wait_Finding_Driver" xml:space="preserve">
+    <value>Mangyaring Maghintay Paghahanap ng Driver</value>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value>Presyo :</value>
+  </data>
+  <data name="PriceBreakdown" xml:space="preserve">
+    <value>Pagkasira ng Presyo</value>
+  </data>
+  <data name="Price_Breakdown" xml:space="preserve">
+    <value>Pagkasira ng Presyo</value>
+  </data>
+  <data name="Privacy_Policy" xml:space="preserve">
+    <value>Patakaran sa Pagkapribado</value>
+  </data>
+  <data name="Promo_code_applied" xml:space="preserve">
+    <value>Inilapat ang code ng promo</value>
+  </data>
+  <data name="Promo_code_applied_successfully" xml:space="preserve">
+    <value>Matagumpay na na-apply ang Promocode</value>
+  </data>
+  <data name="Rate_Review" xml:space="preserve">
+    <value>Pag-rate ng Review</value>
+  </data>
+  <data name="Rate_the_Product" xml:space="preserve">
+    <value>I-rate ang Produkto</value>
+  </data>
+  <data name="RecentSearched" xml:space="preserve">
+    <value>Kamakailang Hinanap</value>
+  </data>
+  <data name="Recent_saved_address" xml:space="preserve">
+    <value>Kamakailang Nai-save na Address</value>
+  </data>
+  <data name="Recharge_Now" xml:space="preserve">
+    <value>Mag-recharge Ngayon</value>
+  </data>
+  <data name="Refer_a_Friend" xml:space="preserve">
+    <value>Sumangguni ng isang Kaibigan</value>
+  </data>
+  <data name="Refer_a_friend_get_you_and_your_friend_off_on_food_ordering" xml:space="preserve">
+    <value>Sumangguni sa isang kaibigan at makakuha ka at ang iyong kaibigan ng 50% diskwento sa pag-order ng pagkain</value>
+  </data>
+  <data name="Refer_code_does_not_match" xml:space="preserve">
+    <value>Ang referral na code ay hindi tumutugma. Gusto mo ba talagang magpatuloy nang walang referal code?</value>
+  </data>
+  <data name="RegisterNow" xml:space="preserve">
+    <value>Mag-rehistro na ngayon</value>
+  </data>
+  <data name="Remove" xml:space="preserve">
+    <value>Tanggalin</value>
+  </data>
+  <data name="ResendOTP" xml:space="preserve">
+    <value>Ipadala muli ang OTP</value>
+  </data>
+  <data name="ResetPassword" xml:space="preserve">
+    <value>I-reset ang Password</value>
+  </data>
+  <data name="Reviews" xml:space="preserve">
+    <value>Mga pagsusuri</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Magtipid</value>
+  </data>
+  <data name="Saved_Address" xml:space="preserve">
+    <value>Nai-save na Address</value>
+  </data>
+  <data name="Saved_Addresses" xml:space="preserve">
+    <value>Mga Nai-save na Address</value>
+  </data>
+  <data name="Saved_Cards" xml:space="preserve">
+    <value>Mga Nai-save na Card</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Maghanap</value>
+  </data>
+  <data name="Searching_Driver" xml:space="preserve">
+    <value>Naghahanap ng Driver ...</value>
+  </data>
+  <data name="Search_for_the_driver" xml:space="preserve">
+    <value>Maghanap para sa driver</value>
+  </data>
+  <data name="Search_Location" xml:space="preserve">
+    <value>Lokasyon ng Paghahanap</value>
+  </data>
+  <data name="Search_Restaurant" xml:space="preserve">
+    <value>Maghanap ng Restaurant, Ulam atbp ...</value>
+  </data>
+  <data name="Search_Your_Location" xml:space="preserve">
+    <value>Maghanap
+ Iyong lokasyon</value>
+  </data>
+  <data name="Second_Id_Proof" xml:space="preserve">
+    <value>Pangalawang Katibayan ng Id</value>
+  </data>
+  <data name="Security_code" xml:space="preserve">
+    <value>Security code</value>
+  </data>
+  <data name="Select_Account_Type" xml:space="preserve">
+    <value>Piliin ang Uri ng Account</value>
+  </data>
+  <data name="Select_an_options" xml:space="preserve">
+    <value>Pumili ng pagpipilian</value>
+  </data>
+  <data name="Select_List_to_get_the_details" xml:space="preserve">
+    <value>Piliin ang Listahan upang makuha ang mga detalye *</value>
+  </data>
+  <data name="Select_Payment_Mode" xml:space="preserve">
+    <value>Piliin ang Mode ng Pagbabayad</value>
+  </data>
+  <data name="Select_Status" xml:space="preserve">
+    <value>Piliin ang Katayuan</value>
+  </data>
+  <data name="Select_Vehicle" xml:space="preserve">
+    <value>Piliin ang Sasakyan</value>
+  </data>
+  <data name="Sending_OTP_Server_Error" xml:space="preserve">
+    <value>Nagpapadala ng OTP Server Error</value>
+  </data>
+  <data name="Send_OTP" xml:space="preserve">
+    <value>Magpadala ng OTP</value>
+  </data>
+  <data name="ServerError" xml:space="preserve">
+    <value>Error sa pagtugon sa Api, mangyaring subukang muli</value>
+  </data>
+  <data name="Services" xml:space="preserve">
+    <value>Mga serbisyo</value>
+  </data>
+  <data name="ServiceType" xml:space="preserve">
+    <value>Type ng Serbisyo</value>
+  </data>
+  <data name="Service_type" xml:space="preserve">
+    <value>Uri ng serbisyo</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Mga setting</value>
+  </data>
+  <data name="Set_your_pickup_and_drop_off_location_Dura_Express" xml:space="preserve">
+    <value>Itakda ang iyong pickup at i-drop ang lokasyon. Nagbibigay ang Dura Express ng pinakamahusay na mga serbisyo upang maihatid ang iyong mga item.</value>
+  </data>
+  <data name="SignUp" xml:space="preserve">
+    <value>Mag-sign Up</value>
+  </data>
+  <data name="Size" xml:space="preserve">
+    <value>Laki :</value>
+  </data>
+  <data name="Skip" xml:space="preserve">
+    <value>Laktawan</value>
+  </data>
+  <data name="Sorry_we_dont_serve_this_location_yet" xml:space="preserve">
+    <value>Paumanhin, hindi pa namin naghahatid ng lokasyon na ito</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Katayuan</value>
+  </data>
+  <data name="Stop_Location" xml:space="preserve">
+    <value>Itigil ang Lokasyon</value>
+  </data>
+  <data name="Storage_Permission" xml:space="preserve">
+    <value>Pahintulot sa Imbakan</value>
+  </data>
+  <data name="String1" xml:space="preserve">
+    <value>Kumusta, ang pangalan ko</value>
+  </data>
+  <data name="Submit" xml:space="preserve">
+    <value>Ipasa</value>
+  </data>
+  <data name="Submit_Cancel_Order" xml:space="preserve">
+    <value>Magsumite ng Kanselahin ang Order</value>
+  </data>
+  <data name="Support_Chat" xml:space="preserve">
+    <value>Suporta sa Chat</value>
+  </data>
+  <data name="Surcharge" xml:space="preserve">
+    <value>Patong na singil</value>
+  </data>
+  <data name="Tap_on_map_to_set_your_position" xml:space="preserve">
+    <value>Mag-tap sa mapa upang maitakda ang iyong posisyon</value>
+  </data>
+  <data name="Tap_to_copy_your_reference_code" xml:space="preserve">
+    <value>I-tap upang kopyahin ang iyong sanggunian code</value>
+  </data>
+  <data name="TermAndConditions" xml:space="preserve">
+    <value>Mga Kataga at Kundisyon</value>
+  </data>
+  <data name="Terms_of_Services" xml:space="preserve">
+    <value>Mga Tuntunin ng Serbisyo.</value>
+  </data>
+  <data name="Thanks_for_provide_the_rating" xml:space="preserve">
+    <value>Salamat sa pagbibigay ng rating</value>
+  </data>
+  <data name="This_phone_number_is_already_registered" xml:space="preserve">
+    <value>Nakarehistro na ang numero ng telepono na ito</value>
+  </data>
+  <data name="This_promo_will_be_applied_for_your_next_order" xml:space="preserve">
+    <value>Ilalapat ang promo na ito para sa iyong susunod na order</value>
+  </data>
+  <data name="Time" xml:space="preserve">
+    <value>Oras</value>
+  </data>
+  <data name="time_should_not_be_less_than_current_time" xml:space="preserve">
+    <value>Ang oras ay hindi dapat mas mababa kaysa sa kasalukuyang oras</value>
+  </data>
+  <data name="TipAmount" xml:space="preserve">
+    <value>Halaga ng Tip</value>
+  </data>
+  <data name="Token_expired" xml:space="preserve">
+    <value>Nag-expire na ang token, maire-redirect ka upang mag-login</value>
+  </data>
+  <data name="Total" xml:space="preserve">
+    <value>Kabuuan :</value>
+  </data>
+  <data name="Total_Amount" xml:space="preserve">
+    <value>Kabuuang Halaga</value>
+  </data>
+  <data name="Total_distance" xml:space="preserve">
+    <value>(Kabuuang distansya</value>
+  </data>
+  <data name="Total_distance_20_km" xml:space="preserve">
+    <value>(Kabuuang distansya 20 km)</value>
+  </data>
+  <data name="Track_Dura_Express_Order" xml:space="preserve">
+    <value>Subaybayan ang Dura Express Order</value>
+  </data>
+  <data name="Track_Now" xml:space="preserve">
+    <value>Subaybayan Ngayon</value>
+  </data>
+  <data name="Track_Order" xml:space="preserve">
+    <value>Order ng Subaybayan</value>
+  </data>
+  <data name="Travel_Time_Source_to_Destination" xml:space="preserve">
+    <value>Oras ng Paglalakbay (Pinagmulan sa Patutunguhan)</value>
+  </data>
+  <data name="Try_Again" xml:space="preserve">
+    <value>Subukang Muli</value>
+  </data>
+  <data name="Type_notes_to_your_driver_Optional" xml:space="preserve">
+    <value>Mag-type ng mga tala sa iyong driver (Opsyonal)</value>
+  </data>
+  <data name="Upload_Additional_Document" xml:space="preserve">
+    <value>Mag-upload ng Karagdagang Mga Dokumento</value>
+  </data>
+  <data name="Use_current_location" xml:space="preserve">
+    <value>Gamitin ang iyong kasalukuyang lokasyon</value>
+  </data>
+  <data name="Validity" xml:space="preserve">
+    <value>Valididad :</value>
+  </data>
+  <data name="Vehicle" xml:space="preserve">
+    <value>Sasakyan</value>
+  </data>
+  <data name="VehicleNumber" xml:space="preserve">
+    <value>Numero ng Sasakyan</value>
+  </data>
+  <data name="Vehicle_Type" xml:space="preserve">
+    <value>Uri ng Sasakyan</value>
+  </data>
+  <data name="Verification" xml:space="preserve">
+    <value>Pagpapatunay</value>
+  </data>
+  <data name="Verify" xml:space="preserve">
+    <value>Patunayan</value>
+  </data>
+  <data name="Verify_Your_Account" xml:space="preserve">
+    <value>Beripikahin ang iyong account</value>
+  </data>
+  <data name="View_Profile" xml:space="preserve">
+    <value>Tingnan ang Profile</value>
+  </data>
+  <data name="Wallet_Amount_is_less_than_order_amount_Do_you_really_want_to_proceed_with_COD" xml:space="preserve">
+    <value>Ang Halaga ng Wallet ay mas mababa sa halaga ng order. Nais mo bang magpatuloy sa COD?</value>
+  </data>
+  <data name="Welcome" xml:space="preserve">
+    <value>Maligayang pagdating!</value>
+  </data>
+  <data name="We_are_coming_soon" xml:space="preserve">
+    <value>Malapit na tayo!</value>
+  </data>
+  <data name="We_are_Working_on_it_It_is_in_Progress" xml:space="preserve">
+    <value>Nagsusumikap kami dito. Nasa Isinasagawa ito.</value>
+  </data>
+  <data name="We_are_working_with_google_for_tracking_link_Backend_Team_work_is_inProgress" xml:space="preserve">
+    <value>Nakikipagtulungan kami sa google para sa link sa pagsubaybay. Ang gawain sa backend Team ay nasaProgress.</value>
+  </data>
+  <data name="We_Found_You_A_Driver" xml:space="preserve">
+    <value>Natagpuan ka namin ng isang Driver</value>
+  </data>
+  <data name="We_need_to_access_your_phone_book_in_order_to_save_address_with_contact" xml:space="preserve">
+    <value>Kailangan naming i-access ang iyong libro ng telepono upang mai-save ang address sa pamamagitan ng contact</value>
+  </data>
+  <data name="We_need_to_find_where_you_are_in_order_to_better_facilitate_you" xml:space="preserve">
+    <value>Kailangan naming hanapin kung nasaan ka upang mas madaling mapadali ka</value>
+  </data>
+  <data name="We_ve_Found_You_A_Driver" xml:space="preserve">
+    <value>Natagpuan ka namin ng isang Driver</value>
+  </data>
+  <data name="Whereto" xml:space="preserve">
+    <value>Saan?</value>
+  </data>
+  <data name="Where_To_Final_Drop" xml:space="preserve">
+    <value>Kung Saan (Final Drop)</value>
+  </data>
+  <data name="Where_To_Final_Drop_Location" xml:space="preserve">
+    <value>Kung Saan (Pangwakas na Lokasyon ng Pag-drop)</value>
+  </data>
+  <data name="will_be_deducted_from_your_wallet_Do_you_really_want_to_proceed" xml:space="preserve">
+    <value>ibabawas mula sa iyong pitaka. Nais mo bang magpatuloy?</value>
+  </data>
+  <data name="will_review_later" xml:space="preserve">
+    <value>susuriin mamaya</value>
+  </data>
+  <data name="Wrong_code" xml:space="preserve">
+    <value>Maling code</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Oo</value>
+  </data>
+  <data name="Your_account_is_not_verified" xml:space="preserve">
+    <value>Ang iyong account ay hindi na-verify</value>
+  </data>
+  <data name="Your_email_or_phone_is_already_registered" xml:space="preserve">
+    <value>Nakarehistro na ang iyong email o telepono</value>
+  </data>
+  <data name="Your_order_location_is_not_selected_right_Please_recheck_your_order_confirm_location_pickup_dropup_again" xml:space="preserve">
+    <value>Ang lokasyon ng iyong order ay hindi napiling tama Mangyaring suriin muli ang iyong order at kumpirmahing lokasyon ng kunin at i-drop up muli.</value>
+  </data>
+  <data name="Your_OTP_is_not_matching_Please_resend_to_get_new_one" xml:space="preserve">
+    <value>Ang iyong OTP ay hindi tumutugma, Mangyaring muling ipadala upang makakuha ng bago.</value>
+  </data>
+  <data name="Your_UserName_updated_successfully" xml:space="preserve">
+    <value>Matagumpay na na-update ang iyong User Name.</value>
+  </data>
+  <data name="Your_wallet_amount_is_notsufficient_Do_you_want_to_proceed_with_COD" xml:space="preserve">
+    <value>Ang halaga ng iyong wallet ay hindi sapat. Nais mo bang magpatuloy sa COD?</value>
+  </data>
+  <data name="You_are_now_rider_pending_approval" xml:space="preserve">
+    <value>You are now rider(pending approval)</value>
+  </data>
+  <data name="You_be_have_to_cash_pay_P16_to_delivery_person" xml:space="preserve">
+    <value>Magkakaroon ka ng cash pay P16 sa delivery person</value>
+  </data>
+  <data name="You_can_add_maximum_three_stop_location" xml:space="preserve">
+    <value>Maaari kang magdagdag ng maximum na lokasyon ng tatlong paghinto</value>
+  </data>
+  <data name="You_ll_be_have_to_cash_pay_delivery_person" xml:space="preserve">
+    <value>Magkakaroon ka ng cash pay P16 sa delivery person</value>
+  </data>
+  <data name="You_must_fill_all_of_the_fields" xml:space="preserve">
+    <value>* Dapat mong punan ang lahat ng mga patlang.</value>
+  </data>
+  <data name="You_will_have_to_pay" xml:space="preserve">
+    <value>You will have to pay</value>
+  </data>
+</root>

@@ -1,0 +1,336 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage
+    x:Class="NewDuraApp.Areas.DuraExpress.Popup.View.FeeBreakdownPopup"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+    xmlns:images="clr-namespace:NewDuraApp.Extensions"
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    xmlns:translate="clr-namespace:NewDuraApp.Resources"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    BindingContext="{Binding FeeBreakdownPopup, Source={StaticResource Locator}}"
+    NavigationPage.HasNavigationBar="False"
+    Shell.NavBarHasShadow="False"
+    Shell.NavBarIsVisible="False"
+    Shell.TabBarIsVisible="False"
+    Visual="Material">
+    <pages:PopupPage.Animation>
+        <animations:ScaleAnimation
+            DurationIn="400"
+            DurationOut="300"
+            EasingIn="SinOut"
+            EasingOut="SinIn"
+            HasBackgroundAnimation="True"
+            PositionIn="Bottom"
+            PositionOut="Bottom"
+            ScaleIn="1.2"
+            ScaleOut="0.8" />
+    </pages:PopupPage.Animation>
+    <pages:PopupPage.Content>
+        <yummy:PancakeView
+            Margin="10,0"
+            Padding="0,0,0,0"
+            BackgroundColor="White"
+            CornerRadius="10,10,0,0"
+            HeightRequest="380"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="EndAndExpand">
+            <yummy:PancakeView.Border>
+                <yummy:Border Color="WhiteSmoke" />
+            </yummy:PancakeView.Border>
+            <ScrollView>
+                <StackLayout Margin="10">
+                    <StackLayout Margin="10" Orientation="Horizontal">
+                        <Label
+                            FontFamily="ProximaSemiBold"
+                            FontSize="18"
+                            Text="{translate:Translate Price_Breakdown}"
+                            TextColor="Black"
+                            VerticalOptions="CenterAndExpand" />
+                        <ImageButton
+                            BackgroundColor="Transparent"
+                            Command="{Binding ClosePopupCommand}"
+                            HeightRequest="25"
+                            HorizontalOptions="EndAndExpand"
+                            Source="{images:EmbeddedImage NewDuraApp.Images.close_circle.png}"
+                            VerticalOptions="CenterAndExpand"
+                            WidthRequest="25" />
+                    </StackLayout>
+                    <Frame
+                        Margin="5"
+                        Padding="10,10,10,20"
+                        CornerRadius="5"
+                        HasShadow="False">
+                        <StackLayout Spacing="0">
+
+                            <Label
+                                FontFamily="ProximaSemiBold"
+                                FontSize="28"
+                                HorizontalOptions="CenterAndExpand"
+                                TextColor="Black"
+                                VerticalOptions="CenterAndExpand">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding GetPickupData.price.currency}" />
+                                        <Span Text="{Binding GetPickupData.price.total}" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label
+                                FontFamily="ProximaSemiBold"
+                                FontSize="12"
+                                HorizontalOptions="CenterAndExpand"
+                                Text="{translate:Translate Total_distance_20_km}"
+                                TextColor="#1352D1">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{translate:Translate Total_distance}" />
+                                        <Span Text="{Binding GetPickupData.distance}" />
+                                        <Span Text=" km)" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label
+                                Margin="0,5,0,0"
+                                FontFamily="ProximaRegular"
+                                FontSize="10"
+                                HorizontalOptions="CenterAndExpand"
+                                HorizontalTextAlignment="Center"
+                                IsVisible="false"
+                                Text="{Binding GetPickupData.driverdescription}"
+                                TextColor="#928A8A" />
+                        </StackLayout>
+                    </Frame>
+                    <StackLayout Margin="10">
+                        <StackLayout Margin="5,2" Orientation="Horizontal">
+                            <Label
+                                FontFamily="ProximaRegular"
+                                FontSize="12"
+                                TextColor="#363636">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{translate:Translate Base_Price}" />
+                                        <Span Text="{Binding GetPickupData.vehicle}" />
+                                        <Span Text=")" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label
+                                FontFamily="ProximaSemiBold"
+                                FontSize="12"
+                                HorizontalOptions="EndAndExpand"
+                                TextColor="#363636">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding GetPickupData.price.currency}" />
+                                        <Span Text="{Binding GetPickupData.price.basefare}" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </StackLayout>
+                        <StackLayout Margin="5,2" Orientation="Horizontal">
+                            <Label
+                                FontFamily="ProximaRegular"
+                                FontSize="12"
+                                TextColor="#363636"
+                                VerticalOptions="CenterAndExpand">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{translate:Translate Over_Mileage}" />
+                                        <Span Text="{Binding GetPickupData.price.distance}" />
+                                        <Span Text=" km)" />
+                                        <Span Text=" (" />
+                                        <Span Text="{Binding GetPickupData.price.currency}" />
+                                        <Span Text="{Binding GetPickupData.price.per_km}" />
+                                        <Span Text="/km)" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label
+                                FontFamily="ProximaSemiBold"
+                                FontSize="12"
+                                HorizontalOptions="EndAndExpand"
+                                TextColor="#363636"
+                                VerticalOptions="CenterAndExpand">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding GetPickupData.price.currency}" />
+                                        <Span Text="{Binding GetPickupData.price.kmprice}" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </StackLayout>
+                        <StackLayout
+                            Margin="5,2"
+                            IsVisible="False"
+                            Orientation="Horizontal">
+                            <Label
+                                FontFamily="ProximaRegular"
+                                FontSize="12"
+                                Text="{translate:Translate Multi_node_Surcharge}"
+                                TextColor="#363636"
+                                VerticalOptions="CenterAndExpand" />
+                            <Label
+                                FontFamily="ProximaSemiBold"
+                                FontSize="12"
+                                HorizontalOptions="EndAndExpand"
+                                Text="₱0"
+                                TextColor="#363636"
+                                VerticalOptions="CenterAndExpand" />
+                        </StackLayout>
+                        <StackLayout Margin="5,2">
+                            <Label
+                                FontFamily="ProximaBold"
+                                FontSize="12"
+                                Text="{translate:Translate Services}"
+                                TextColor="#363636"
+                                VerticalOptions="CenterAndExpand" />
+                            <StackLayout BindableLayout.ItemsSource="{Binding GetPickupData.price.services}">
+                                <BindableLayout.EmptyView>
+                                    <Label
+                                        FontFamily="ProximaRegular"
+                                        FontSize="12"
+                                        HorizontalOptions="StartAndExpand"
+                                        Text="{translate:Translate No_services_selected}"
+                                        TextColor="Black" />
+                                </BindableLayout.EmptyView>
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                            <Label
+                                                FontFamily="ProximaRegular"
+                                                FontSize="12"
+                                                HorizontalOptions="StartAndExpand"
+                                                Text="{Binding services}"
+                                                TextColor="Black" />
+                                            <Label
+                                                FontFamily="ProximaSemiBold"
+                                                FontSize="12"
+                                                HorizontalOptions="EndAndExpand"
+                                                TextColor="#363636"
+                                                VerticalOptions="CenterAndExpand">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="₱" />
+                                                        <Span Text="{Binding servicefee}" />
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                        </StackLayout>
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>
+                            </StackLayout>
+                        </StackLayout>
+                        <BoxView
+                            BackgroundColor="Gray"
+                            HeightRequest="1"
+                            HorizontalOptions="FillAndExpand" />
+                        <StackLayout Margin="5,2" Orientation="Horizontal">
+                            <Label
+                                FontFamily="ProximaRegular"
+                                FontSize="12"
+                                Text="{translate:Translate Total_Amount}"
+                                TextColor="#363636"
+                                VerticalOptions="CenterAndExpand" />
+                            <Label
+                                FontFamily="ProximaSemiBold"
+                                FontSize="12"
+                                HorizontalOptions="EndAndExpand"
+                                TextColor="#363636"
+                                VerticalOptions="CenterAndExpand">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding GetPickupData.price.currency}" />
+                                        <Span Text="{Binding GetPickupData.price.totalWithoutDiscounted}" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </StackLayout>
+                        <StackLayout
+                            Margin="5,2"
+                            IsVisible="{Binding GetPickupData.IsCouponApplied}"
+                            Orientation="Horizontal">
+                            <Label
+                                FontFamily="ProximaRegular"
+                                FontSize="12"
+                                TextColor="#363636"
+                                VerticalOptions="CenterAndExpand">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Promo (" />
+                                        <Span Text="{Binding GetPickupData.coupon.couponname}" />
+                                        <Span Text=")" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label
+                                FontFamily="ProximaSemiBold"
+                                FontSize="12"
+                                HorizontalOptions="EndAndExpand"
+                                TextColor="Red"
+                                VerticalOptions="CenterAndExpand">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="-" />
+                                        <Span Text="{Binding GetPickupData.coupon.discount}" />
+                                        <Span Text="%" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </StackLayout>
+                        <BoxView
+                            BackgroundColor="Gray"
+                            HeightRequest="1"
+                            HorizontalOptions="FillAndExpand" />
+                        <StackLayout
+                            Margin="5,2"
+                            IsVisible="{Binding GetPickupData.IsCouponApplied}"
+                            Orientation="Horizontal">
+                            <Label
+                                FontFamily="ProximaRegular"
+                                FontSize="12"
+                                Text="{translate:Translate Discounted_Amount}"
+                                TextColor="#363636"
+                                VerticalOptions="CenterAndExpand" />
+                            <Label
+                                FontFamily="ProximaSemiBold"
+                                FontSize="12"
+                                HorizontalOptions="EndAndExpand"
+                                TextColor="#363636"
+                                VerticalOptions="CenterAndExpand">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding GetPickupData.price.currency}" />
+                                        <Span Text="{Binding GetPickupData.price.totalWithDiscounted}" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </StackLayout>
+                        <StackLayout Margin="5,2" Orientation="Horizontal">
+                            <Label
+                                FontFamily="ProximaRegular"
+                                FontSize="12"
+                                Text="{translate:Translate TipAmount}"
+                                TextColor="#363636"
+                                VerticalOptions="CenterAndExpand" />
+                            <Label
+                                FontFamily="ProximaSemiBold"
+                                FontSize="12"
+                                HorizontalOptions="EndAndExpand"
+                                TextColor="#363636"
+                                VerticalOptions="CenterAndExpand">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding GetPickupData.price.currency}" />
+                                        <Span Text="{Binding GetPickupData.price.tip}" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+
+        </yummy:PancakeView>
+    </pages:PopupPage.Content>
+</pages:PopupPage>

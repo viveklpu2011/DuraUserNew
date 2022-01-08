@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage
+    x:Class="NewDuraApp.Areas.DuraExpress.Popup.View.FoundDriverPopup"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+    xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:images="clr-namespace:NewDuraApp.Extensions"
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    xmlns:translate="clr-namespace:NewDuraApp.Resources"
+    BindingContext="{Binding FoundDriverPopup, Source={StaticResource Locator}}"
+    CloseWhenBackgroundIsClicked="False"
+    Visual="Material">
+    <pages:PopupPage.Animation>
+        <animations:ScaleAnimation
+            DurationIn="400"
+            DurationOut="300"
+            EasingIn="SinOut"
+            EasingOut="SinIn"
+            HasBackgroundAnimation="True"
+            PositionIn="Center"
+            PositionOut="Center"
+            ScaleIn="1.2"
+            ScaleOut="0.8" />
+    </pages:PopupPage.Animation>
+    <pages:PopupPage.Content>
+        <Frame
+            Padding="30,20,30,20"
+            BackgroundColor="White"
+            CornerRadius="10"
+            HasShadow="True"
+            HorizontalOptions="CenterAndExpand"
+            VerticalOptions="CenterAndExpand"
+            WidthRequest="250">
+            <StackLayout
+                HorizontalOptions="CenterAndExpand"
+                Spacing="0"
+                VerticalOptions="CenterAndExpand">
+                <Label
+                    FontFamily="ProximaSemiBold"
+                    FontSize="18"
+                    HorizontalOptions="CenterAndExpand"
+                    Text="{translate:Translate We_Found_You_A_Driver}"
+                    TextColor="Black" />
+                <Frame
+                    Margin="0,10,0,10"
+                    Padding="0"
+                    CornerRadius="35"
+                    HeightRequest="70"
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="CenterAndExpand"
+                    WidthRequest="70">
+                    <ff:CachedImage
+                        Aspect="Fill"
+                        BackgroundColor="Transparent"
+                        CacheDuration="50000"
+                        HeightRequest="70"
+                        HorizontalOptions="CenterAndExpand"
+                        LoadingPlaceholder="user_pic_placeholder.png"
+                        Source="{Binding DriverDetails.driverphoto}"
+                        VerticalOptions="CenterAndExpand"
+                        WidthRequest="70" />
+
+                </Frame>
+                <Label
+                    FontFamily="ProximaRegular"
+                    FontSize="11"
+                    HorizontalOptions="CenterAndExpand"
+                    Text="{translate:Translate Hi_my_name_is}"
+                    TextColor="#A4A4A4"
+                    VerticalOptions="CenterAndExpand" />
+                <Label
+                    FontFamily="ProximaSemiBold"
+                    FontSize="14"
+                    HorizontalOptions="CenterAndExpand"
+                    Text="{Binding DriverDetails.drivername}"
+                    TextColor="Black"
+                    VerticalOptions="CenterAndExpand" />
+                <Label
+                    Margin="0,5,0,0"
+                    FontFamily="ProximaSemiBold"
+                    FontSize="12"
+                    HorizontalOptions="CenterAndExpand"
+                    TextColor="#1352D1"
+                    VerticalOptions="CenterAndExpand">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="{Binding DriverDetails.distance}" />
+                            <Span Text=" km away" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Frame
+                    Margin="0,5,0,0"
+                    Padding="0"
+                    BackgroundColor="#FBFBFF"
+                    CornerRadius="5"
+                    HeightRequest="40"
+                    HorizontalOptions="FillAndExpand">
+                    <StackLayout
+                        Margin="5,3,5,0"
+                        Padding="0"
+                        Spacing="0"
+                        VerticalOptions="CenterAndExpand">
+                        <StackLayout Orientation="Horizontal">
+                            <Label
+                                FontFamily="ProximaRegular"
+                                FontSize="10"
+                                Text="{translate:Translate Service_type}"
+                                TextColor="#928A8A" />
+                            <Label
+                                FontFamily="ProximaRegular"
+                                FontSize="10"
+                                HorizontalOptions="EndAndExpand"
+                                Text="{translate:Translate VehicleNumber}"
+                                TextColor="#928A8A" />
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label
+                                FontFamily="ProximaSemiBold"
+                                FontSize="14"
+                                Text="{Binding DriverDetails.servicetype}"
+                                TextColor="Black" />
+                            <Label
+                                FontFamily="ProximaSemiBold"
+                                FontSize="14"
+                                HorizontalOptions="EndAndExpand"
+                                Text="{Binding DriverDetails.vehicleno}"
+                                TextColor="Black" />
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+                <Button
+                    Margin="0,15,0,10"
+                    Padding="0"
+                    BackgroundColor="#211E66"
+                    Command="{Binding GoToOrderDetailsCmd}"
+                    CornerRadius="5"
+                    FontFamily="ProximaRegular"
+                    HeightRequest="40"
+                    Text="{translate:Translate Confirm}"
+                    TextColor="White" />
+                <Button
+                    Margin="0,0,0,10"
+                    BackgroundColor="#D72625"
+                    Command="{Binding CancelRideCommand}"
+                    CornerRadius="5"
+                    FontFamily="ProximaRegular"
+                    HeightRequest="40"
+                    HorizontalOptions="FillAndExpand"
+                    Text="{translate:Translate Cancel}"
+                    TextColor="White" />
+            </StackLayout>
+        </Frame>
+    </pages:PopupPage.Content>
+</pages:PopupPage>

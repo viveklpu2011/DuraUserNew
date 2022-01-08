@@ -1,0 +1,334 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="NewDuraApp.Areas.Common.Views.LoginPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Helpers="clr-namespace:NewDuraApp.Converters"
+    xmlns:Regex="clr-namespace:DuraApp.Core.Helpers;assembly=DuraApp.Core"
+    xmlns:behaviours="clr-namespace:NewDuraApp.Behaviours"
+    xmlns:control="clr-namespace:NewDuraApp.Controls"
+    xmlns:images="clr-namespace:NewDuraApp.Extensions"
+    xmlns:translate="clr-namespace:NewDuraApp.Resources"
+    BackgroundColor="White"
+    BindingContext="{Binding LoginPage, Source={StaticResource Locator}}"
+    NavigationPage.HasNavigationBar="False"
+    Visual="Material">
+    <ContentPage.Content>
+        <Grid RowDefinitions="*,Auto" RowSpacing="0">
+            <ScrollView Grid.Row="0" VerticalScrollBarVisibility="Never">
+                <StackLayout Margin="20,0,20,0" Spacing="0">
+                    <StackLayout HeightRequest="180">
+                        <Image
+                            Margin="0,8,0,0"
+                            HorizontalOptions="CenterAndExpand"
+                            Source="{images:EmbeddedImage NewDuraApp.Images.logo.png}"
+                            VerticalOptions="CenterAndExpand"
+                            WidthRequest="200" />
+                    </StackLayout>
+                    <StackLayout Spacing="{OnPlatform iOS='20', Android='10'}">
+                        <Label
+                            FontAttributes="Bold"
+                            FontFamily="ProximaSemiBold"
+                            FontSize="20"
+                            Text="{translate:Translate Login}"
+                            TextColor="Black" />
+                        <Grid ColumnDefinitions="*" RowDefinitions="Auto,Auto,Auto">
+                            <control:CustomPicker
+                                Title="{translate:Translate ChooseLocation}"
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                FontFamily="ProximaRegular"
+                                FontSize="16"
+                                Image="drop_down_arrow"
+                                ItemDisplayBinding="{Binding country_name}"
+                                ItemsSource="{Binding AllLocationList}"
+                                SelectedItem="{Binding SelectedCountries}"
+                                TextColor="Black"
+                                TitleColor="{StaticResource PlaceholderColor}" />
+
+                            <BoxView
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                Margin="0,2"
+                                BackgroundColor="{StaticResource BorderColor}"
+                                HeightRequest="1" />
+                            <Label
+                                Grid.Row="2"
+                                Grid.Column="0"
+                                FontSize="12"
+                                IsVisible="{Binding IsAreaErrorVisible}"
+                                Text="{translate:Translate Please_select_area}"
+                                TextColor="Red" />
+                        </Grid>
+                        <Grid
+                            ColumnDefinitions="Auto,1,*"
+                            IsVisible="{Binding IsVisiblePhoneNumberLayout}"
+                            RowDefinitions="Auto,Auto,Auto">
+                            <Grid
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                WidthRequest="65">
+                                <Label
+                                    Margin="0,0,2,0"
+                                    FontSize="16"
+                                    HorizontalOptions="CenterAndExpand"
+                                    HorizontalTextAlignment="Start"
+                                    Text="{Binding CountriesTitleCode}"
+                                    TextColor="Black"
+                                    VerticalOptions="CenterAndExpand" />
+                                <Picker
+                                    x:Name="pickerCountryCode"
+                                    Margin="2,0,5,0"
+                                    IsVisible="False"
+                                    ItemDisplayBinding="{Binding country_code}"
+                                    ItemsSource="{Binding AllLocationListCode}"
+                                    SelectedItem="{Binding SelectedCountriesCode}"
+                                    TitleColor="Black" />
+                                <Image
+                                    BackgroundColor="Transparent"
+                                    HeightRequest="10"
+                                    HorizontalOptions="EndAndExpand"
+                                    InputTransparent="True"
+                                    Source="{images:EmbeddedImage NewDuraApp.Images.drop_down_arrow.png}"
+                                    VerticalOptions="CenterAndExpand"
+                                    WidthRequest="10" />
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TapGestureRecognizer_Tapped" />
+                                </Grid.GestureRecognizers>
+                            </Grid>
+                            <BoxView
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                BackgroundColor="LightGray"
+                                HeightRequest="30"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="1" />
+                            <control:CustomEntry
+                                Grid.Row="0"
+                                Grid.Column="2"
+                                FontSize="16"
+                                HorizontalOptions="FillAndExpand"
+                                Keyboard="Telephone"
+                                MaxLength="15"
+                                Placeholder="{translate:Translate PhoneNumber}"
+                                PlaceholderColor="{StaticResource PlaceholderColor}"
+                                Text="{Binding MobileNumber}"
+                                TextColor="Black">
+                                <control:CustomEntry.Behaviors>
+                                    <behaviours:NumericValidationBehaviorNumberOnly />
+                                </control:CustomEntry.Behaviors>
+                            </control:CustomEntry>
+                            <BoxView
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="3"
+                                Margin="0,2"
+                                BackgroundColor="{StaticResource BorderColor}"
+                                HeightRequest="1"
+                                HorizontalOptions="FillAndExpand" />
+
+                            <Label
+                                Grid.Row="2"
+                                Grid.Column="2"
+                                FontSize="12"
+                                IsVisible="{Binding IsPhoneErrorVisible}"
+                                Text="{translate:Translate Please_enter_valid_phone_number}"
+                                TextColor="Red" />
+                        </Grid>
+                        <Grid IsVisible="{Binding IsVisibleEmailLayout}" RowDefinitions="Auto,Auto,Auto">
+                            <control:CustomEntry
+                                Grid.Row="0"
+                                FontFamily="ProximaRegular"
+                                FontSize="16"
+                                Keyboard="Email"
+                                MaxLength="60"
+                                Placeholder="{translate:Translate EmailAddress}"
+                                PlaceholderColor="{StaticResource PlaceholderColor}"
+                                Text="{Binding Email}"
+                                TextColor="Black" />
+
+                            <BoxView
+                                Grid.Row="1"
+                                BackgroundColor="{StaticResource BorderColor}"
+                                HeightRequest="1" />
+                            <Label
+                                Grid.Row="2"
+                                FontSize="12"
+                                IsVisible="{Binding IsEmailErrorVisible}"
+                                Text="{translate:Translate Please_enter_valid_email_id.}"
+                                TextColor="Red" />
+                        </Grid>
+                        <Grid Margin="{OnPlatform iOS='0,20,0,0', Android='0,8,0,0'}" RowDefinitions="Auto,Auto">
+                            <control:CustomEntry
+                                Grid.Row="0"
+                                FontFamily="ProximaRegular"
+                                FontSize="16"
+                                IsPassword="True"
+                                MaxLength="50"
+                                Placeholder="Password*"
+                                PlaceholderColor="{StaticResource PlaceholderColor}"
+                                Text="{Binding Password}"
+                                TextColor="Black" />
+                            <BoxView
+                                Grid.Row="1"
+                                BackgroundColor="{StaticResource BorderColor}"
+                                HeightRequest="1" />
+                        </Grid>
+                        <Label
+                            Margin="0,10,0,0"
+                            HorizontalOptions="CenterAndExpand"
+                            HorizontalTextAlignment="Center">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span
+                                        FontSize="14"
+                                        Text="{translate:Translate ForgotPassword}"
+                                        TextColor="#423A95">
+                                        <Span.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding NavigateToForgetPassword}" />
+                                        </Span.GestureRecognizers>
+                                    </Span>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label
+                            Grid.Row="2"
+                            Margin="0,10,0,0"
+                            FontAttributes="Italic"
+                            FontSize="12"
+                            IsVisible="{Binding IsLoginButtoinEnabled, Converter={Helpers:InverseBoolConverter}}"
+                            Text="{translate:Translate All_fields_are_mandatory}"
+                            TextColor="Red" />
+                        <Button
+                            BackgroundColor="#211E66"
+                            Command="{Binding NavigateToHomeCommand}"
+                            CornerRadius="5"
+                            FontFamily="ProximaRegular"
+                            FontSize="17"
+                            HeightRequest="50"
+                            HorizontalOptions="FillAndExpand"
+                            IsEnabled="{Binding IsLoginButtoinEnabled}"
+                            Text="{translate:Translate Login}"
+                            TextColor="White"
+                            VerticalOptions="CenterAndExpand"
+                            WidthRequest="250" />
+                        <Button
+                            Margin="0,0,0,0"
+                            BackgroundColor="#D72625"
+                            Command="{Binding SwitchToEmailLayout}"
+                            CommandParameter="{Binding .}"
+                            CornerRadius="5"
+                            FontFamily="ProximaRegular"
+                            FontSize="17"
+                            HeightRequest="50"
+                            HorizontalOptions="FillAndExpand"
+                            Text="{Binding ButtonText}"
+                            TextColor="White"
+                            VerticalOptions="CenterAndExpand"
+                            WidthRequest="250" />
+                        <Grid
+                            Margin="0,20,0,0"
+                            HorizontalOptions="CenterAndExpand"
+                            VerticalOptions="CenterAndExpand"
+                            WidthRequest="290">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="90" />
+                                <ColumnDefinition Width="110" />
+                                <ColumnDefinition Width="90" />
+                            </Grid.ColumnDefinitions>
+                            <Grid
+                                Grid.Column="0"
+                                HeightRequest=".5"
+                                VerticalOptions="CenterAndExpand">
+                                <Frame
+                                    BackgroundColor="#B6B6B6"
+                                    HasShadow="False"
+                                    HorizontalOptions="FillAndExpand"
+                                    VerticalOptions="CenterAndExpand" />
+                            </Grid>
+                            <Label
+                                Grid.Column="1"
+                                FontFamily="ProximaRegular"
+                                FontSize="15"
+                                HorizontalOptions="Center"
+                                Text="{translate:Translate Or_Sign_in_With}"
+                                TextColor="#B6B6B6" />
+                            <Grid
+                                Grid.Column="2"
+                                HeightRequest=".5"
+                                VerticalOptions="CenterAndExpand">
+                                <Frame
+                                    BackgroundColor="#B6B6B6"
+                                    HasShadow="False"
+                                    HorizontalOptions="FillAndExpand"
+                                    VerticalOptions="CenterAndExpand" />
+                            </Grid>
+                        </Grid>
+                        <StackLayout
+                            Margin="0,20,0,0"
+                            HorizontalOptions="CenterAndExpand"
+                            Orientation="Horizontal"
+                            Spacing="30">
+                            <ImageButton
+                                x:Name="facebookbtn"
+                                BackgroundColor="Transparent"
+                                Clicked="facebookbtn_Clicked"
+                                HeightRequest="40"
+                                HorizontalOptions="EndAndExpand"
+                                IsEnabled="True"
+                                Source="{images:EmbeddedImage NewDuraApp.Images.facebook.png}"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="40" />
+                            <ImageButton
+                                x:Name="googlebtn"
+                                BackgroundColor="Transparent"
+                                Clicked="googlebtn_Clicked"
+                                HeightRequest="40"
+                                HorizontalOptions="StartAndExpand"
+                                IsEnabled="True"
+                                Source="{images:EmbeddedImage NewDuraApp.Images.google.png}"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="40" />
+                        </StackLayout>
+                        <Label
+                            Margin="20,10,20,20"
+                            FontAttributes="Bold"
+                            FontFamily="ProximaSemiBold"
+                            FontSize="18"
+                            HorizontalTextAlignment="Center">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding GoToSignUpCmd}" />
+                            </Label.GestureRecognizers>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{translate:Translate Newhere}" TextColor="Black" />
+                                    <Span Text=" " />
+                                    <Span
+                                        Text="{translate:Translate RegisterNow}"
+                                        TextColor="#D72625"
+                                        TextDecorations="Underline" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+            <Label
+                Grid.Row="1"
+                Margin="{OnPlatform iOS='0,0,0,20'}"
+                FontSize="15"
+                HorizontalOptions="CenterAndExpand"
+                HorizontalTextAlignment="Center"
+                TextColor="Black">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="V(" />
+                        <Span Text="{Binding AppVersion}" />
+                        <Span Text=")" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+        </Grid>
+
+    </ContentPage.Content>
+</ContentPage>

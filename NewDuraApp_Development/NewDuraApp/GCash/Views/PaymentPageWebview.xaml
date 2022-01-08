@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="NewDuraApp.GCash.Views.PaymentPageWebview"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Helpers="clr-namespace:NewDuraApp.Converters"
+    xmlns:controls="clr-namespace:NewDuraApp.Controls"
+    xmlns:fonticon="clr-namespace:NewDuraApp.FontIcons"
+    xmlns:images="clr-namespace:NewDuraApp.Extensions"
+    xmlns:lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+    xmlns:map="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    BindingContext="{Binding PaymentPageWebview, Source={StaticResource Locator}}"
+    NavigationPage.HasBackButton="True"
+    Shell.NavBarHasShadow="False"
+    Shell.NavBarIsVisible="True"
+    Shell.TabBarIsVisible="False"
+    Visual="Material">
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior Command="{Binding BackCommand}" />
+    </Shell.BackButtonBehavior>
+    <Shell.TitleView>
+        <StackLayout>
+            <Label
+                FontFamily="ProximaSemiBold"
+                FontSize="22"
+                Text="Processing Payment"
+                TextColor="Black"
+                VerticalOptions="CenterAndExpand"
+                VerticalTextAlignment="Center" />
+        </StackLayout>
+    </Shell.TitleView>
+    <ContentPage.Content>
+        <StackLayout>
+            <ProgressBar
+                x:Name="progress"
+                HorizontalOptions="FillAndExpand"
+                IsVisible="True"
+                Progress="0.2" />
+            <WebView
+                HorizontalOptions="Fill"
+                Navigated="OnNavigated"
+                Navigating="OnNavigating"
+                Source="{Binding URL}"
+                VerticalOptions="FillAndExpand" />
+        </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>

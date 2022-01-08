@@ -1,0 +1,545 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="NewDuraApp.Areas.DuraEats.MyCart.Views.MyCartPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:control="clr-namespace:NewDuraApp.Controls"
+    xmlns:fonticon="clr-namespace:NewDuraApp.FontIcons"
+    xmlns:images="clr-namespace:NewDuraApp.Extensions"
+    xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    BackgroundColor="White"
+    BindingContext="{Binding MyCartPage, Source={StaticResource Locator}}"
+    NavigationPage.HasBackButton="True"
+    Shell.NavBarHasShadow="False"
+    Shell.NavBarIsVisible="True"
+    Shell.TabBarIsVisible="False"
+    Visual="Material">
+    <Shell.TitleView>
+        <Label
+            FontFamily="ProximaSemiBold"
+            FontSize="22"
+            HorizontalOptions="FillAndExpand"
+            Text="My Cart"
+            TextColor="Black"
+            VerticalOptions="CenterAndExpand"
+            VerticalTextAlignment="Center" />
+    </Shell.TitleView>
+    <ContentPage.Content>
+        <Grid RowDefinitions="*,Auto">
+            <ScrollView
+                Grid.Row="0"
+                Margin="15,20,15,10"
+                VerticalScrollBarVisibility="Never">
+                <Grid
+                    ColumnDefinitions="101,*"
+                    ColumnSpacing="15"
+                    RowDefinitions="71,Auto,Auto,99,40,200,60"
+                    RowSpacing="15">
+                    <Frame
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Padding="0"
+                        BorderColor="LightGray"
+                        CornerRadius="10"
+                        IsClippedToBounds="True">
+                        <Image Aspect="AspectFill" Source="{images:EmbeddedImage NewDuraApp.Images.restaurent.png}" />
+                    </Frame>
+                    <StackLayout
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Spacing="2">
+                        <Label
+                            FontAttributes="Bold"
+                            FontFamily="ProximaRegular"
+                            FontSize="14"
+                            Text="Maze Grill Park Walk"
+                            TextColor="Black" />
+                        <Label
+                            FontFamily="ProximaRegular"
+                            FontSize="12"
+                            Text="1976 Capt. M. Reyes, Makati"
+                            TextColor="Black" />
+                        <StackLayout
+                            Margin="0,5"
+                            Orientation="Horizontal"
+                            VerticalOptions="Start">
+                            <StackLayout
+                                BackgroundColor="#FFB114"
+                                HeightRequest="16"
+                                Orientation="Horizontal"
+                                WidthRequest="40">
+                                <Image
+                                    Margin="5,3,-3,3"
+                                    Aspect="Fill"
+                                    HeightRequest="11"
+                                    HorizontalOptions="Start"
+                                    Source="{images:EmbeddedImage NewDuraApp.Images.star_white.png}"
+                                    VerticalOptions="Center"
+                                    WidthRequest="11" />
+                                <Label
+                                    FontFamily="ProximaRegular"
+                                    FontSize="9"
+                                    Text="4.3"
+                                    TextColor="White"
+                                    VerticalOptions="Center"
+                                    VerticalTextAlignment="Center" />
+                            </StackLayout>
+                            <Label
+                                Margin="0,3"
+                                FontFamily="ProximaRegular"
+                                FontSize="12"
+                                Text="(200 reviews)"
+                                TextColor="#FFB114" />
+                        </StackLayout>
+                    </StackLayout>
+                    <StackLayout
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Orientation="Horizontal">
+                        <control:CustomRadioBtton
+                            Margin="-5,0,0,0"
+                            Content="Delivery"
+                            Scale="0.9" />
+                        <control:CustomRadioBtton Content="Pick up" Scale="0.9" />
+                    </StackLayout>
+                    <StackLayout
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2">
+                        <StackLayout>
+                            <Label
+                                FontAttributes="Bold"
+                                FontFamily="ProximaRegular"
+                                FontSize="16"
+                                Text="Your Items"
+                                TextColor="Black"
+                                VerticalOptions="Center"
+                                VerticalTextAlignment="Center" />
+                            <Frame
+                                Padding="0"
+                                xct:ShadowEffect.Color="LightGray"
+                                xct:ShadowEffect.OffsetX="1"
+                                xct:ShadowEffect.OffsetY="1"
+                                xct:ShadowEffect.Radius="8"
+                                BackgroundColor="#FBFBFF"
+                                CornerRadius="0"
+                                HasShadow="{OnPlatform Android='True',
+                                                       iOS='False'}">
+                                <Grid
+                                    Padding="13,6"
+                                    ColumnDefinitions="87,*,67"
+                                    HeightRequest="93"
+                                    RowDefinitions="87">
+                                    <Frame
+                                        Grid.Row="0"
+                                        Grid.Column="0"
+                                        Padding="0"
+                                        BorderColor="LightGray"
+                                        CornerRadius="10"
+                                        HeightRequest="87"
+                                        IsClippedToBounds="True"
+                                        VerticalOptions="CenterAndExpand">
+                                        <Image Aspect="AspectFill" Source="{images:EmbeddedImage NewDuraApp.Images.restaurent.png}" />
+                                    </Frame>
+                                    <StackLayout Grid.Row="0" Grid.Column="1">
+                                        <Label
+                                            Margin="0,10,0,0"
+                                            FontAttributes="Bold"
+                                            FontFamily="ProximaRegular"
+                                            FontSize="16"
+                                            LineBreakMode="TailTruncation"
+                                            MaxLines="1"
+                                            Text="Double Cheese VegC..."
+                                            TextColor="Black"
+                                            VerticalOptions="Center"
+                                            VerticalTextAlignment="Center" />
+                                        <Grid ColumnDefinitions="Auto,12">
+                                            <Label
+                                                Grid.Column="0"
+                                                FontFamily="ProximaRegular"
+                                                FontSize="16"
+                                                HorizontalOptions="Start"
+                                                LineBreakMode="TailTruncation"
+                                                MaxLines="1"
+                                                Text="Extra Mint Sauce"
+                                                TextColor="Black"
+                                                VerticalOptions="Center"
+                                                VerticalTextAlignment="Center" />
+                                            <ImageButton
+                                                Grid.Column="1"
+                                                Aspect="AspectFill"
+                                                BackgroundColor="Transparent"
+                                                Command="{Binding EditCartItems}"
+                                                HeightRequest="13"
+                                                HorizontalOptions="Start"
+                                                VerticalOptions="CenterAndExpand"
+                                                WidthRequest="13">
+                                                <ImageButton.Source>
+                                                    <FontImageSource
+                                                        FontFamily="UserIcons"
+                                                        Glyph="{x:Static fonticon:FontIconsClass.SquareEditOutline}"
+                                                        Size="12"
+                                                        Color="#e15a5b" />
+
+                                                </ImageButton.Source>
+                                            </ImageButton>
+
+                                        </Grid>
+                                    </StackLayout>
+                                    <StackLayout Grid.Column="2">
+                                        <Label
+                                            Margin="0,10,0,0"
+                                            FontAttributes="Bold"
+                                            FontFamily="ProximaRegular"
+                                            FontSize="16"
+                                            HorizontalOptions="EndAndExpand"
+                                            HorizontalTextAlignment="End"
+                                            Text="P12"
+                                            TextColor="Black"
+                                            VerticalOptions="Center"
+                                            VerticalTextAlignment="Center" />
+                                        <Frame
+                                            Padding="0"
+                                            BorderColor="#211E66"
+                                            CornerRadius="0"
+                                            HasShadow="False"
+                                            HeightRequest="25">
+                                            <Grid Margin="3" ColumnDefinitions="*,*,*">
+                                                <ImageButton
+                                                    Grid.Column="0"
+                                                    Aspect="AspectFill"
+                                                    BackgroundColor="Transparent"
+                                                    HeightRequest="11"
+                                                    HorizontalOptions="Center"
+                                                    VerticalOptions="CenterAndExpand"
+                                                    WidthRequest="11">
+                                                    <ImageButton.Source>
+                                                        <FontImageSource
+                                                            FontFamily="UserIcons"
+                                                            Glyph="{x:Static fonticon:FontIconsClass.Minus}"
+                                                            Size="14"
+                                                            Color="Black" />
+
+                                                    </ImageButton.Source>
+                                                </ImageButton>
+                                                <Label
+                                                    Grid.Column="1"
+                                                    Padding="2"
+                                                    BackgroundColor="#F3F3F3"
+                                                    FontAttributes="Bold"
+                                                    FontFamily="ProximaRegular"
+                                                    FontSize="12"
+                                                    HorizontalOptions="CenterAndExpand"
+                                                    HorizontalTextAlignment="Center"
+                                                    Text="22"
+                                                    TextColor="Black"
+                                                    VerticalOptions="Center"
+                                                    VerticalTextAlignment="Center" />
+                                                <ImageButton
+                                                    Grid.Column="2"
+                                                    Aspect="AspectFill"
+                                                    BackgroundColor="Transparent"
+                                                    HeightRequest="11"
+                                                    HorizontalOptions="Center"
+                                                    VerticalOptions="CenterAndExpand"
+                                                    WidthRequest="11">
+                                                    <ImageButton.Source>
+                                                        <FontImageSource
+                                                            FontFamily="UserIcons"
+                                                            Glyph="{x:Static fonticon:FontIconsClass.Plus}"
+                                                            Size="12"
+                                                            Color="Black" />
+
+                                                    </ImageButton.Source>
+                                                </ImageButton>
+                                            </Grid>
+                                        </Frame>
+                                    </StackLayout>
+                                </Grid>
+                            </Frame>
+                        </StackLayout>
+                        <Button
+                            Margin="20,10"
+                            BackgroundColor="White"
+                            BorderColor="#211E66"
+                            BorderWidth="1"
+                            Command="{Binding GoToAddItemCmd}"
+                            Text="Add More Items"
+                            TextColor="Black" />
+
+                    </StackLayout>
+                    <Frame
+                        Grid.Row="3"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Padding="3"
+                        BackgroundColor="#F3F3F3"
+                        BorderColor="#211E66"
+                        HasShadow="False">
+                        <control:BorderlessEditor
+                            BackgroundColor="Transparent"
+                            FontSize="12"
+                            Placeholder="Add Notes to Shop" />
+                    </Frame>
+                    <Frame
+                        Grid.Row="4"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Padding="5,2"
+                        BorderColor="#211E66"
+                        CornerRadius="8"
+                        IsClippedToBounds="True">
+                        <Grid BackgroundColor="White" ColumnDefinitions="*,Auto">
+                            <Label
+                                Grid.Column="0"
+                                FontFamily="ProximaRegular"
+                                FontSize="14"
+                                Text="Have coupon?"
+                                TextColor="{StaticResource PlaceholderColor}"
+                                VerticalOptions="CenterAndExpand" />
+                            <Button
+                                Grid.Column="1"
+                                Margin="3,0"
+                                BackgroundColor="White"
+                                BorderColor="Transparent"
+                                Command="{Binding NavigateToPromoCode1}"
+                                FontAttributes="Bold"
+                                FontSize="12"
+                                HeightRequest="19"
+                                HorizontalOptions="EndAndExpand"
+                                Text="Apply"
+                                TextColor="Black"
+                                Visual="Default" />
+                        </Grid>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding NavigateToPromoCode1}" />
+                        </Frame.GestureRecognizers>
+                    </Frame>
+                    <Grid
+                        Grid.Row="5"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Padding="10,15"
+                        BackgroundColor="#CFFFE7"
+                        ColumnDefinitions="*,Auto"
+                        RowDefinitions="14,14,14,14,Auto"
+                        RowSpacing="15">
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            FontAttributes="Bold"
+                            FontFamily="ProximaRegular"
+                            FontSize="14"
+                            Text="Payment Details"
+                            TextColor="Black"
+                            VerticalOptions="Center"
+                            VerticalTextAlignment="Center" />
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            FontFamily="ProximaRegular"
+                            FontSize="14"
+                            Text="Subtotal"
+                            TextColor="Black"
+                            VerticalOptions="Center"
+                            VerticalTextAlignment="Center" />
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            FontAttributes="Bold"
+                            FontFamily="ProximaRegular"
+                            FontSize="14"
+                            HorizontalOptions="EndAndExpand"
+                            HorizontalTextAlignment="End"
+                            Text="P20"
+                            TextColor="Black"
+                            VerticalOptions="Center"
+                            VerticalTextAlignment="Center" />
+                        <Label
+                            Grid.Row="2"
+                            Grid.Column="0"
+                            FontFamily="ProximaRegular"
+                            FontSize="14"
+                            Text="Delivery fee"
+                            TextColor="Black"
+                            VerticalOptions="Center"
+                            VerticalTextAlignment="Center" />
+                        <Label
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            FontAttributes="Bold"
+                            FontFamily="ProximaRegular"
+                            FontSize="14"
+                            HorizontalOptions="EndAndExpand"
+                            HorizontalTextAlignment="End"
+                            Text="P3"
+                            TextColor="Black"
+                            VerticalOptions="Center"
+                            VerticalTextAlignment="Center" />
+                        <Label
+                            Grid.Row="3"
+                            Grid.Column="0"
+                            FontFamily="ProximaRegular"
+                            FontSize="14"
+                            Text="Total"
+                            TextColor="Black"
+                            VerticalOptions="Center"
+                            VerticalTextAlignment="Center" />
+                        <Label
+                            Grid.Row="3"
+                            Grid.Column="1"
+                            FontAttributes="Bold"
+                            FontFamily="ProximaRegular"
+                            FontSize="14"
+                            HorizontalOptions="EndAndExpand"
+                            HorizontalTextAlignment="End"
+                            Text="P23"
+                            TextColor="Black"
+                            VerticalOptions="Center"
+                            VerticalTextAlignment="Center" />
+                        <Frame
+                            Grid.Row="4"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="2"
+                            Padding="5,10"
+                            BackgroundColor="White"
+                            CornerRadius="6"
+                            HasShadow="False">
+                            <AbsoluteLayout>
+                                <Grid
+                                    AbsoluteLayout.LayoutBounds="0,0,1,1"
+                                    AbsoluteLayout.LayoutFlags="All"
+                                    ColumnDefinitions="14,*"
+                                    RowDefinitions="14,14">
+                                    <Image
+                                        Grid.Row="0"
+                                        Grid.Column="0"
+                                        Aspect="AspectFill"
+                                        BackgroundColor="Transparent"
+                                        HeightRequest="14"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="CenterAndExpand"
+                                        WidthRequest="14">
+                                        <Image.Source>
+                                            <FontImageSource
+                                                FontFamily="UserIcons"
+                                                Glyph="{x:Static fonticon:FontIconsClass.Home}"
+                                                Size="14"
+                                                Color="Black" />
+                                        </Image.Source>
+                                    </Image>
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="1"
+                                        FontAttributes="Bold"
+                                        FontFamily="ProximaRegular"
+                                        FontSize="14"
+                                        Text="Home"
+                                        TextColor="Black"
+                                        VerticalOptions="Center"
+                                        VerticalTextAlignment="Center" />
+                                    <Label
+                                        Grid.Row="1"
+                                        Grid.Column="1"
+                                        FontFamily="ProximaRegular"
+                                        FontSize="13"
+                                        Text="16/F Coccobank Building Makati Avenue 1200"
+                                        TextColor="Gray"
+                                        VerticalOptions="Center"
+                                        VerticalTextAlignment="Center" />
+                                </Grid>
+                                <ImageButton
+                                    Margin="0,-5,0,0"
+                                    AbsoluteLayout.LayoutBounds="1,0"
+                                    AbsoluteLayout.LayoutFlags="PositionProportional"
+                                    Aspect="AspectFill"
+                                    BackgroundColor="Transparent"
+                                    Command="{Binding NavigateToChangeLocation}"
+                                    HeightRequest="18"
+                                    WidthRequest="18">
+                                    <ImageButton.Source>
+                                        <FontImageSource
+                                            FontFamily="UserIcons"
+                                            Glyph="{x:Static fonticon:FontIconsClass.SquareEditOutline}"
+                                            Size="18"
+                                            Color="Black" />
+
+                                    </ImageButton.Source>
+                                </ImageButton>
+                            </AbsoluteLayout>
+                        </Frame>
+                    </Grid>
+                </Grid>
+            </ScrollView>
+            <pancake:PancakeView
+                Grid.Row="1"
+                Margin="0"
+                BackgroundColor="#211E66"
+                CornerRadius="12,12,0,0"
+                HeightRequest="70">
+                <Grid
+                    Margin="15,10"
+                    Padding="10,0"
+                    ColumnDefinitions="*,*"
+                    RowDefinitions="Auto,Auto"
+                    RowSpacing="0"
+                    VerticalOptions="CenterAndExpand">
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        FontAttributes="Bold"
+                        FontFamily="ProximaRegular"
+                        FontSize="14"
+                        Text="1 item added"
+                        TextColor="White"
+                        VerticalOptions="Start" />
+                    <Label
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        FontFamily="ProximaRegular"
+                        FontSize="14"
+                        Text="P20"
+                        TextColor="White"
+                        VerticalOptions="Start" />
+                    <StackLayout
+                        Grid.Row="0"
+                        Grid.RowSpan="2"
+                        Grid.Column="1"
+                        HorizontalOptions="End"
+                        Orientation="Horizontal">
+                        <Label
+                            FontAttributes="Bold"
+                            FontFamily="ProximaRegular"
+                            FontSize="14"
+                            Text="Order Now"
+                            TextColor="White"
+                            VerticalOptions="CenterAndExpand" />
+
+                        <ImageButton
+                            Margin="5,0"
+                            Aspect="Fill"
+                            BackgroundColor="Transparent"
+                            Command="{Binding NavigateToPaymentMode}"
+                            HeightRequest="18"
+                            HorizontalOptions="End"
+                            VerticalOptions="CenterAndExpand"
+                            WidthRequest="22">
+                            <ImageButton.Source>
+                                <FontImageSource
+                                    FontFamily="UserIcons"
+                                    Glyph="{x:Static fonticon:FontIconsClass.ArrowRight}"
+                                    Size="30"
+                                    Color="White" />
+                            </ImageButton.Source>
+                        </ImageButton>
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding NavigateToPaymentMode}" />
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+                </Grid>
+            </pancake:PancakeView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

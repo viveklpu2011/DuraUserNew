@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Shell
+    x:Class="NewDuraApp.Areas.Common.Views.HomeMenuShell"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Views1="clr-namespace:NewDuraApp.Areas.Common.Views"
+    xmlns:local3111="clr-namespace:NewDuraApp.Areas.Orders.Views"
+    xmlns:local3112="clr-namespace:NewDuraApp.Areas.Profile.Views"
+    NavigationPage.HasNavigationBar="false"
+    Shell.NavBarIsVisible="False">
+    <Shell.FlyoutHeader>
+        <StackLayout
+            BackgroundColor="White"
+            HeightRequest="120"
+            Orientation="Horizontal">
+            <StackLayout
+                Margin="16,10,16,20"
+                HeightRequest="100"
+                VerticalOptions="Center">
+                <Image
+                    Aspect="AspectFill"
+                    HeightRequest="100"
+                    HorizontalOptions="Center"
+                    Source="profilepicture"
+                    VerticalOptions="End"
+                    WidthRequest="100" />
+            </StackLayout>
+            <ImageButton
+                Margin="20"
+                Command="{Binding FlyoutIsPresentedCommand}"
+                HeightRequest="25"
+                HorizontalOptions="EndAndExpand"
+                Source="cross2"
+                VerticalOptions="StartAndExpand"
+                WidthRequest="25" />
+        </StackLayout>
+    </Shell.FlyoutHeader>
+    <FlyoutItem
+        xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+        x:Name="MyTabbar"
+        Title="Home"
+        ios:Page.UseSafeArea="true"
+        FlyoutDisplayOptions="AsSingleItem"
+        Icon="home_active">
+        <Tab Title="Home" Icon="home_active">
+            <Views1:HomePage />
+        </Tab>
+        <Tab Title="My Orders" Icon="my_orders_active">
+            <local3111:MyOrders />
+        </Tab>
+        <Tab Title="My Profile" Icon="my_profile_active">
+            <local3112:MyProfile />
+        </Tab>
+    </FlyoutItem>
+    <MenuItem
+        xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+        ios:Page.UseSafeArea="true"
+        Command="{Binding LogoutCommand}"
+        Icon="Logout_grey"
+        NavigationPage.HasNavigationBar="False"
+        Text="Logout" />
+</Shell>

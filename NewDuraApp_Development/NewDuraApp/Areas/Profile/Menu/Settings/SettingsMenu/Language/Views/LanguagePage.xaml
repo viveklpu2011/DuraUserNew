@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="NewDuraApp.Areas.Profile.Menu.Settings.SettingsMenu.Language.Views.LanguagePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:control="clr-namespace:NewDuraApp.Controls"
+    xmlns:fonticon="clr-namespace:NewDuraApp.FontIcons"
+    xmlns:images="clr-namespace:NewDuraApp.Extensions"
+    xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:translate="clr-namespace:NewDuraApp.Resources"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    BackgroundColor="White"
+    BindingContext="{Binding LanguagePage, Source={StaticResource Locator}}"
+    NavigationPage.HasBackButton="True"
+    Shell.NavBarHasShadow="False"
+    Shell.NavBarIsVisible="True"
+    Shell.TabBarIsVisible="False"
+    Visual="Material">
+    <Shell.TitleView>
+
+        <Label
+            FontFamily="ProximaSemiBold"
+            FontSize="22"
+            HorizontalOptions="FillAndExpand"
+            Text="{translate:Translate Language}"
+            TextColor="Black"
+            VerticalOptions="CenterAndExpand"
+            VerticalTextAlignment="Center" />
+
+
+    </Shell.TitleView>
+    <ContentPage.Content>
+        <StackLayout Margin="15,25" Spacing="20">
+            <Frame
+                Padding="15,5"
+                BackgroundColor="#FBFBFF"
+                CornerRadius="5"
+                HeightRequest="34">
+
+                <Grid ColumnDefinitions="*,Auto">
+                    <control:BorderlessPicker
+                        x:Name="pickerLanguage"
+                        Title="{translate:Translate Language}"
+                        Grid.Column="0"
+                        FontFamily="ProximaRegular"
+                        FontSize="14"
+                        ItemDisplayBinding="{Binding LanguageName}"
+                        ItemsSource="{Binding LanguageList}"
+                        SelectedIndex="0"
+                        SelectedItem="{Binding SelectedLanguage}"
+                        TextColor="Black"
+                        TitleColor="{StaticResource PlaceholderColor}" />
+                    <Image
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Margin="0,0,10,0"
+                        HeightRequest="13"
+                        HorizontalOptions="EndAndExpand"
+                        InputTransparent="True"
+                        Source="{images:EmbeddedImage NewDuraApp.Images.drop_down_arrow.png}"
+                        VerticalOptions="CenterAndExpand"
+                        WidthRequest="13" />
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TapGestureRecognizer_Tapped_1" />
+                    </Grid.GestureRecognizers>
+                </Grid>
+
+
+            </Frame>
+            <Button
+                Margin="0,20,0,0"
+                BackgroundColor="#211E66"
+                Command="{Binding SaveCommand}"
+                CornerRadius="5"
+                FontFamily="ProximaRegular"
+                FontSize="17"
+                HeightRequest="50"
+                HorizontalOptions="FillAndExpand"
+                Text="{translate:Translate Save}"
+                TextColor="White" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

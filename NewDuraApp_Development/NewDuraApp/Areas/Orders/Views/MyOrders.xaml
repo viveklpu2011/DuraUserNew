@@ -1,0 +1,1319 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="NewDuraApp.Areas.Orders.Views.MyOrders"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Controls="clr-namespace:NewDuraApp.Controls"
+    xmlns:Helpers="clr-namespace:NewDuraApp.Converters"
+    xmlns:fonticon="clr-namespace:NewDuraApp.FontIcons"
+    xmlns:images="clr-namespace:NewDuraApp.Extensions"
+    xmlns:sh="http://sharpnado.com"
+    xmlns:translate="clr-namespace:NewDuraApp.Resources"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    x:Name="thispage"
+    BackgroundColor="White"
+    BindingContext="{Binding MyOrders, Source={StaticResource Locator}}"
+    NavigationPage.HasBackButton="False"
+    Shell.NavBarHasShadow="False"
+    Shell.NavBarIsVisible="True"
+    Visual="Material">
+    <Shell.TitleView>
+        <Label
+            FontFamily="ProximaSemiBold"
+            FontSize="22"
+            Text="{translate:Translate My_Orders}"
+            TextColor="Black"
+            VerticalOptions="CenterAndExpand"
+            VerticalTextAlignment="Center" />
+    </Shell.TitleView>
+    <ContentPage.Content>
+        <StackLayout>
+            <xct:TabView
+                Margin="10,0"
+                IsSwipeEnabled="False"
+                IsTabTransitionEnabled="False"
+                TabIndicatorColor="#211E66"
+                TabIndicatorHeight="2"
+                TabStripHeight="40">
+                <xct:TabViewItem
+                    FontFamily="ProximaRegular"
+                    FontFamilySelected="ProximaSemiBold"
+                    FontSize="14"
+                    FontSizeSelected="15"
+                    Text="Dura Express"
+                    TextColor="#606060"
+                    TextColorSelected="#211E66">
+                    <xct:TabViewItem.Content>
+                        <ScrollView VerticalScrollBarVisibility="Never">
+                            <StackLayout Margin="10">
+                                <Label
+                                    FontFamily="ProximaSemiBold"
+                                    FontSize="14"
+                                    Opacity=".8"
+                                    Text="{translate:Translate Choose_Status}"
+                                    TextColor="Black" />
+                                <Frame
+                                    Padding="0"
+                                    xct:ShadowEffect.Color="LightGray"
+                                    xct:ShadowEffect.OffsetX="1"
+                                    xct:ShadowEffect.OffsetY="1"
+                                    xct:ShadowEffect.Radius="5"
+                                    xct:VisualFeedbackEffect.FeedbackColor="#EBE9FF"
+                                    BackgroundColor="#EBE9FF"
+                                    CornerRadius="5"
+                                    HasShadow="{OnPlatform Android='true',
+                                                           iOS='false'}"
+                                    HeightRequest="40">
+                                    <Grid Padding="0">
+                                        <Controls:BorderlessPicker
+                                            x:Name="Picker1"
+                                            Title="{translate:Translate Select_Status}"
+                                            Margin="20,0,0,0"
+                                            FontFamily="ProximaSemiBold"
+                                            FontSize="16"
+                                            ItemDisplayBinding="{Binding ChooseOrderStatus}"
+                                            ItemsSource="{Binding OrderStatusList}"
+                                            SelectedIndexChanged="BorderlessPicker_SelectedIndexChanged"
+                                            SelectedItem="{Binding SelectedOrderStatus}"
+                                            TextColor="Black" />
+                                        <Image
+                                            Margin="0,0,10,0"
+                                            HeightRequest="15"
+                                            HorizontalOptions="EndAndExpand"
+                                            InputTransparent="True"
+                                            Source="{images:EmbeddedImage NewDuraApp.Images.drop_down_arrow.png}"
+                                            VerticalOptions="CenterAndExpand"
+                                            WidthRequest="15" />
+                                    </Grid>
+                                </Frame>
+                                <AbsoluteLayout>
+                                    <CollectionView
+                                        x:Name="CompletedFrame"
+                                        Margin="0,10,0,0"
+                                        AbsoluteLayout.LayoutBounds="0,0,1,1"
+                                        AbsoluteLayout.LayoutFlags="All"
+                                        ItemsSource="{Binding DuraExpressOrderList}"
+                                        RemainingItemsThreshold="{Binding ItemTreshold}"
+                                        RemainingItemsThresholdReachedCommand="{Binding RemainThresholdReachCommand}">
+                                        <CollectionView.ItemsLayout>
+                                            <GridItemsLayout Orientation="Vertical" VerticalItemSpacing="10" />
+                                        </CollectionView.ItemsLayout>
+                                        <CollectionView.EmptyView>
+                                            <StackLayout IsVisible="{Binding IsEmpty}">
+                                                <Label
+                                                    FontSize="15"
+                                                    HorizontalOptions="CenterAndExpand"
+                                                    HorizontalTextAlignment="Center"
+                                                    Text="{translate:Translate No_records_found}"
+                                                    TextColor="Black"
+                                                    VerticalOptions="StartAndExpand" />
+                                            </StackLayout>
+                                        </CollectionView.EmptyView>
+                                        <CollectionView.ItemTemplate>
+                                            <DataTemplate>
+                                                <StackLayout>
+                                                    <Frame
+                                                        x:Name="Frame1"
+                                                        Margin="2,10,2,10"
+                                                        Padding="0"
+                                                        xct:ShadowEffect.Color="#00000029"
+                                                        xct:ShadowEffect.OffsetX="1"
+                                                        xct:ShadowEffect.OffsetY="1"
+                                                        xct:ShadowEffect.Radius="5"
+                                                        BackgroundColor="#FBFBFF"
+                                                        BorderColor="#00000029"
+                                                        HasShadow="{OnPlatform Android='true',
+                                                                               iOS='false'}"
+                                                        IsVisible="{Binding IsOngoingViewVisible}">
+                                                        <StackLayout>
+                                                            <Grid ColumnDefinitions="*,*">
+                                                                <StackLayout
+                                                                    Grid.Column="0"
+                                                                    Margin="10,10,0,0"
+                                                                    Orientation="Vertical">
+                                                                    <Label
+                                                                        FontFamily="ProximaRegular"
+                                                                        FontSize="16"
+                                                                        Text="{translate:Translate Order_Number}"
+                                                                        TextColor="Black" />
+                                                                    <Label
+                                                                        FontFamily="ProximaSemiBold"
+                                                                        FontSize="16"
+                                                                        Text="{Binding order_no}"
+                                                                        TextColor="Black" />
+                                                                </StackLayout>
+                                                                <StackLayout
+                                                                    Grid.Column="1"
+                                                                    Margin="10,10,0,10"
+                                                                    HorizontalOptions="EndAndExpand"
+                                                                    Orientation="Vertical">
+                                                                    <!--<Label
+                                                                FontFamily="ProximaRegular"
+                                                                FontSize="16"
+                                                                Text="Ordered on"
+                                                                TextColor="Black" />-->
+                                                                    <Label
+                                                                        FontFamily="ProximaSemiBold"
+                                                                        FontSize="16"
+                                                                        Text="{Binding orderdate}"
+                                                                        TextColor="Black" />
+                                                                </StackLayout>
+                                                            </Grid>
+                                                            <Grid
+                                                                Margin="5,0"
+                                                                ColumnSpacing="0"
+                                                                RowDefinitions="Auto,Auto,Auto"
+                                                                RowSpacing="0">
+                                                                <StackLayout Grid.Row="0" Padding="0">
+                                                                    <Grid ColumnDefinitions="15,*">
+                                                                        <Frame
+                                                                            Grid.Column="0"
+                                                                            Margin="0,8,0,0"
+                                                                            Padding="0"
+                                                                            BackgroundColor="#423A95"
+                                                                            CornerRadius="5"
+                                                                            HasShadow="False"
+                                                                            HeightRequest="10"
+                                                                            HorizontalOptions="CenterAndExpand"
+                                                                            VerticalOptions="Start"
+                                                                            WidthRequest="10" />
+                                                                        <BoxView
+                                                                            Grid.Column="0"
+                                                                            Margin="0,15,0,0"
+                                                                            BackgroundColor="#423A95"
+                                                                            HorizontalOptions="CenterAndExpand"
+                                                                            VerticalOptions="FillAndExpand"
+                                                                            WidthRequest=".5" />
+                                                                        <StackLayout
+                                                                            Grid.Column="1"
+                                                                            Margin="5"
+                                                                            Spacing="5">
+                                                                            <Label
+                                                                                Margin="5,0,0,0"
+                                                                                FontFamily="ProximaSemiBold"
+                                                                                FontSize="16"
+                                                                                Text="{Binding pickupaddress}"
+                                                                                TextColor="#3D3D3D" />
+                                                                            <Label
+                                                                                Margin="5,0,5,0"
+                                                                                FontFamily="ProximaRegular"
+                                                                                FontSize="14"
+                                                                                TextColor="#3D3D3D">
+                                                                                <Label.FormattedText>
+                                                                                    <FormattedString>
+                                                                                        <Span Text="{translate:Translate Block}" />
+                                                                                        <Span Text=" " />
+                                                                                        <Span Text="{Binding pickupaddresssub}" />
+                                                                                    </FormattedString>
+                                                                                </Label.FormattedText>
+                                                                            </Label>
+                                                                            <Label
+                                                                                Margin="5,0,5,0"
+                                                                                FontFamily="ProximaRegular"
+                                                                                FontSize="14"
+                                                                                TextColor="#3D3D3D">
+                                                                                <Label.FormattedText>
+                                                                                    <FormattedString>
+                                                                                        <Span Text="{Binding pickup_name}" />
+                                                                                        <Span Text=" | " />
+                                                                                        <Span Text="{Binding pickup_mobile}" />
+                                                                                    </FormattedString>
+                                                                                </Label.FormattedText>
+                                                                            </Label>
+                                                                        </StackLayout>
+                                                                    </Grid>
+                                                                </StackLayout>
+                                                                <StackLayout
+                                                                    Grid.Row="1"
+                                                                    Padding="0"
+                                                                    BindableLayout.ItemsSource="{Binding stopdata}"
+                                                                    IsVisible="{Binding IsAvailableStopData}"
+                                                                    VerticalOptions="Start">
+                                                                    <BindableLayout.ItemTemplate>
+                                                                        <DataTemplate>
+                                                                            <StackLayout Grid.Row="0">
+                                                                                <Grid ColumnDefinitions="15,*">
+                                                                                    <Frame
+                                                                                        Grid.Column="0"
+                                                                                        Margin="0,8,0,0"
+                                                                                        Padding="0"
+                                                                                        BackgroundColor="#423A95"
+                                                                                        CornerRadius="5"
+                                                                                        HasShadow="False"
+                                                                                        HeightRequest="10"
+                                                                                        HorizontalOptions="CenterAndExpand"
+                                                                                        VerticalOptions="Start"
+                                                                                        WidthRequest="10" />
+                                                                                    <BoxView
+                                                                                        Grid.Column="0"
+                                                                                        Margin="0,15,0,0"
+                                                                                        BackgroundColor="#423A95"
+                                                                                        HorizontalOptions="CenterAndExpand"
+                                                                                        VerticalOptions="FillAndExpand"
+                                                                                        WidthRequest=".5" />
+                                                                                    <StackLayout
+                                                                                        Grid.Column="1"
+                                                                                        Margin="5"
+                                                                                        Spacing="5">
+                                                                                        <Label
+                                                                                            Margin="5,0,0,0"
+                                                                                            FontFamily="ProximaSemiBold"
+                                                                                            FontSize="16"
+                                                                                            Text="{Binding stop_address1}"
+                                                                                            TextColor="#3D3D3D" />
+                                                                                        <Label
+                                                                                            Margin="5,0,5,0"
+                                                                                            FontFamily="ProximaRegular"
+                                                                                            FontSize="14"
+                                                                                            TextColor="#3D3D3D">
+                                                                                            <Label.FormattedText>
+                                                                                                <FormattedString>
+                                                                                                    <Span Text="{translate:Translate Block}" />
+                                                                                                    <Span Text=" " />
+                                                                                                    <Span Text="{Binding stop_address2}" />
+                                                                                                </FormattedString>
+                                                                                            </Label.FormattedText>
+                                                                                        </Label>
+                                                                                        <Label
+                                                                                            Margin="5,0,5,0"
+                                                                                            FontFamily="ProximaRegular"
+                                                                                            FontSize="14"
+                                                                                            TextColor="#3D3D3D">
+                                                                                            <Label.FormattedText>
+                                                                                                <FormattedString>
+                                                                                                    <Span Text="{Binding stop_name}" />
+                                                                                                    <Span Text=" | " />
+                                                                                                    <Span Text="{Binding stop_mobile}" />
+                                                                                                </FormattedString>
+                                                                                            </Label.FormattedText>
+                                                                                        </Label>
+                                                                                    </StackLayout>
+                                                                                </Grid>
+                                                                            </StackLayout>
+                                                                        </DataTemplate>
+                                                                    </BindableLayout.ItemTemplate>
+                                                                </StackLayout>
+                                                                <StackLayout Grid.Row="2" Padding="0">
+                                                                    <Grid ColumnDefinitions="15,*">
+                                                                        <Image
+                                                                            Grid.Column="0"
+                                                                            Margin="0,8,0,0"
+                                                                            BackgroundColor="Transparent"
+                                                                            HeightRequest="14"
+                                                                            HorizontalOptions="CenterAndExpand"
+                                                                            Source="{images:EmbeddedImage NewDuraApp.Images.map_locaiton.png}"
+                                                                            VerticalOptions="Start"
+                                                                            WidthRequest="14" />
+                                                                        <BoxView
+                                                                            Grid.Column="0"
+                                                                            Margin="0,15,0,0"
+                                                                            BackgroundColor="#423A95"
+                                                                            HorizontalOptions="CenterAndExpand"
+                                                                            IsVisible="False"
+                                                                            VerticalOptions="FillAndExpand"
+                                                                            WidthRequest=".5" />
+                                                                        <StackLayout
+                                                                            Grid.Column="1"
+                                                                            Margin="5"
+                                                                            Spacing="5">
+                                                                            <Label
+                                                                                Margin="5,0,0,0"
+                                                                                FontFamily="ProximaSemiBold"
+                                                                                FontSize="16"
+                                                                                Text="{Binding wheretoaddress}"
+                                                                                TextColor="#3D3D3D" />
+                                                                            <Label
+                                                                                Margin="5,0,5,0"
+                                                                                FontFamily="ProximaRegular"
+                                                                                FontSize="14"
+                                                                                TextColor="#3D3D3D">
+                                                                                <Label.FormattedText>
+                                                                                    <FormattedString>
+                                                                                        <Span Text="Block : " />
+                                                                                        <Span Text="{Binding wheretoaddresssub}" />
+                                                                                    </FormattedString>
+                                                                                </Label.FormattedText>
+                                                                            </Label>
+                                                                            <Label
+                                                                                Margin="5,0,5,0"
+                                                                                FontFamily="ProximaRegular"
+                                                                                FontSize="14"
+                                                                                TextColor="#3D3D3D">
+                                                                                <Label.FormattedText>
+                                                                                    <FormattedString>
+                                                                                        <Span Text="{Binding wheretoname}" />
+                                                                                        <Span Text=" | " />
+                                                                                        <Span Text="{Binding wheretomobile}" />
+                                                                                    </FormattedString>
+                                                                                </Label.FormattedText>
+                                                                            </Label>
+                                                                        </StackLayout>
+                                                                    </Grid>
+                                                                </StackLayout>
+                                                            </Grid>
+
+                                                            <BoxView BackgroundColor="Gray" HeightRequest=".5" />
+                                                            <Grid
+                                                                Margin="20,10"
+                                                                HeightRequest="44"
+                                                                VerticalOptions="CenterAndExpand">
+                                                                <Grid.RowDefinitions>
+                                                                    <RowDefinition Height="22" />
+                                                                    <RowDefinition Height="22" />
+                                                                </Grid.RowDefinitions>
+                                                                <Grid.ColumnDefinitions>
+                                                                    <ColumnDefinition Width="50*" />
+                                                                    <ColumnDefinition Width="50*" />
+                                                                </Grid.ColumnDefinitions>
+                                                                <Label
+                                                                    Grid.Row="0"
+                                                                    Grid.Column="0"
+                                                                    FontFamily="ProximaBold"
+                                                                    FontSize="14"
+                                                                    Text="{translate:Translate Service_type}"
+                                                                    TextColor="#3D3D3D" />
+                                                                <Label
+                                                                    Grid.Row="0"
+                                                                    Grid.Column="1"
+                                                                    FontFamily="ProximaRegular"
+                                                                    FontSize="14"
+                                                                    HorizontalOptions="EndAndExpand"
+                                                                    Text="{Binding servicetype}"
+                                                                    TextColor="#3E3E3E" />
+                                                                <Label
+                                                                    Grid.Row="1"
+                                                                    Grid.Column="0"
+                                                                    FontFamily="ProximaBold"
+                                                                    FontSize="14"
+                                                                    Text="{translate:Translate Contact_Person}"
+                                                                    TextColor="#3D3D3D" />
+                                                                <Label
+                                                                    Grid.Row="1"
+                                                                    Grid.Column="1"
+                                                                    FontFamily="ProximaRegular"
+                                                                    FontSize="14"
+                                                                    HorizontalOptions="EndAndExpand"
+                                                                    Text="{Binding username}"
+                                                                    TextColor="#3E3E3E" />
+                                                            </Grid>
+                                                            <BoxView BackgroundColor="Gray" HeightRequest=".5" />
+                                                            <Frame
+                                                                Padding="0"
+                                                                BackgroundColor="#C7FFe5"
+                                                                HeightRequest="50">
+
+                                                                <Grid
+                                                                    Margin="20,10,20,0"
+                                                                    ColumnDefinitions="*,Auto,Auto,Auto"
+                                                                    VerticalOptions="CenterAndExpand">
+                                                                    <Label
+                                                                        Grid.Column="0"
+                                                                        FontAttributes="Bold"
+                                                                        FontFamily="ProximaSemiBold"
+                                                                        FontSize="19"
+                                                                        TextColor="Black"
+                                                                        VerticalOptions="CenterAndExpand">
+                                                                        <Label.FormattedText>
+                                                                            <FormattedString>
+                                                                                <!--<Span Text="Status :" />-->
+                                                                                <Span Text="{Binding status, Converter={Helpers:StatusCodeToStatusConverter}}" />
+                                                                            </FormattedString>
+                                                                        </Label.FormattedText>
+                                                                    </Label>
+
+                                                                    <Label
+                                                                        Grid.Column="1"
+                                                                        Margin="0,0,0,5"
+                                                                        FontFamily="ProximaSemiBold"
+                                                                        FontSize="18"
+                                                                        HorizontalOptions="EndAndExpand"
+                                                                        TextColor="Gray"
+                                                                        VerticalOptions="CenterAndExpand"
+                                                                        VerticalTextAlignment="Center">
+                                                                        <Label.FormattedText>
+                                                                            <FormattedString>
+                                                                                <Span Text="{Binding price.currency}" />
+                                                                                <Span Text="{Binding price.total}" />
+                                                                            </FormattedString>
+                                                                        </Label.FormattedText>
+                                                                    </Label>
+
+                                                                    <Label
+                                                                        Grid.Column="2"
+                                                                        Margin="0,0,0,5"
+                                                                        FontFamily="ProximaSemiBold"
+                                                                        FontSize="18"
+                                                                        HorizontalOptions="EndAndExpand"
+                                                                        HorizontalTextAlignment="End"
+                                                                        IsVisible="False"
+                                                                        Text="{Binding DiscountedAmount}"
+                                                                        TextColor="Black"
+                                                                        VerticalOptions="CenterAndExpand"
+                                                                        VerticalTextAlignment="Center" />
+                                                                    <ImageButton
+                                                                        Grid.Column="3"
+                                                                        Margin="0,-5,0,0"
+                                                                        Aspect="AspectFill"
+                                                                        BackgroundColor="Transparent"
+                                                                        Command="{Binding BindingContext.TrackLocationCommand, Source={x:Reference CompletedFrame}}"
+                                                                        CommandParameter="{Binding .}"
+                                                                        HorizontalOptions="CenterAndExpand"
+                                                                        VerticalOptions="CenterAndExpand"
+                                                                        WidthRequest="25">
+                                                                        <ImageButton.Source>
+                                                                            <FontImageSource
+                                                                                FontFamily="UserIcons"
+                                                                                Glyph="{x:Static fonticon:FontIconsClass.MapOutline}"
+                                                                                Size="30"
+                                                                                Color="Black" />
+
+                                                                        </ImageButton.Source>
+                                                                    </ImageButton>
+                                                                </Grid>
+                                                            </Frame>
+                                                            <Button
+                                                                Margin="20"
+                                                                BackgroundColor="#211E66"
+                                                                Command="{Binding BindingContext.TrackOrderDetailsCommand, Source={x:Reference CompletedFrame}}"
+                                                                CommandParameter="{Binding .}"
+                                                                FontFamily="ProximaRegular"
+                                                                FontSize="16"
+                                                                HeightRequest="50"
+                                                                Text="{translate:Translate Track_Order}"
+                                                                TextColor="White" />
+                                                        </StackLayout>
+                                                    </Frame>
+                                                    <Frame
+                                                        Margin="3,15,3,10"
+                                                        Padding="0,0,0,5"
+                                                        xct:ShadowEffect.Color="LightGray"
+                                                        xct:ShadowEffect.OffsetX="1"
+                                                        xct:ShadowEffect.OffsetY="1"
+                                                        xct:ShadowEffect.Radius="5"
+                                                        BackgroundColor="#FBFBFF"
+                                                        CornerRadius="5"
+                                                        HasShadow="{OnPlatform Android='true',
+                                                                               iOS='false'}"
+                                                        IsVisible="{Binding IsOngoingViewVisible, Converter={Helpers:InverseBoolConverter}}">
+                                                        <StackLayout Margin="10,15,10,0" Padding="0">
+                                                            <Label FontSize="16">
+                                                                <Label.FormattedText>
+                                                                    <FormattedString>
+                                                                        <Span
+                                                                            FontFamily="ProximaRegular"
+                                                                            Text="{translate:Translate Order_Number}"
+                                                                            TextColor="Black" />
+                                                                        <Span Text=" " />
+                                                                        <Span
+                                                                            FontFamily="ProximaBold"
+                                                                            Text="{Binding order_no}"
+                                                                            TextColor="#3D3D3D" />
+                                                                    </FormattedString>
+                                                                </Label.FormattedText>
+                                                            </Label>
+                                                            <Label FontSize="16">
+                                                                <Label.FormattedText>
+                                                                    <FormattedString>
+                                                                        <Span
+                                                                            FontFamily="ProximaRegular"
+                                                                            Text="{translate:Translate Ordered_on}"
+                                                                            TextColor="Black" />
+                                                                        <Span Text=" " />
+                                                                        <Span
+                                                                            FontFamily="ProximaBold"
+                                                                            Text="{Binding orderdate}"
+                                                                            TextColor="#3D3D3D" />
+                                                                    </FormattedString>
+                                                                </Label.FormattedText>
+                                                            </Label>
+                                                            <Grid
+                                                                Margin="5,10"
+                                                                ColumnSpacing="0"
+                                                                RowDefinitions="Auto,Auto,Auto"
+                                                                RowSpacing="0">
+                                                                <StackLayout Grid.Row="0" Padding="0">
+                                                                    <Grid ColumnDefinitions="15,*">
+                                                                        <Frame
+                                                                            Grid.Column="0"
+                                                                            Margin="0,8,0,0"
+                                                                            Padding="0"
+                                                                            BackgroundColor="#423A95"
+                                                                            CornerRadius="5"
+                                                                            HasShadow="False"
+                                                                            HeightRequest="10"
+                                                                            HorizontalOptions="CenterAndExpand"
+                                                                            VerticalOptions="Start"
+                                                                            WidthRequest="10" />
+                                                                        <BoxView
+                                                                            Grid.Column="0"
+                                                                            Margin="0,15,0,0"
+                                                                            BackgroundColor="#423A95"
+                                                                            HorizontalOptions="CenterAndExpand"
+                                                                            VerticalOptions="FillAndExpand"
+                                                                            WidthRequest=".5" />
+                                                                        <StackLayout
+                                                                            Grid.Column="1"
+                                                                            Margin="5"
+                                                                            Spacing="5">
+                                                                            <Label
+                                                                                Margin="5,0,0,0"
+                                                                                FontFamily="ProximaSemiBold"
+                                                                                FontSize="16"
+                                                                                Text="{Binding pickupaddress}"
+                                                                                TextColor="#3D3D3D" />
+                                                                            <Label
+                                                                                Margin="5,0,5,0"
+                                                                                FontFamily="ProximaRegular"
+                                                                                FontSize="14"
+                                                                                TextColor="#3D3D3D">
+                                                                                <Label.FormattedText>
+                                                                                    <FormattedString>
+                                                                                        <Span Text="{translate:Translate Block}" />
+                                                                                        <Span Text=" " />
+                                                                                        <Span Text="{Binding pickupaddresssub}" />
+                                                                                    </FormattedString>
+                                                                                </Label.FormattedText>
+                                                                            </Label>
+                                                                            <Label
+                                                                                Margin="5,0,5,0"
+                                                                                FontFamily="ProximaRegular"
+                                                                                FontSize="14"
+                                                                                TextColor="#3D3D3D">
+                                                                                <Label.FormattedText>
+                                                                                    <FormattedString>
+                                                                                        <Span Text="{Binding pickup_name}" />
+                                                                                        <Span Text=" | " />
+                                                                                        <Span Text="{Binding pickup_mobile}" />
+                                                                                    </FormattedString>
+                                                                                </Label.FormattedText>
+                                                                            </Label>
+                                                                        </StackLayout>
+                                                                    </Grid>
+                                                                </StackLayout>
+                                                                <StackLayout
+                                                                    Grid.Row="1"
+                                                                    Padding="0"
+                                                                    BindableLayout.ItemsSource="{Binding stopdata}"
+                                                                    IsVisible="{Binding IsAvailableStopData}"
+                                                                    VerticalOptions="Start">
+                                                                    <BindableLayout.ItemTemplate>
+                                                                        <DataTemplate>
+                                                                            <StackLayout Grid.Row="0">
+                                                                                <Grid ColumnDefinitions="15,*">
+                                                                                    <Frame
+                                                                                        Grid.Column="0"
+                                                                                        Margin="0,8,0,0"
+                                                                                        Padding="0"
+                                                                                        BackgroundColor="#423A95"
+                                                                                        CornerRadius="5"
+                                                                                        HasShadow="False"
+                                                                                        HeightRequest="10"
+                                                                                        HorizontalOptions="CenterAndExpand"
+                                                                                        VerticalOptions="Start"
+                                                                                        WidthRequest="10" />
+                                                                                    <BoxView
+                                                                                        Grid.Column="0"
+                                                                                        Margin="0,15,0,0"
+                                                                                        BackgroundColor="#423A95"
+                                                                                        HorizontalOptions="CenterAndExpand"
+                                                                                        VerticalOptions="FillAndExpand"
+                                                                                        WidthRequest=".5" />
+                                                                                    <StackLayout
+                                                                                        Grid.Column="1"
+                                                                                        Margin="5"
+                                                                                        Spacing="5">
+                                                                                        <Label
+                                                                                            Margin="5,0,0,0"
+                                                                                            FontFamily="ProximaSemiBold"
+                                                                                            FontSize="16"
+                                                                                            Text="{Binding stop_address1}"
+                                                                                            TextColor="#3D3D3D" />
+                                                                                        <Label
+                                                                                            Margin="5,0,5,0"
+                                                                                            FontFamily="ProximaRegular"
+                                                                                            FontSize="14"
+                                                                                            TextColor="#3D3D3D">
+                                                                                            <Label.FormattedText>
+                                                                                                <FormattedString>
+                                                                                                    <Span Text="{translate:Translate Block}" />
+                                                                                                    <Span Text=" " />
+                                                                                                    <Span Text="{Binding stop_address2}" />
+                                                                                                </FormattedString>
+                                                                                            </Label.FormattedText>
+                                                                                        </Label>
+                                                                                        <Label
+                                                                                            Margin="5,0,5,0"
+                                                                                            FontFamily="ProximaRegular"
+                                                                                            FontSize="14"
+                                                                                            TextColor="#3D3D3D">
+                                                                                            <Label.FormattedText>
+                                                                                                <FormattedString>
+                                                                                                    <Span Text="{Binding stop_name}" />
+                                                                                                    <Span Text=" | " />
+                                                                                                    <Span Text="{Binding stop_mobile}" />
+                                                                                                </FormattedString>
+                                                                                            </Label.FormattedText>
+                                                                                        </Label>
+                                                                                    </StackLayout>
+                                                                                </Grid>
+                                                                            </StackLayout>
+                                                                        </DataTemplate>
+                                                                    </BindableLayout.ItemTemplate>
+                                                                </StackLayout>
+                                                                <StackLayout Grid.Row="2" Padding="0">
+                                                                    <Grid ColumnDefinitions="15,*">
+                                                                        <Image
+                                                                            Grid.Column="0"
+                                                                            Margin="0,8,0,0"
+                                                                            BackgroundColor="Transparent"
+                                                                            HeightRequest="14"
+                                                                            HorizontalOptions="CenterAndExpand"
+                                                                            Source="{images:EmbeddedImage NewDuraApp.Images.map_locaiton.png}"
+                                                                            VerticalOptions="Start"
+                                                                            WidthRequest="14" />
+                                                                        <BoxView
+                                                                            Grid.Column="0"
+                                                                            Margin="0,15,0,0"
+                                                                            BackgroundColor="#423A95"
+                                                                            HorizontalOptions="CenterAndExpand"
+                                                                            IsVisible="False"
+                                                                            VerticalOptions="FillAndExpand"
+                                                                            WidthRequest=".5" />
+                                                                        <StackLayout
+                                                                            Grid.Column="1"
+                                                                            Margin="5"
+                                                                            Spacing="5">
+                                                                            <Label
+                                                                                Margin="5,0,0,0"
+                                                                                FontFamily="ProximaSemiBold"
+                                                                                FontSize="16"
+                                                                                Text="{Binding wheretoaddress}"
+                                                                                TextColor="#3D3D3D" />
+                                                                            <Label
+                                                                                Margin="5,0,5,0"
+                                                                                FontFamily="ProximaRegular"
+                                                                                FontSize="14"
+                                                                                TextColor="#3D3D3D">
+                                                                                <Label.FormattedText>
+                                                                                    <FormattedString>
+                                                                                        <Span Text="{translate:Translate Block}" />
+                                                                                        <Span Text=" " />
+                                                                                        <Span Text="{Binding wheretoaddresssub}" />
+                                                                                    </FormattedString>
+                                                                                </Label.FormattedText>
+                                                                            </Label>
+                                                                            <Label
+                                                                                Margin="5,0,5,0"
+                                                                                FontFamily="ProximaRegular"
+                                                                                FontSize="14"
+                                                                                TextColor="#3D3D3D">
+                                                                                <Label.FormattedText>
+                                                                                    <FormattedString>
+                                                                                        <Span Text="{Binding wheretoname}" />
+                                                                                        <Span Text=" | " />
+                                                                                        <Span Text="{Binding wheretomobile}" />
+                                                                                    </FormattedString>
+                                                                                </Label.FormattedText>
+                                                                            </Label>
+                                                                        </StackLayout>
+                                                                    </Grid>
+                                                                </StackLayout>
+                                                            </Grid>
+                                                            <Grid Margin="10,0,10,15">
+                                                                <Grid.ColumnDefinitions>
+                                                                    <ColumnDefinition Width="50*" />
+                                                                    <ColumnDefinition Width="50*" />
+                                                                </Grid.ColumnDefinitions>
+                                                                <StackLayout Grid.Column="0">
+                                                                    <Label
+                                                                        FontFamily="ProximaRegular"
+                                                                        FontSize="12"
+                                                                        Opacity=".7"
+                                                                        Text="{translate:Translate Service_type}"
+                                                                        TextColor="#363636" />
+                                                                    <Label
+                                                                        FontFamily="ProximaSemiBold"
+                                                                        FontSize="18"
+                                                                        Text="{Binding servicetype}"
+                                                                        TextColor="#363636" />
+                                                                </StackLayout>
+                                                                <StackLayout
+                                                                    Grid.Column="1"
+                                                                    Margin="0,5"
+                                                                    HorizontalOptions="EndAndExpand">
+
+                                                                    <Label
+                                                                        Margin="0,0,0,5"
+                                                                        FontFamily="ProximaRegular"
+                                                                        FontSize="12"
+                                                                        HorizontalOptions="EndAndExpand"
+                                                                        Opacity=".7"
+                                                                        Text="{translate:Translate Amount}"
+                                                                        TextColor="#363636" />
+                                                                    <StackLayout Orientation="Horizontal">
+                                                                        <Label
+                                                                            Margin="0,0,0,5"
+                                                                            FontFamily="ProximaSemiBold"
+                                                                            FontSize="18"
+                                                                            TextColor="Gray">
+                                                                            <Label.FormattedText>
+                                                                                <FormattedString>
+                                                                                    <Span Text="{Binding price.currency}" />
+                                                                                    <Span Text="{Binding price.total}" />
+                                                                                </FormattedString>
+                                                                            </Label.FormattedText>
+                                                                        </Label>
+                                                                        <Label
+                                                                            Margin="0,0,0,5"
+                                                                            FontFamily="ProximaSemiBold"
+                                                                            FontSize="18"
+                                                                            HorizontalOptions="EndAndExpand"
+                                                                            HorizontalTextAlignment="End"
+                                                                            IsVisible="False"
+                                                                            Text="{Binding DiscountedAmount}"
+                                                                            TextColor="Black"
+                                                                            VerticalOptions="CenterAndExpand" />
+                                                                    </StackLayout>
+
+                                                                </StackLayout>
+                                                            </Grid>
+                                                            <Button
+                                                                Margin="0,10"
+                                                                BackgroundColor="Red"
+                                                                Command="{Binding BindingContext.CancelOrderCommand, Source={x:Reference CompletedFrame}}"
+                                                                CommandParameter="{Binding .}"
+                                                                CornerRadius="5"
+                                                                FontFamily="ProximaRegular"
+                                                                FontSize="16"
+                                                                HeightRequest="50"
+                                                                HorizontalOptions="FillAndExpand"
+                                                                IsVisible="False"
+                                                                Text="{translate:Translate Cancel}"
+                                                                TextColor="White" />
+                                                            <Button
+                                                                Margin="20"
+                                                                BackgroundColor="#211E66"
+                                                                Command="{Binding BindingContext.TrackOrderDetailsCommand, Source={x:Reference CompletedFrame}}"
+                                                                CommandParameter="{Binding .}"
+                                                                FontFamily="ProximaRegular"
+                                                                FontSize="16"
+                                                                HeightRequest="50"
+                                                                Text="{translate:Translate Track_Order}"
+                                                                TextColor="White" />
+                                                            <Button
+                                                                Margin="0,10"
+                                                                BackgroundColor="#423A95"
+                                                                Command="{Binding BindingContext.RateAndReviewCommand, Source={x:Reference CompletedFrame}}"
+                                                                CommandParameter="{Binding .}"
+                                                                CornerRadius="5"
+                                                                FontFamily="ProximaRegular"
+                                                                FontSize="16"
+                                                                HeightRequest="50"
+                                                                HorizontalOptions="FillAndExpand"
+                                                                IsVisible="{Binding IsCompleted}"
+                                                                Text="{translate:Translate Rate_Review}"
+                                                                TextColor="White" />
+
+                                                        </StackLayout>
+                                                    </Frame>
+                                                </StackLayout>
+
+                                            </DataTemplate>
+                                        </CollectionView.ItemTemplate>
+                                        <CollectionView.Footer>
+                                            <ActivityIndicator
+                                                Margin="10"
+                                                HeightRequest="10"
+                                                HorizontalOptions="CenterAndExpand"
+                                                IsRunning="True"
+                                                IsVisible="{Binding IsLoadingIndicator}"
+                                                VerticalOptions="CenterAndExpand"
+                                                WidthRequest="10" />
+                                        </CollectionView.Footer>
+                                    </CollectionView>
+                                </AbsoluteLayout>
+                            </StackLayout>
+                        </ScrollView>
+                    </xct:TabViewItem.Content>
+                </xct:TabViewItem>
+                <xct:TabViewItem
+                    FontFamily="ProximaRegular"
+                    FontFamilySelected="ProximaSemiBold"
+                    FontSize="14"
+                    FontSizeSelected="15"
+                    IsEnabled="False"
+                    Text="{translate:Translate DuraShops}"
+                    TextColor="#606060"
+                    TextColorSelected="#211E66">
+                    <xct:TabViewItem.Content>
+                        <CollectionView Margin="10" ItemsSource="{Binding OrderList}">
+                            <CollectionView.ItemsLayout>
+                                <GridItemsLayout Orientation="Vertical" VerticalItemSpacing="10" />
+                            </CollectionView.ItemsLayout>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <sh:Shadows
+                                        Padding="0"
+                                        BackgroundColor="#FFFFFF"
+                                        CornerRadius="2"
+                                        HorizontalOptions="FillAndExpand">
+                                        <sh:Shadows.Shades>
+                                            <sh:ImmutableShades>
+
+                                                <sh:Shade
+                                                    BlurRadius="10"
+                                                    Opacity="0.5"
+                                                    Offset="1,0"
+                                                    Color="Gray" />
+                                            </sh:ImmutableShades>
+                                        </sh:Shadows.Shades>
+                                        <Frame
+                                            Margin="10"
+                                            Padding="10"
+                                            xct:ShadowEffect.Color="LightGray"
+                                            xct:ShadowEffect.OffsetX="1"
+                                            xct:ShadowEffect.OffsetY="1"
+                                            xct:ShadowEffect.Radius="8"
+                                            BackgroundColor="#FBFBFF"
+                                            CornerRadius="2"
+                                            HasShadow="{OnPlatform Android='True',
+                                                                   iOS='False'}">
+                                            <Grid Margin="10">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="95" />
+                                                    <RowDefinition Height="1" />
+                                                    <RowDefinition Height="140" />
+                                                </Grid.RowDefinitions>
+                                                <Grid Grid.Row="0" Margin="0,0,0,10">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="30*" />
+                                                        <ColumnDefinition Width="65*" />
+                                                        <ColumnDefinition Width="5*" />
+                                                    </Grid.ColumnDefinitions>
+                                                    <Frame
+                                                        Grid.Column="0"
+                                                        Padding="0"
+                                                        xct:ShadowEffect.Color="LightGray"
+                                                        xct:ShadowEffect.OffsetX="1"
+                                                        xct:ShadowEffect.OffsetY="1"
+                                                        xct:ShadowEffect.Radius="8"
+                                                        BackgroundColor="White"
+                                                        CornerRadius="5"
+                                                        HasShadow="{OnPlatform Android='True',
+                                                                               iOS='False'}"
+                                                        HeightRequest="78"
+                                                        HorizontalOptions="CenterAndExpand"
+                                                        VerticalOptions="CenterAndExpand"
+                                                        WidthRequest="80">
+                                                        <Image
+                                                            Aspect="AspectFit"
+                                                            HeightRequest="70"
+                                                            Source="{images:EmbeddedImage NewDuraApp.Images.t_shirt.png}"
+                                                            VerticalOptions="CenterAndExpand"
+                                                            WidthRequest="60" />
+                                                    </Frame>
+                                                    <StackLayout
+                                                        Grid.Column="1"
+                                                        Margin="5,0,0,0"
+                                                        Spacing="0"
+                                                        VerticalOptions="CenterAndExpand">
+                                                        <Label
+                                                            FontFamily="ProximaSemiBold"
+                                                            FontSize="16"
+                                                            Text="{Binding ProductName}"
+                                                            TextColor="#3D3D3D" />
+                                                        <Label
+                                                            FontFamily="ProximaRegular"
+                                                            FontSize="16"
+                                                            Text="{Binding ProductDescription}"
+                                                            TextColor="#3D3D3D" />
+                                                        <Label
+                                                            FontFamily="ProximaRegular"
+                                                            FontSize="16"
+                                                            TextColor="#3D3D3D">
+                                                            <Label.FormattedText>
+                                                                <FormattedString>
+                                                                    <Span Text="{translate:Translate Size}" />
+                                                                    <Span Text="{Binding Size}" />
+                                                                </FormattedString>
+                                                            </Label.FormattedText>
+                                                        </Label>
+                                                        <Label FontSize="16" TextColor="#3D3D3D">
+                                                            <Label.FormattedText>
+                                                                <FormattedString>
+                                                                    <Span FontFamily="ProximaRegular" Text="{translate:Translate Price}" />
+                                                                    <Span FontFamily="ProximaSemiBold" Text="{Binding Price}" />
+                                                                </FormattedString>
+                                                            </Label.FormattedText>
+                                                        </Label>
+                                                    </StackLayout>
+                                                    <ImageButton
+                                                        Grid.Column="2"
+                                                        BackgroundColor="Transparent"
+                                                        Command="{Binding Path=BindingContext.GoToTrackOrderCmd, Source={x:Reference thispage}}"
+                                                        CommandParameter="{Binding .}"
+                                                        HeightRequest="15"
+                                                        Source="{images:EmbeddedImage NewDuraApp.Images.product_details_arrow.png}"
+                                                        VerticalOptions="CenterAndExpand"
+                                                        WidthRequest="15" />
+                                                </Grid>
+                                                <BoxView
+                                                    Grid.Row="1"
+                                                    BackgroundColor="LightGray"
+                                                    HeightRequest="1"
+                                                    HorizontalOptions="FillAndExpand" />
+                                                <StackLayout
+                                                    Grid.Row="2"
+                                                    Margin="0,10,0,0"
+                                                    Spacing="0">
+                                                    <Grid>
+                                                        <StackLayout Spacing="0">
+                                                            <Label
+                                                                FontFamily="ProximaRegular"
+                                                                FontSize="16"
+                                                                Text="{translate:Translate Order_Number}"
+                                                                TextColor="Black" />
+                                                            <Label
+                                                                FontFamily="ProximaBold"
+                                                                FontSize="16"
+                                                                Text="{Binding OrderNumber}"
+                                                                TextColor="#3D3D3D" />
+                                                            <Label
+                                                                Margin="0,10,0,0"
+                                                                FontFamily="ProximaRegular"
+                                                                FontSize="16"
+                                                                Text="{translate:Translate Ordered_on}"
+                                                                TextColor="Black" />
+                                                            <Label
+                                                                FontFamily="ProximaBold"
+                                                                FontSize="16"
+                                                                Text="{Binding OrderOn}"
+                                                                TextColor="#3D3D3D" />
+                                                            <StackLayout
+                                                                Margin="0,10,0,0"
+                                                                HeightRequest="50"
+                                                                HorizontalOptions="FillAndExpand"
+                                                                Orientation="Horizontal">
+                                                                <Label
+                                                                    Margin="0,0,0,0"
+                                                                    FontFamily="ProximaRegular"
+                                                                    FontSize="16"
+                                                                    Text="{translate:Translate Rate_the_Product}"
+                                                                    TextColor="#D72625"
+                                                                    VerticalOptions="CenterAndExpand">
+                                                                    <Label.GestureRecognizers>
+                                                                        <TapGestureRecognizer Command="{Binding Path=BindingContext.GoToRateCmd, Source={x:Reference thispage}}" CommandParameter="{Binding .}" />
+                                                                    </Label.GestureRecognizers>
+                                                                </Label>
+                                                                <Frame
+                                                                    Padding="0"
+                                                                    xct:ShadowEffect.Color="LightGray"
+                                                                    xct:ShadowEffect.OffsetX="1"
+                                                                    xct:ShadowEffect.OffsetY="1"
+                                                                    xct:ShadowEffect.Radius="5"
+                                                                    BackgroundColor="#211E66"
+                                                                    CornerRadius="5"
+                                                                    HasShadow="{OnPlatform Android='True',
+                                                                                           iOS='False'}"
+                                                                    HeightRequest="35"
+                                                                    HorizontalOptions="EndAndExpand"
+                                                                    VerticalOptions="CenterAndExpand"
+                                                                    WidthRequest="120">
+                                                                    <Frame.GestureRecognizers>
+                                                                        <TapGestureRecognizer Command="{Binding Path=BindingContext.GoToTrackOrderCmd, Source={x:Reference thispage}}" CommandParameter="{Binding .}" />
+                                                                    </Frame.GestureRecognizers>
+                                                                    <Label
+                                                                        FontFamily="ProximaRegular"
+                                                                        FontSize="16"
+                                                                        HorizontalOptions="CenterAndExpand"
+                                                                        Text="{translate:Translate Track_Order}"
+                                                                        TextColor="White"
+                                                                        VerticalOptions="CenterAndExpand" />
+                                                                </Frame>
+                                                                <!--<Button
+                                                                Padding="0"
+                                                                BackgroundColor="#211E66"
+                                                                CornerRadius="5"
+                                                                FontFamily="ProximaRegular"
+                                                                FontSize="16"
+                                                                HeightRequest="45"
+                                                                HorizontalOptions="EndAndExpand"
+                                                                Text="Track Order"
+                                                                TextColor="White"
+                                                                VerticalOptions="CenterAndExpand"
+                                                                WidthRequest="140">
+                                                                <Button.GestureRecognizers>
+                                                                    <TapGestureRecognizer Command="{Binding Path=BindingContext.GoToTrackOrderCmd, Source={x:Reference thispage}}" CommandParameter="{Binding .}" />
+                                                                </Button.GestureRecognizers>
+                                                            </Button>-->
+                                                            </StackLayout>
+                                                        </StackLayout>
+                                                        <StackLayout HorizontalOptions="EndAndExpand" Spacing="0">
+                                                            <Label
+                                                                FontFamily="ProximaRegular"
+                                                                FontSize="16"
+                                                                HorizontalOptions="EndAndExpand"
+                                                                Text="{translate:Translate Order_Status}"
+                                                                TextColor="Black" />
+                                                            <Label
+                                                                FontFamily="ProximaBold"
+                                                                FontSize="16"
+                                                                HorizontalOptions="EndAndExpand"
+                                                                Text="{Binding OrderStatus}"
+                                                                TextColor="#3D3D3D" />
+                                                        </StackLayout>
+                                                    </Grid>
+                                                </StackLayout>
+                                            </Grid>
+                                        </Frame>
+                                    </sh:Shadows>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </xct:TabViewItem.Content>
+                </xct:TabViewItem>
+                <xct:TabViewItem
+                    FontFamily="ProximaRegular"
+                    FontFamilySelected="ProximaSemiBold"
+                    FontSize="14"
+                    FontSizeSelected="15"
+                    IsEnabled="False"
+                    Text="{translate:Translate Dura_eat}"
+                    TextColor="#606060"
+                    TextColorSelected="#211E66">
+                    <xct:TabViewItem.Content>
+                        <CollectionView ItemsSource="{Binding DuraEatsOrderList}">
+                            <CollectionView.ItemsLayout>
+                                <GridItemsLayout Orientation="Vertical" VerticalItemSpacing="20" />
+                            </CollectionView.ItemsLayout>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <sh:Shadows
+                                        Padding="0"
+                                        BackgroundColor="#FFFFFF"
+                                        CornerRadius="2"
+                                        HorizontalOptions="FillAndExpand">
+                                        <sh:Shadows.Shades>
+                                            <sh:ImmutableShades>
+                                                <sh:Shade
+                                                    BlurRadius="10"
+                                                    Opacity="0.5"
+                                                    Offset="2,2"
+                                                    Color="Gray" />
+                                                <sh:Shade
+                                                    BlurRadius="10"
+                                                    Opacity="0.5"
+                                                    Offset="1,0"
+                                                    Color="Gray" />
+                                            </sh:ImmutableShades>
+                                        </sh:Shadows.Shades>
+                                        <Frame
+                                            Margin="10"
+                                            Padding="10"
+                                            xct:ShadowEffect.Color="LightGray"
+                                            xct:ShadowEffect.OffsetX="1"
+                                            xct:ShadowEffect.OffsetY="1"
+                                            xct:ShadowEffect.Radius="8"
+                                            BackgroundColor="#FBFBFF"
+                                            CornerRadius="8"
+                                            HasShadow="{OnPlatform Android='True',
+                                                                   iOS='False'}">
+                                            <Grid Margin="10">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="70" />
+                                                    <RowDefinition Height="1" />
+                                                    <RowDefinition Height="200" />
+                                                </Grid.RowDefinitions>
+                                                <Grid Grid.Row="0" Margin="0,0,0,10">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="30*" />
+                                                        <ColumnDefinition Width="55*" />
+                                                        <ColumnDefinition Width="Auto" />
+                                                    </Grid.ColumnDefinitions>
+                                                    <Frame
+                                                        Grid.Column="0"
+                                                        Padding="0"
+                                                        xct:ShadowEffect.Color="LightGray"
+                                                        xct:ShadowEffect.OffsetX="1"
+                                                        xct:ShadowEffect.OffsetY="1"
+                                                        xct:ShadowEffect.Radius="8"
+                                                        BackgroundColor="White"
+                                                        CornerRadius="5"
+                                                        HasShadow="{OnPlatform Android='True',
+                                                                               iOS='False'}"
+                                                        HeightRequest="78"
+                                                        HorizontalOptions="CenterAndExpand"
+                                                        IsClippedToBounds="True"
+                                                        VerticalOptions="CenterAndExpand"
+                                                        WidthRequest="60">
+                                                        <Image
+                                                            Aspect="Fill"
+                                                            HeightRequest="78"
+                                                            HorizontalOptions="CenterAndExpand"
+                                                            Source="{images:EmbeddedImage NewDuraApp.Images.mcdonalds.jpg}"
+                                                            VerticalOptions="CenterAndExpand"
+                                                            WidthRequest="60" />
+                                                    </Frame>
+                                                    <StackLayout
+                                                        Grid.Column="1"
+                                                        Margin="5,0,0,5"
+                                                        Spacing="0"
+                                                        VerticalOptions="EndAndExpand">
+                                                        <Label
+                                                            FontFamily="ProximaBold"
+                                                            FontSize="16"
+                                                            Text="Mc Donald's"
+                                                            TextColor="#3D3D3D" />
+                                                        <StackLayout Orientation="Horizontal" Spacing="0">
+                                                            <Image
+                                                                HeightRequest="13"
+                                                                Source="{images:EmbeddedImage NewDuraApp.Images.map_locaiton.png}"
+                                                                VerticalOptions="CenterAndExpand"
+                                                                WidthRequest="13" />
+                                                            <Label
+                                                                Margin="2,0,0,0"
+                                                                FontFamily="ProximaRegular"
+                                                                FontSize="14"
+                                                                Text="{Binding OrderAddress}"
+                                                                TextColor="#3D3D3D"
+                                                                VerticalOptions="CenterAndExpand" />
+                                                        </StackLayout>
+                                                    </StackLayout>
+                                                    <Label
+                                                        Grid.Column="2"
+                                                        FontFamily="ProximaBold"
+                                                        FontSize="16"
+                                                        Text="₱16"
+                                                        TextColor="#3D3D3D" />
+                                                </Grid>
+                                                <BoxView
+                                                    Grid.Row="1"
+                                                    BackgroundColor="LightGray"
+                                                    HeightRequest="1"
+                                                    HorizontalOptions="FillAndExpand" />
+                                                <StackLayout
+                                                    Grid.Row="2"
+                                                    Margin="0,10,0,0"
+                                                    Spacing="0">
+                                                    <Grid>
+                                                        <StackLayout Spacing="0">
+                                                            <Label
+                                                                FontFamily="ProximaRegular"
+                                                                FontSize="16"
+                                                                Text="Order Number"
+                                                                TextColor="Black" />
+                                                            <Label
+                                                                FontFamily="ProximaBold"
+                                                                FontSize="16"
+                                                                Text="1567554321244"
+                                                                TextColor="#3D3D3D" />
+                                                            <Label
+                                                                Margin="0,10,0,0"
+                                                                FontFamily="ProximaRegular"
+                                                                FontSize="16"
+                                                                Text="Ordered on"
+                                                                TextColor="Black" />
+                                                            <Label
+                                                                FontFamily="ProximaBold"
+                                                                FontSize="16"
+                                                                Text="July 25 2020 at 05:30 pm"
+                                                                TextColor="#3D3D3D" />
+                                                            <Label
+                                                                Margin="0,10,0,0"
+                                                                FontFamily="ProximaRegular"
+                                                                FontSize="16"
+                                                                Text="Items"
+                                                                TextColor="Black" />
+                                                            <Label
+                                                                FontFamily="ProximaBold"
+                                                                FontSize="16"
+                                                                Text="1 x Mc French Fries"
+                                                                TextColor="#3D3D3D" />
+
+                                                            <StackLayout
+                                                                Margin="0,10,0,0"
+                                                                HeightRequest="50"
+                                                                HorizontalOptions="FillAndExpand"
+                                                                Orientation="Horizontal">
+                                                                <Label
+                                                                    Margin="0,0,0,0"
+                                                                    FontFamily="ProximaRegular"
+                                                                    FontSize="16"
+                                                                    Text="Rate the Product"
+                                                                    TextColor="#D72625"
+                                                                    VerticalOptions="CenterAndExpand">
+                                                                    <Label.GestureRecognizers>
+                                                                        <TapGestureRecognizer Command="{Binding Path=BindingContext.GoToEatsRateCmd, Source={x:Reference thispage}}" CommandParameter="{Binding .}" />
+                                                                    </Label.GestureRecognizers>
+                                                                </Label>
+                                                                <Frame
+                                                                    Padding="0"
+                                                                    xct:ShadowEffect.Color="LightGray"
+                                                                    xct:ShadowEffect.OffsetX="1"
+                                                                    xct:ShadowEffect.OffsetY="1"
+                                                                    xct:ShadowEffect.Radius="5"
+                                                                    BackgroundColor="#211E66"
+                                                                    CornerRadius="5"
+                                                                    HasShadow="{OnPlatform Android='True',
+                                                                                           iOS='False'}"
+                                                                    HeightRequest="35"
+                                                                    HorizontalOptions="EndAndExpand"
+                                                                    VerticalOptions="CenterAndExpand"
+                                                                    WidthRequest="120">
+                                                                    <Frame.GestureRecognizers>
+                                                                        <TapGestureRecognizer Command="{Binding Path=BindingContext.GoToTrackOrderCmd, Source={x:Reference thispage}}" CommandParameter="{Binding .}" />
+                                                                    </Frame.GestureRecognizers>
+                                                                    <Label
+                                                                        FontFamily="ProximaRegular"
+                                                                        FontSize="16"
+                                                                        HorizontalOptions="CenterAndExpand"
+                                                                        Text="Track Order"
+                                                                        TextColor="White"
+                                                                        VerticalOptions="CenterAndExpand" />
+                                                                </Frame>
+                                                                <!--<Button
+                                                                Padding="0"
+                                                                BackgroundColor="#211E66"
+                                                                CornerRadius="5"
+                                                                FontFamily="ProximaRegular"
+                                                                FontSize="16"
+                                                                HeightRequest="45"
+                                                                HorizontalOptions="EndAndExpand"
+                                                                Text="Track Order"
+                                                                TextColor="White"
+                                                                VerticalOptions="CenterAndExpand"
+                                                                WidthRequest="140">
+                                                                <Button.GestureRecognizers>
+                                                                    <TapGestureRecognizer Command="{Binding Path=BindingContext.GoToTrackOrderCmd, Source={x:Reference thispage}}" CommandParameter="{Binding .}" />
+                                                                </Button.GestureRecognizers>
+                                                            </Button>-->
+                                                            </StackLayout>
+                                                        </StackLayout>
+                                                        <StackLayout HorizontalOptions="EndAndExpand" Spacing="0">
+                                                            <Label
+                                                                FontFamily="ProximaRegular"
+                                                                FontSize="16"
+                                                                HorizontalOptions="EndAndExpand"
+                                                                Text=""
+                                                                TextColor="Black" />
+                                                            <Label
+                                                                FontFamily="ProximaBold"
+                                                                FontSize="16"
+                                                                HorizontalOptions="EndAndExpand"
+                                                                Text="Delivered"
+                                                                TextColor="#028B19" />
+                                                        </StackLayout>
+                                                    </Grid>
+                                                </StackLayout>
+                                            </Grid>
+                                        </Frame>
+                                    </sh:Shadows>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </xct:TabViewItem.Content>
+                </xct:TabViewItem>
+            </xct:TabView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="NewDuraApp.Areas.DuraExpress.DuraExpressView.PickupLocation"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:behaviours="clr-namespace:NewDuraApp.Behaviours"
+    xmlns:controls="clr-namespace:NewDuraApp.Controls"
+    xmlns:images="clr-namespace:NewDuraApp.Extensions"
+    xmlns:map="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+    xmlns:translate="clr-namespace:NewDuraApp.Resources"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    BindingContext="{Binding PickupLocation, Source={StaticResource Locator}}"
+    NavigationPage.HasBackButton="True"
+    Shell.NavBarHasShadow="False"
+    Shell.NavBarIsVisible="True"
+    Shell.TabBarIsVisible="False"
+    Visual="Material">
+    <Shell.TitleView>
+        <StackLayout VerticalOptions="CenterAndExpand">
+            <Label
+                FontFamily="ProximaSemiBold"
+                FontSize="22"
+                Text="{translate:Translate Pickup_Location}"
+                TextColor="Black"
+                VerticalOptions="CenterAndExpand" />
+        </StackLayout>
+    </Shell.TitleView>
+    <ContentPage.Content>
+
+        <StackLayout Padding="0">
+            <Grid>
+                <!--<Image Aspect="AspectFill" Source="{images:EmbeddedImage NewDuraApp.Images.map.png}" />-->
+                <map:Map
+                    x:Name="mapPickupLocation"
+                    HeightRequest="301"
+                    HorizontalOptions="FillAndExpand"
+                    IsEnabled="True" />
+                <Image
+                    x:Name="mappin"
+                    HeightRequest="35"
+                    HorizontalOptions="CenterAndExpand"
+                    IsVisible="False"
+                    Source="{images:EmbeddedImage NewDuraApp.Images.map_locaiton.png}"
+                    VerticalOptions="CenterAndExpand"
+                    WidthRequest="35" />
+                <Frame
+                    Margin="10"
+                    Padding="0"
+                    BackgroundColor="White"
+                    CornerRadius="15"
+                    HeightRequest="30"
+                    HorizontalOptions="EndAndExpand"
+                    VerticalOptions="StartAndExpand"
+                    WidthRequest="30">
+                    <ImageButton
+                        HeightRequest="20"
+                        HorizontalOptions="CenterAndExpand"
+                        Source="{images:EmbeddedImage NewDuraApp.Images.pickup_current_location.png}"
+                        VerticalOptions="CenterAndExpand"
+                        WidthRequest="20" />
+                </Frame>
+            </Grid>
+            <ScrollView Margin="0,10">
+                <StackLayout Margin="20">
+                    <Label
+                        FontFamily="ProximaSemiBold"
+                        FontSize="18"
+                        Text="{translate:Translate Enter_the_pickup_address_information}"
+                        TextColor="Black" />
+                    <Label
+                        FontAttributes="Italic"
+                        FontSize="12"
+                        Text="{translate:Translate Tap_on_map_to_set_your_position}"
+                        TextColor="Gray" />
+                    <StackLayout Margin="5,10,5,10">
+                        <Frame
+                            Padding="0"
+                            BackgroundColor="#FBFBFF"
+                            CornerRadius="5"
+                            HeightRequest="45"
+                            HorizontalOptions="FillAndExpand">
+                            <Label
+                                Margin="5,0"
+                                xct:TouchEffect.Command="{Binding OpenMapCommand}"
+                                FontSize="14"
+                                HorizontalOptions="FillAndExpand"
+                                LineBreakMode="TailTruncation"
+                                MaxLines="2"
+                                Text="{Binding Address1}"
+                                TextColor="Black"
+                                VerticalOptions="FillAndExpand"
+                                VerticalTextAlignment="Center" />
+
+                        </Frame>
+                        <Label
+                            FontSize="12"
+                            IsVisible="{Binding IsAddress1ErrorVisible}"
+                            Text="{translate:Translate Please_enter_address_1}"
+                            TextColor="Red" />
+                    </StackLayout>
+                    <StackLayout Margin="5,0,5,10">
+                        <Frame
+                            Padding="0"
+                            BackgroundColor="#FBFBFF"
+                            CornerRadius="5"
+                            HeightRequest="45"
+                            HorizontalOptions="FillAndExpand">
+                            <controls:CustomEntry
+                                Margin="5,0"
+                                FontSize="14"
+                                HorizontalOptions="FillAndExpand"
+                                Placeholder="Address 2"
+                                PlaceholderColor="{StaticResource PlaceholderColor}"
+                                Text="{Binding Address2}"
+                                TextColor="Black"
+                                VerticalOptions="FillAndExpand"
+                                VerticalTextAlignment="Center" />
+
+                        </Frame>
+
+                        <Label
+                            FontSize="12"
+                            IsVisible="{Binding IsAddress2ErrorVisible}"
+                            Text="{translate:Translate Please_enter_address_2}"
+                            TextColor="Red" />
+                    </StackLayout>
+                    <StackLayout Margin="5,0,5,10">
+                        <Frame
+                            Padding="0"
+                            BackgroundColor="#FBFBFF"
+                            CornerRadius="5"
+                            HeightRequest="45"
+                            HorizontalOptions="FillAndExpand">
+                            <controls:CustomEntry
+                                Margin="5,0"
+                                FontSize="14"
+                                HorizontalOptions="FillAndExpand"
+                                Placeholder="{translate:Translate Contact_person_name}"
+                                PlaceholderColor="{StaticResource PlaceholderColor}"
+                                Text="{Binding Name}"
+                                TextColor="Black" />
+                        </Frame>
+                        <Label
+                            FontSize="12"
+                            IsVisible="{Binding IsNameErrorVisible}"
+                            Text="{translate:Translate Please_enter_contact_person_name}"
+                            TextColor="Red" />
+                    </StackLayout>
+                    <StackLayout Margin="5,0,5,10">
+                        <Grid>
+                            <Frame
+                                Padding="0"
+                                BackgroundColor="#FBFBFF"
+                                CornerRadius="5"
+                                HeightRequest="45"
+                                HorizontalOptions="FillAndExpand">
+                                <controls:CustomEntry
+                                    Margin="5,0"
+                                    FontSize="14"
+                                    HorizontalOptions="FillAndExpand"
+                                    Keyboard="Telephone"
+                                    MaxLength="18"
+                                    Placeholder="09xxxxxxxx"
+                                    PlaceholderColor="{StaticResource PlaceholderColor}"
+                                    Text="{Binding Number}"
+                                    TextColor="Black">
+                                    <controls:CustomEntry.Behaviors>
+                                        <behaviours:NumericValidationBehaviorNumberOnly />
+                                    </controls:CustomEntry.Behaviors>
+                                </controls:CustomEntry>
+                            </Frame>
+                            <ImageButton
+                                Margin="0,0,20,0"
+                                BackgroundColor="Transparent"
+                                Command="{Binding SelectContactCommand}"
+                                HeightRequest="26"
+                                HorizontalOptions="EndAndExpand"
+                                Source="{images:EmbeddedImage NewDuraApp.Images.contact_book.png}"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="26" />
+                        </Grid>
+                        <Label
+                            FontSize="12"
+                            IsVisible="{Binding IsPhoneErrorVisible}"
+                            Text="{translate:Translate Please_enter_minimum_10_digit_phone_number}"
+                            TextColor="Red" />
+                    </StackLayout>
+                    <Label
+                        FontSize="12"
+                        IsVisible="False"
+                        Text="{translate:Translate You_must_fill_all_of_the_fields}"
+                        TextColor="Red" />
+                    <Button
+                        Margin="0,20,0,0"
+                        BackgroundColor="#211E66"
+                        Command="{Binding GoToWhereCmd}"
+                        CornerRadius="5"
+                        FontFamily="RobotoRegular"
+                        FontSize="16"
+                        HeightRequest="50"
+                        HorizontalOptions="FillAndExpand"
+                        IsEnabled="{Binding IsButtonEnabled}"
+                        Text="{translate:Translate Confirm}"
+                        TextColor="White"
+                        WidthRequest="250" />
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+
+
+    </ContentPage.Content>
+</ContentPage>

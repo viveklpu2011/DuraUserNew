@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="NewDuraApp.Areas.Common.Views.PersonalDetails"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Helpers="clr-namespace:NewDuraApp.Converters"
+    xmlns:behaviours="clr-namespace:NewDuraApp.Behaviours"
+    xmlns:control="clr-namespace:NewDuraApp.Controls"
+    xmlns:images="clr-namespace:NewDuraApp.Extensions"
+    xmlns:translate="clr-namespace:NewDuraApp.Resources"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    BackgroundColor="White"
+    BindingContext="{Binding PersonalDetails, Source={StaticResource Locator}}">
+    <NavigationPage.TitleView>
+        <Label
+            FontFamily="ProximaSemiBold"
+            FontSize="22"
+            Text="{translate:Translate PersonalDetails}"
+            TextColor="Black"
+            VerticalOptions="CenterAndExpand" />
+    </NavigationPage.TitleView>
+    <ContentPage.Content>
+        <Grid Margin="20,0,20,0">
+            <ScrollView Margin="0,20,0,0" VerticalScrollBarVisibility="Never">
+                <StackLayout VerticalOptions="StartAndExpand">
+                    <Label
+                        Margin="35,0,0,0"
+                        FontFamily="ProximaRegular"
+                        FontSize="22"
+                        Text="{translate:Translate Please_upload_a_picture}"
+                        TextColor="Black" />
+                    <Grid
+                        Padding="0"
+                        HeightRequest="140"
+                        HorizontalOptions="CenterAndExpand"
+                        VerticalOptions="StartAndExpand"
+                        WidthRequest="140">
+                        <Frame
+                            Margin="20"
+                            Padding="0"
+                            CornerRadius="70"
+                            HasShadow="False"
+                            HeightRequest="140"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="FillAndExpand"
+                            WidthRequest="140">
+                            <xct:AvatarView
+                                Margin="0"
+                                BorderColor="Transparent"
+                                HorizontalOptions="CenterAndExpand"
+                                Size="100"
+                                Source="{Binding ProfileImage}"
+                                VerticalOptions="CenterAndExpand" />
+
+
+                        </Frame>
+                        <StackLayout
+                            Padding="0"
+                            HorizontalOptions="EndAndExpand"
+                            TranslationX="-20"
+                            TranslationY="-20"
+                            VerticalOptions="EndAndExpand">
+                            <ImageButton
+                                BackgroundColor="Transparent"
+                                Command="{Binding PickImageCommand}"
+                                HeightRequest="30"
+                                HorizontalOptions="CenterAndExpand"
+                                Source="{images:EmbeddedImage NewDuraApp.Images.camera.png}"
+                                VerticalOptions="EndAndExpand"
+                                WidthRequest="30" />
+                        </StackLayout>
+                    </Grid>
+
+                    <StackLayout Spacing="10" VerticalOptions="StartAndExpand">
+
+                        <Grid RowDefinitions="Auto,Auto,Auto">
+                            <control:CustomEntry
+                                FontFamily="ProximaRegular"
+                                FontSize="16"
+                                MaxLength="50"
+                                Placeholder="{translate:Translate FirstName}"
+                                PlaceholderColor="{StaticResource PlaceholderColor}"
+                                Text="{Binding FirstName}"
+                                TextColor="Black">
+                                <control:CustomEntry.Behaviors>
+                                    <behaviours:NumericValidationBehaviorAlphOnly />
+                                </control:CustomEntry.Behaviors>
+                            </control:CustomEntry>
+
+
+                            <BoxView
+                                Grid.Row="1"
+                                BackgroundColor="{StaticResource BorderColor}"
+                                HeightRequest="1" />
+                            <Label
+                                Grid.Row="2"
+                                FontSize="10"
+                                IsVisible="{Binding IsFirstNameErrorVisible}"
+                                Text="{translate:Translate Please_enter_valid_first_name}"
+                                TextColor="Red" />
+                        </Grid>
+                        <Grid Margin="0,5" RowDefinitions="Auto,Auto,Auto">
+                            <control:CustomEntry
+                                FontFamily="ProximaRegular"
+                                FontSize="16"
+                                MaxLength="50"
+                                Placeholder="{translate:Translate LastName}"
+                                PlaceholderColor="{StaticResource PlaceholderColor}"
+                                Text="{Binding LastName}"
+                                TextColor="Black">
+                                <control:CustomEntry.Behaviors>
+                                    <behaviours:NumericValidationBehaviorAlphOnly />
+                                </control:CustomEntry.Behaviors>
+                            </control:CustomEntry>
+
+
+                            <BoxView
+                                Grid.Row="1"
+                                BackgroundColor="{StaticResource BorderColor}"
+                                HeightRequest="1" />
+                            <Label
+                                Grid.Row="2"
+                                FontSize="10"
+                                IsVisible="{Binding IsLastNameErrorVisible}"
+                                Text="{translate:Translate Please_enter_valid_last_name}"
+                                TextColor="Red" />
+                        </Grid>
+                        <Label
+                            Margin="0,0,0,0"
+                            FontAttributes="Italic"
+                            FontSize="12"
+                            IsVisible="{Binding IsDoneButtonEnabled, Converter={Helpers:InverseBoolConverter}}"
+                            Text="{translate:Translate All_fields_are_mandatory}"
+                            TextColor="Red" />
+                        <Button
+                            Margin="0,30,0,20"
+                            BackgroundColor="#211E66"
+                            Command="{Binding GoToReferralCmd}"
+                            CornerRadius="5"
+                            FontFamily="ProximaRegular"
+                            FontSize="16"
+                            HeightRequest="50"
+                            HorizontalOptions="FillAndExpand"
+                            IsEnabled="{Binding IsDoneButtonEnabled}"
+                            Text="{translate:Translate Done}"
+                            TextColor="White"
+                            WidthRequest="250" />
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

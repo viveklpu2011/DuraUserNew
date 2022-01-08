@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="NewDuraApp.Areas.Profile.Menu.OfferAndPromocode.Views.OfferAndPromocodePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Helpers="clr-namespace:NewDuraApp.Converters"
+    xmlns:control="clr-namespace:NewDuraApp.Controls"
+    xmlns:fonticon="clr-namespace:NewDuraApp.FontIcons"
+    xmlns:images="clr-namespace:NewDuraApp.Extensions"
+    xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:translate="clr-namespace:NewDuraApp.Resources"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    x:Name="thispage"
+    BackgroundColor="White"
+    BindingContext="{Binding OfferAndPromocodePage, Source={StaticResource Locator}}"
+    NavigationPage.HasBackButton="True"
+    Shell.NavBarHasShadow="False"
+    Shell.NavBarIsVisible="True"
+    Shell.TabBarIsVisible="False"
+    Visual="Material">
+    <Shell.TitleView>
+        <Label
+            FontFamily="ProximaSemiBold"
+            FontSize="22"
+            HorizontalOptions="FillAndExpand"
+            Text="{translate:Translate Offers_Promo}"
+            TextColor="Black"
+            VerticalOptions="CenterAndExpand"
+            VerticalTextAlignment="Center" />
+    </Shell.TitleView>
+    <ContentPage.Content>
+        <Grid Margin="15,15,15,0" Padding="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="20" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Frame
+                Grid.Row="0"
+                Margin="2"
+                Padding="0"
+                CornerRadius="5"
+                HeightRequest="50"
+                IsVisible="{Binding IsVisibleEntryFrame}"
+                VerticalOptions="CenterAndExpand">
+                <Grid BackgroundColor="White" HeightRequest="50">
+                    <control:CustomEntry
+                        Margin="10,0,0,0"
+                        FontFamily="ProximaRegular"
+                        FontSize="14"
+                        Placeholder="{translate:Translate Enter_Promocode}"
+                        PlaceholderColor="{StaticResource PlaceholderColor}"
+                        Text="{Binding PromoCode}"
+                        TextColor="Black" />
+                    <Button
+                        Margin="0,0,10,0"
+                        Padding="0"
+                        BackgroundColor="#211E66"
+                        BorderColor="Transparent"
+                        Command="{Binding ApplyPromoCodeCommand}"
+                        CornerRadius="5"
+                        FontAttributes="Bold"
+                        FontSize="11"
+                        HeightRequest="30"
+                        HorizontalOptions="EndAndExpand"
+                        Text="{translate:Translate Apply}"
+                        TextColor="White"
+                        VerticalOptions="CenterAndExpand"
+                        Visual="Default"
+                        WidthRequest="88" />
+                </Grid>
+            </Frame>
+            <Label
+                Grid.Row="1"
+                FontFamily="ProximaRegular"
+                FontSize="14"
+                HorizontalOptions="FillAndExpand"
+                HorizontalTextAlignment="Center"
+                Text="{Binding OffersText}"
+                TextColor="Black"
+                VerticalTextAlignment="Center" />
+            <CollectionView
+                x:Name="promocodeCollection"
+                Grid.Row="2"
+                Margin="0,10"
+                HorizontalOptions="FillAndExpand"
+                ItemsSource="{Binding PromoCodeList}"
+                SelectionMode="Single"
+                VerticalOptions="Start"
+                VerticalScrollBarVisibility="Never">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout ItemSpacing="13" Orientation="Vertical" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.EmptyView>
+                    <Label
+                        FontFamily="ProximaRegular"
+                        FontSize="14"
+                        HorizontalOptions="CenterAndExpand"
+                        HorizontalTextAlignment="Center"
+                        IsVisible="False"
+                        Text="{translate:Translate No_promo_code_available}"
+                        TextColor="Black"
+                        VerticalOptions="CenterAndExpand"
+                        VerticalTextAlignment="Center" />
+                </CollectionView.EmptyView>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <AbsoluteLayout BackgroundColor="White" HeightRequest="91">
+                            <Image
+                                AbsoluteLayout.LayoutBounds="0,0,1,1"
+                                AbsoluteLayout.LayoutFlags="All"
+                                Aspect="Fill"
+                                BackgroundColor="White"
+                                Source="{images:EmbeddedImage NewDuraApp.Images.coupon_bg.png}" />
+                            <Grid
+                                Padding="15,10"
+                                AbsoluteLayout.LayoutBounds="0,0,1,1"
+                                AbsoluteLayout.LayoutFlags="All"
+                                ColumnDefinitions="*,Auto">
+                                <StackLayout Grid.Column="0">
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontFamily="ProximaRegular"
+                                        FontSize="15"
+                                        HorizontalOptions="FillAndExpand"
+                                        Text="{Binding application}"
+                                        TextColor="Black"
+                                        VerticalOptions="CenterAndExpand"
+                                        VerticalTextAlignment="Center" />
+                                    <control:CustomDashedFrame
+                                        Padding="10,0"
+                                        BackgroundColor="Transparent"
+                                        BorderColor="Transparent"
+                                        CornerRadius="0"
+                                        HasShadow="False"
+                                        HeightRequest="25"
+                                        HorizontalOptions="Start"
+                                        VerticalOptions="FillAndExpand">
+                                        <Label
+                                            FontFamily="ProximaRegular"
+                                            FontSize="10"
+                                            HorizontalOptions="Center"
+                                            HorizontalTextAlignment="Center"
+                                            Text="{Binding name}"
+                                            TextColor="Red"
+                                            VerticalOptions="CenterAndExpand"
+                                            VerticalTextAlignment="Center" />
+                                    </control:CustomDashedFrame>
+                                    <Label
+                                        FontFamily="ProximaRegular"
+                                        FontSize="10"
+                                        HorizontalOptions="FillAndExpand"
+                                        TextColor="#585858"
+                                        VerticalOptions="CenterAndExpand"
+                                        VerticalTextAlignment="Center">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{translate:Translate Validity}" />
+                                                <Span Text="{Binding PromoValidDate, StringFormat='{0:dd MMMM yyyy}'}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                </StackLayout>
+                                <Button
+                                    Grid.Column="1"
+                                    BackgroundColor="{Binding IsPromoUsedColor}"
+                                    Command="{Binding Path=BindingContext.PromoCodeDetails, Source={x:Reference thispage}}"
+                                    CommandParameter="{Binding .}"
+                                    CornerRadius="5"
+                                    FontFamily="ProximaRegular"
+                                    FontSize="12"
+                                    HeightRequest="34"
+                                    HorizontalOptions="End"
+                                    IsEnabled="{Binding is_used, Converter={Helpers:InverseBoolConverter}}"
+                                    Text="{Binding IsPromoUsedText}"
+                                    TextColor="White"
+                                    VerticalOptions="CenterAndExpand"
+                                    WidthRequest="60" />
+                            </Grid>
+                        </AbsoluteLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

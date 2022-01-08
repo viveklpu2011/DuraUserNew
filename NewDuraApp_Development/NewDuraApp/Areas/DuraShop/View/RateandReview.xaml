@@ -1,0 +1,217 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="NewDuraApp.Areas.DuraShop.View.RateandReview"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Controls="clr-namespace:NewDuraApp.Controls"
+    xmlns:images="clr-namespace:NewDuraApp.Extensions"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    BindingContext="{Binding RateandReview, Source={StaticResource Locator}}"
+    NavigationPage.HasBackButton="True"
+    Shell.NavBarHasShadow="False"
+    Shell.NavBarIsVisible="True"
+    Shell.TabBarIsVisible="False"
+    Visual="Material">
+    <Shell.TitleView>
+        <Label
+            FontFamily="ProximaSemiBold"
+            FontSize="22"
+            Text="Rating and Review"
+            TextColor="Black"
+            VerticalOptions="CenterAndExpand"
+            VerticalTextAlignment="Center" />
+    </Shell.TitleView>
+    <ContentPage.Content>
+        <ScrollView VerticalScrollBarVisibility="Never">
+            <StackLayout Margin="20,10,20,0">
+                <Frame
+                    Margin="3"
+                    Padding="10"
+                    xct:ShadowEffect.Color="LightGray"
+                    xct:ShadowEffect.OffsetX="1"
+                    xct:ShadowEffect.OffsetY="1"
+                    xct:ShadowEffect.Radius="8"
+                    BackgroundColor="#FBFBFF"
+                    CornerRadius="8"
+                    HasShadow="{OnPlatform Android='True',
+                                           iOS='False'}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="30*" />
+                            <ColumnDefinition Width="70*" />
+                        </Grid.ColumnDefinitions>
+                        <Frame
+                            Grid.Column="0"
+                            Padding="0"
+                            xct:ShadowEffect.Color="LightGray"
+                            xct:ShadowEffect.OffsetX="1"
+                            xct:ShadowEffect.OffsetY="1"
+                            xct:ShadowEffect.Radius="8"
+                            BackgroundColor="White"
+                            CornerRadius="5"
+                            HasShadow="{OnPlatform Android='True',
+                                                   iOS='False'}"
+                            HeightRequest="78"
+                            HorizontalOptions="CenterAndExpand"
+                            VerticalOptions="CenterAndExpand"
+                            WidthRequest="80">
+                            <Image
+                                Aspect="AspectFit"
+                                HeightRequest="70"
+                                Source="{images:EmbeddedImage NewDuraApp.Images.t_shirt.png}"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="60" />
+                        </Frame>
+                        <StackLayout
+                            Grid.Column="1"
+                            Margin="5,0,0,0"
+                            Spacing="0"
+                            VerticalOptions="CenterAndExpand">
+                            <Label
+                                FontFamily="ProximaSemiBold"
+                                FontSize="16"
+                                Text="Order Number"
+                                TextColor="Black" />
+                            <Label
+                                FontFamily="ProximaBold"
+                                FontSize="16"
+                                Text="1566455433444"
+                                TextColor="#3D3D3D" />
+                            <Label
+                                FontFamily="ProximaBold"
+                                FontSize="16"
+                                Text="Levi's"
+                                TextColor="#3D3D3D" />
+                            <Label
+                                FontFamily="ProximaRegular"
+                                FontSize="16"
+                                Text="Men Red T Shirt"
+                                TextColor="#3D3D3D" />
+                        </StackLayout>
+                    </Grid>
+                </Frame>
+                <Label
+                    Margin="0,10,0,0"
+                    FontFamily="ProximaBold"
+                    FontSize="16"
+                    Text="Please rate by filling star"
+                    TextColor="#535151" />
+                <Controls:RattingBar
+                    Margin="0,5"
+                    EmptyStarImage="rating_inactive_star.png"
+                    FillStarImage="rating_active_star"
+                    ImageHeight="39"
+                    ImageWidth="42"
+                    SelectedStarValue="2" />
+                <!--<StackLayout Orientation="Horizontal">
+                    <Image
+                        HeightRequest="40"
+                        Source="{images:EmbeddedImage NewDuraApp.Images.rating_active_star.png}"
+                        VerticalOptions="CenterAndExpand"
+                        WidthRequest="40" />
+                    <Image
+                        HeightRequest="40"
+                        Source="{images:EmbeddedImage NewDuraApp.Images.rating_active_star.png}"
+                        VerticalOptions="CenterAndExpand"
+                        WidthRequest="40" />
+                    <Image
+                        HeightRequest="40"
+                        Source="{images:EmbeddedImage NewDuraApp.Images.rating_inactive_star.png}"
+                        VerticalOptions="CenterAndExpand"
+                        WidthRequest="40" />
+                    <Image
+                        HeightRequest="40"
+                        Source="{images:EmbeddedImage NewDuraApp.Images.rating_inactive_star.png}"
+                        VerticalOptions="CenterAndExpand"
+                        WidthRequest="40" />
+                    <Image
+                        HeightRequest="40"
+                        Source="{images:EmbeddedImage NewDuraApp.Images.rating_inactive_star.png}"
+                        VerticalOptions="CenterAndExpand"
+                        WidthRequest="40" />
+                </StackLayout>-->
+                <Label
+                    Margin="0,10,0,0"
+                    FontFamily="ProximaBold"
+                    FontSize="16"
+                    Text="How was the fit of the product ?"
+                    TextColor="#535151" />
+                <StackLayout Orientation="Horizontal">
+                    <RadioButton GroupName="a" VerticalOptions="CenterAndExpand" />
+                    <Label
+                        FontFamily="ProximaRegular"
+                        FontSize="16"
+                        Text="Too Tight"
+                        TextColor="Black"
+                        VerticalOptions="CenterAndExpand" />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <RadioButton GroupName="a" VerticalOptions="CenterAndExpand" />
+                    <Label
+                        FontFamily="ProximaRegular"
+                        FontSize="16"
+                        Text="Tight"
+                        TextColor="Black"
+                        VerticalOptions="CenterAndExpand" />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <RadioButton GroupName="a" VerticalOptions="CenterAndExpand" />
+                    <Label
+                        FontFamily="ProximaRegular"
+                        FontSize="16"
+                        Text="As Expected"
+                        TextColor="Black"
+                        VerticalOptions="CenterAndExpand" />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <RadioButton GroupName="a" VerticalOptions="CenterAndExpand" />
+                    <Label
+                        FontFamily="ProximaRegular"
+                        FontSize="16"
+                        Text="Loose"
+                        TextColor="Black"
+                        VerticalOptions="CenterAndExpand" />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <RadioButton GroupName="a" VerticalOptions="CenterAndExpand" />
+                    <Label
+                        FontFamily="ProximaRegular"
+                        FontSize="16"
+                        Text="Too Loose"
+                        TextColor="Black"
+                        VerticalOptions="CenterAndExpand" />
+                </StackLayout>
+                <Frame
+                    Padding="0"
+                    xct:ShadowEffect.Color="LightGray"
+                    xct:ShadowEffect.OffsetX="1"
+                    xct:ShadowEffect.OffsetY="1"
+                    xct:ShadowEffect.Radius="8"
+                    BackgroundColor="White"
+                    BorderColor="#707070"
+                    CornerRadius="8"
+                    HasShadow="{OnPlatform Android='True',
+                                           iOS='False'}"
+                    HeightRequest="100">
+                    <Controls:BorderlessEditor
+                        Margin="10,0,0,0"
+                        FontFamily="ProximaRegular"
+                        FontSize="16"
+                        Placeholder="Write a review........"
+                        PlaceholderColor="#837E77"
+                        TextColor="Black" />
+                </Frame>
+                <Button
+                    Margin="0,10,0,20"
+                    BackgroundColor="#211E66"
+                    Command="{Binding NavigateBackCommand}"
+                    CornerRadius="5"
+                    FontFamily="ProximaRegular"
+                    FontSize="16"
+                    HeightRequest="50"
+                    Text="Submit"
+                    TextColor="White" />
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

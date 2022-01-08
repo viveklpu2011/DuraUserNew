@@ -1,0 +1,215 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<rgPages:PopupPage
+    x:Class="NewDuraApp.Areas.DuraEats.ChangeLocation.Popups.Views.MySavedAddressPopupPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:fonticon="clr-namespace:NewDuraApp.FontIcons"
+    xmlns:images="clr-namespace:NewDuraApp.Extensions"
+    xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:rgAnimations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+    xmlns:rgPages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    BindingContext="{Binding MySavedAddressPopupPage, Source={StaticResource Locator}}"
+    CloseWhenBackgroundIsClicked="True">
+    <rgPages:PopupPage.Animation>
+        <rgAnimations:MoveAnimation
+            DurationIn="500"
+            DurationOut="400"
+            PositionIn="Bottom"
+            PositionOut="Bottom" />
+    </rgPages:PopupPage.Animation>
+    <ContentPage.Content>
+        <pancake:PancakeView
+            Margin="10,0"
+            Padding="14"
+            BackgroundColor="White"
+            CornerRadius="18,18,0,0"
+            HeightRequest="410"
+            VerticalOptions="EndAndExpand">
+            <Grid
+                ColumnDefinitions="*,24"
+                RowDefinitions="24,*"
+                RowSpacing="10">
+                <Label
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    FontAttributes="Bold"
+                    FontFamily="ProximaRegular"
+                    FontSize="18"
+                    HorizontalOptions="FillAndExpand"
+                    Text="Add ons"
+                    TextColor="Black"
+                    VerticalOptions="CenterAndExpand"
+                    VerticalTextAlignment="Center" />
+                <ImageButton
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Aspect="Fill"
+                    BackgroundColor="White"
+                    Command="{Binding ClosePopup}"
+                    CornerRadius="12"
+                    HeightRequest="24"
+                    HorizontalOptions="EndAndExpand"
+                    VerticalOptions="CenterAndExpand"
+                    WidthRequest="24">
+                    <ImageButton.Source>
+                        <FontImageSource
+                            FontFamily="UserIcons"
+                            Glyph="{x:Static fonticon:FontIconsClass.CloseCircle}"
+                            Size="30"
+                            Color="Black" />
+                    </ImageButton.Source>
+                </ImageButton>
+                <CollectionView
+                    x:Name="myaddressCollection"
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    Margin="0,10"
+                    BackgroundColor="White"
+                    HorizontalOptions="FillAndExpand"
+                    ItemsSource="{Binding AddressList}"
+                    SelectionMode="Single"
+                    VerticalOptions="Start"
+                    VerticalScrollBarVisibility="Never">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout ItemSpacing="10" Orientation="Vertical" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout Padding="-1" HeightRequest="140">
+                                <Frame
+                                    Padding="15,15,15,0"
+                                    BorderColor="White"
+                                    CornerRadius="5"
+                                    HasShadow="False"
+                                    HorizontalOptions="FillAndExpand"
+                                    VerticalOptions="FillAndExpand">
+                                    <Grid
+                                        ColumnDefinitions="*,*"
+                                        RowDefinitions="16,Auto,20"
+                                        RowSpacing="15">
+                                        <StackLayout
+                                            Grid.Row="0"
+                                            Grid.Column="0"
+                                            Orientation="Horizontal">
+                                            <Image
+                                                Aspect="Fill"
+                                                HeightRequest="14"
+                                                VerticalOptions="CenterAndExpand"
+                                                WidthRequest="14">
+                                                <Image.Source>
+                                                    <FontImageSource
+                                                        FontFamily="UserIcons"
+                                                        Glyph="{Binding AddressIcon}"
+                                                        Size="30"
+                                                        Color="Black" />
+
+                                                </Image.Source>
+                                            </Image>
+                                            <Label
+                                                FontAttributes="Bold"
+                                                FontFamily="ProximaRegular"
+                                                FontSize="14"
+                                                HorizontalOptions="StartAndExpand"
+                                                Text="{Binding HouseType}"
+                                                TextColor="Black"
+                                                VerticalOptions="CenterAndExpand"
+                                                VerticalTextAlignment="Center" />
+                                        </StackLayout>
+                                        <StackLayout
+                                            Grid.Row="0"
+                                            Grid.Column="1"
+                                            HorizontalOptions="End"
+                                            Orientation="Horizontal"
+                                            Spacing="10">
+                                            <ImageButton
+                                                Aspect="Fill"
+                                                BackgroundColor="Transparent"
+                                                HeightRequest="16"
+                                                VerticalOptions="CenterAndExpand"
+                                                WidthRequest="16">
+                                                <ImageButton.Source>
+                                                    <FontImageSource
+                                                        FontFamily="UserIcons"
+                                                        Glyph="{x:Static fonticon:FontIconsClass.SquareEditOutline}"
+                                                        Size="30"
+                                                        Color="Black" />
+
+                                                </ImageButton.Source>
+                                            </ImageButton>
+                                            <ImageButton
+                                                Aspect="Fill"
+                                                BackgroundColor="Transparent"
+                                                HeightRequest="15"
+                                                Source="{images:EmbeddedImage NewDuraApp.Images.delete.png}"
+                                                VerticalOptions="CenterAndExpand"
+                                                WidthRequest="15" />
+
+
+                                        </StackLayout>
+                                        <StackLayout
+                                            Grid.Row="1"
+                                            Grid.Column="0"
+                                            Grid.ColumnSpan="2">
+                                            <Label
+                                                FontFamily="ProximaRegular"
+                                                FontSize="14"
+                                                HorizontalOptions="FillAndExpand"
+                                                LineBreakMode="TailTruncation"
+                                                MaxLines="1"
+                                                Text="{Binding HouseNo}"
+                                                TextColor="Black"
+                                                VerticalOptions="CenterAndExpand"
+                                                VerticalTextAlignment="Center" />
+                                            <Label
+                                                FontFamily="ProximaRegular"
+                                                FontSize="14"
+                                                HorizontalOptions="FillAndExpand"
+                                                LineBreakMode="TailTruncation"
+                                                MaxLines="1"
+                                                TextColor="Black"
+                                                VerticalOptions="CenterAndExpand"
+                                                VerticalTextAlignment="Center">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="Block : " />
+                                                        <Span Text="{Binding BlockAddress}" />
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                        </StackLayout>
+                                        <Label
+                                            Grid.Row="2"
+                                            Grid.Column="0"
+                                            Grid.ColumnSpan="2"
+                                            FontFamily="ProximaRegular"
+                                            HorizontalOptions="FillAndExpand"
+                                            LineBreakMode="TailTruncation"
+                                            MaxLines="1"
+                                            TextColor="Black"
+                                            VerticalOptions="CenterAndExpand"
+                                            VerticalTextAlignment="Center">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span
+                                                        FontAttributes="Bold"
+                                                        FontSize="14"
+                                                        Text="{Binding ContactPerson}" />
+                                                    <Span FontSize="14" Text=" | " />
+                                                    <Span
+                                                        FontAttributes="Bold"
+                                                        FontSize="14"
+                                                        Text="{Binding ContactNumber}" />
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                    </Grid>
+                                </Frame>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Grid>
+        </pancake:PancakeView>
+    </ContentPage.Content>
+</rgPages:PopupPage>

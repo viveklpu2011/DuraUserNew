@@ -1,0 +1,193 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="NewDuraApp.Areas.Common.Views.ApplyPromoCodePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:control="clr-namespace:NewDuraApp.Controls"
+    xmlns:fonticon="clr-namespace:NewDuraApp.FontIcons"
+    xmlns:images="clr-namespace:NewDuraApp.Extensions"
+    xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:translate="clr-namespace:NewDuraApp.Resources"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    BackgroundColor="White"
+    BindingContext="{Binding ApplyPromoCodePage, Source={StaticResource Locator}}"
+    NavigationPage.HasBackButton="True"
+    Shell.NavBarHasShadow="False"
+    Shell.NavBarIsVisible="True"
+    Shell.TabBarIsVisible="False"
+    Visual="Material">
+    <Shell.TitleView>
+
+        <Label
+            Grid.Column="0"
+            FontAttributes="Bold"
+            FontFamily="ProximaRegular"
+            FontSize="18"
+            Text="{translate:Translate Offer_Promocode_Apply}"
+            TextColor="Black"
+            VerticalOptions="CenterAndExpand"
+            VerticalTextAlignment="Center"
+            WidthRequest="150" />
+
+    </Shell.TitleView>
+    <ContentPage.Content>
+        <Grid
+            Margin="15"
+            RowDefinitions="53,*"
+            RowSpacing="15">
+            <Frame
+                Grid.Row="0"
+                Margin="2"
+                Padding="8,2"
+                CornerRadius="8"
+                IsClippedToBounds="True">
+                <Grid BackgroundColor="White" ColumnDefinitions="*,88">
+                    <control:CustomEntry
+                        Grid.Column="0"
+                        FontFamily="ProximaRegular"
+                        FontSize="14"
+                        Placeholder="{translate:Translate Enter_Promocode}"
+                        PlaceholderColor="{StaticResource PlaceholderColor}"
+                        TextColor="Black" />
+                    <Button
+                        Grid.Column="1"
+                        Margin="3,5"
+                        Padding="0"
+                        BackgroundColor="#211E66"
+                        BorderColor="Transparent"
+                        FontAttributes="Bold"
+                        FontSize="12"
+                        HeightRequest="19"
+                        HorizontalOptions="EndAndExpand"
+                        Text="{translate:Translate Apply}"
+                        TextColor="White"
+                        Visual="Default"
+                        WidthRequest="88" />
+                </Grid>
+            </Frame>
+            <StackLayout
+                Grid.Row="1"
+                Margin="0,10,0,0"
+                Spacing="10">
+                <Label
+                    FontFamily="ProximaRegular"
+                    FontSize="14"
+                    Text="{translate:Translate Available_Offer}"
+                    TextColor="Black"
+                    VerticalOptions="Start"
+                    VerticalTextAlignment="Center"
+                    WidthRequest="150" />
+                <!--<Frame
+                    Padding="0"
+                    CornerRadius="10"
+                    HasShadow="False"
+                    HeightRequest="98"
+                    IsClippedToBounds="True">
+                    <Frame.Background>
+                        <LinearGradientBrush StartPoint="0,1" EndPoint="1,1">
+                            <GradientStop Offset="0.0" Color="#EBE9FF" />
+
+                            <GradientStop Offset="1.0" Color="#D5D1FF" />
+                        </LinearGradientBrush>
+                    </Frame.Background>
+                    <AbsoluteLayout>
+                        <Grid
+                            AbsoluteLayout.LayoutBounds="0,0,1,1"
+                            AbsoluteLayout.LayoutFlags="All"
+                            ColumnDefinitions="*,Auto"
+                            RowDefinitions="22,*,22">
+                            <StackLayout
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="2">
+                                <Path
+                                    Data="M233,-1 a8,8 0 0,0 16,0"
+                                    Fill="White"
+                                    HorizontalOptions="Fill"
+                                    Stroke="White"
+                                    VerticalOptions="Fill" />
+                            </StackLayout>
+                            <StackLayout
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                Margin="15,-10,10,-10"
+                                VerticalOptions="CenterAndExpand">
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontFamily="ProximaRegular"
+                                    FontSize="14"
+                                    Text="Get 50% Off on first order"
+                                    TextColor="Black"
+                                    VerticalOptions="Start"
+                                    VerticalTextAlignment="Center" />
+                                <AbsoluteLayout
+                                    HeightRequest="25"
+                                    HorizontalOptions="Start"
+                                    WidthRequest="100">
+                                    <Rectangle
+                                        AbsoluteLayout.LayoutBounds="0,0"
+                                        AbsoluteLayout.LayoutFlags="PositionProportional"
+                                        HeightRequest="25"
+                                        HorizontalOptions="Start"
+                                        Stroke="Red"
+                                        StrokeDashArray="1,1"
+                                        StrokeDashOffset="3"
+                                        StrokeThickness="1"
+                                        WidthRequest="100" />
+                                    <Label
+                                        AbsoluteLayout.LayoutBounds="0.5,0.5"
+                                        AbsoluteLayout.LayoutFlags="PositionProportional"
+                                        FontFamily="ProximaRegular"
+                                        FontSize="12"
+                                        Text="NEW50"
+                                        TextColor="Red" />
+                                </AbsoluteLayout>
+                                <Label
+                                    FontFamily="ProximaRegular"
+                                    FontSize="10"
+                                    Text="Validity : 10 Mar 2021"
+                                    TextColor="#585858"
+                                    VerticalOptions="Start"
+                                    VerticalTextAlignment="Center" />
+                            </StackLayout>
+                            <Button
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                Margin="10,3"
+                                Padding="0"
+                                BackgroundColor="#211E66"
+                                BorderColor="Transparent"
+                                FontAttributes="Bold"
+                                FontSize="12"
+                                HeightRequest="34"
+                                HorizontalOptions="EndAndExpand"
+                                Text="Apply"
+                                TextColor="White"
+                                WidthRequest="88" />
+                            <StackLayout
+                                Grid.Row="2"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="2"
+                                Rotation="180">
+                                <Path
+                                    Data="{OnPlatform iOS='M111,-1 a8,8 0 0,0 16,0',
+                                                      Android='M111,-1 a8,8 0 0,0 16,0'}"
+                                    Fill="White"
+                                    HorizontalOptions="Fill"
+                                    Stroke="White"
+                                    VerticalOptions="End" />
+                            </StackLayout>
+                        </Grid>
+                        <BoxView
+                            BackgroundColor="White"
+                            HeightRequest="91"
+                            TranslationX="241"
+                            VerticalOptions="FillAndExpand"
+                            WidthRequest="1" />
+                    </AbsoluteLayout>
+
+                </Frame>-->
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

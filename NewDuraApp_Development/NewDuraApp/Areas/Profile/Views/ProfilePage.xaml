@@ -1,0 +1,382 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="NewDuraApp.Areas.Profile.Views.ProfilePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:control="clr-namespace:NewDuraApp.Controls"
+    xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+    xmlns:fonticon="clr-namespace:NewDuraApp.FontIcons"
+    xmlns:images="clr-namespace:NewDuraApp.Extensions"
+    xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:translate="clr-namespace:NewDuraApp.Resources"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    BackgroundColor="White"
+    BindingContext="{Binding ProfilePage, Source={StaticResource Locator}}"
+    NavigationPage.HasBackButton="True"
+    Shell.NavBarHasShadow="False"
+    Shell.NavBarIsVisible="True"
+    Shell.TabBarIsVisible="False"
+    Visual="Material">
+    <Shell.TitleView>
+        <Grid ColumnDefinitions="9*,50">
+            <Label
+                Grid.Column="0"
+                FontFamily="ProximaSemiBold"
+                FontSize="22"
+                HorizontalOptions="FillAndExpand"
+                Text="Profile"
+                TextColor="Black"
+                VerticalOptions="CenterAndExpand"
+                VerticalTextAlignment="Center" />
+            <ImageButton
+                Grid.Column="0"
+                Margin="{OnPlatform iOS='0,0,20,0',
+                                    Android='0,0,-35,0'}"
+                Aspect="Fill"
+                BackgroundColor="Transparent"
+                Command="{Binding NavigateToChangePassword}"
+                HeightRequest="24"
+                HorizontalOptions="End"
+                VerticalOptions="CenterAndExpand"
+                WidthRequest="22">
+                <ImageButton.Source>
+                    <FontImageSource
+                        FontFamily="UserIcons"
+                        Glyph="{x:Static fonticon:FontIconsClass.LockOutline}"
+                        Size="30"
+                        Color="Black" />
+
+                </ImageButton.Source>
+            </ImageButton>
+
+        </Grid>
+    </Shell.TitleView>
+    <ContentPage.Content>
+        <ScrollView Margin="15" VerticalScrollBarVisibility="Never">
+            <Grid RowDefinitions="115,44,44,44,Auto,Auto,Auto" RowSpacing="20">
+                <control:CircleImage
+                    Grid.Row="0"
+                    Aspect="Fill"
+                    BackgroundColor="Transparent"
+                    BorderColor="White"
+                    BorderThickness="2"
+                    HeightRequest="115"
+                    HorizontalOptions="CenterAndExpand"
+                    Source="{Binding ProfileDetails.profile_image}"
+                    VerticalOptions="CenterAndExpand"
+                    WidthRequest="115" />
+
+
+                <Frame
+                    Grid.Row="1"
+                    Padding="15,3"
+                    BackgroundColor="#FBFBFF">
+                    <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand">
+                        <control:CustomEntry
+                            FontFamily="ProximaRegular"
+                            FontSize="14"
+                            HorizontalOptions="StartAndExpand"
+                            IsReadOnly="True"
+                            Placeholder="Full Name"
+                            PlaceholderColor="Gray"
+                            Text="{Binding ProfileDetails.name}"
+                            TextColor="Black"
+                            VerticalOptions="CenterAndExpand"
+                            VerticalTextAlignment="Center" />
+                        <ImageButton
+                            x:Name="btnname"
+                            Aspect="Fill"
+                            BackgroundColor="Transparent"
+                            ClassId="name"
+                            Clicked="btnname_Clicked"
+                            Command="{Binding NavigateToEditProfileInfo}"
+                            HeightRequest="25"
+                            HorizontalOptions="End"
+                            VerticalOptions="CenterAndExpand"
+                            WidthRequest="25">
+                            <ImageButton.Source>
+                                <FontImageSource
+                                    FontFamily="UserIcons"
+                                    Glyph="{x:Static fonticon:FontIconsClass.SquareEditOutline}"
+                                    Size="30"
+                                    Color="Black" />
+
+                            </ImageButton.Source>
+                        </ImageButton>
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer
+                                x:Name="stackprofile"
+                                Command="{Binding NavigateToEditProfileInfo}"
+                                NumberOfTapsRequired="1"
+                                Tapped="stackprofile_Tapped" />
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+                </Frame>
+                <Frame
+                    Grid.Row="2"
+                    Padding="15,3"
+                    BackgroundColor="#FBFBFF">
+                    <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand">
+                        <control:CustomEntry
+                            FontFamily="ProximaRegular"
+                            FontSize="14"
+                            HorizontalOptions="StartAndExpand"
+                            IsReadOnly="True"
+                            Placeholder="Phone number"
+                            Text="{Binding ProfileDetails.phone}"
+                            TextColor="Black"
+                            VerticalOptions="CenterAndExpand"
+                            VerticalTextAlignment="Center" />
+                        <ImageButton
+                            x:Name="btnPhone"
+                            Aspect="Fill"
+                            BackgroundColor="Transparent"
+                            ClassId="phone"
+                            Clicked="btnname_Clicked"
+                            Command="{Binding NavigateToEditProfileInfo}"
+                            HeightRequest="25"
+                            HorizontalOptions="End"
+                            VerticalOptions="CenterAndExpand"
+                            WidthRequest="25">
+                            <ImageButton.Source>
+                                <FontImageSource
+                                    FontFamily="UserIcons"
+                                    Glyph="{x:Static fonticon:FontIconsClass.SquareEditOutline}"
+                                    Size="30"
+                                    Color="Black" />
+                            </ImageButton.Source>
+                        </ImageButton>
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer
+                                x:Name="stackphone"
+                                Command="{Binding NavigateToEditProfileInfo}"
+                                NumberOfTapsRequired="1"
+                                Tapped="stackphone_Tapped" />
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+                </Frame>
+                <Frame
+                    Grid.Row="3"
+                    Padding="15,3"
+                    BackgroundColor="#FBFBFF">
+                    <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand">
+                        <control:CustomEntry
+                            FontFamily="ProximaRegular"
+                            FontSize="14"
+                            HorizontalOptions="StartAndExpand"
+                            IsReadOnly="True"
+                            Placeholder="Location"
+                            Text="{Binding ProfileDetails.country}"
+                            TextColor="Black"
+                            VerticalOptions="CenterAndExpand"
+                            VerticalTextAlignment="Center" />
+                        <ImageButton
+                            x:Name="btncity"
+                            Aspect="Fill"
+                            BackgroundColor="Transparent"
+                            ClassId="city"
+                            Clicked="btnname_Clicked"
+                            Command="{Binding NavigateToEditProfileInfo}"
+                            HeightRequest="25"
+                            HorizontalOptions="End"
+                            VerticalOptions="CenterAndExpand"
+                            WidthRequest="25">
+                            <ImageButton.Source>
+                                <FontImageSource
+                                    FontFamily="UserIcons"
+                                    Glyph="{x:Static fonticon:FontIconsClass.SquareEditOutline}"
+                                    Size="30"
+                                    Color="Black" />
+                            </ImageButton.Source>
+                        </ImageButton>
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer
+                                x:Name="stackcountry"
+                                Command="{Binding NavigateToEditProfileInfo}"
+                                NumberOfTapsRequired="1"
+                                Tapped="stackcountry_Tapped" />
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+                </Frame>
+                <StackLayout Grid.Row="4" Spacing="10">
+                    <Label
+                        FontFamily="ProximaSemiBold"
+                        FontSize="14"
+                        HorizontalOptions="StartAndExpand"
+                        Opacity=".5"
+                        Text="{translate:Translate Personal_Account}"
+                        TextColor="Black"
+                        VerticalOptions="CenterAndExpand"
+                        VerticalTextAlignment="Center" />
+                    <Frame
+                        Padding="20,0,5,0"
+                        BackgroundColor="#EBE9FF"
+                        CornerRadius="5"
+                        HeightRequest="42">
+                        <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand">
+                            <Label
+                                FontFamily="ProximaRegular"
+                                FontSize="15"
+                                HorizontalOptions="StartAndExpand"
+                                Text="{translate:Translate Upload_Additional_Document}"
+                                TextColor="Black"
+                                VerticalOptions="CenterAndExpand"
+                                VerticalTextAlignment="Center" />
+                            <ImageButton
+                                Aspect="Fill"
+                                BackgroundColor="Transparent"
+                                HeightRequest="20"
+                                HorizontalOptions="End"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="20">
+                                <ImageButton.Source>
+                                    <FontImageSource
+                                        FontFamily="UserIcons"
+                                        Glyph="{x:Static fonticon:FontIconsClass.MenuRight}"
+                                        Size="30"
+                                        Color="Black" />
+                                </ImageButton.Source>
+                            </ImageButton>
+                        </StackLayout>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding NavigateToPersonalUploadDocument}" />
+                        </Frame.GestureRecognizers>
+                    </Frame>
+                </StackLayout>
+                <StackLayout Grid.Row="5" Spacing="10">
+                    <StackLayout Orientation="Horizontal">
+                        <Label
+                            FontFamily="ProximaRegular"
+                            FontSize="14"
+                            HorizontalOptions="StartAndExpand"
+                            Opacity=".5"
+                            Text="{translate:Translate Business_Account}"
+                            TextColor="Black"
+                            VerticalOptions="CenterAndExpand"
+                            VerticalTextAlignment="Center" />
+                        <Switch
+                            HorizontalOptions="End"
+                            IsToggled="{Binding IsBusinessToggeld}"
+                            OnColor="#EBE9FF"
+                            Scale="0.8"
+                            ThumbColor="{Binding SwitchThumbColor}">
+                            <Switch.Behaviors>
+                                <xct:EventToCommandBehavior Command="{Binding ToggleIsBusinessCommand}" EventName="Toggled" />
+                            </Switch.Behaviors>
+                        </Switch>
+                    </StackLayout>
+
+                    <Frame
+                        Padding="20,0,5,0"
+                        BackgroundColor="#EBE9FF"
+                        CornerRadius="5"
+                        HeightRequest="42"
+                        IsVisible="{Binding IsBusinessVisible}">
+                        <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand">
+                            <Label
+                                FontFamily="ProximaRegular"
+                                FontSize="15"
+                                HorizontalOptions="StartAndExpand"
+                                Text="{translate:Translate Upload_Additional_Document}"
+                                TextColor="Black"
+                                VerticalOptions="CenterAndExpand"
+                                VerticalTextAlignment="Center" />
+                            <ImageButton
+                                Aspect="Fill"
+                                BackgroundColor="Transparent"
+                                HeightRequest="20"
+                                HorizontalOptions="End"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="20">
+                                <ImageButton.Source>
+                                    <FontImageSource
+                                        FontFamily="UserIcons"
+                                        Glyph="{x:Static fonticon:FontIconsClass.MenuRight}"
+                                        Size="30"
+                                        Color="Black" />
+
+                                </ImageButton.Source>
+                            </ImageButton>
+                        </StackLayout>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding NavigateToBusinessUploadDocument}" />
+                        </Frame.GestureRecognizers>
+                    </Frame>
+                </StackLayout>
+                <StackLayout Grid.Row="6" Spacing="10">
+                    <Label
+                        FontFamily="ProximaRegular"
+                        FontSize="14"
+                        HorizontalOptions="StartAndExpand"
+                        Opacity=".5"
+                        Text="{translate:Translate Link_Social_Account}"
+                        TextColor="Black"
+                        VerticalOptions="CenterAndExpand"
+                        VerticalTextAlignment="Center" />
+                    <Frame
+                        Padding="2,0,10,0"
+                        BackgroundColor="#FBFBFF"
+                        CornerRadius="5"
+                        HeightRequest="42">
+                        <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand">
+                            <Label
+                                FontFamily="ProximaRegular"
+                                FontSize="11"
+                                HorizontalOptions="FillAndExpand"
+                                IsEnabled="False"
+                                Text="{Binding FacebookLink}"
+                                TextColor="Black"
+                                VerticalOptions="CenterAndExpand"
+                                VerticalTextAlignment="Center" />
+                            <Label
+                                xct:TouchEffect.Command="{Binding LinkCommand}"
+                                FontFamily="ProximaRegular"
+                                FontSize="11"
+                                HorizontalOptions="End"
+                                Text="{Binding LinkText}"
+                                TextColor="#211E66"
+                                VerticalOptions="CenterAndExpand"
+                                VerticalTextAlignment="Center">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding LinkCommand}" />
+                                </Label.GestureRecognizers>
+                            </Label>
+
+                        </StackLayout>
+                    </Frame>
+                    <Frame
+                        Padding="2,0,10,0"
+                        BackgroundColor="#FBFBFF"
+                        HeightRequest="42">
+                        <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand">
+
+                            <Label
+                                FontFamily="ProximaRegular"
+                                FontSize="11"
+                                HorizontalOptions="FillAndExpand"
+                                IsEnabled="False"
+                                Text="{Binding GoogleLink}"
+                                TextColor="Black"
+                                VerticalOptions="CenterAndExpand"
+                                VerticalTextAlignment="Center" />
+
+                            <Label
+                                FontFamily="ProximaRegular"
+                                FontSize="11"
+                                HorizontalOptions="End"
+                                Text="{Binding LinkTextGoogle}"
+                                TextColor="#211E66"
+                                VerticalOptions="CenterAndExpand"
+                                VerticalTextAlignment="Center">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding GoogleCommand}" />
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

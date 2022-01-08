@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="NewDuraApp.Areas.Common.Views.TermsConditionsPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:images="clr-namespace:NewDuraApp.Extensions"
+    xmlns:translate="clr-namespace:NewDuraApp.Resources"
+    BackgroundColor="White"
+    BindingContext="{Binding TermsConditionsPage, Source={StaticResource Locator}}"
+    NavigationPage.HasBackButton="False"
+    NavigationPage.HasNavigationBar="False"
+    Shell.NavBarHasShadow="False"
+    Shell.NavBarIsVisible="False"
+    Shell.TabBarIsVisible="False"
+    Visual="Material">
+
+    <ContentPage.Content>
+        <StackLayout>
+
+            <StackLayout Margin="20,20,20,0" Orientation="Horizontal">
+                <Label
+                    FontFamily="ProximaSemiBold"
+                    FontSize="22"
+                    Text="{translate:Translate TermAndConditions}"
+                    TextColor="Black"
+                    VerticalTextAlignment="Center" />
+                <ImageButton
+                    BackgroundColor="Transparent"
+                    Command="{Binding NavigateBackCommand}"
+                    HeightRequest="25"
+                    HorizontalOptions="EndAndExpand"
+                    Source="{images:EmbeddedImage NewDuraApp.Images.close_circle.png}"
+                    VerticalOptions="CenterAndExpand"
+                    WidthRequest="25" />
+            </StackLayout>
+            <WebView
+                x:Name="webView"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand" />
+            <ScrollView IsVisible="False" VerticalScrollBarVisibility="Never">
+                <StackLayout Margin="20">
+
+                    <StackLayout>
+                        <Label
+                            Margin="0,20,0,0"
+                            FontFamily="ProximaSemiBold"
+                            Text="Loreum ipsum"
+                            TextColor="Black" />
+                        <Label
+                            FontFamily="ProximaRegular"
+                            Text="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+                            TextColor="Black" />
+                    </StackLayout>
+                    <StackLayout>
+                        <Label
+                            Margin="0,20,0,0"
+                            FontAttributes="Bold"
+                            FontFamily="ProximaSemiBold"
+                            Text="Loreum ipsum"
+                            TextColor="Black" />
+                        <Label
+                            FontFamily="ProximaRegular"
+                            Text="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+                            TextColor="Black" />
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="NewDuraApp.Areas.Profile.Menu.SavedCards.Views.SavedCardsListPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:control="clr-namespace:NewDuraApp.Controls"
+    xmlns:fonticon="clr-namespace:NewDuraApp.FontIcons"
+    xmlns:images="clr-namespace:NewDuraApp.Extensions"
+    xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:sh="http://sharpnado.com"
+    xmlns:translate="clr-namespace:NewDuraApp.Resources"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    BackgroundColor="White"
+    BindingContext="{Binding SavedCardsListPage, Source={StaticResource Locator}}"
+    NavigationPage.HasBackButton="True"
+    Shell.NavBarHasShadow="False"
+    Shell.NavBarIsVisible="True"
+    Shell.TabBarIsVisible="False"
+    Visual="Material">
+    <Shell.TitleView>
+        <Label
+            FontFamily="ProximaSemiBold"
+            FontSize="22"
+            HorizontalOptions="FillAndExpand"
+            Text="{translate:Translate Saved_Cards}"
+            TextColor="Black"
+            VerticalOptions="CenterAndExpand"
+            VerticalTextAlignment="Center" />
+    </Shell.TitleView>
+    <ContentPage.Content>
+        <Grid
+            Margin="15"
+            RowDefinitions="Auto,50"
+            VerticalOptions="Start">
+            <CollectionView
+                x:Name="savedCardCollection"
+                Grid.Row="0"
+                Margin="0,10"
+                BackgroundColor="White"
+                HeightRequest="{Binding CollectionViewHeight}"
+                HorizontalOptions="FillAndExpand"
+                ItemsSource="{Binding SavedCardsModelList}"
+                SelectionMode="None"
+                VerticalOptions="Start"
+                VerticalScrollBarVisibility="Never">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout ItemSpacing="13" Orientation="Vertical" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <sh:Shadows
+                            Padding="0"
+                            BackgroundColor="#FFFFFF"
+                            CornerRadius="5"
+                            HorizontalOptions="FillAndExpand">
+                            <sh:Shadows.Shades>
+                                <sh:ImmutableShades>
+                                    <sh:Shade
+                                        BlurRadius="10"
+                                        Opacity="0.5"
+                                        Offset="1,1"
+                                        Color="Gray" />
+                                </sh:ImmutableShades>
+                            </sh:Shadows.Shades>
+                            <Frame
+                                Margin="{OnPlatform iOS='0,0,3,0',
+                                                    Android='0.5,0,8,8'}"
+                                Padding="12"
+                                BackgroundColor="#FBFBFF"
+                                HasShadow="{OnPlatform iOS='False',
+                                                       Android='True'}"
+                                HeightRequest="54">
+                                <Grid
+                                    ColumnDefinitions="*,Auto"
+                                    HorizontalOptions="FillAndExpand"
+                                    VerticalOptions="CenterAndExpand">
+                                    <StackLayout
+                                        Grid.Column="0"
+                                        xct:TouchEffect.Command="{Binding BindingContext.CardsDetails, Source={x:Reference savedCardCollection}}"
+                                        xct:TouchEffect.CommandParameter="{Binding .}">
+                                        <Label
+                                            FontFamily="ProximaRegular"
+                                            FontSize="14"
+                                            HorizontalOptions="FillAndExpand"
+                                            Text="{Binding name}"
+                                            TextColor="Black"
+                                            VerticalOptions="CenterAndExpand"
+                                            VerticalTextAlignment="Center" />
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label
+                                                FontAttributes="Bold"
+                                                FontFamily="ProximaSemiBold"
+                                                FontSize="14"
+                                                HorizontalOptions="Start"
+                                                Text="{Binding number}"
+                                                TextColor="Black"
+                                                VerticalOptions="CenterAndExpand"
+                                                VerticalTextAlignment="Center" />
+                                            <Image
+                                                Margin="10,0"
+                                                HeightRequest="17"
+                                                HorizontalOptions="Start"
+                                                Source="{Binding number, Converter={StaticResource CardConverter}}"
+                                                WidthRequest="27" />
+                                        </StackLayout>
+                                    </StackLayout>
+                                    <ImageButton
+                                        Grid.Column="1"
+                                        Aspect="Fill"
+                                        BackgroundColor="Transparent"
+                                        Command="{Binding BindingContext.DeleteCardCommand, Source={x:Reference savedCardCollection}}"
+                                        CommandParameter="{Binding .}"
+                                        HeightRequest="15"
+                                        HorizontalOptions="End"
+                                        Source="{images:EmbeddedImage NewDuraApp.Images.delete.png}"
+                                        VerticalOptions="Start"
+                                        WidthRequest="13" />
+                                </Grid>
+                            </Frame>
+                        </sh:Shadows>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <Button
+                Grid.Row="1"
+                BackgroundColor="#211E66"
+                Command="{Binding NavigateToAddNewCard}"
+                CornerRadius="5"
+                FontAttributes="Bold"
+                FontFamily="ProximaRegular"
+                FontSize="16"
+                HeightRequest="42"
+                HorizontalOptions="FillAndExpand"
+                Text="{translate:Translate Add_New_Card}"
+                TextColor="White"
+                VerticalOptions="Center" />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

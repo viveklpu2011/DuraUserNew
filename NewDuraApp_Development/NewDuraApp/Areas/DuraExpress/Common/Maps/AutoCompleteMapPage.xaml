@@ -1,0 +1,314 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="NewDuraApp.Areas.DuraExpress.Common.Maps.AutoCompleteMapPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Helpers="clr-namespace:NewDuraApp.Converters"
+    xmlns:controls="clr-namespace:NewDuraApp.Controls"
+    xmlns:fonticon="clr-namespace:NewDuraApp.FontIcons"
+    xmlns:images="clr-namespace:NewDuraApp.Extensions"
+    xmlns:map="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+    xmlns:translate="clr-namespace:NewDuraApp.Resources"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    BindingContext="{Binding AutoCompleteMapPage, Source={StaticResource Locator}}"
+    NavigationPage.HasBackButton="True"
+    Shell.NavBarHasShadow="False"
+    Shell.NavBarIsVisible="False"
+    Shell.TabBarIsVisible="False"
+    Visual="Material">
+    <Shell.TitleView>
+        <StackLayout BackgroundColor="Red">
+            <Label
+                FontFamily="ProximaSemiBold"
+                FontSize="22"
+                Text="{translate:Translate Map_Page}"
+                TextColor="Black"
+                VerticalOptions="CenterAndExpand"
+                VerticalTextAlignment="Center" />
+        </StackLayout>
+    </Shell.TitleView>
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <map:Map
+                x:Name="mapPopup"
+                Margin="{OnPlatform Android='0,0,0,50',
+                                    iOS='0,0,0,70'}"
+                AbsoluteLayout.LayoutBounds="0,0,1,1"
+                AbsoluteLayout.LayoutFlags="All"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand" />
+            <StackLayout
+                Margin="{OnPlatform Android='10',
+                                    iOS='10,30'}"
+                Padding="10"
+                AbsoluteLayout.LayoutBounds="0,0,1,Autosize"
+                AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional"
+                BackgroundColor="#B0ffffff">
+                <StackLayout Orientation="Horizontal">
+                    <ImageButton
+                        x:Name="btnmenu"
+                        Margin="0,0,10,0"
+                        Aspect="AspectFill"
+                        BackgroundColor="Transparent"
+                        Command="{Binding BackCommand}"
+                        HeightRequest="25"
+                        HorizontalOptions="Start"
+                        VerticalOptions="CenterAndExpand"
+                        WidthRequest="25">
+                        <ImageButton.Source>
+                            <FontImageSource
+                                FontFamily="UserIcons"
+                                Glyph="{x:Static fonticon:FontIconsClass.ArrowLeft}"
+                                Size="30"
+                                Color="Black" />
+
+                        </ImageButton.Source>
+                    </ImageButton>
+                    <Label
+                        FontFamily="ProximaSemiBold"
+                        FontSize="18"
+                        Text="{Binding HeaderTitle}"
+                        TextColor="Black"
+                        VerticalOptions="CenterAndExpand" />
+
+                </StackLayout>
+
+                <StackLayout Margin="5,10,5,5">
+                    <Label
+                        FontFamily="Proxima"
+                        FontSize="14"
+                        Text="{translate:Translate Search_Your_Location}"
+                        TextColor="Black"
+                        VerticalOptions="CenterAndExpand" />
+                    <Frame
+                        Padding="0"
+                        BackgroundColor="#FBFBFF"
+                        CornerRadius="5"
+                        HeightRequest="45"
+                        HorizontalOptions="FillAndExpand">
+                        <controls:CustomEntry
+                            x:Name="txtsearch"
+                            Margin="5,0"
+                            xct:TouchEffect.Command="{Binding TextClick}"
+                            FontSize="14"
+                            HorizontalOptions="FillAndExpand"
+                            IsReadOnly="{Binding IsReadOnlyText}"
+                            Placeholder="{translate:Translate Block_M_Reyes_St_Bangka_Makati_City}"
+                            Text="{Binding AddressText}"
+                            TextChanged="OnTextChanged"
+                            TextColor="Black" />
+                    </Frame>
+
+                </StackLayout>
+                <StackLayout Margin="5,0,5,10" IsVisible="False">
+                    <Label
+                        FontFamily="Proxima"
+                        FontSize="14"
+                        Text="{translate:Translate Enter_your_drop_address}"
+                        TextColor="Black"
+                        VerticalOptions="CenterAndExpand" />
+                    <Frame
+                        Padding="0"
+                        BackgroundColor="#FBFBFF"
+                        CornerRadius="5"
+                        HeightRequest="45"
+                        HorizontalOptions="FillAndExpand">
+                        <controls:CustomEntry
+                            Margin="5,0"
+                            FontSize="14"
+                            HorizontalOptions="FillAndExpand"
+                            Placeholder="{translate:Translate Enter_your_drop_address}"
+                            ReturnType="Search"
+                            Text="{Binding Address2}"
+                            TextChanged="CustomEntry_TextChanged"
+                            TextColor="Black" />
+                    </Frame>
+
+                </StackLayout>
+                <Label
+                    Margin="5,0"
+                    FontFamily="ProximaBold"
+                    FontSize="14"
+                    Text="{translate:Translate Recent_saved_address}"
+                    TextColor="Black"
+                    VerticalOptions="CenterAndExpand" />
+                <StackLayout
+                    x:Name="stacksavedaddress"
+                    Margin="-10,0"
+                    Padding="5"
+                    BackgroundColor="White"
+                    BindableLayout.ItemsSource="{Binding AddressList}">
+                    <BindableLayout.EmptyView>
+
+                        <Label Text="{translate:Translate No_saved_address}" />
+
+                    </BindableLayout.EmptyView>
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <Grid
+                                xct:TouchEffect.Command="{Binding BindingContext.AddressDetails, Source={x:Reference stacksavedaddress}}"
+                                xct:TouchEffect.CommandParameter="{Binding .}"
+                                ColumnDefinitions="25,*"
+                                RowDefinitions="Auto,1">
+                                <Image
+                                    x:Name="btnmenu"
+                                    Grid.Column="0"
+                                    Aspect="AspectFill"
+                                    BackgroundColor="Transparent"
+                                    HeightRequest="17"
+                                    HorizontalOptions="CenterAndExpand"
+                                    VerticalOptions="CenterAndExpand"
+                                    WidthRequest="15">
+                                    <Image.Source>
+                                        <FontImageSource
+                                            FontFamily="UserIcons"
+                                            Glyph="{x:Static fonticon:FontIconsClass.MapMarkerRadiusOutline}"
+                                            Size="20"
+                                            Color="Gray" />
+
+                                    </Image.Source>
+                                </Image>
+                                <StackLayout Grid.Column="1" Spacing="0">
+                                    <StackLayout Orientation="Horizontal" Spacing="5">
+                                        <Image
+                                            Aspect="Fill"
+                                            HeightRequest="13"
+                                            VerticalOptions="CenterAndExpand"
+                                            WidthRequest="13">
+                                            <Image.Source>
+                                                <FontImageSource
+                                                    FontFamily="UserIcons"
+                                                    Glyph="{Binding type, Converter={Helpers:StringToFonticonConverter}}"
+                                                    Size="20"
+                                                    Color="Gray" />
+
+                                            </Image.Source>
+                                        </Image>
+                                        <Label
+                                            Margin="5,0"
+                                            FontFamily="ProximaBold"
+                                            FontSize="14"
+                                            Text="{Binding contactperson}"
+                                            TextColor="Black"
+                                            VerticalOptions="CenterAndExpand" />
+
+                                        <Label
+                                            FontSize="12"
+                                            IsVisible="{Binding IsDefault}"
+                                            Text="(Default)"
+                                            TextColor="Gray" />
+                                    </StackLayout>
+
+                                    <Label
+                                        Margin="5,0"
+                                        FontFamily="Proxima"
+                                        FontSize="14"
+                                        LineBreakMode="TailTruncation"
+                                        MaxLines="1"
+                                        Text="{Binding FullAddress}"
+                                        TextColor="Black"
+                                        VerticalOptions="CenterAndExpand" />
+                                </StackLayout>
+                                <BoxView
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="2"
+                                    BackgroundColor="#e2e2e2" />
+                            </Grid>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
+            </StackLayout>
+            <StackLayout
+                x:Name="stckAddress"
+                Margin="25,140,25,0"
+                AbsoluteLayout.LayoutBounds="0,0,1,Autosize"
+                AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional"
+                IsVisible="{Binding IsVisibleListView}">
+                <CollectionView
+                    x:Name="lstAddress"
+                    BackgroundColor="White"
+                    HeightRequest="200"
+                    ItemsSource="{Binding Addresses}"
+                    MinimumHeightRequest="50"
+                    VerticalOptions="Start"
+                    VerticalScrollBarVisibility="Never">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout
+                                xct:TouchEffect.Command="{Binding BindingContext.AddressDetailsCommand, Source={x:Reference lstAddress}}"
+                                xct:TouchEffect.CommandParameter="{Binding .}"
+                                HeightRequest="45"
+                                Spacing="5"
+                                VerticalOptions="Start">
+                                <Label
+                                    Padding="10,0"
+                                    BackgroundColor="White"
+                                    LineBreakMode="TailTruncation"
+                                    MaxLines="2"
+                                    Text="{Binding Address}"
+                                    VerticalOptions="CenterAndExpand"
+                                    VerticalTextAlignment="Center" />
+                                <BoxView
+                                    Margin="0,2,0,0"
+                                    BackgroundColor="#e2e2e2"
+                                    HeightRequest="1" />
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+            <ListView
+                x:Name="lstCountry"
+                Margin="{OnPlatform Android='25,160,25,0',
+                                    iOS='25,175,25,0'}"
+                AbsoluteLayout.LayoutBounds="0,0,1,Autosize"
+                AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional"
+                BackgroundColor="White"
+                CachingStrategy="RecycleElement"
+                HeightRequest="60"
+                IsVisible="False"
+                ItemsSource="{Binding CountriesNameList}"
+                MinimumHeightRequest="50"
+                RowHeight="50"
+                VerticalOptions="Start">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout
+                                xct:TouchEffect.Command="{Binding BindingContext.CountryDetailsCommand, Source={x:Reference lstAddress}}"
+                                xct:TouchEffect.CommandParameter="{Binding .}"
+                                HeightRequest="45"
+                                Spacing="5">
+                                <Label
+                                    Padding="10,0"
+                                    BackgroundColor="White"
+                                    HeightRequest="150"
+                                    Text="{Binding name}"
+                                    VerticalOptions="CenterAndExpand"
+                                    VerticalTextAlignment="Center" />
+                            </StackLayout>
+
+                        </ViewCell>
+
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button
+                Margin="{OnPlatform Android='5,0,5,5',
+                                    iOS='5,0,5,20'}"
+                AbsoluteLayout.LayoutBounds="0,1,1,Autosize"
+                AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional"
+                BackgroundColor="#211E66"
+                Command="{Binding ContinueButtonCommand}"
+                CornerRadius="5"
+                FontFamily="RobotoRegular"
+                FontSize="16"
+                HeightRequest="50"
+                HorizontalOptions="FillAndExpand"
+                IsEnabled="{Binding IsButtonEnabled}"
+                Text="{translate:Translate Confirm}"
+                TextColor="White" />
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="NewDuraApp.Areas.DuraEats.ChangeLocation.Views.ChangeLocationPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:control="clr-namespace:NewDuraApp.Controls"
+    xmlns:fonticon="clr-namespace:NewDuraApp.FontIcons"
+    xmlns:images="clr-namespace:NewDuraApp.Extensions"
+    xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    BackgroundColor="White"
+    BindingContext="{Binding ChangeLocationPage, Source={StaticResource Locator}}"
+    NavigationPage.HasBackButton="True"
+    Shell.NavBarHasShadow="False"
+    Shell.NavBarIsVisible="True"
+    Shell.TabBarIsVisible="False"
+    Visual="Material">
+    <Shell.TitleView>
+
+        <Label
+            FontFamily="ProximaSemiBold"
+            FontSize="22"
+            HorizontalOptions="FillAndExpand"
+            Text="Change Location"
+            TextColor="Black"
+            VerticalOptions="CenterAndExpand"
+            VerticalTextAlignment="Center" />
+    </Shell.TitleView>
+    <ContentPage.Content>
+        <ScrollView VerticalScrollBarVisibility="Never">
+            <StackLayout Margin="0,10,0,0">
+                <Frame
+                    Margin="15"
+                    Padding="8,0"
+                    HeightRequest="44">
+                    <Grid ColumnDefinitions="14,*" ColumnSpacing="5">
+                        <Image
+                            HeightRequest="14"
+                            Source="{images:EmbeddedImage NewDuraApp.Images.search_product_placeholder.png}"
+                            WidthRequest="14" />
+                        <control:CustomEntry
+                            Grid.Column="1"
+                            FontFamily="ProximaRegular"
+                            FontSize="14"
+                            Placeholder="Enter Location"
+                            PlaceholderColor="{StaticResource PlaceholderColor}"
+                            TextColor="Black"
+                            VerticalOptions="Center" />
+                    </Grid>
+                </Frame>
+                <Image
+                    Aspect="Fill"
+                    HeightRequest="310"
+                    Source="{images:EmbeddedImage NewDuraApp.Images.map.png}" />
+                <Frame
+                    Margin="36,15"
+                    Padding="8,3"
+                    BorderColor="#211E66"
+                    HeightRequest="36">
+                    <StackLayout
+                        HorizontalOptions="CenterAndExpand"
+                        Orientation="Horizontal"
+                        Spacing="10">
+                        <Image
+                            HeightRequest="20"
+                            Source="{images:EmbeddedImage NewDuraApp.Images.pickup_current_location.png}"
+                            WidthRequest="20" />
+                        <Label
+                            FontAttributes="Bold"
+                            FontFamily="ProximaRegular"
+                            FontSize="15"
+                            HorizontalOptions="FillAndExpand"
+                            Text="Use Your Current Location"
+                            TextColor="#211E66"
+                            VerticalOptions="CenterAndExpand"
+                            VerticalTextAlignment="Center" />
+                    </StackLayout>
+                </Frame>
+                <Frame
+                    Margin="36,10"
+                    Padding="8,3"
+                    BorderColor="#211E66"
+                    HeightRequest="36">
+                    <StackLayout
+                        HorizontalOptions="CenterAndExpand"
+                        Orientation="Horizontal"
+                        Spacing="10">
+                        <Image
+                            HeightRequest="20"
+                            Source="{images:EmbeddedImage NewDuraApp.Images.my_saved_address.png}"
+                            WidthRequest="20" />
+                        <Label
+                            FontAttributes="Bold"
+                            FontFamily="ProximaRegular"
+                            FontSize="15"
+                            HorizontalOptions="FillAndExpand"
+                            Text="My Saved Address"
+                            TextColor="#211E66"
+                            VerticalOptions="CenterAndExpand"
+                            VerticalTextAlignment="Center" />
+                    </StackLayout>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding NavigaeteToSavedAddressPopup}" />
+                    </Frame.GestureRecognizers>
+                </Frame>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

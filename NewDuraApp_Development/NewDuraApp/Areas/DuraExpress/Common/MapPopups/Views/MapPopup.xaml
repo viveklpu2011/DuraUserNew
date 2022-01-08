@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<pages:PopupPage
+    x:Class="NewDuraApp.Areas.DuraExpress.Common.MapPopups.Views.MapPopup"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+    xmlns:conrols="clr-namespace:NewDuraApp.Controls"
+    xmlns:images="clr-namespace:NewDuraApp.Extensions"
+    xmlns:map="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    xmlns:translate="clr-namespace:NewDuraApp.Resources"
+    BindingContext="{Binding MapPopups, Source={StaticResource Locator}}"
+    CloseWhenBackgroundIsClicked="False"
+    Visual="Material">
+    <pages:PopupPage.Animation>
+        <animations:ScaleAnimation
+            DurationIn="400"
+            DurationOut="300"
+            EasingIn="SinOut"
+            EasingOut="SinIn"
+            HasBackgroundAnimation="True"
+            PositionIn="Bottom"
+            PositionOut="Bottom"
+            ScaleIn="1.2"
+            ScaleOut="0.8" />
+    </pages:PopupPage.Animation>
+    <pages:PopupPage.Content>
+        <AbsoluteLayout>
+            <map:Map
+                x:Name="mapPopup"
+                AbsoluteLayout.LayoutBounds="0,0,1,1"
+                AbsoluteLayout.LayoutFlags="All"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand" />
+            <StackLayout
+                Margin="20"
+                AbsoluteLayout.LayoutBounds="0,0,1,Autosize"
+                AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional">
+                <Label
+                    FontFamily="ProximaSemiBold"
+                    FontSize="18"
+                    Text="{translate:Translate Enter_the_drop_off_address_information}"
+                    TextColor="Black" />
+                <Label
+                    FontAttributes="Italic"
+                    FontSize="12"
+                    Text="{translate:Translate Tap_on_map_to_set_your_position}"
+                    TextColor="Gray" />
+                <StackLayout Margin="5,10,5,10">
+                    <Frame
+                        Padding="0"
+                        BackgroundColor="#FBFBFF"
+                        CornerRadius="5"
+                        HeightRequest="45"
+                        HorizontalOptions="FillAndExpand">
+                        <conrols:CustomEntry
+                            Margin="5,0"
+                            FontSize="14"
+                            HorizontalOptions="FillAndExpand"
+                            Placeholder="{translate:Translate Capt_M_Reyes_Makati_Metro_Manila_Phillipnes}"
+                            Text="{Binding Address123}"
+                            TextColor="Black" />
+                    </Frame>
+
+                </StackLayout>
+                <StackLayout Margin="5,0,5,10">
+                    <Frame
+                        Padding="0"
+                        BackgroundColor="#FBFBFF"
+                        CornerRadius="5"
+                        HeightRequest="45"
+                        HorizontalOptions="FillAndExpand">
+                        <conrols:CustomEntry
+                            Margin="5,0"
+                            FontSize="14"
+                            HorizontalOptions="FillAndExpand"
+                            Placeholder="{translate:Translate Block_M_Reyes_St_Bangka_Makati_City}"
+                            ReturnCommand="{Binding AddressReturnCommand}"
+                            ReturnType="Search"
+                            Text="{Binding Address2}"
+                            TextColor="Black"
+                            Unfocused="CustomEntry_Unfocused" />
+                    </Frame>
+
+                </StackLayout>
+
+                <Button
+                    Margin="0,20,0,0"
+                    BackgroundColor="#211E66"
+                    Command="{Binding GoToAddStopLocationCmd}"
+                    CornerRadius="5"
+                    FontFamily="RobotoRegular"
+                    FontSize="16"
+                    HeightRequest="50"
+                    HorizontalOptions="FillAndExpand"
+                    IsEnabled="{Binding IsButtonEnabled}"
+                    Text="{translate:Translate Confirm}"
+                    TextColor="White"
+                    WidthRequest="250" />
+            </StackLayout>
+        </AbsoluteLayout>
+    </pages:PopupPage.Content>
+</pages:PopupPage>

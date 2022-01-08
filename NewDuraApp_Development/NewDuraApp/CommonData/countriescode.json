@@ -1,0 +1,12 @@
+﻿[
+    {
+        "name": "Philippines",
+        "dial_code": "+63",
+        "code": "PH"
+    },
+    {
+        "name": "India",
+        "dial_code": "+91",
+        "code": "IN"
+    }
+]

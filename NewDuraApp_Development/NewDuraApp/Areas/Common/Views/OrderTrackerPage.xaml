@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="NewDuraApp.Areas.Common.Views.OrderTrackerPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:behaviours="clr-namespace:NewDuraApp.Behaviours"
+    xmlns:controls="clr-namespace:NewDuraApp.Controls"
+    xmlns:controls1="clr-namespace:NewDuraApp.LocationTracker.Controls"
+    xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+    xmlns:images="clr-namespace:NewDuraApp.Extensions"
+    xmlns:map="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+    xmlns:maps="clr-namespace:Xamarin.Forms.GoogleMaps;assembly=Xamarin.Forms.GoogleMaps"
+    xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:translate="clr-namespace:NewDuraApp.Resources"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    BindingContext="{Binding OrderTrackerPage, Source={StaticResource Locator}}"
+    NavigationPage.HasBackButton="True"
+    Shell.NavBarIsVisible="True"
+    Shell.TabBarIsVisible="False"
+    Visual="Material">
+    <Shell.TitleView>
+        <StackLayout VerticalOptions="CenterAndExpand">
+            <Label
+                Margin="10,0,0,0"
+                FontFamily="ProximaSemiBold"
+                FontSize="22"
+                Text="{translate:Translate Track_Order}"
+                TextColor="Black"
+                VerticalOptions="CenterAndExpand" />
+        </StackLayout>
+    </Shell.TitleView>
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <maps:Map
+                x:Name="map"
+                AbsoluteLayout.LayoutBounds="0,0,1,1"
+                AbsoluteLayout.LayoutFlags="All"
+                HorizontalOptions="FillAndExpand"
+                MapType="Street"
+                VerticalOptions="FillAndExpand" />
+            <AbsoluteLayout
+                AbsoluteLayout.LayoutBounds="0,0.85"
+                AbsoluteLayout.LayoutFlags="PositionProportional"
+                HeightRequest="60">
+                <pancake:PancakeView
+                    Margin="40,0"
+                    AbsoluteLayout.LayoutBounds="0,0.5"
+                    AbsoluteLayout.LayoutFlags="PositionProportional"
+                    BackgroundColor="#211E66"
+                    CornerRadius="0,20,0,20"
+                    HeightRequest="40">
+                    <StackLayout Orientation="Horizontal">
+                        <Label
+                            Margin="20,0,0,0"
+                            Text="{translate:Translate Duration}"
+                            TextColor="White"
+                            VerticalOptions="CenterAndExpand" />
+                        <ActivityIndicator
+                            HeightRequest="20"
+                            IsRunning="True"
+                            IsVisible="False"
+                            WidthRequest="20"
+                            Color="White" />
+                        <Label
+                            Margin="0,0,10,0"
+                            Text="{Binding LeftTime}"
+                            TextColor="White"
+                            VerticalOptions="CenterAndExpand" />
+                    </StackLayout>
+                </pancake:PancakeView>
+                <controls:CircleImage
+                    AbsoluteLayout.LayoutBounds="0,0.5"
+                    AbsoluteLayout.LayoutFlags="PositionProportional"
+                    Aspect="Fill"
+                    BorderColor="#B0211E66"
+                    BorderThickness="2"
+                    HeightRequest="56"
+                    Source="{Binding GetOrderData.driverphoto}"
+                    WidthRequest="56" />
+            </AbsoluteLayout>
+
+            <!--<Image
+                HeightRequest="35"
+                HorizontalOptions="CenterAndExpand"
+                IsVisible="{Binding IsRouteNotRunning}"
+                Source="ic_location_red.png"
+                VerticalOptions="CenterAndExpand"
+                WidthRequest="35" />
+
+            <StackLayout
+                x:Name="searchLayout"
+                Margin="30,50,30,0"
+                Padding="10"
+                BackgroundColor="White"
+                IsVisible="False"
+                Orientation="Horizontal"
+                VerticalOptions="Start">
+                <Image
+                    HeightRequest="15"
+                    Source="ic_search"
+                    WidthRequest="15" />
+                <Label
+                    FontAttributes="Italic"
+                    HorizontalOptions="FillAndExpand"
+                    LineBreakMode="TailTruncation"
+                    Text="Search Place"
+                    TextColor="Gray" />
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnEnterAddressTapped" />
+                </StackLayout.GestureRecognizers>
+            </StackLayout>
+
+            <Button
+                x:Name="chooseLocationButton"
+                Margin="40"
+                BackgroundColor="DodgerBlue"
+                Clicked="OnEnterAddressTapped"
+                Command="{Binding GetLocationNameCommand}"
+                CommandParameter="{Binding Path=CameraPosition.Target, Source={x:Reference map}}"
+                FontSize="17"
+                HorizontalOptions="FillAndExpand"
+                IsVisible="{Binding IsRouteNotRunning}"
+                Text="Choose Pickup"
+                TextColor="White"
+                VerticalOptions="EndAndExpand" />
+
+            <Button
+                x:Name="stopRouteButton"
+                Margin="40"
+                BackgroundColor="Red"
+                Clicked="Handle_Stop_Clicked"
+                Command="{Binding StopRouteCommand}"
+                FontSize="17"
+                HorizontalOptions="FillAndExpand"
+                IsVisible="false"
+                Text="Stop"
+                TextColor="White"
+                VerticalOptions="EndAndExpand" />-->
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<infrastructure:BaseContentPage
+    x:Class="NewDuraApp.Areas.Common.Views.GetStartedPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:images="clr-namespace:NewDuraApp.Extensions"
+    xmlns:infrastructure="clr-namespace:NewDuraApp.Infrastructure"
+    xmlns:translate="clr-namespace:NewDuraApp.Resources"
+    BackgroundColor="White"
+    BindingContext="{Binding GetStartedPage, Source={StaticResource Locator}}">
+    <Grid
+        HorizontalOptions="FillAndExpand"
+        RowDefinitions="50,Auto,Auto,Auto"
+        VerticalOptions="FillAndExpand">
+        <CarouselView
+            x:Name="TheCarousel"
+            Grid.Row="1"
+            HorizontalScrollBarVisibility="Never"
+            IndicatorView="indicatorview"
+            ItemsSource="{Binding WelcomeGoThroughList}"
+            VerticalOptions="CenterAndExpand">
+            <CarouselView.ItemTemplate>
+                <DataTemplate>
+                    <Grid RowDefinitions="180,Auto" VerticalOptions="CenterAndExpand">
+
+                        <Image
+                            Grid.Row="0"
+                            Margin="20,0,20,20"
+                            Aspect="AspectFit"
+                            HeightRequest="180"
+                            HorizontalOptions="CenterAndExpand"
+                            Source="{Binding ImageName}"
+                            VerticalOptions="EndAndExpand"
+                            WidthRequest="260" />
+
+                        <StackLayout
+                            Grid.Row="1"
+                            Margin="20,0,20,0"
+                            Spacing="0">
+                            <Label
+                                FontAttributes="Bold"
+                                FontFamily="RobotoBold"
+                                FontSize="26"
+                                HorizontalTextAlignment="Center"
+                                Text="{Binding Heading}"
+                                TextColor="Black" />
+                            <Label
+                                Margin="0,10,0,0"
+                                FontFamily="segoeuiRegular"
+                                FontSize="14"
+                                HorizontalTextAlignment="Center"
+                                Text="{Binding Descripption}"
+                                TextColor="Black" />
+                        </StackLayout>
+                    </Grid>
+                </DataTemplate>
+            </CarouselView.ItemTemplate>
+        </CarouselView>
+        <IndicatorView
+            x:Name="indicatorview"
+            Grid.Row="2"
+            Margin="0,20,0,20"
+            HorizontalOptions="CenterAndExpand"
+            IndicatorColor="LightGray"
+            IndicatorSize="10"
+            SelectedIndicatorColor="Black"
+            WidthRequest="100" />
+
+        <StackLayout
+            Grid.Row="3"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="EndAndExpand">
+
+            <ImageButton
+                BackgroundColor="Transparent"
+                Command="{Binding SkipCommand}"
+                HeightRequest="50"
+                HorizontalOptions="CenterAndExpand"
+                Source="{images:EmbeddedImage NewDuraApp.Images.next_arrow.png}"
+                VerticalOptions="CenterAndExpand"
+                WidthRequest="50" />
+            <Label
+                Margin="0,20,0,10"
+                FontFamily="ProximaRegular"
+                FontSize="16"
+                HorizontalTextAlignment="Center"
+                Text="{translate:Translate Skip}"
+                TextColor="#616161">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding SkipCommand}" />
+                </Label.GestureRecognizers>
+            </Label>
+        </StackLayout>
+
+    </Grid>
+</infrastructure:BaseContentPage>

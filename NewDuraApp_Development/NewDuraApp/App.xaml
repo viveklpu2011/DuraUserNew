@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application
+    x:Class="NewDuraApp.App"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converters="clr-namespace:NewDuraApp.Converters"
+    xmlns:custom="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:viewmodelLocator="clr-namespace:NewDuraApp.ViewModels">
+    <Application.Resources>
+        <!--  Colors  -->
+        <Color x:Key="PrimaryColor">White</Color>
+        <Color x:Key="Primary2Color">#FFFFFF</Color>
+        <Color x:Key="AppShellTabBarUnselectedColor">#4D4D4D</Color>
+        <Color x:Key="AppShellTabBarTitleColor">#A69371</Color>
+
+        <Color x:Key="TextColor">#FAC800</Color>
+        <Color x:Key="Text2Color">#5C5C5C</Color>
+        <Color x:Key="Text3Color">#F2681A</Color>
+        <Color x:Key="Text2ColorBold">#585858</Color>
+
+        <Color x:Key="AccentColor">#E67020</Color>
+        <Color x:Key="Accent2Color">#F49813</Color>
+        <Color x:Key="Accent3Color">#D8D8D8</Color>
+        <Color x:Key="PrimaryPlaceholderColor">#FBD9BD</Color>
+        <Color x:Key="DefaultBorderColor">#DBDBDB</Color>
+        <Color x:Key="ErrorTextColor">#D0021B</Color>
+        <Color x:Key="AuthEntryBGColor">#F6A651</Color>
+        <Color x:Key="StartGradientColor">#E6AE2d</Color>
+        <Color x:Key="EndGradientColor">#F26419</Color>
+        <Color x:Key="PrimaryPageBackgroundColor">#5CB3B5</Color>
+        <Color x:Key="CollectionViewDefaultSelectedColor">#DFDADA</Color>
+
+        <Style x:Key="ValidValidationBehaviorStyle" TargetType="Entry">
+            <Setter Property="TextColor" Value="#ffffff" />
+        </Style>
+
+        <Style x:Key="InValidValidationBehaviorStyle" TargetType="Entry">
+            <Setter Property="TextColor" Value="Red" />
+        </Style>
+
+        <converters:CardNumberToImageConverter
+            x:Key="CardConverter"
+            Amex="ic_amex"
+            Dinners="ic_dinersclub"
+            Discover="ic_discover"
+            JCB="ic_jcb"
+            MasterCard="ic_mastercard"
+            NotRecognized="nocards"
+            Visa="ic_visa" />
+        <Color x:Key="PlaceholderColor">#7F7F7F</Color>
+        <Color x:Key="BorderColor">#E2E2E2</Color>
+        <Style x:Key="ShellBaseStyle" TargetType="Element">
+            <Setter Property="Shell.BackgroundColor" Value="{StaticResource PrimaryColor}" />
+            <Setter Property="Shell.TabBarBackgroundColor" Value="{StaticResource Primary2Color}" />
+            <Setter Property="Shell.TabBarTitleColor" Value="{StaticResource AppShellTabBarTitleColor}" />
+            <Setter Property="Shell.TabBarUnselectedColor" Value="{StaticResource AppShellTabBarUnselectedColor}" />
+            <Setter Property="Shell.ForegroundColor" Value="Black" />
+            <Setter Property="Shell.TitleColor" Value="Black" />
+            <Setter Property="Shell.DisabledColor" Value="#4D4D4D" />
+            <Setter Property="Shell.UnselectedColor" Value="#4D4D4D" />
+        </Style>
+        <Style x:Key="card" TargetType="custom:PancakeView">
+            <Setter Property="BackgroundColor" Value="#ffffff" />
+            <Setter Property="CornerRadius" Value="8" />
+            <Setter Property="Shadow" Value="{custom:ShadowMarkup BlurRadius=4, Opacity=0.2, Offset='0,0'}" />
+        </Style>
+        <ResourceDictionary>
+            <viewmodelLocator:ViewModelLocator x:Key="Locator" />
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

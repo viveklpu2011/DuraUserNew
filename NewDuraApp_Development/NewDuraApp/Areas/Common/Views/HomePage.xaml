@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="NewDuraApp.Areas.Common.Views.HomePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:control="clr-namespace:NewDuraApp.Controls"
+    xmlns:images="clr-namespace:NewDuraApp.Extensions"
+    xmlns:translate="clr-namespace:NewDuraApp.Resources"
+    BackgroundColor="White"
+    BindingContext="{Binding HomePage, Source={StaticResource Locator}}"
+    NavigationPage.HasNavigationBar="False"
+    Visual="Material">
+    <ContentPage.Content>
+        <RefreshView
+            Command="{Binding RefreshCommand}"
+            IsRefreshing="{Binding IsRefreshing}"
+            RefreshColor="#211E66">
+            <ScrollView>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="60" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <StackLayout
+                        Margin="20,0,20,0"
+                        Padding="0"
+                        Orientation="Horizontal">
+                        <StackLayout
+                            HorizontalOptions="StartAndExpand"
+                            Orientation="Horizontal"
+                            VerticalOptions="CenterAndExpand">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding GoToSearchLoactionPopupCmd}" />
+                            </StackLayout.GestureRecognizers>
+                            <Image
+                                BackgroundColor="Transparent"
+                                HeightRequest="17"
+                                Source="{images:EmbeddedImage NewDuraApp.Images.user_location.png}"
+                                WidthRequest="17" />
+                            <Label
+                                FontFamily="ProximaRegular"
+                                FontSize="14"
+                                LineBreakMode="TailTruncation"
+                                MaxLines="1"
+                                Text="{Binding CurrentLocation}"
+                                TextColor="Black"
+                                VerticalOptions="CenterAndExpand" />
+                        </StackLayout>
+                        <ImageButton
+                            BackgroundColor="Transparent"
+                            Command="{Binding GoToNotificationsCmd}"
+                            HeightRequest="26"
+                            Source="{images:EmbeddedImage NewDuraApp.Images.notification.png}"
+                            WidthRequest="26" />
+                    </StackLayout>
+                    <ScrollView
+                        Grid.Row="1"
+                        Margin="20,20,20,0"
+                        VerticalScrollBarVisibility="Never">
+                        <StackLayout>
+                            <Frame
+                                Padding="0"
+                                CornerRadius="10"
+                                HasShadow="False"
+                                HeightRequest="130"
+                                IsClippedToBounds="True">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding GoToDuraExpressCmd}" />
+                                </Frame.GestureRecognizers>
+                                <Grid
+                                    Padding="0"
+                                    HeightRequest="50"
+                                    HorizontalOptions="FillAndExpand"
+                                    VerticalOptions="FillAndExpand">
+                                    <Image Aspect="AspectFill" Source="{images:EmbeddedImage NewDuraApp.Images.dura_express_service.png}" />
+                                    <StackLayout
+                                        Margin="20"
+                                        Orientation="Horizontal"
+                                        VerticalOptions="EndAndExpand">
+                                        <Label
+                                            FontFamily="ProximaRegular"
+                                            FontSize="16"
+                                            Text="Dura Express"
+                                            TextColor="#FFFFFF"
+                                            VerticalTextAlignment="Center" />
+                                        <ImageButton
+                                            BackgroundColor="Transparent"
+                                            HeightRequest="35"
+                                            HorizontalOptions="EndAndExpand"
+                                            InputTransparent="True"
+                                            Source="{images:EmbeddedImage NewDuraApp.Images.service_detail_arrow.png}"
+                                            VerticalOptions="CenterAndExpand"
+                                            WidthRequest="35" />
+                                    </StackLayout>
+                                </Grid>
+                            </Frame>
+                            <Frame
+                                Margin="0,20,0,0"
+                                Padding="0"
+                                CornerRadius="10"
+                                HasShadow="False"
+                                HeightRequest="130"
+                                IsClippedToBounds="True">
+                                <Grid
+                                    Padding="0"
+                                    HeightRequest="50"
+                                    HorizontalOptions="FillAndExpand"
+                                    VerticalOptions="FillAndExpand">
+                                    <Grid.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding GoToDuraShopCmd}" />
+                                    </Grid.GestureRecognizers>
+                                    <Image Aspect="AspectFill" Source="{images:EmbeddedImage NewDuraApp.Images.dura_shops_service.png}" />
+                                    <StackLayout
+                                        Margin="20"
+                                        Orientation="Horizontal"
+                                        VerticalOptions="EndAndExpand">
+                                        <Label
+                                            FontFamily="ProximaRegular"
+                                            FontSize="16"
+                                            Text="{translate:Translate DuraShops}"
+                                            TextColor="#FFFFFF"
+                                            VerticalTextAlignment="Center" />
+                                        <ImageButton
+                                            BackgroundColor="Transparent"
+                                            HeightRequest="35"
+                                            HorizontalOptions="EndAndExpand"
+                                            InputTransparent="True"
+                                            Source="{images:EmbeddedImage NewDuraApp.Images.service_detail_arrow.png}"
+                                            VerticalOptions="CenterAndExpand"
+                                            WidthRequest="35" />
+                                    </StackLayout>
+                                </Grid>
+                            </Frame>
+                            <Frame
+                                Margin="0,20,0,0"
+                                Padding="0"
+                                CornerRadius="10"
+                                HasShadow="False"
+                                HeightRequest="130"
+                                IsClippedToBounds="True">
+                                <Grid
+                                    Padding="0"
+                                    HeightRequest="50"
+                                    HorizontalOptions="FillAndExpand"
+                                    VerticalOptions="FillAndExpand">
+                                    <Image Aspect="AspectFill" Source="{images:EmbeddedImage NewDuraApp.Images.dura_eats_service.png}" />
+                                    <StackLayout
+                                        Margin="20"
+                                        Orientation="Horizontal"
+                                        VerticalOptions="EndAndExpand">
+                                        <Label
+                                            FontFamily="ProximaRegular"
+                                            FontSize="16"
+                                            Text="{translate:Translate Dura_eat}"
+                                            TextColor="#FFFFFF"
+                                            VerticalTextAlignment="Center" />
+                                        <ImageButton
+                                            BackgroundColor="Transparent"
+                                            HeightRequest="35"
+                                            HorizontalOptions="EndAndExpand"
+                                            InputTransparent="False"
+                                            Source="{images:EmbeddedImage NewDuraApp.Images.service_detail_arrow.png}"
+                                            VerticalOptions="CenterAndExpand"
+                                            WidthRequest="35" />
+                                    </StackLayout>
+                                </Grid>
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding NavigateToDuraEatsCommand}" />
+                                </Frame.GestureRecognizers>
+                            </Frame>
+                        </StackLayout>
+                    </ScrollView>
+                </Grid>
+            </ScrollView>
+        </RefreshView>
+    </ContentPage.Content>
+</ContentPage>

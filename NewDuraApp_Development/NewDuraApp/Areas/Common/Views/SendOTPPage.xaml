@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="NewDuraApp.Areas.Common.Views.SendOTPPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Regex="clr-namespace:DuraApp.Core.Helpers;assembly=DuraApp.Core"
+    xmlns:behaviours="clr-namespace:NewDuraApp.Behaviours"
+    xmlns:control="clr-namespace:NewDuraApp.Controls"
+    xmlns:images="clr-namespace:NewDuraApp.Extensions"
+    xmlns:translate="clr-namespace:NewDuraApp.Resources"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    BackgroundColor="White"
+    BindingContext="{Binding SendOTPPage, Source={StaticResource Locator}}"
+    Visual="Material">
+    <NavigationPage.TitleView>
+        <Label
+            FontAttributes="Bold"
+            FontSize="20"
+            Text="{translate:Translate MobileNumber}"
+            TextColor="Black"
+            VerticalOptions="CenterAndExpand"
+            VerticalTextAlignment="Center" />
+    </NavigationPage.TitleView>
+    <ContentPage.Content>
+        <StackLayout Margin="20,40,20,0">
+            <Label
+                Margin="20,0,20,50"
+                FontSize="20"
+                Text="{translate:Translate Please_tell_us_your_Mobile_number_to_proceed_further}"
+                TextColor="Black" />
+            <Grid ColumnDefinitions="Auto,1,*" RowDefinitions="Auto,Auto,Auto">
+                <Grid
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    WidthRequest="65">
+                    <Label
+                        Margin="2,0,5,0"
+                        FontSize="16"
+                        HorizontalOptions="CenterAndExpand"
+                        HorizontalTextAlignment="Start"
+                        Text="{Binding CountriesTitle}"
+                        TextColor="Black"
+                        VerticalOptions="CenterAndExpand" />
+                    <Picker
+                        x:Name="pickerCountryCode"
+                        Title="+63"
+                        Margin="2,0,5,0"
+                        IsVisible="False"
+                        ItemDisplayBinding="{Binding country_code}"
+                        ItemsSource="{Binding CountriesList}"
+                        SelectedItem="{Binding SelectedCountries}"
+                        TitleColor="Black" />
+                    <Image
+                        Margin="0,0,2,0"
+                        BackgroundColor="Transparent"
+                        HeightRequest="10"
+                        HorizontalOptions="EndAndExpand"
+                        InputTransparent="True"
+                        Source="{images:EmbeddedImage NewDuraApp.Images.drop_down_arrow.png}"
+                        VerticalOptions="CenterAndExpand"
+                        WidthRequest="10" />
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TapGestureRecognizer_Tapped" />
+                    </Grid.GestureRecognizers>
+                </Grid>
+                <BoxView
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    BackgroundColor="LightGray"
+                    HeightRequest="30"
+                    VerticalOptions="CenterAndExpand"
+                    WidthRequest="1" />
+                <control:CustomEntry
+                    Grid.Row="0"
+                    Grid.Column="2"
+                    HorizontalOptions="FillAndExpand"
+                    Keyboard="Telephone"
+                    MaxLength="15"
+                    Placeholder="{translate:Translate PhoneNumber}"
+                    PlaceholderColor="{StaticResource PlaceholderColor}"
+                    Text="{Binding PhoneNumber}"
+                    TextColor="Black">
+                    <control:CustomEntry.Behaviors>
+                        <behaviours:NumericValidationBehaviorNumberOnly />
+                    </control:CustomEntry.Behaviors>
+                </control:CustomEntry>
+                <BoxView
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="3"
+                    Margin="0,2"
+                    BackgroundColor="{StaticResource BorderColor}"
+                    HeightRequest="1"
+                    HorizontalOptions="FillAndExpand" />
+                <Label
+                    Grid.Row="2"
+                    Grid.Column="2"
+                    FontSize="12"
+                    IsVisible="{Binding IsPhoneErrorVisible}"
+                    Text="{translate:Translate Please_enter_valid_phone_number}"
+                    TextColor="Red" />
+            </Grid>
+            <Button
+                Margin="0,20"
+                BackgroundColor="#211E66"
+                Command="{Binding NavigateOTPVerification}"
+                CornerRadius="5"
+                FontFamily="ProximaRegular"
+                FontSize="17"
+                HeightRequest="50"
+                HorizontalOptions="FillAndExpand"
+                IsEnabled="{Binding IsVerifyButtonEnabled}"
+                Text="{translate:Translate GetOTP}"
+                TextColor="White"
+                WidthRequest="250" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

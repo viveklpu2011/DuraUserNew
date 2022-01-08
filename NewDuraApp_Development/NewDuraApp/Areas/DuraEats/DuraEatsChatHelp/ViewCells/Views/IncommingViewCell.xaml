@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ViewCell
+    x:Class="NewDuraApp.Areas.DuraEats.DuraEatsChatHelp.ViewCells.Views.IncommingViewCell"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:control="clr-namespace:NewDuraApp.Controls"
+    xmlns:images="clr-namespace:NewDuraApp.Extensions"
+    xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView">
+    <Grid
+        Margin="10,10,80,10"
+        ColumnDefinitions="*,28"
+        FlowDirection="LeftToRight"
+        Rotation="180"
+        RowDefinitions="Auto,28">
+        <pancake:PancakeView
+            Grid.Row="0"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            Padding="10"
+            BackgroundColor="#F6F5FF"
+            CornerRadius="15,15,15,0">
+            <Label
+                FontSize="14"
+                Text="{Binding Text}"
+                TextColor="Black" />
+        </pancake:PancakeView>
+        <control:CircleImage
+            Grid.Row="1"
+            Grid.Column="1"
+            Aspect="Fill"
+            BorderColor="LightGray"
+            BorderThickness="1"
+            HeightRequest="28"
+            Source="{images:EmbeddedImage NewDuraApp.Images.t_shirt.png}"
+            WidthRequest="28" />
+        <Label
+            Grid.Row="1"
+            Grid.Column="0"
+            FontFamily="ProximaRegular"
+            FontSize="10"
+            HorizontalOptions="EndAndExpand"
+            HorizontalTextAlignment="End"
+            Text="11:30 am"
+            TextColor="#B7B7B7"
+            VerticalOptions="CenterAndExpand"
+            VerticalTextAlignment="Center" />
+    </Grid>
+
+</ViewCell>

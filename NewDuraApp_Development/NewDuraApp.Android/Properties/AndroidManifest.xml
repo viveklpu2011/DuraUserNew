@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" package="com.dura.duraapp" android:installLocation="auto" android:versionName="2.0">
+	<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="29" />
+	<application android:theme="@style/MainTheme" android:label="NewDuraApp.Android" android:icon="@drawable/AppLogo">
+		<provider android:name="androidx.core.content.FileProvider" android:authorities="com.dura.duraapp.fileprovider" android:exported="false" android:grantUriPermissions="true">
+			<meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/files_paths"></meta-data>
+		</provider>
+		<meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyB23eIri9-RdhbbqzTf71nlOpa7c9bVNgo" />
+		<uses-library android:name="org.apache.http.legacy" android:required="false" />
+		<meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id" />
+		<activity android:name="com.facebook.FacebookActivity" android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation" android:label="@string/facebook_app_name" />
+		<activity android:name="com.facebook.CustomTabActivity" android:exported="true">
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<category android:name="android.intent.category.BROWSABLE" />
+				<data android:scheme="@string/fb_login_protocol_scheme" />
+			</intent-filter>
+		</activity>
+	</application>
+	<queries>
+		<!-- Sms -->
+		<intent>
+			<action android:name="android.intent.action.VIEW" />
+			<data android:scheme="smsto" />
+		</intent>
+		<!-- PhoneDialer -->
+		<intent>
+			<action android:name="android.intent.action.DIAL" />
+			<data android:scheme="tel" />
+		</intent>
+	</queries>
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+	<uses-permission android:name="android.permission.CAMERA" />
+	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+	<uses-permission android:name="android.permission.READ_CONTACTS" />
+</manifest>

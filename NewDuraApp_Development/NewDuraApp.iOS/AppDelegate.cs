@@ -86,13 +86,22 @@ namespace NewDuraApp.iOS
         }
         public override bool OpenUrl(UIApplication app, NSUrl url, NSDictionary options)
         {
+           
             var uri = new Uri(url.AbsoluteString);
-            AuthenticationState.Authenticator.OnPageLoading(uri);
-            return FacebookClientManager.OpenUrl(app, url, options);
+            if (uri.ToString().Contains("google"))
+            {
+                return GoogleClientManager.OnOpenUrl(app, url, options);
+            }
+            else
+            {
+                AuthenticationState.Authenticator.OnPageLoading(uri);
+                return FacebookClientManager.OpenUrl(app, url, options);
+            }
         }
         public override bool OpenUrl(UIApplication application, NSUrl url, string sourceApplication, NSObject annotation)
         {
             return FacebookClientManager.OpenUrl(application, url, sourceApplication, annotation);
         }
+       
     }
 }

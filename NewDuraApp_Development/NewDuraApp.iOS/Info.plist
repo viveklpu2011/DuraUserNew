@@ -20,10 +20,12 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.googleusercontent.apps.119818815824-hgudnj3no7gbn25hg1huct98rom0h5li</string>
+				<string>com.googleusercontent.apps.143145681882-jdsi004fg0ad69ss3m69ti0a4lh7vtft</string>
 			</array>
 			<key>CFBundleURLName</key>
 			<string>Xamarin.Auth Google PAuth</string>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
 		</dict>
 	</array>
 	<key>FacebookAppID</key>
@@ -57,7 +59,7 @@
 	<key>CFBundleIdentifier</key>
 	<string>com.duradriveuser.com</string>
 	<key>CFBundleVersion</key>
-	<string>1.0</string>
+	<string>2.0</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>CFBundleName</key>

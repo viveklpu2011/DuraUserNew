@@ -86,7 +86,7 @@
                     <Label.FormattedText>
                         <FormattedString>
                             <Span Text="{Binding DriverDetails.distance}" />
-                            <Span Text=" km away" />
+                            <Span Text="" />
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>

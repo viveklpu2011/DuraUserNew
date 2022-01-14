@@ -57,6 +57,8 @@
                     IsVisible="{Binding IsVisibleSearchImage}"
                     VerticalOptions="CenterAndExpand"
                     WidthRequest="70">
+
+
                     <Image
                         HeightRequest="50"
                         HorizontalOptions="CenterAndExpand"
@@ -69,6 +71,17 @@
                 Grid.Row="1"
                 BackgroundColor="White"
                 VerticalOptions="CenterAndExpand">
+                <Label
+                    FontFamily="RobotoMedium"
+                    FontSize="18"
+                    HorizontalOptions="CenterAndExpand"
+                    Text="Try Again"
+                    TextColor="Red"
+                    VerticalOptions="Start">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding TryAgainCmd}" />
+                    </Label.GestureRecognizers>
+                </Label>
                 <Label
                     FontFamily="ProximaSemiBold"
                     FontSize="16"

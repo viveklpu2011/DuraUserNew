@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
 using DuraApp.Core.Helpers;
 using DuraApp.Core.Helpers.Enums;
@@ -21,6 +22,7 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
     {
         INavigationService _navigationService;
         public IAsyncCommand GoToCancelDriverCmd { get; set; }
+        public IAsyncCommand TryAgainCmd { get; set; }
         private IUserCoreService _userCoreService;
         private string _searchText =AppResources.Please_Wait_Finding_Driver;
 
@@ -81,7 +83,14 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
             _navigationService = navigationService;
             _userCoreService = userCoreService;
             GoToCancelDriverCmd = new AsyncCommand(GoToCancelDriverCmdExecute, allowsMultipleExecutions: false);
+            TryAgainCmd = new AsyncCommand(TryAgainCmdExecute, allowsMultipleExecutions: false);
         }
+
+        private async Task TryAgainCmdExecute()
+        {
+            await GetdriverDetails();
+        }
+
         private async Task GoToCancelDriverCmdExecute()
         {
             if (CancelButtonText == AppResources.Try_Again || CancelButtonText == AppResources.Search)
@@ -98,9 +107,10 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
             }
 
         }
-        internal async Task InitilizeData()
+        internal async Task<DuraApp.Core.Models.Result.Result<GetDriverDetailsResponseModel>> CheckDriver(GetDriverDetailsRequestModel getDriverDetailsRequestModel)
         {
-            await GetdriverDetails();
+            var result = await TryWithErrorAsync(_userCoreService.GetDriverDetails(getDriverDetailsRequestModel, SettingsExtension.Token), true, false);
+            return result;
         }
 
         private async Task GetdriverDetails()
@@ -117,26 +127,60 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
                         user_id = SettingsExtension.UserId
                     };
                     ShowLoadingWithTitle(AppResources.Searching_Driver);
-                    var result = await TryWithErrorAsync(_userCoreService.GetDriverDetails(getDriverDetailsRequestModel, SettingsExtension.Token), true, false);
-                    HideLoading();
-                    if (result?.ResultType == ResultType.Ok && result?.Data?.status == 200)
+                    var result = await CheckDriver(getDriverDetailsRequestModel);
+                    //
+                    if (result.ResultType == ResultType.Ok && result?.Data?.status == 200)
                     {
-                        DriverDetails = new GetDriverDetailsModel();
-                        DriverDetails = result?.Data?.data;
-                        await App.Locator.FoundDriverPopup.InitilizeData(DriverDetails);
-                        await PopupNavigation.Instance.PushAsync(new FoundDriverPopup());
+                        if (result.Data?.data.drivername.ToString().Trim() == string.Empty)
+                        {
+                                var end = DateTime.Now.AddMinutes(1);
+                                while (end > DateTime.Now)
+                                {
+                                
+                                var result1 = await CheckDriver(getDriverDetailsRequestModel);
+                              
+                                if (result1.Data?.data.drivername.ToString().Trim() != string.Empty)
+                                        {
+                                    HideLoading();
+                                    DriverDetails = new GetDriverDetailsModel();
+                                            DriverDetails = result1?.Data?.data;
+                                            await App.Locator.FoundDriverPopup.InitilizeData(DriverDetails);
+                                            await PopupNavigation.Instance.PushAsync(new FoundDriverPopup());
+                                    break;
+                                }
+                                }
+                            
+                        }
+                        else
+                        {
+                            HideLoading();
+                            DriverDetails = new GetDriverDetailsModel();
+                            DriverDetails = result?.Data?.data;
+                            await App.Locator.FoundDriverPopup.InitilizeData(DriverDetails);
+                            await PopupNavigation.Instance.PushAsync(new FoundDriverPopup());
+                        }
                     }
                     else if (result?.ResultType == ResultType.Unauthorized)
                     {
+                        HideLoading();
                         IsBackEnabled = true;
                         await LogoutHelper.LogoutOnTokenExpire(AppResources.Token_expired);
                     }
                     else
                     {
+                        HideLoading();
                         IsBackEnabled = true;
                         CancelButtonText = AppResources.Try_Again;
                         SearchText = AppResources.Sorry_we_dont_serve_this_location_yet;
                         ShowAlert(AppResources.Our_Service_are_currently_not_available_in_this_city_We_will_notify_you_as_soon_as_we_launch);
+                    }
+
+                    if (DriverDetails==null)
+                    {
+                        HideLoading();
+                        SearchText = "Please select different location for your order.";
+
+                        ShowAlert("No Driver Found Near your location");
                     }
                     IsVisibleSearchImage = false;
                 }
@@ -149,6 +193,11 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
             else
                 ShowToast(AppResources.NoInternet);
 
+        }
+
+        internal async Task InitilizeData()
+        {
+            await GetdriverDetails();
         }
         //public ICommand GoToCancelDriverCmd => new Command(async (obj) =>
         //{

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using DuraApp.Core.Helpers;
 using Foundation;
+using Lottie.Forms.iOS.Renderers;
 using NewDuraApp.iOS.Renderers;
 using NewDuraApp.SocialLogin.AuthHelpers;
 using NewDuraApp.SocialLogin.Constants;
@@ -47,6 +48,7 @@ namespace NewDuraApp.iOS
             FacebookClientManager.OnActivated();
             FacebookClientManager.Initialize(app, options);
             GoogleClientManager.Initialize();
+            AnimationViewRenderer.Init();
             LoadApplication(new App());
             FirebasePushNotificationManager.Initialize(options, new NotificationUserCategory[]
             {

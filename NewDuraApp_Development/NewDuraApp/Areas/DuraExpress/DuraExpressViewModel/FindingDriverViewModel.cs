@@ -125,16 +125,16 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
                     {
                         pickup_id = App.Locator.AddMoreDetails.PickupScheduleResponse.data,
                         user_id = SettingsExtension.UserId,
-                        step ="1"
+                        step ="1",
                     };
 
                     GetDriverDetailsRequestModel getDriverDetailsRequestModel1 = new GetDriverDetailsRequestModel
                     {
                         pickup_id = App.Locator.AddMoreDetails.PickupScheduleResponse.data,
                         user_id = SettingsExtension.UserId,
-                        step = "0"
+                        step = "0",
                     };
-
+                    DriverDetails = new GetDriverDetailsModel();
                     ShowLoadingWithTitle(AppResources.Searching_Driver);
                     var result = await CheckDriver(getDriverDetailsRequestModel);
                     //
@@ -151,7 +151,7 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
                                 if (result1.Data?.data.drivername.ToString().Trim() != string.Empty)
                                         {
                                     HideLoading();
-                                    DriverDetails = new GetDriverDetailsModel();
+                                   
                                             DriverDetails = result1?.Data?.data;
                                             await App.Locator.FoundDriverPopup.InitilizeData(DriverDetails);
                                             await PopupNavigation.Instance.PushAsync(new FoundDriverPopup());
@@ -184,7 +184,7 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
                         ShowAlert(AppResources.Our_Service_are_currently_not_available_in_this_city_We_will_notify_you_as_soon_as_we_launch);
                     }
 
-                    if (DriverDetails==null)
+                    if (DriverDetails.drivername==null)
                     {
                         HideLoading();
                         SearchText = "Please select different location for your order.";

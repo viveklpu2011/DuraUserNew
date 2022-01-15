@@ -292,7 +292,7 @@
     <value>Nakumpleto-OrderDelivered</value>
   </data>
   <data name="Confirm" xml:space="preserve">
-    <value>Kumpirmahin</value>
+    <value>OK</value>
   </data>
   <data name="ConfirmPassword" xml:space="preserve">
     <value>Kumpirmahin ang Password</value>

@@ -295,7 +295,7 @@
     <value>Completed-OrderDelivered</value>
   </data>
 	<data name="Confirm" xml:space="preserve">
-    <value>Confirm</value>
+    <value>OK</value>
   </data>
 	<data name="ConfirmPassword" xml:space="preserve">
     <value>Confirm Password</value>

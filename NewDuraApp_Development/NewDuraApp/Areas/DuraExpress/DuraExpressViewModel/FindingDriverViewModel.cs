@@ -124,8 +124,17 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
                     GetDriverDetailsRequestModel getDriverDetailsRequestModel = new GetDriverDetailsRequestModel
                     {
                         pickup_id = App.Locator.AddMoreDetails.PickupScheduleResponse.data,
-                        user_id = SettingsExtension.UserId
+                        user_id = SettingsExtension.UserId,
+                        step ="1"
                     };
+
+                    GetDriverDetailsRequestModel getDriverDetailsRequestModel1 = new GetDriverDetailsRequestModel
+                    {
+                        pickup_id = App.Locator.AddMoreDetails.PickupScheduleResponse.data,
+                        user_id = SettingsExtension.UserId,
+                        step = "0"
+                    };
+
                     ShowLoadingWithTitle(AppResources.Searching_Driver);
                     var result = await CheckDriver(getDriverDetailsRequestModel);
                     //
@@ -137,7 +146,7 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
                                 while (end > DateTime.Now)
                                 {
                                 
-                                var result1 = await CheckDriver(getDriverDetailsRequestModel);
+                                var result1 = await CheckDriver(getDriverDetailsRequestModel1);
                               
                                 if (result1.Data?.data.drivername.ToString().Trim() != string.Empty)
                                         {

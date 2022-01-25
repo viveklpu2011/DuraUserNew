@@ -399,7 +399,6 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
         {
             try
             {
-
                 var address2 = Address2 == null ? "" : Address2.Trim();
                 ShowLoading();
                 AddStopLocation = await LocationHelpers.GetLatLongBasedOnAddress($"{Address1} {address2}");
@@ -416,7 +415,6 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
                 }
                 if (_navigationService.GetCurrentPageViewModel() != typeof(WhereToViewModel))
                 {
-                    //App.Locator.CurrentUser.SendWay = SendInvite.SELECTEDLOCATION.ToString();
                     PickupScheduleRequest = new PickupScheduleRequestModel();
                     if (App.Locator.PickupLocation.PickupScheduleRequest != null)
                     {
@@ -431,7 +429,8 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
                         PickupScheduleRequest.IsAvailablePickupLocation = App.Locator.PickupLocation.PickupScheduleRequest.IsAvailablePickupLocation;
                     }
 
-                    if (App.Locator.WhereTo.PickupScheduleRequest != null)
+                    if (App.Locator.WhereTo.PickupScheduleRequest != null &&
+                        App.Locator.PickupLocation.PickupScheduleRequest != null)
                     {
                         PickupScheduleRequest.pickuplat = App.Locator.PickupLocation.PickupScheduleRequest.pickuplat;
                         PickupScheduleRequest.pickuplon = App.Locator.PickupLocation.PickupScheduleRequest.pickuplon;
@@ -476,10 +475,13 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
                     StopAddressList.Add(pickupScheduleRequestStopModel);
                     await _navigationService.NavigateBackAsync();
                     await App.Locator.TrackOrder.InitilizeData();
+                    App.Locator.DuraExpress.CheckStopLocation();
                 }
+            }
+            catch (Exception ex)
+            {
 
             }
-            catch (Exception ex) { }
         }
         internal async Task InitilizeData()
         {
@@ -499,8 +501,8 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
                             Position = position;
                             await SetAddress(position);
                         });
-
         }
+
         private async Task SelectContactCommandExecute()
         {
             try

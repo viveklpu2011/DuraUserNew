@@ -364,6 +364,10 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
             }
             if (_navigationService.GetCurrentPageViewModel() != typeof(WhereToViewModel))
             {
+                App.Locator.DuraExpress.PickupLocationTextVisible = true;
+                App.Locator.DuraExpress.PickupLocationText = $"{Name.Trim()} - {Address1.Trim()} {address2}";
+                SettingsExtension.PickupAddress = $"{Name} - {Address1} {address2}";
+                //UpdateLabelEvent?.Invoke($"{Name} - {Address1} {Address2}");
 
                 //App.Locator.CurrentUser.SendWay = SendInvite.SELECTEDLOCATION.ToString();
                 PickupScheduleRequest = new PickupScheduleRequestModel();
@@ -374,19 +378,16 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
                 PickupScheduleRequest.pickup_mobile = Number.Replace(" ", "").Trim();
                 PickupScheduleRequest.pickup_name = Name;
                 PickupScheduleRequest.IsAvailablePickupLocation = true;
-                App.Locator.DuraExpress.PickupLocationTextVisible = true;
-                App.Locator.DuraExpress.PickupLocationText = $"{Name.Trim()} - {Address1.Trim()} {address2}";
-                SettingsExtension.PickupAddress = $"{Name} - {Address1} {address2}";
-                //UpdateLabelEvent?.Invoke($"{Name} - {Address1} {Address2}");
+
                 if (App.Locator.PickupSchedule.DuraAddressCommon != null)
                 {
                     PickupScheduleRequest.type = App.Locator.PickupSchedule.DuraAddressCommon.PickupType;
                     PickupScheduleRequest.pdate = App.Locator.PickupSchedule.DuraAddressCommon.PickupDate;
-
                 }
                 App.Locator.DuraExpress.PickupScheduleRequest = PickupScheduleRequest;
-                await _navigationService.NavigateToAsync<WhereToViewModel>();
+                //await _navigationService.NavigateToAsync<WhereToViewModel>();
                 await App.Locator.WhereTo.InitilizeData();
+                await _navigationService.NavigateBackAsync();
             }
         }
         internal async Task InitilizeData()

@@ -26,10 +26,8 @@
         </StackLayout>
     </Shell.TitleView>
     <ContentPage.Content>
-
         <StackLayout Padding="0">
             <Grid>
-                <!--<Image Aspect="AspectFill" Source="{images:EmbeddedImage NewDuraApp.Images.map.png}" />-->
                 <map:Map
                     x:Name="mapPickupLocation"
                     HeightRequest="301"
@@ -90,7 +88,6 @@
                                 TextColor="Black"
                                 VerticalOptions="FillAndExpand"
                                 VerticalTextAlignment="Center" />
-
                         </Frame>
                         <Label
                             FontSize="12"
@@ -115,9 +112,7 @@
                                 TextColor="Black"
                                 VerticalOptions="FillAndExpand"
                                 VerticalTextAlignment="Center" />
-
                         </Frame>
-
                         <Label
                             FontSize="12"
                             IsVisible="{Binding IsAddress2ErrorVisible}"
@@ -206,7 +201,5 @@
                 </StackLayout>
             </ScrollView>
         </StackLayout>
-
-
     </ContentPage.Content>
 </ContentPage>

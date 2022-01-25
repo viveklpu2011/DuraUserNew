@@ -89,7 +89,6 @@
                                                 FontSize="10"
                                                 Text="{Binding VehicleListSelectedData.size_limit}"
                                                 TextColor="#3D3D3D" />
-
                                         </StackLayout>
                                     </StackLayout>
                                 </StackLayout>
@@ -147,13 +146,11 @@
                                                         CheckedChanged="CheckBox_CheckedChanged"
                                                         VerticalOptions="CenterAndExpand"
                                                         Color="#211E66" />
-
                                                 </StackLayout>
                                             </Frame>
                                         </DataTemplate>
                                     </BindableLayout.ItemTemplate>
                                 </StackLayout>
-
                             </StackLayout>
                             <Label
                                 Margin="10"
@@ -221,7 +218,6 @@
                                                 Source="{Binding VehicleImage}"
                                                 VerticalOptions="CenterAndExpand"
                                                 WidthRequest="55" />
-
                                             <StackLayout
                                                 Margin="8,0,0,0"
                                                 Spacing="0"
@@ -257,7 +253,6 @@
                                                         FontSize="10"
                                                         Text="{Binding size_limit}"
                                                         TextColor="#3D3D3D" />
-
                                                 </StackLayout>
                                             </StackLayout>
                                         </StackLayout>
@@ -268,7 +263,6 @@
                     </StackLayout>
                 </StackLayout>
             </ScrollView>
-
             <StackLayout
                 Grid.Row="1"
                 Spacing="0"

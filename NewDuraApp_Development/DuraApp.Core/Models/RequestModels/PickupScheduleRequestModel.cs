@@ -83,6 +83,13 @@ namespace DuraApp.Core.Models.RequestModels
         public double stoplat { get; set; }
         public double stoplon { get; set; }
         public bool IsAvailableAddStopLocationLocation { get; set; }
+        public string CompleteStopAddress
+        {
+            get
+            {
+                return $"{stop_name.Trim()}- {stop_address1.Trim()} {stop_address2.Trim()}";
+            }
+        }
     }
     public class PickupScheduleRequestStopModelWithoutId
     {

@@ -59,13 +59,14 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
             }
         }
         private bool _pickupScheduleLocTextVisible;
-        private bool _isVisibleAddStopView;
+
         private bool _isVisiblePickupLocationView;
         private bool _isVisibleWhereToView;
         private bool _isEnabledSelectVehicleButton;
         private string _pickupScheduleLocText = "Pick up schedule is missing*";
         private string _pickupScheduleLocTextFontFamily = "ProximaRegular";
         private Color _pickupScheduleLocTextColor = Color.Red;
+        private bool _isVisibleAddStopView;
         public bool IsVisibleAddStopView
         {
             get { return _isVisibleAddStopView; }
@@ -120,7 +121,6 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
             HideAddStopView = new AsyncCommand<PickupScheduleRequestStopModel>(HideAddStopViewCommandExecute, allowsMultipleExecutions: false);
             GoToAddPickupLocationCmd = new AsyncCommand(GoToAddPickupLocationCmdExecute, allowsMultipleExecutions: false);
             GoToAddWhereToCmd = new AsyncCommand(GoToAddWhereToCmdExecute, allowsMultipleExecutions: false);
-
         }
 
 

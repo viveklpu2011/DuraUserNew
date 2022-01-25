@@ -287,7 +287,6 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
         {
             if (CheckConnection())
             {
-
                 try
                 {
                     ShowLoading();

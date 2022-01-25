@@ -24,11 +24,11 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressView
             {
                 lblPickupLocation.Text = SettingsExtension.PickupAddress;
             }
-            //App.Locator.PickupLocation.UpdateLabelEvent += (value) =>
-            //{
-            //    lblPickupLocation.IsVisible = true;
-            //    lblPickupLocation.Text = Convert.ToString(value);
-            //};
+            App.Locator.PickupLocation.UpdateLabelEvent += (value) =>
+            {
+                lblPickupLocation.IsVisible = true;
+                lblPickupLocation.Text = Convert.ToString(value);
+            };
         }
         //protected override void OnDisappearing()
         //{

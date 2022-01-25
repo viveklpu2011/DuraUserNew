@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
+using System.Linq;
 using System.Net.Http;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -61,6 +62,16 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
             {
                 _lstServices = value;
                 OnPropertyChanged(nameof(LstServices));
+            }
+        }
+        private List<PriceBreakUpList> _PriceBreakUpList = new List<PriceBreakUpList>();
+        public List<PriceBreakUpList> PriceBreakUpList
+        {
+            get { return _PriceBreakUpList; }
+            set
+            {
+                _PriceBreakUpList = value;
+                OnPropertyChanged(nameof(PriceBreakUpList));
             }
         }
         private string _addNote = string.Empty;
@@ -497,6 +508,12 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
                     {
                         form.Add(new StringContent(""), "acctype");
                     }
+                    PriceBreakUpList = new List<PriceBreakUpList>();
+                    var fare = Convert.ToDouble(App.Locator.SelectVehicle.TotalFinalFare) - (Convert.ToDouble(AppConstant.SelectedVehicle.basefare) + LstServices.Sum(x => Convert.ToInt32(x.ServicesFee)));
+                    var distance = Convert.ToString(fare / Convert.ToDouble(AppConstant.SelectedVehicle.kmfare));
+                    PriceBreakUpList.Add(new PriceBreakUpList() { base_fare= App.Locator.SelectVehicle.VehicleListSelectedData.basefare,tip= TipAmount,discount= VerifyPromoCode?.discount.Trim(),distance=distance,finalprice= Convert.ToString(TotalFare),price= Convert.ToString(fare),km_fare= AppConstant.SelectedVehicle.kmfare });
+                    
+                    form.Add(new StringContent(JsonConvert.SerializeObject(PriceBreakUpList)), "price_breakup");
                     ShowLoading();
                     var result = await TryWithErrorAsync(_userCoreService.AddMoreDetailsPickup(form, SettingsExtension.Token), true, false);
 

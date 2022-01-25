@@ -26,6 +26,7 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressView
 		}
 		protected override void OnAppearing()
 		{
+			App.Locator.SelectVehicle.LstServices = new List<VehicleServicesRequest>();
 			//AppConstant.ServiceList = new List<ServicesModel>();
 		}
 	}

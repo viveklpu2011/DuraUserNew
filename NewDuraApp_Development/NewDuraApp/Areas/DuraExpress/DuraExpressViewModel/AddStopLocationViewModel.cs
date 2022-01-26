@@ -8,6 +8,7 @@ using DuraApp.Core.Helpers;
 using DuraApp.Core.Helpers.Enums;
 using DuraApp.Core.Models.RequestModels;
 using NewDuraApp.Areas.DuraExpress.Common.Maps;
+using NewDuraApp.FontIcons;
 using NewDuraApp.Helpers;
 using NewDuraApp.Resources;
 using NewDuraApp.Services.Interfaces;
@@ -54,6 +55,17 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
             {
                 _stopAddressList = value;
                 OnPropertyChanged(nameof(StopAddressList));
+            }
+        }
+
+        private ObservableCollection<PickupScheduleRequestStopModel> _stopAddressListTemp = new ObservableCollection<PickupScheduleRequestStopModel>();
+        public ObservableCollection<PickupScheduleRequestStopModel> StopAddressListTemp
+        {
+            get { return _stopAddressListTemp; }
+            set
+            {
+                _stopAddressListTemp = value;
+                OnPropertyChanged(nameof(StopAddressListTemp));
             }
         }
 
@@ -470,9 +482,13 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
                         stop_address1 = Address1.Trim(),
                         stop_address2 = address2,
                         stop_mobile = Number.Replace(" ", "").Trim(),
-                        stop_name = Name.Trim()
+                        stop_name = Name.Trim(),
+                        ImageName = FontIconsClass.CheckboxBlankCircleOutline,
+                        IsVisibleLastBottomLine = true
                     };
+                    //MapMarkerAlertOutline
                     StopAddressList.Add(pickupScheduleRequestStopModel);
+
                     await _navigationService.NavigateBackAsync();
                     await App.Locator.TrackOrder.InitilizeData();
                     App.Locator.DuraExpress.CheckStopLocation();

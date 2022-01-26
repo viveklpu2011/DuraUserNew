@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading.Tasks;
 using DuraApp.Core.Helpers;
 using DuraApp.Core.Helpers.Enums;
@@ -46,6 +47,19 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
             get { return _pickupScheduleRequest; }
             set { _pickupScheduleRequest = value; OnPropertyChanged(nameof(PickupScheduleRequest)); }
         }
+
+
+        private bool _isVisibleMapMarkerDestination = true;
+        public bool IsVisibleMapMarkerDestination
+        {
+            get { return _isVisibleMapMarkerDestination; }
+            set
+            {
+                _isVisibleMapMarkerDestination = value;
+                OnPropertyChanged(nameof(IsVisibleMapMarkerDestination));
+            }
+        }
+
         private bool _addStopIsVisible;
         private bool _pickupScheduleLocTextVisible;
         private bool _pickupLocationTextVisible;
@@ -54,6 +68,18 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
         private string _pickupScheduleLocText;
         private string _pickupLocationText;
         private string _pickupWhereToText;
+
+        private ObservableCollection<PickupScheduleRequestStopModel> _stopAddressListTemp = new ObservableCollection<PickupScheduleRequestStopModel>();
+        public ObservableCollection<PickupScheduleRequestStopModel> StopAddressListTemp
+        {
+            get { return _stopAddressListTemp; }
+            set
+            {
+                _stopAddressListTemp = value;
+                OnPropertyChanged(nameof(StopAddressListTemp));
+            }
+        }
+
 
         private ObservableCollection<PickupScheduleRequestStopModel> _stopAddressList = new ObservableCollection<PickupScheduleRequestStopModel>();
         public ObservableCollection<PickupScheduleRequestStopModel> StopAddressList
@@ -141,9 +167,15 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
         {
             if (App.Locator.AddStopLocation.PickupScheduleRequest.IsAvailableAddStopLocationLocation)
             {
-                StopAddressList = new ObservableCollection<PickupScheduleRequestStopModel>(App.Locator.AddStopLocation.StopAddressList);
-                if (StopAddressList != null && StopAddressList.Count > 0)
+                StopAddressListTemp = new ObservableCollection<PickupScheduleRequestStopModel>(App.Locator.AddStopLocation.StopAddressList);
+                if (StopAddressListTemp != null && StopAddressListTemp.Count > 0)
+                {
+                    StopAddressListTemp.Where(c => c.IsVisibleLastBottomLine == false).Select(c => { c.IsVisibleLastBottomLine = true; return c; }).ToList();
+                    StopAddressListTemp.Last().IsVisibleLastBottomLine = false;
+                    StopAddressList = new ObservableCollection<PickupScheduleRequestStopModel>(StopAddressListTemp);
+                    IsVisibleMapMarkerDestination = false;
                     IsVisibleAddStopView = true;
+                }
                 else
                     IsVisibleAddStopView = false;
             }
@@ -162,26 +194,37 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
                 if (arg != null)
                 {
                     StopAddressList.RemoveAt(StopAddressList.IndexOf(arg));
-                    var finalList = StopAddressList;
-                    if (finalList != null && finalList.Count > 0)
+                    if (StopAddressList.Count > 0)
                     {
-                        var lst = new List<PickupScheduleRequestStopModel>();
-
-                        foreach (var item in finalList)
+                        StopAddressListTemp = new ObservableCollection<PickupScheduleRequestStopModel>(StopAddressList);
+                        StopAddressListTemp.Where(c => c.IsVisibleLastBottomLine == false).Select(c => { c.IsVisibleLastBottomLine = true; return c; }).ToList();
+                        StopAddressListTemp.Last().IsVisibleLastBottomLine = false;
+                        var finalList = StopAddressList;
+                        if (finalList != null && finalList.Count > 0)
                         {
-                            id = id + 1;
-                            item.StopId = id;
-                            item.StopText = $"Stop Location {id}";
-                            lst.Add(item);
-
+                            var lst = new List<PickupScheduleRequestStopModel>();
+                            foreach (var item in finalList)
+                            {
+                                id = id + 1;
+                                item.StopId = id;
+                                item.StopText = $"Stop Location {id}";
+                                lst.Add(item);
+                            }
+                            if (lst != null && lst.Count > 0)
+                            {
+                                StopAddressList.Clear();
+                                StopAddressList = new ObservableCollection<PickupScheduleRequestStopModel>(lst);
+                                App.Locator.AddStopLocation.stopid = id;
+                                App.Locator.AddStopLocation.StopAddressList = StopAddressList;
+                            }
                         }
-                        if (lst != null && lst.Count > 0)
-                        {
-                            StopAddressList.Clear();
-                            StopAddressList = new ObservableCollection<PickupScheduleRequestStopModel>(lst);
-                            App.Locator.AddStopLocation.stopid = id;
-                            App.Locator.AddStopLocation.StopAddressList = StopAddressList;
-                        }
+                    }
+                    else
+                    {
+                        StopAddressList.Clear();
+                        App.Locator.AddStopLocation.stopid = id;
+                        App.Locator.AddStopLocation.StopAddressList = StopAddressList;
+                        IsVisibleMapMarkerDestination = true;
                     }
                 }
             }

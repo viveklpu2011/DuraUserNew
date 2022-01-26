@@ -3,6 +3,7 @@
     x:Class="NewDuraApp.Areas.DuraExpress.DuraExpressView.DuraExpress"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Helpers="clr-namespace:NewDuraApp.Converters"
     xmlns:fonticon="clr-namespace:NewDuraApp.FontIcons"
     xmlns:images="clr-namespace:NewDuraApp.Extensions"
     xmlns:shades="clr-namespace:Sharpnado.Shades;assembly=Sharpnado.Shadows"
@@ -28,7 +29,7 @@
         <Grid
             Margin="10,0"
             ColumnDefinitions="Auto"
-            RowDefinitions="3.8*,6.2*,Auto">
+            RowDefinitions="Auto,Auto,*">
             <AbsoluteLayout
                 Grid.Row="0"
                 Grid.Column="0"
@@ -70,35 +71,58 @@
                         XAlign="Center" />
                 </StackLayout>
             </AbsoluteLayout>
-            <Grid Grid.Row="1">
-                <ScrollView VerticalScrollBarVisibility="Never">
-                    <shades:Shadows CornerRadius="20" Shades="{shades:SingleShade Offset='0, 4', Opacity=0.7, Color=LightGray}">
-                        <Frame
-                            Margin="1,1,8,8"
-                            Padding="10,15"
-                            BackgroundColor="White"
-                            CornerRadius="8"
-                            Visual="Material">
-                            <StackLayout
+
+            <ScrollView Grid.Row="1" VerticalScrollBarVisibility="Never">
+                <shades:Shadows CornerRadius="20" Shades="{shades:SingleShade Offset='0, 4', Opacity=0.7, Color=LightGray}">
+                    <Frame
+                        Margin="1,1,1,8"
+                        Padding="0"
+                        BackgroundColor="WhiteSmoke"
+                        CornerRadius="8"
+                        IsClippedToBounds="True"
+                        Visual="Material">
+                        <StackLayout
+                            Padding="0"
+                            Spacing="0"
+                            VerticalOptions="StartAndExpand">
+                            <Frame
+                                Margin="0,0,0,0"
                                 Padding="0"
-                                Spacing="0"
+                                BackgroundColor="White"
+                                CornerRadius="0"
+                                HeightRequest="60"
+                                HorizontalOptions="FillAndExpand"
                                 VerticalOptions="StartAndExpand">
-                                <Frame
-                                    Margin="5,0,5,5"
-                                    Padding="0"
-                                    BackgroundColor="#FBFBFF"
-                                    CornerRadius="5"
-                                    HeightRequest="45"
-                                    HorizontalOptions="FillAndExpand"
-                                    VerticalOptions="StartAndExpand">
-                                    <Frame.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding GoToPickupScheduleCmd}" />
-                                    </Frame.GestureRecognizers>
-                                    <Grid ColumnDefinitions="*,Auto" VerticalOptions="CenterAndExpand">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding GoToPickupScheduleCmd}" />
+                                </Frame.GestureRecognizers>
+                                <Grid
+                                    ColumnDefinitions="Auto,*,Auto"
+                                    ColumnSpacing="0"
+                                    VerticalOptions="FillAndExpand">
+                                    <Image
+                                        Grid.Column="0"
+                                        Margin="10,0,0,-10"
+                                        Aspect="AspectFill"
+                                        BackgroundColor="Transparent"
+                                        HorizontalOptions="Start"
+                                        VerticalOptions="CenterAndExpand"
+                                        WidthRequest="20">
+                                        <Image.Source>
+                                            <FontImageSource
+                                                FontFamily="UserIcons"
+                                                Glyph="{x:Static fonticon:FontIconsClass.Alarm}"
+                                                Size="20"
+                                                Color="#211E66" />
+                                        </Image.Source>
+                                    </Image>
+                                    <StackLayout
+                                        Grid.Column="1"
+                                        Margin="10,0,0,0"
+                                        Spacing="2"
+                                        VerticalOptions="CenterAndExpand">
                                         <Label
-                                            Grid.Row="0"
-                                            Grid.Column="0"
-                                            Margin="10,0,0,0"
+                                            Margin="0,8,0,0"
                                             FontFamily="ProximaSemiBold"
                                             FontSize="14"
                                             Text="{translate:Translate PickupSchedule}"
@@ -106,9 +130,7 @@
                                             VerticalOptions="CenterAndExpand"
                                             VerticalTextAlignment="Center" />
                                         <Label
-                                            Grid.Row="0"
-                                            Grid.Column="0"
-                                            Margin="10,0,0,-10"
+                                            Margin="0,0,0,-10"
                                             FontFamily="ProximaSemiBold"
                                             FontSize="10"
                                             IsVisible="{Binding PickupScheduleLocTextVisible}"
@@ -118,33 +140,62 @@
                                             TextColor="Gray"
                                             VerticalOptions="EndAndExpand"
                                             VerticalTextAlignment="Center" />
-                                        <Image
-                                            Grid.Row="0"
-                                            Grid.Column="1"
-                                            Margin="0,0,10,0"
-                                            HeightRequest="15"
-                                            HorizontalOptions="EndAndExpand"
-                                            Rotation="270"
-                                            Source="{images:EmbeddedImage NewDuraApp.Images.drop_down_arrow.png}"
-                                            VerticalOptions="Center"
-                                            WidthRequest="15" />
-                                    </Grid>
-                                </Frame>
-                                <Frame
-                                    Margin="5"
-                                    Padding="0"
-                                    BackgroundColor="#FBFBFF"
-                                    CornerRadius="5"
-                                    HeightRequest="45"
-                                    HorizontalOptions="FillAndExpand"
-                                    VerticalOptions="StartAndExpand">
-                                    <Frame.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding GoToPickupLocationCmd}" />
-                                    </Frame.GestureRecognizers>
-                                    <Grid ColumnDefinitions="*,Auto" VerticalOptions="CenterAndExpand">
+                                    </StackLayout>
+                                    <Image
+                                        Grid.Row="0"
+                                        Grid.Column="2"
+                                        Margin="0,0,10,0"
+                                        HeightRequest="15"
+                                        HorizontalOptions="EndAndExpand"
+                                        Rotation="270"
+                                        Source="{images:EmbeddedImage NewDuraApp.Images.drop_down_arrow.png}"
+                                        VerticalOptions="CenterAndExpand"
+                                        WidthRequest="15" />
+                                </Grid>
+                            </Frame>
+                            <Frame
+                                Margin="0,0.5,0,0"
+                                Padding="0"
+                                BackgroundColor="White"
+                                CornerRadius="0"
+                                HeightRequest="60"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="StartAndExpand">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding GoToPickupLocationCmd}" />
+                                </Frame.GestureRecognizers>
+                                <Grid ColumnDefinitions="Auto,*,Auto" VerticalOptions="FillAndExpand">
+                                    <StackLayout
+                                        Grid.Column="0"
+                                        Margin="10,25,0,0"
+                                        Spacing="0"
+                                        VerticalOptions="FillAndExpand"
+                                        WidthRequest="20">
+                                        <Ellipse
+                                            HeightRequest="10"
+                                            HorizontalOptions="CenterAndExpand"
+                                            Stroke="Green"
+                                            StrokeThickness="2"
+                                            WidthRequest="10" />
+                                        <Line
+                                            Margin="1,0,0,0"
+                                            HorizontalOptions="CenterAndExpand"
+                                            Stroke="Gray"
+                                            StrokeDashArray="1,1"
+                                            StrokeDashOffset="20"
+                                            StrokeThickness="3"
+                                            X1="0"
+                                            X2="0"
+                                            Y1="0"
+                                            Y2="30" />
+                                    </StackLayout>
+                                    <StackLayout
+                                        Grid.Column="1"
+                                        Spacing="2"
+                                        VerticalOptions="CenterAndExpand">
                                         <Label
-                                            Grid.Column="0"
-                                            Margin="10,0,0,0"
+                                            Grid.Column="1"
+                                            Margin="0,0,0,0"
                                             FontFamily="ProximaSemiBold"
                                             FontSize="14"
                                             Text="{translate:Translate Pickup_Location}"
@@ -153,8 +204,8 @@
                                         <Label
                                             x:Name="lblPickupLocation"
                                             Grid.Row="0"
-                                            Grid.Column="0"
-                                            Margin="10,0,0,-10"
+                                            Grid.Column="1"
+                                            Margin="0,0,0,-10"
                                             FontFamily="ProximaSemiBold"
                                             FontSize="10"
                                             IsVisible="{Binding PickupLocationTextVisible, Source={x:Reference page}}"
@@ -164,31 +215,93 @@
                                             TextColor="Gray"
                                             VerticalOptions="EndAndExpand"
                                             VerticalTextAlignment="Center" />
+                                    </StackLayout>
+                                    <Image
+                                        Grid.Column="2"
+                                        Margin="0,0,10,0"
+                                        HeightRequest="15"
+                                        HorizontalOptions="EndAndExpand"
+                                        Source="{images:EmbeddedImage NewDuraApp.Images.pickup_current_location.png}"
+                                        VerticalOptions="Center"
+                                        WidthRequest="15" />
+                                </Grid>
+                            </Frame>
+                            <Frame
+                                Margin="0,0.5"
+                                Padding="0"
+                                BackgroundColor="White"
+                                CornerRadius="0"
+                                HeightRequest="60"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="StartAndExpand">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding GoToWhereCmd}" />
+                                </Frame.GestureRecognizers>
+                                <Grid ColumnDefinitions="Auto,*,Auto" VerticalOptions="FillAndExpand">
+                                    <Grid
+                                        Grid.Column="0"
+                                        Margin="10,0,0,0"
+                                        RowDefinitions="*,Auto,*"
+                                        RowSpacing="0"
+                                        VerticalOptions="FillAndExpand"
+                                        WidthRequest="20">
+                                        <Line
+                                            Grid.Row="0"
+                                            Margin="1,0,0,0"
+                                            HorizontalOptions="CenterAndExpand"
+                                            Stroke="Gray"
+                                            StrokeDashArray="1,1"
+                                            StrokeDashOffset="20"
+                                            StrokeThickness="3"
+                                            X1="0"
+                                            X2="0"
+                                            Y1="0"
+                                            Y2="30" />
+                                        <Ellipse
+                                            Grid.Row="1"
+                                            HeightRequest="10"
+                                            HorizontalOptions="CenterAndExpand"
+                                            IsVisible="{Binding IsVisibleMapMarkerDestination, Converter={Helpers:InverseBoolConverter}}"
+                                            Stroke="Red"
+                                            StrokeThickness="2"
+                                            WidthRequest="10" />
                                         <Image
-                                            Grid.Column="1"
-                                            Margin="0,0,10,0"
-                                            HeightRequest="15"
-                                            HorizontalOptions="EndAndExpand"
-                                            Source="{images:EmbeddedImage NewDuraApp.Images.pickup_current_location.png}"
-                                            VerticalOptions="Center"
-                                            WidthRequest="15" />
+                                            Grid.Row="1"
+                                            Aspect="AspectFill"
+                                            BackgroundColor="Transparent"
+                                            HorizontalOptions="CenterAndExpand"
+                                            IsVisible="{Binding IsVisibleMapMarkerDestination}"
+                                            VerticalOptions="CenterAndExpand"
+                                            WidthRequest="15">
+                                            <Image.Source>
+                                                <FontImageSource
+                                                    FontFamily="UserIcons"
+                                                    Glyph="{x:Static fonticon:FontIconsClass.MapMarkerAlertOutline}"
+                                                    Size="15"
+                                                    Color="Red" />
+                                            </Image.Source>
+                                        </Image>
+                                        <Line
+                                            Grid.Row="2"
+                                            Margin="1,0,0,0"
+                                            HorizontalOptions="CenterAndExpand"
+                                            IsVisible="{Binding IsVisibleMapMarkerDestination, Converter={Helpers:InverseBoolConverter}}"
+                                            Stroke="Gray"
+                                            StrokeDashArray="1,1"
+                                            StrokeDashOffset="20"
+                                            StrokeThickness="3"
+                                            X1="0"
+                                            X2="0"
+                                            Y1="0"
+                                            Y2="30" />
                                     </Grid>
-                                </Frame>
-                                <Frame
-                                    Margin="5"
-                                    Padding="0"
-                                    BackgroundColor="#FBFBFF"
-                                    CornerRadius="5"
-                                    HeightRequest="45"
-                                    HorizontalOptions="FillAndExpand"
-                                    VerticalOptions="StartAndExpand">
-                                    <Frame.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding GoToWhereCmd}" />
-                                    </Frame.GestureRecognizers>
-                                    <Grid ColumnDefinitions="*,Auto" VerticalOptions="CenterAndExpand">
+                                    <StackLayout
+                                        Grid.Column="1"
+                                        Spacing="2"
+                                        VerticalOptions="CenterAndExpand">
                                         <Label
-                                            Grid.Column="0"
-                                            Margin="10,0,0,0"
+                                            Grid.Column="1"
+                                            Margin="0,0,0,0"
                                             FontFamily="ProximaSemiBold"
                                             FontSize="14"
                                             Text="{translate:Translate Drop_off_Final_Drop_Location}"
@@ -196,8 +309,8 @@
                                             VerticalOptions="CenterAndExpand" />
                                         <Label
                                             Grid.Row="0"
-                                            Grid.Column="0"
-                                            Margin="10,0,0,-10"
+                                            Grid.Column="1"
+                                            Margin="0,0,0,-10"
                                             FontFamily="ProximaSemiBold"
                                             FontSize="10"
                                             IsVisible="{Binding PickupWhereToTextVisible, Source={x:Reference page}}"
@@ -207,25 +320,88 @@
                                             TextColor="Gray"
                                             VerticalOptions="EndAndExpand"
                                             VerticalTextAlignment="Center" />
-                                    </Grid>
-                                </Frame>
-                                <StackLayout
-                                    x:Name="stackStopLocation"
-                                    BindableLayout.ItemsSource="{Binding StopAddressList}"
-                                    IsVisible="{Binding IsVisibleAddStopView}">
-                                    <BindableLayout.ItemTemplate>
-                                        <DataTemplate>
-                                            <Frame
-                                                Margin="5"
-                                                Padding="0"
-                                                BackgroundColor="#FBFBFF"
-                                                CornerRadius="5"
-                                                HeightRequest="45"
-                                                HorizontalOptions="FillAndExpand"
-                                                VerticalOptions="StartAndExpand">
+                                    </StackLayout>
+                                </Grid>
+                            </Frame>
+                            <StackLayout
+                                x:Name="stackStopLocation"
+                                BindableLayout.ItemsSource="{Binding StopAddressList}"
+                                IsVisible="{Binding IsVisibleAddStopView}"
+                                Spacing="0.5">
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate>
+                                        <Frame
+                                            Margin="0"
+                                            Padding="0"
+                                            BackgroundColor="White"
+                                            CornerRadius="0"
+                                            HeightRequest="60"
+                                            HorizontalOptions="FillAndExpand"
+                                            VerticalOptions="StartAndExpand">
+                                            <Grid
+                                                ColumnDefinitions="Auto,*,Auto"
+                                                RowSpacing="0"
+                                                VerticalOptions="CenterAndExpand">
                                                 <Grid
-                                                    ColumnDefinitions="*,Auto"
+                                                    Grid.Column="0"
+                                                    Margin="10,0,0,0"
+                                                    RowDefinitions="*,Auto,*"
                                                     RowSpacing="0"
+                                                    VerticalOptions="FillAndExpand"
+                                                    WidthRequest="20">
+                                                    <Line
+                                                        Grid.Row="0"
+                                                        Margin="1,0,0,0"
+                                                        HorizontalOptions="CenterAndExpand"
+                                                        Stroke="Gray"
+                                                        StrokeDashArray="1,1"
+                                                        StrokeDashOffset="20"
+                                                        StrokeThickness="3"
+                                                        X1="0"
+                                                        X2="0"
+                                                        Y1="0"
+                                                        Y2="30" />
+                                                    <Ellipse
+                                                        Grid.Row="1"
+                                                        HeightRequest="10"
+                                                        HorizontalOptions="CenterAndExpand"
+                                                        IsVisible="{Binding IsVisibleLastBottomLine}"
+                                                        Stroke="Red"
+                                                        StrokeThickness="2"
+                                                        WidthRequest="10" />
+                                                    <Image
+                                                        Grid.Row="1"
+                                                        Aspect="AspectFill"
+                                                        BackgroundColor="Transparent"
+                                                        HorizontalOptions="CenterAndExpand"
+                                                        IsVisible="{Binding IsVisibleLastBottomLine, Converter={Helpers:InverseBoolConverter}}"
+                                                        VerticalOptions="CenterAndExpand"
+                                                        WidthRequest="15">
+                                                        <Image.Source>
+                                                            <FontImageSource
+                                                                FontFamily="UserIcons"
+                                                                Glyph="{x:Static fonticon:FontIconsClass.MapMarkerAlertOutline}"
+                                                                Size="15"
+                                                                Color="Red" />
+                                                        </Image.Source>
+                                                    </Image>
+                                                    <Line
+                                                        Grid.Row="2"
+                                                        Margin="1,0,0,0"
+                                                        HorizontalOptions="CenterAndExpand"
+                                                        IsVisible="{Binding IsVisibleLastBottomLine}"
+                                                        Stroke="Gray"
+                                                        StrokeDashArray="1,1"
+                                                        StrokeDashOffset="20"
+                                                        StrokeThickness="3"
+                                                        X1="0"
+                                                        X2="0"
+                                                        Y1="0"
+                                                        Y2="30" />
+                                                </Grid>
+                                                <StackLayout
+                                                    Grid.Column="1"
+                                                    Spacing="2"
                                                     VerticalOptions="CenterAndExpand">
                                                     <Label
                                                         Grid.Column="0"
@@ -247,69 +423,50 @@
                                                         TextColor="Gray"
                                                         VerticalOptions="EndAndExpand"
                                                         VerticalTextAlignment="Center" />
-                                                    <ImageButton
-                                                        x:Name="btndelete"
-                                                        Grid.Column="1"
-                                                        Margin="10,0"
-                                                        Aspect="AspectFill"
-                                                        BackgroundColor="Transparent"
-                                                        Command="{Binding BindingContext.HideAddStopView, Source={x:Reference stackStopLocation}}"
-                                                        CommandParameter="{Binding .}"
-                                                        HorizontalOptions="End"
-                                                        VerticalOptions="CenterAndExpand"
-                                                        WidthRequest="25">
-                                                        <ImageButton.Source>
-                                                            <FontImageSource
-                                                                FontFamily="UserIcons"
-                                                                Glyph="{x:Static fonticon:FontIconsClass.Close}"
-                                                                Size="30"
-                                                                Color="Black" />
+                                                </StackLayout>
+                                                <ImageButton
+                                                    x:Name="btndelete"
+                                                    Grid.Column="2"
+                                                    Margin="10,0"
+                                                    Aspect="AspectFill"
+                                                    BackgroundColor="Transparent"
+                                                    Command="{Binding BindingContext.HideAddStopView, Source={x:Reference stackStopLocation}}"
+                                                    CommandParameter="{Binding .}"
+                                                    HorizontalOptions="End"
+                                                    VerticalOptions="CenterAndExpand"
+                                                    WidthRequest="25">
+                                                    <ImageButton.Source>
+                                                        <FontImageSource
+                                                            FontFamily="UserIcons"
+                                                            Glyph="{x:Static fonticon:FontIconsClass.Close}"
+                                                            Size="30"
+                                                            Color="Black" />
 
-                                                        </ImageButton.Source>
-                                                    </ImageButton>
-                                                </Grid>
-                                            </Frame>
-                                        </DataTemplate>
-                                    </BindableLayout.ItemTemplate>
-                                </StackLayout>
-
-                                <Button
-                                    Margin="5,20,5,0"
-                                    BackgroundColor="White"
-                                    BorderColor="#211E66"
-                                    BorderWidth="1"
-                                    Command="{Binding GoToAddStopLocationCmd}"
-                                    CornerRadius="5"
-                                    FontFamily="RobotoRegular"
-                                    FontSize="16"
-                                    HeightRequest="45"
-                                    HorizontalOptions="FillAndExpand"
-                                    Text="{translate:Translate Add_Stop_Location}"
-                                    TextColor="#211E66"
-                                    VerticalOptions="CenterAndExpand"
-                                    Visual="Default" />
+                                                    </ImageButton.Source>
+                                                </ImageButton>
+                                            </Grid>
+                                        </Frame>
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>
                             </StackLayout>
-                        </Frame>
-                    </shades:Shadows>
-                </ScrollView>
-                <!--<Frame
-                    Margin="5,20,5,20"
-                    Padding="0"
-                    BackgroundColor="#CFCFCF"
-                    CornerRadius="5"
-                    HeightRequest="45"
-                    IsVisible="False"
-                    VerticalOptions="EndAndExpand">
-                    <Label
-                        FontFamily="RobotoRegular"
-                        FontSize="16"
-                        HorizontalOptions="CenterAndExpand"
-                        Text="{translate:Translate Select_Vehicle}"
-                        TextColor="White"
-                        VerticalOptions="CenterAndExpand" />
-                </Frame>-->
+                            <Button
+                                Margin="0,0.5"
+                                BackgroundColor="White"
+                                Command="{Binding GoToAddStopLocationCmd}"
+                                CornerRadius="0"
+                                FontAttributes="Bold"
+                                FontSize="18"
+                                HeightRequest="60"
+                                HorizontalOptions="FillAndExpand"
+                                Text="{translate:Translate Add_Stop_Location}"
+                                TextColor="#211E66"
+                                VerticalOptions="CenterAndExpand"
+                                Visual="Default" />
+                        </StackLayout>
+                    </Frame>
+                </shades:Shadows>
+            </ScrollView>
 
-            </Grid>
             <Button
                 Grid.Row="2"
                 Margin="5,0,5,10"

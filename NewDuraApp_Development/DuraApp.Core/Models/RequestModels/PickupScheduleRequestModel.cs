@@ -80,6 +80,8 @@ namespace DuraApp.Core.Models.RequestModels
         public string stop_address2 { get; set; }
         public string stop_name { get; set; }
         public string stop_mobile { get; set; }
+        public string ImageName { get; set; }
+        public bool IsVisibleLastBottomLine { get; set; } = true;
         public double stoplat { get; set; }
         public double stoplon { get; set; }
         public bool IsAvailableAddStopLocationLocation { get; set; }

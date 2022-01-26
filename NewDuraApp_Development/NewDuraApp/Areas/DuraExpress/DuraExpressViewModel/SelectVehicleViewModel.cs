@@ -167,14 +167,13 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
                     else
                     {
                         _listServices.Add(arg);
-                        LstServices.Add(new VehicleServicesRequest() { service_id = arg.id });
+                        LstServices.Add(new VehicleServicesRequest() { service_id = arg.id, services = arg.service, services_fee = arg.price.ToString() });
                         objServices.Add(new ServicesModel { id = arg.id, services = arg.service, servicefee = arg.price.ToString() });
                         AppConstant.ServiceList = objServices;
                         TotalFare += Convert.ToDouble(arg?.price);
                         TotalFinalFare = Math.Round(TotalFare).ToString("N2");
                         AppConstant.TotalFinalFare = TotalFinalFare;
                     }
-
                 }
 
             }
@@ -202,6 +201,7 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
                     TotalFare = 0;
                     Currency = arg?.currency;
                     TotalFare = Convert.ToDouble(arg.totalfare);
+
                     TotalFinalFare = Math.Round(TotalFare).ToString("N2");
                     //VehicleListSelectedData.ProductImage = string.IsNullOrEmpty(arg?.image) ? await ImageHelper.GetStreamFormResource("camera.png") : await ImageHelper.GetImageFromUrl(arg?.image);
                     //var image = VehicleListSelectedData.ProductImage;

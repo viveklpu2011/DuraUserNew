@@ -48,5 +48,26 @@ namespace DuraApp.Core.Models.ResponseModels
     public class VehicleServicesRequest
     {
         public long service_id { get; set; }
+        public string services { get; set; }
+        public string serviceCurrency { get; set; } = "₱";
+        public string services_fee { get; set; }
+        public double ServicesFee
+        {
+            get
+            {
+                return Convert.ToDouble(services_fee);
+            }
+        }
+    }
+    public class PriceBreakUpList
+    {
+        public string km_fare;
+
+        public string price { get; set; }
+        public string distance { get; set; }
+        public string tip { get; set; }
+        public string discount { get; set; }
+        public string finalprice { get; set; }
+        public string base_fare { get; set; }
     }
 }

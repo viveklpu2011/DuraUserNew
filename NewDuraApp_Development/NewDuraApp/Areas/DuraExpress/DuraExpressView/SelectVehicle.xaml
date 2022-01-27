@@ -8,6 +8,7 @@
     xmlns:images="clr-namespace:NewDuraApp.Extensions"
     xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
     xmlns:sh="http://sharpnado.com"
+    xmlns:shades="clr-namespace:Sharpnado.Shades;assembly=Sharpnado.Shadows"
     xmlns:translate="clr-namespace:NewDuraApp.Resources"
     xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
     BindingContext="{Binding SelectVehicle, Source={StaticResource Locator}}"
@@ -177,25 +178,7 @@
                         VerticalOptions="StartAndExpand">
                         <BindableLayout.ItemTemplate>
                             <DataTemplate>
-                                <sh:Shadows
-                                    Padding="0"
-                                    BackgroundColor="#FFFFFF"
-                                    CornerRadius="2"
-                                    HorizontalOptions="FillAndExpand">
-                                    <sh:Shadows.Shades>
-                                        <sh:ImmutableShades>
-                                            <sh:Shade
-                                                BlurRadius="10"
-                                                Opacity="0.5"
-                                                Offset="2,2"
-                                                Color="White" />
-                                            <sh:Shade
-                                                BlurRadius="10"
-                                                Opacity="0.5"
-                                                Offset="1,1"
-                                                Color="LightGray" />
-                                        </sh:ImmutableShades>
-                                    </sh:Shadows.Shades>
+                                <shades:Shadows CornerRadius="20" Shades="{shades:SingleShade Offset='0, 4', Opacity=0.7, Color=LightGray}">
                                     <pancake:PancakeView
                                         Margin="0,0,6,6"
                                         BackgroundColor="#FBFBFF"
@@ -257,7 +240,7 @@
                                             </StackLayout>
                                         </StackLayout>
                                     </pancake:PancakeView>
-                                </sh:Shadows>
+                                </shades:Shadows>
                             </DataTemplate>
                         </BindableLayout.ItemTemplate>
                     </StackLayout>

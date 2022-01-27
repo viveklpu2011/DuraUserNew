@@ -405,7 +405,6 @@
                                                     VerticalOptions="CenterAndExpand">
                                                     <Label
                                                         Grid.Column="0"
-                                                        Margin="10,0,0,0"
                                                         FontFamily="ProximaSemiBold"
                                                         FontSize="14"
                                                         Text="{Binding StopText}"
@@ -414,7 +413,7 @@
                                                     <Label
                                                         Grid.Row="0"
                                                         Grid.Column="0"
-                                                        Margin="10,0,0,-5"
+                                                        Margin="0,0,0,-5"
                                                         FontFamily="ProximaSemiBold"
                                                         FontSize="10"
                                                         LineBreakMode="TailTruncation"

@@ -90,27 +90,32 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
                 OnPropertyChanged(nameof(StopAddressList));
             }
         }
+
         private bool _isVisibleAddStopView;
         public bool IsVisibleAddStopView
         {
             get { return _isVisibleAddStopView; }
             set { _isVisibleAddStopView = value; OnPropertyChanged(nameof(IsVisibleAddStopView)); }
         }
+
         public bool AddStopIsVisible
         {
             get { return _addStopIsVisible; }
             set { _addStopIsVisible = value; OnPropertyChanged(); }
         }
+
         public bool PickupScheduleLocTextVisible
         {
             get { return _pickupScheduleLocTextVisible; }
             set { _pickupScheduleLocTextVisible = value; OnPropertyChanged(nameof(PickupScheduleLocTextVisible)); }
         }
+
         public bool PickupLocationTextVisible
         {
             get { return _pickupLocationTextVisible; }
             set { _pickupLocationTextVisible = value; OnPropertyChanged(nameof(PickupLocationTextVisible)); }
         }
+
         public bool PickupWhereToTextVisible
         {
             get { return _pickupWhereToTextVisible; }
@@ -145,11 +150,11 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
             GoToSelectVehicleCmd = new AsyncCommand(GoToSelectVehicleCmdExecute, allowsMultipleExecutions: false);
             GoToWhereCmd = new AsyncCommand(GoToWhereCmdExecute, allowsMultipleExecutions: false);
             HideAddStopView = new AsyncCommand<PickupScheduleRequestStopModel>(HideAddStopViewCommandExecute, allowsMultipleExecutions: false);
-
             MessagingCenter.Subscribe<HomePageViewModel>(this, "FromHomePage", (sender) =>
             {
                 AddStopIsVisible = false;
             });
+
             MessagingCenter.Subscribe<WhereToViewModel>(this, "FromWhereTo", (sender) =>
             {
                 AddStopIsVisible = true;
@@ -276,6 +281,7 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
             }
             return location1;
         }
+
         private async Task GoToAddStopLocationCmdExecute()
         {
             if (PickupWhereToTextVisible && !string.IsNullOrEmpty(PickupWhereToText))
@@ -292,6 +298,7 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
                 ShowToast("Please select destination address");
             }
         }
+
         private async Task GoToSelectVehicleCmdExecute()
         {
             if (CheckValidation())
@@ -299,6 +306,7 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
                 await NavigateSelectVehicleCmdExecute();
             }
         }
+
         private async Task GoToWhereCmdExecute()
         {
             if (PickupLocationTextVisible && !string.IsNullOrEmpty(PickupLocationText))
@@ -312,6 +320,7 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
                 ShowToast("Please select pickup location");
             }
         }
+
         private async Task GoToPickupScheduleCmdExecute()
         {
             if (_navigationService.GetCurrentPageViewModel() != typeof(PickupSchedulePopUp))
@@ -320,6 +329,7 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
                 await App.Locator.PickupSchedule.InitilizeData();
             }
         }
+
         private async Task GoToPickupLocationCmdExecute()
         {
             if (PickupScheduleLocTextVisible && !string.IsNullOrEmpty(PickupScheduleLocText))
@@ -333,6 +343,7 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
                 ShowToast("Please select pickup schedule first");
             }
         }
+
         private bool CheckValidation()
         {
             bool res = true;

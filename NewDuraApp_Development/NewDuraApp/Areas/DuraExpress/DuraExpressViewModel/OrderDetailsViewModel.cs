@@ -28,7 +28,6 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
         private IUserCoreService _userCoreService;
         public IAsyncCommand GoToOrederDetails2Cmd { get; set; }
         public IAsyncCommand GoToFeeBreakdownPopup { get; set; }
-
         public IAsyncCommand DuraHelpCommand { get; set; }
         public IAsyncCommand CallNowCommand { get; set; }
         public IAsyncCommand SMSCommand { get; set; }
@@ -40,6 +39,7 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
             get { return _productImage; }
             set { _productImage = value; OnPropertyChanged(nameof(ProductImage)); }
         }
+
         private ImageSource _profileImage;
         public ImageSource ProfileImage
         {
@@ -80,7 +80,6 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
             }
         }
 
-
         private GetpickupDetailsModel _getpickupData;
         public GetpickupDetailsModel GetPickupData
         {
@@ -91,6 +90,7 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
                 OnPropertyChanged(nameof(GetPickupData));
             }
         }
+
         public OrderDetailsViewModel(INavigationService navigationService, IUserCoreService userCoreService)
         {
             _navigationService = navigationService;
@@ -107,7 +107,6 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
 
         private async Task DuraHelp()
         {
-            //ShowAlert("We are Working on it.It is in Progress.", "DuraDrive", "Ok");
             await _navigationService.NavigateToAsync<ChatViewModel>();
         }
 
@@ -169,7 +168,6 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
             {
                 TabNavigationHelper.ForceFullyRedirectingTab(0);
             }
-
         }
 
         private async Task SMSCommandExecute()
@@ -190,6 +188,7 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
                 await _navigationService.NavigateToAsync<OrderDetails2ViewModel>();
             }
         }
+
         private async Task GoToFeeBreakdownPopupExecute()
         {
             if (_navigationService.GetCurrentPageViewModel() != typeof(FeeBreakdownPopupViewModel))
@@ -198,10 +197,12 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
                 await App.Locator.FeeBreakdownPopup.InitilizeData(GetPickupData);
             }
         }
+
         internal async Task InitilizeData()
         {
             await GetPickupDetails();
         }
+
         private async Task GetPickupDetails()
         {
             if (CheckConnection())
@@ -252,8 +253,6 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
                             if (!App.Locator.PickupSchedule.DuraAddressCommon.PickupType.ToLower().Contains("later"))
                             {
                                 IsVisibleDriverView = true;
-                                //ProductImage = string.IsNullOrEmpty(GetPickupData?.driverphoto) ? await ImageHelper.GetStreamFormResource("camera.png") : await ImageHelper.GetImageFromUrl(GetPickupData?.driverphoto);
-                                //ProfileImage = ImageSource.FromStream(() => new MemoryStream(ProductImage));
                             }
                             else
                             {
@@ -281,51 +280,5 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
                 ShowToast(AppResources.NoInternet);
 
         }
-        ////public ICommand CallNowCommand => new Command(async (obj) =>
-        ////{
-        ////    try
-        ////    {
-        ////        PhoneDialer.Open(Phone);
-        ////    }
-        ////    catch (Exception ex)
-        ////    {
-        ////        UserDialogs.Instance.Alert(ex.Message);
-        ////    }
-        ////});
-        //private string _phone;
-        //public string Phone
-        //{
-        //    get { return _phone; }
-        //    set { _phone = value; OnPropertyChanged(); }
-        //}
-        //public OrderDetailsViewModel()
-        //{
-        //    Phone = "323234234";
-        //}
-        //public ICommand GoToOrederDetails2Cmd => new Command(async (obj) =>
-        //{
-        //    await RichNavigation.PushAsync(new OrderDetails2(), typeof(OrderDetails2));
-        //});
-        //public ICommand GoToFeeBreakdownPopup => new Command(async (obj) =>
-        //{
-        //    await PopupNavigation.PushAsync(new FeeBreakdownPopup());
-        //});
-        //async void btnShare_Clicked(object sender, System.EventArgs e)
-        //{
-        //    await ShareText(txtText.Text);
-        //}
-
-        //public ICommand ShareCmd => new Command(async (obj) =>
-        //{
-        //    await Share.RequestAsync(new ShareTextRequest
-        //    {
-        //        Subject = "This is a test message",
-        //        Text = "This is my URL",
-        //        Title = "Title test message",
-        //        Uri = "https://askxammy.com"
-        //    });
-        //});
-
-
     }
 }

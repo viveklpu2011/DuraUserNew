@@ -51,11 +51,13 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
             get { return _pickupScheduleRequest; }
             set { _pickupScheduleRequest = value; OnPropertyChanged(nameof(PickupScheduleRequest)); }
         }
+
         public DuraAddressCommonModel DuraAddressCommon
         {
             get { return _duraAddressCommon; }
             set { _duraAddressCommon = value; OnPropertyChanged(nameof(DuraAddressCommon)); }
         }
+
         public DateTime DatePick
         {
             get { return _datePick; }
@@ -74,13 +76,14 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
                 OnPropertyChanged();
             }
         }
+
         public DateTime DatePickLater
         {
             get { return _datePickLater; }
             set { _datePickLater = value; OnPropertyChanged(nameof(DatePickLater)); }
         }
-        private TimeSpan _pickTime;
 
+        private TimeSpan _pickTime;
         public TimeSpan PickTime
         {
             get { return _pickTime; }
@@ -101,7 +104,6 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
         }
 
         private bool _asapIsChecked;
-
         public bool AsapIsChecked
         {
             get { return _asapIsChecked; }
@@ -109,7 +111,6 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
         }
 
         private bool _laterIsCheck;
-
         public bool LaterIsCheck
         {
             get { return _laterIsCheck; }
@@ -130,6 +131,7 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
             get { return _minDate; }
             set { _minDate = value; OnPropertyChanged(); }
         }
+
         public DateTime MinDateLater
         {
             get { return _minDateLater; }
@@ -142,9 +144,8 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
             AsapIsChecked = true;
             LaterIsCheck = false;
             IsButtonEnabled = true;
-
-
         });
+
         public ICommand LaterSelected => new Command(() =>
         {
             IsVisibleLaterView = true;
@@ -162,6 +163,7 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
                 IsButtonEnabled = true;
             }
         });
+
         public PickupScheduleViewModel(INavigationService navigationService, IUserCoreService userCoreService)
         {
             _navigationService = navigationService;
@@ -178,25 +180,6 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
         {
 
         }
-
-        //private bool CheckValidation()
-        //{
-        //        if (IsAreaErrorVisible || IsPhoneErrorVisible || IsPasswordErrorVisible)
-        //        {
-        //            IsLoginButtoinEnabled = false;
-        //            return false;
-        //        }
-        //        else if (string.IsNullOrEmpty(MobileNumber) || string.IsNullOrEmpty(Password) || string.IsNullOrEmpty(SelectedLocation?.area))
-        //        {
-        //            IsLoginButtoinEnabled = false;
-        //            return false;
-        //        }
-        //        else
-        //        {
-        //            IsLoginButtoinEnabled = true;
-        //            return true;
-        //        }
-        //}
 
         private async Task DoneCommandExecute()
         {
@@ -215,8 +198,6 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
             }
             else
             {
-
-
                 _type = "Later";
                 _date = $"{DatePick.Date.ToString("yyyy-MM-dd")} {PickTime.Hours}:{PickTime.Minutes}";
 
@@ -240,20 +221,7 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
 
         internal async Task InitilizeData()
         {
-            //IsButtonEnabled = false;
             ishowtoast = true;
-
-            //if (DatePick.Date <= DateTime.Now.Date && _pickTime < DateTime.Now.TimeOfDay && ishowtoast)
-            //{
-            //    ShowToast("time should not be less than current time");
-            //    IsButtonEnabled = false;
-            //}
-            //else
-            //{
-            //    IsButtonEnabled = true;
-            //}
-
-
         }
 
     }

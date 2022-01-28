@@ -361,6 +361,7 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
                 await App.Locator.AutoCompleteMapPage.InitilizeData(ExpressType.StopLocation);
             }
         }
+
         private async Task GoToTrackorderCmdExecute()
         {
             try
@@ -451,6 +452,7 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
 
             }
         }
+
         internal async Task InitilizeData()
         {
             Name = string.Empty;

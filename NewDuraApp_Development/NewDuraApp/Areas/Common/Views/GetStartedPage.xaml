@@ -22,7 +22,6 @@
             <CarouselView.ItemTemplate>
                 <DataTemplate>
                     <Grid RowDefinitions="180,Auto" VerticalOptions="CenterAndExpand">
-
                         <Image
                             Grid.Row="0"
                             Margin="20,0,20,20"
@@ -32,7 +31,6 @@
                             Source="{Binding ImageName}"
                             VerticalOptions="EndAndExpand"
                             WidthRequest="260" />
-
                         <StackLayout
                             Grid.Row="1"
                             Margin="20,0,20,0"
@@ -65,12 +63,10 @@
             IndicatorSize="10"
             SelectedIndicatorColor="Black"
             WidthRequest="100" />
-
         <StackLayout
             Grid.Row="3"
             HorizontalOptions="FillAndExpand"
             VerticalOptions="EndAndExpand">
-
             <ImageButton
                 BackgroundColor="Transparent"
                 Command="{Binding SkipCommand}"
@@ -91,6 +87,5 @@
                 </Label.GestureRecognizers>
             </Label>
         </StackLayout>
-
     </Grid>
 </infrastructure:BaseContentPage>

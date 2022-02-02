@@ -278,7 +278,6 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
             }
             else
                 ShowToast(AppResources.NoInternet);
-
         }
     }
 }

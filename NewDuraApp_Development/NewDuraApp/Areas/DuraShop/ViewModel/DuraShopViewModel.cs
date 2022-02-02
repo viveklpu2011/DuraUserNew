@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace NewDuraApp.Areas.DuraShop.ViewModel
 {
-   public class DuraShopViewModel: AppBaseViewModel
+    public class DuraShopViewModel : AppBaseViewModel
     {
         INavigationService _navigationService;
         public IAsyncCommand GoToFeaturedCmd { get; set; }
@@ -41,28 +41,28 @@ namespace NewDuraApp.Areas.DuraShop.ViewModel
 
         private async Task GoToSearchCmdExecute()
         {
-            if(_navigationService.GetCurrentPageViewModel()!= typeof(SearchScreenViewModel))
+            if (_navigationService.GetCurrentPageViewModel() != typeof(SearchScreenViewModel))
             {
                 await _navigationService.NavigateToAsync<SearchScreenViewModel>();
             }
         }
         private async Task GoToItemDetailsCmdExecute()
         {
-            if(_navigationService.GetCurrentPageViewModel()!= typeof(ItemDetailsViewModel))
+            if (_navigationService.GetCurrentPageViewModel() != typeof(ItemDetailsViewModel))
             {
                 await _navigationService.NavigateToAsync<ItemDetailsViewModel>();
             }
         }
         private async Task GoToMyCartCmdExecute()
         {
-            if(_navigationService.GetCurrentPageViewModel()!= typeof(MyCartViewModel))
+            if (_navigationService.GetCurrentPageViewModel() != typeof(MyCartViewModel))
             {
                 await _navigationService.NavigateToAsync<MyCartViewModel>();
             }
         }
         private async Task GoToFeaturedCmdExecute()
         {
-            if(_navigationService.GetCurrentPageViewModel()!= typeof(FeaturedViewModel))
+            if (_navigationService.GetCurrentPageViewModel() != typeof(FeaturedViewModel))
             {
                 await _navigationService.NavigateToAsync<FeaturedViewModel>();
             }

@@ -39,12 +39,14 @@ namespace NewDuraApp.Areas.DuraExpress.Popup.ViewModel
             get { return _productImage; }
             set { _productImage = value; OnPropertyChanged(nameof(ProductImage)); }
         }
+
         private ImageSource _profileImage;
         public ImageSource ProfileImage
         {
             get { return _profileImage; }
             set { _profileImage = value; OnPropertyChanged(nameof(ProfileImage)); }
         }
+
         private string _reasonText;
         public string ReasonText
         {
@@ -60,7 +62,6 @@ namespace NewDuraApp.Areas.DuraExpress.Popup.ViewModel
                 {
                     IsReasonTextErrorVisible = true;
                 }
-
                 CheckReasonValidation();
                 OnPropertyChanged(nameof(ReasonText));
             }
@@ -76,6 +77,7 @@ namespace NewDuraApp.Areas.DuraExpress.Popup.ViewModel
                 OnPropertyChanged(nameof(IsButtonEnabled));
             }
         }
+
         private bool _isReasonTextErrorVisible;
         public bool IsReasonTextErrorVisible
         {
@@ -86,6 +88,7 @@ namespace NewDuraApp.Areas.DuraExpress.Popup.ViewModel
                 OnPropertyChanged(nameof(IsReasonTextErrorVisible));
             }
         }
+
         public CancelRideReasonPopupViewModel(INavigationService navigationService, IUserCoreService userCoreService)
         {
             _navigationService = navigationService;
@@ -130,6 +133,7 @@ namespace NewDuraApp.Areas.DuraExpress.Popup.ViewModel
                 DriverDetails = getDriverDetailsModel;
             }
         }
+
         private async Task CancelRideExecute()
         {
             if (CheckConnection())
@@ -161,7 +165,7 @@ namespace NewDuraApp.Areas.DuraExpress.Popup.ViewModel
                         {
                             if (_navigationService.GetCurrentPageViewModel() != typeof(OrderDetailsViewModel))
                             {
-                                App.Locator.FindingDriver.SearchText =AppResources.Search_for_the_driver;
+                                App.Locator.FindingDriver.SearchText = AppResources.Search_for_the_driver;
                                 App.Locator.FindingDriver.IsVisibleSearchImage = false;
                                 App.Locator.FindingDriver.CancelButtonText = AppResources.Search;
                                 await _navigationService.ClosePopupsAsync();
@@ -174,9 +178,7 @@ namespace NewDuraApp.Areas.DuraExpress.Popup.ViewModel
                             await _navigationService.ClosePopupsAsync();
                             await App.Locator.MyOrders.InitilizeDataMyOrder();
                         }
-
                     }
-                    //ShowAlert(result?.Data?.message, result?.Data?.message);
                 }
                 catch (Exception ex)
                 {
@@ -188,6 +190,7 @@ namespace NewDuraApp.Areas.DuraExpress.Popup.ViewModel
                 ShowToast(AppResources.NoInternet);
 
         }
+
         private bool CheckReasonValidation()
         {
             if (IsReasonTextErrorVisible)

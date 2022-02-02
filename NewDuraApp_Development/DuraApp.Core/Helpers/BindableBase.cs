@@ -13,14 +13,12 @@ namespace DuraApp.Core.Helpers
         protected virtual bool SetProperty<T>(ref T storage, T value, [CallerMemberName] string propertyName = null)
         {
             if (Equals(storage, value)) return false;
-
             storage = value;
             RaisePropertyChanged(propertyName);
-
             return true;
         }
 
-        protected void RaisePropertyChanged([CallerMemberName]string propertyName = null)
+        protected void RaisePropertyChanged([CallerMemberName] string propertyName = null)
         {
             OnPropertyChanged(new PropertyChangedEventArgs(propertyName));
         }

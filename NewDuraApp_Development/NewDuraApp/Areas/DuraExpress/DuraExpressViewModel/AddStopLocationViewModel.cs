@@ -32,7 +32,6 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
         private bool _isAddress1ErrorVisible;
         private bool _isAddress2ErrorVisible;
         private bool _isNameErrorVisible;
-
         private bool _isButtonEnabled;
         public IAsyncCommand SkipCommand { get; set; }
         public IAsyncCommand OpenMapCommand { get; set; }
@@ -78,32 +77,38 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
             get { return _isAddress1ErrorVisible; }
             set { _isAddress1ErrorVisible = value; OnPropertyChanged(nameof(IsAddress1ErrorVisible)); }
         }
+
         public bool IsAddress2ErrorVisible
         {
             get { return _isAddress2ErrorVisible; }
             set { _isAddress2ErrorVisible = value; OnPropertyChanged(nameof(IsAddress2ErrorVisible)); }
         }
+
         public bool IsNameErrorVisible
         {
             get { return _isNameErrorVisible; }
             set { _isNameErrorVisible = value; OnPropertyChanged(nameof(IsNameErrorVisible)); }
         }
+
         private bool _isPhoneErrorVisible;
         public bool IsPhoneErrorVisible
         {
             get { return _isPhoneErrorVisible; }
             set { _isPhoneErrorVisible = value; OnPropertyChanged(nameof(IsPhoneErrorVisible)); }
         }
+
         public bool IsButtonEnabled
         {
             get { return _isButtonEnabled; }
             set { _isButtonEnabled = value; OnPropertyChanged(nameof(IsButtonEnabled)); }
         }
+
         public PickupScheduleRequestModel PickupScheduleRequest
         {
             get { return _pickupScheduleRequest; }
             set { _pickupScheduleRequest = value; OnPropertyChanged(nameof(PickupScheduleRequest)); }
         }
+
         public Location AddStopLocation
         {
             get { return _addStopLocation; }
@@ -249,7 +254,6 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
                 IsButtonEnabled = true;
                 return true;
             }
-
         }
 
         public int stopid = 0;
@@ -330,7 +334,6 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
                     Helpers.CommonHelper.CurrentLatStop = p.Latitude;
                     Helpers.CommonHelper.CurrentLongStop = p.Longitude;
                 }
-
                 Position = p;
             }
             catch (Exception ex)
@@ -458,7 +461,6 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
             Name = string.Empty;
             Number = string.Empty;
             Address2 = string.Empty;
-
             IsAddress1ErrorVisible = IsAddress2ErrorVisible = IsNameErrorVisible = IsPhoneErrorVisible = false;
             CheckLoginValidation();
             Geolocation.GetLastKnownLocationAsync()

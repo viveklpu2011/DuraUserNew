@@ -7,5 +7,4 @@ namespace DuraApp.Core.Models.ResponseModels
     {
         public string data { get; set; }
     }
-
 }

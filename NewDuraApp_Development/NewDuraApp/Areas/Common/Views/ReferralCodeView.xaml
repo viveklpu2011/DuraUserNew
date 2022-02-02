@@ -4,8 +4,9 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:images="clr-namespace:NewDuraApp.Extensions"
+    xmlns:translate="clr-namespace:NewDuraApp.Resources"
     xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
-    BackgroundColor="White"     xmlns:translate="clr-namespace:NewDuraApp.Resources"
+    BackgroundColor="White"
     BindingContext="{Binding ReferralCodeView, Source={StaticResource Locator}}"
     Visual="Material">
     <NavigationPage.TitleView>
@@ -13,7 +14,7 @@
             FontFamily="ProximaSemiBold"
             FontSize="22"
             HorizontalOptions="FillAndExpand"
-               Text="{translate:Translate Refer_a_Friend}"
+            Text="{translate:Translate Refer_a_Friend}"
             TextColor="Black"
             VerticalOptions="CenterAndExpand"
             VerticalTextAlignment="Center" />
@@ -27,7 +28,7 @@
                     FontSize="20"
                     HorizontalOptions="CenterAndExpand"
                     HorizontalTextAlignment="Center"
-                   Text="{translate:Translate Enter_any_referral_code_if_you_have_any}"
+                    Text="{translate:Translate Enter_any_referral_code_if_you_have_any}"
                     TextColor="Black"
                     VerticalOptions="Start"
                     VerticalTextAlignment="Center" />
@@ -37,7 +38,6 @@
                     HorizontalOptions="CenterAndExpand"
                     Source="{images:EmbeddedImage NewDuraApp.Images.graphic_referral_code.png}"
                     WidthRequest="200" />
-
                 <Entry
                     BackgroundColor="White"
                     Placeholder="{translate:Translate Enter_referral_code}"
@@ -61,7 +61,7 @@
                     FontSize="18"
                     HorizontalOptions="CenterAndExpand"
                     HorizontalTextAlignment="Center"
-                      Text="{translate:Translate Skip}"
+                    Text="{translate:Translate Skip}"
                     TextColor="Black"
                     VerticalOptions="Start"
                     VerticalTextAlignment="Center" />

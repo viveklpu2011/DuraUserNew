@@ -4,7 +4,6 @@ using DuraApp.Core.Models.Common;
 
 namespace DuraApp.Core.Models.ResponseModels
 {
-
     public class TipPriceModel
     {
         public int id { get; set; }
@@ -23,7 +22,6 @@ namespace DuraApp.Core.Models.ResponseModels
                 {
                     return $"{currency}{price}";
                 }
-
             }
         }
     }

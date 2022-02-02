@@ -64,7 +64,6 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
         private bool _pickupScheduleLocTextVisible;
         private bool _pickupLocationTextVisible;
         private bool _pickupWhereToTextVisible;
-
         private string _pickupScheduleLocText;
         private string _pickupLocationText;
         private string _pickupWhereToText;
@@ -256,7 +255,6 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
                 if (location1 != null)
                 {
                     Console.WriteLine($"Latitude: {location1.Latitude}, Longitude: {location1.Longitude}, Altitude: {location1.Altitude}");
-
                 }
             }
             catch (FeatureNotSupportedException fnsEx)

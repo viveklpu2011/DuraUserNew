@@ -16,7 +16,6 @@ namespace DuraApp.Core.Models.ResponseModels
             {
                 if (data != null && data.Count > 0)
                 {
-
                     return data.Where(x => x.Rating > 2).Count();
                 }
                 else
@@ -31,7 +30,6 @@ namespace DuraApp.Core.Models.ResponseModels
             {
                 if (data != null && data.Count > 0)
                 {
-
                     return data.Where(x => x.Rating <= 2).Count();
                 }
                 else
@@ -46,7 +44,6 @@ namespace DuraApp.Core.Models.ResponseModels
             {
                 if (data != null && data.Count > 0)
                 {
-
                     return data.Where(x => x.remarks != string.Empty).Count();
                 }
                 else
@@ -61,7 +58,6 @@ namespace DuraApp.Core.Models.ResponseModels
             {
                 if (data != null && data.Count > 0)
                 {
-
                     return ((data.Sum(item => item.Rating)) / data.Count);
                 }
                 else
@@ -108,5 +104,4 @@ namespace DuraApp.Core.Models.ResponseModels
             }
         }
     }
-
 }

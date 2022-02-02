@@ -154,10 +154,6 @@ namespace DuraApp.Core.Models.ResponseModels
     }
     public class GetpickupDetailsModel : ObservableProperty
     {
-        //public string displaystatustextcolor;
-
-        //public string displaystatus { get; set; }
-
         private string _displaystatus = string.Empty;
         public string displaystatus
         {

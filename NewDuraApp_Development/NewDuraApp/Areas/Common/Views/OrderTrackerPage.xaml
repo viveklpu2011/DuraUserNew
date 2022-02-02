@@ -79,64 +79,6 @@
                     Source="{Binding GetOrderData.driverphoto}"
                     WidthRequest="56" />
             </AbsoluteLayout>
-
-            <!--<Image
-                HeightRequest="35"
-                HorizontalOptions="CenterAndExpand"
-                IsVisible="{Binding IsRouteNotRunning}"
-                Source="ic_location_red.png"
-                VerticalOptions="CenterAndExpand"
-                WidthRequest="35" />
-
-            <StackLayout
-                x:Name="searchLayout"
-                Margin="30,50,30,0"
-                Padding="10"
-                BackgroundColor="White"
-                IsVisible="False"
-                Orientation="Horizontal"
-                VerticalOptions="Start">
-                <Image
-                    HeightRequest="15"
-                    Source="ic_search"
-                    WidthRequest="15" />
-                <Label
-                    FontAttributes="Italic"
-                    HorizontalOptions="FillAndExpand"
-                    LineBreakMode="TailTruncation"
-                    Text="Search Place"
-                    TextColor="Gray" />
-                <StackLayout.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="OnEnterAddressTapped" />
-                </StackLayout.GestureRecognizers>
-            </StackLayout>
-
-            <Button
-                x:Name="chooseLocationButton"
-                Margin="40"
-                BackgroundColor="DodgerBlue"
-                Clicked="OnEnterAddressTapped"
-                Command="{Binding GetLocationNameCommand}"
-                CommandParameter="{Binding Path=CameraPosition.Target, Source={x:Reference map}}"
-                FontSize="17"
-                HorizontalOptions="FillAndExpand"
-                IsVisible="{Binding IsRouteNotRunning}"
-                Text="Choose Pickup"
-                TextColor="White"
-                VerticalOptions="EndAndExpand" />
-
-            <Button
-                x:Name="stopRouteButton"
-                Margin="40"
-                BackgroundColor="Red"
-                Clicked="Handle_Stop_Clicked"
-                Command="{Binding StopRouteCommand}"
-                FontSize="17"
-                HorizontalOptions="FillAndExpand"
-                IsVisible="false"
-                Text="Stop"
-                TextColor="White"
-                VerticalOptions="EndAndExpand" />-->
         </AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>

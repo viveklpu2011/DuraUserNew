@@ -24,20 +24,19 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
         private IUserCoreService _userCoreService;
         public IAsyncCommand GoToAddMoreDetailsCmd { get; set; }
 
-
         private byte[] _productImage;
         public byte[] ProductImage
         {
             get { return _productImage; }
             set { _productImage = value; OnPropertyChanged(nameof(ProductImage)); }
         }
+
         private ImageSource _profileImage;
         public ImageSource ProfileImage
         {
             get { return _profileImage; }
             set { _profileImage = value; OnPropertyChanged(nameof(ProfileImage)); }
         }
-
 
         private string _currency;
         public string Currency
@@ -53,7 +52,6 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
         public IAsyncCommand<VehicleListData> VehicleDetailsCommand { get; set; }
         public IAsyncCommand<AdditionalServices> AdditionalServiceDetailsCommand { get; set; }
         private AdditionalServices _additionalServicesData;
-
         private bool _isVisibleStack, _isVisibleLoader;
         List<AdditionalServices> _listServices = new List<AdditionalServices>();
         private bool _isVisibleInfoLabel = true;
@@ -61,6 +59,7 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
         private PickupScheduleRequestModel _pickupScheduleRequest;
         private VehicleListData _vehicleListSelectedData;
         private PickupScheduleResponseModel _pickupScheduleResponse;
+
         private string _totalFinalFare;
         public string TotalFinalFare
         {
@@ -90,50 +89,57 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
             get { return _isVisibleStack; }
             set { _isVisibleStack = value; OnPropertyChanged(nameof(IsVisibleStack)); }
         }
+
         public AdditionalServices AdditionalServicesData
         {
             get { return _additionalServicesData; }
             set { _additionalServicesData = value; OnPropertyChanged(nameof(AdditionalServicesData)); }
         }
+
         public bool IsVisibleLoader
         {
             get { return _isVisibleLoader; }
             set { _isVisibleLoader = value; OnPropertyChanged(nameof(IsVisibleLoader)); }
         }
+
         public VehicleListData VehicleListSelectedData
         {
             get { return _vehicleListSelectedData; }
             set { _vehicleListSelectedData = value; OnPropertyChanged(nameof(VehicleListSelectedData)); }
         }
+
         public bool IsVisibleInfoLabel
         {
             get { return _isVisibleInfoLabel; }
             set { _isVisibleInfoLabel = value; OnPropertyChanged(nameof(IsVisibleInfoLabel)); }
         }
+
         public PickupScheduleRequestModel PickupScheduleRequest
         {
             get { return _pickupScheduleRequest; }
             set { _pickupScheduleRequest = value; OnPropertyChanged(nameof(PickupScheduleRequest)); }
         }
+
         public PickupScheduleResponseModel PickupScheduleResponse
         {
             get { return _pickupScheduleResponse; }
             set { _pickupScheduleResponse = value; OnPropertyChanged(nameof(PickupScheduleResponse)); }
         }
-        private ObservableCollection<VehicleListData> _vehicleList;
 
+        private ObservableCollection<VehicleListData> _vehicleList;
         public ObservableCollection<VehicleListData> VehicleList
         {
             get { return _vehicleList; }
             set { _vehicleList = value; OnPropertyChanged(); }
         }
-        private ObservableCollection<VehicleListData> _vehicleListTem = new ObservableCollection<VehicleListData>();
 
+        private ObservableCollection<VehicleListData> _vehicleListTem = new ObservableCollection<VehicleListData>();
         public ObservableCollection<VehicleListData> VehicleListTemp
         {
             get { return _vehicleListTem; }
             set { _vehicleListTem = value; OnPropertyChanged(); }
         }
+
         public SelectVehicleViewModel(INavigationService navigationService, IUserCoreService userCoreService)
         {
             objServices = new List<ServicesModel>();
@@ -160,7 +166,6 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
                             LstServices.Remove(isSidExist);
                             AppConstant.ServiceList.Remove(AppConstant.ServiceList?.Where(x => x.id == arg.id).FirstOrDefault());
                         }
-
                         TotalFare -= Convert.ToDouble(arg?.price);
                         TotalFinalFare = TotalFare.ToString("N2");
                     }
@@ -175,23 +180,17 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
                         AppConstant.TotalFinalFare = TotalFinalFare;
                     }
                 }
-
             }
         }
 
         private async Task VehicleDetailsCommandExecute(VehicleListData arg)
         {
-
             await Device.InvokeOnMainThreadAsync(async () =>
             {
-
                 IsVisibleLoader = true;
                 if (arg != null)
                 {
                     ShowLoading();
-
-
-
                     VehicleListSelectedData = new VehicleListData();
                     _listServices = new List<AdditionalServices>();
                     IsVisibleInfoLabel = false;
@@ -201,31 +200,23 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
                     TotalFare = 0;
                     Currency = arg?.currency;
                     TotalFare = Convert.ToDouble(arg.totalfare);
-                    
                     TotalFinalFare = Math.Round(TotalFare).ToString("N2");
-                    //VehicleListSelectedData.ProductImage = string.IsNullOrEmpty(arg?.image) ? await ImageHelper.GetStreamFormResource("camera.png") : await ImageHelper.GetImageFromUrl(arg?.image);
-                    //var image = VehicleListSelectedData.ProductImage;
-                    //VehicleListSelectedData.VehicleImage = ImageSource.FromStream(() => new MemoryStream(image));
-
                     AppConstant.SelectedVehicle = arg;
                     var tempListData = VehicleListTemp.ToList();
                     tempListData.RemoveAt(tempListData.IndexOf(arg));
                     VehicleList = new ObservableCollection<VehicleListData>(tempListData);
                     HideLoading();
                 }
-
             });
         }
 
         private async Task GoToAddMoreDetailsCmdExecute()
         {
-
             if (_navigationService.GetCurrentPageViewModel() != typeof(AddMoreDetailsViewModel))
             {
                 await _navigationService.NavigateToAsync<AddMoreDetailsViewModel>();
                 await App.Locator.AddMoreDetails.InitializeDataNew();
                 await App.Locator.AddMoreDetails.InitilizeData();
-
             }
         }
 
@@ -243,7 +234,6 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
             if (App.Locator.TrackOrder.PickupScheduleResponse != null)
             {
                 PickupScheduleResponse = App.Locator.TrackOrder.PickupScheduleResponse;
-
             }
             else
             {
@@ -257,11 +247,11 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
             TotalFinalFare = Math.Round(TotalFare).ToString("N2");
             await GetVehicleList();
         }
+
         private async Task GetVehicleList()
         {
             if (CheckConnection())
             {
-                //ShowLoading();
                 try
                 {
                     objServices = new List<ServicesModel>();
@@ -272,12 +262,10 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
                         pickuplat = PickupScheduleRequest.pickuplat,
                         pickuplon = PickupScheduleRequest.pickuplon,
                         pickup_id = PickupScheduleResponse.data,
-
                     };
                     var result = await TryWithErrorAsync(_userCoreService.GetVehicleList(vehicleListRequestModel, SettingsExtension.Token), true, false);
                     if (result?.ResultType == ResultType.Ok && result?.Data?.status == 200)
                     {
-
                         var vehList = new List<VehicleListData>();
                         VehicleListData vehicleListData = new VehicleListData();
                         AdditionalServices additionalServices = new AdditionalServices();
@@ -319,10 +307,7 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
                                 vehicleListData.vehicle_type = item.vehicle_type.Contains("\r\n") ? item?.vehicle_type.Replace("\r\n", "") : item?.vehicle_type;
                                 vehicleListData.weight_limit = item?.weight_limit;
                                 vehicleListData.VehicleImage = item?.image;
-                                // var img = string.IsNullOrEmpty(item?.image) ? await ImageHelper.GetStreamFormResource("camera.png") : await ImageHelper.GetImageFromUrl(item?.image);
-                                //vehicleListData.VehicleImage = ImageSource.FromStream(() => new MemoryStream(img));
                                 vehList.Add(vehicleListData);
-
                             }
                             VehicleList = new ObservableCollection<VehicleListData>(vehList);
                             VehicleListTemp = new ObservableCollection<VehicleListData>(vehList);
@@ -337,22 +322,15 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
                     {
                         ShowAlert(result?.Data?.message);
                     }
-                    //ShowAlert(result.Data.message);
                 }
                 catch (Exception ex)
                 {
                     HideLoading();
                     ShowToast(AppResources.ServerError);
                 }
-                //HideLoading();
             }
             else
                 ShowToast(AppResources.NoInternet);
-
         }
-        //public ICommand GoToAddMoreDetailsCmd => new Command(async () =>
-        //{
-        //    await RichNavigation.PushAsync(new AddMoreDetails(), typeof(AddMoreDetails));
-        //});
     }
 }

@@ -32,22 +32,26 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
         private IUserCoreService _userCoreService;
         private PickupScheduleRequestModel _pickupScheduleRequest;
         private DuraAddressCommonModel _duraAddressCommon;
+
         private PickupScheduleResponseModel _pickupScheduleResponse;
         public PickupScheduleResponseModel PickupScheduleResponse
         {
             get { return _pickupScheduleResponse; }
             set { _pickupScheduleResponse = value; OnPropertyChanged(nameof(PickupScheduleResponse)); }
         }
+
         public DuraAddressCommonModel DuraAddressCommon
         {
             get { return _duraAddressCommon; }
             set { _duraAddressCommon = value; OnPropertyChanged(nameof(DuraAddressCommon)); }
         }
+
         public PickupScheduleRequestModel PickupScheduleRequest
         {
             get { return _pickupScheduleRequest; }
             set { _pickupScheduleRequest = value; OnPropertyChanged(nameof(PickupScheduleRequest)); }
         }
+
         private ObservableCollection<PickupScheduleRequestStopModel> _stopAddressList = new ObservableCollection<PickupScheduleRequestStopModel>();
         public ObservableCollection<PickupScheduleRequestStopModel> StopAddressList
         {
@@ -58,30 +62,34 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
                 OnPropertyChanged(nameof(StopAddressList));
             }
         }
-        private bool _pickupScheduleLocTextVisible;
 
+        private bool _pickupScheduleLocTextVisible;
         private bool _isVisiblePickupLocationView;
         private bool _isVisibleWhereToView;
         private bool _isEnabledSelectVehicleButton;
         private string _pickupScheduleLocText = "Pick up schedule is missing*";
         private string _pickupScheduleLocTextFontFamily = "ProximaRegular";
         private Color _pickupScheduleLocTextColor = Color.Red;
+
         private bool _isVisibleAddStopView;
         public bool IsVisibleAddStopView
         {
             get { return _isVisibleAddStopView; }
             set { _isVisibleAddStopView = value; OnPropertyChanged(nameof(IsVisibleAddStopView)); }
         }
+
         public bool IsEnabledSelectVehicleButton
         {
             get { return _isEnabledSelectVehicleButton; }
             set { _isEnabledSelectVehicleButton = value; OnPropertyChanged(nameof(IsEnabledSelectVehicleButton)); }
         }
+
         public bool IsVisiblePickupLocationView
         {
             get { return _isVisiblePickupLocationView; }
             set { _isVisiblePickupLocationView = value; OnPropertyChanged(nameof(IsVisiblePickupLocationView)); }
         }
+
         public bool IsVisibleWhereToView
         {
             get { return _isVisibleWhereToView; }
@@ -98,17 +106,18 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
             get { return _pickupScheduleLocText; }
             set { _pickupScheduleLocText = value; OnPropertyChanged(nameof(PickupScheduleLocText)); }
         }
+
         public string PickupScheduleLocTextFontFamily
         {
             get { return _pickupScheduleLocTextFontFamily; }
             set { _pickupScheduleLocTextFontFamily = value; OnPropertyChanged(nameof(PickupScheduleLocTextFontFamily)); }
         }
+
         public Color PickupScheduleLocTextColor
         {
             get { return _pickupScheduleLocTextColor; }
             set { _pickupScheduleLocTextColor = value; OnPropertyChanged(nameof(PickupScheduleLocTextColor)); }
         }
-
 
         public TrackOrderViewModel(INavigationService navigationService, IUserCoreService userCoreService)
         {
@@ -122,8 +131,6 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
             GoToAddPickupLocationCmd = new AsyncCommand(GoToAddPickupLocationCmdExecute, allowsMultipleExecutions: false);
             GoToAddWhereToCmd = new AsyncCommand(GoToAddWhereToCmdExecute, allowsMultipleExecutions: false);
         }
-
-
 
         private async Task GoToAddWhereToCmdExecute()
         {
@@ -143,20 +150,6 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
 
         private async Task HideAddStopViewCommandExecute(PickupScheduleRequestStopModel arg)
         {
-            #region Commented code
-            //IsVisibleAddStopView = false;
-            //if (!IsVisibleAddStopView)
-            //{
-            //    PickupScheduleRequest.stoplat = 0;
-            //    PickupScheduleRequest.stoplon = 0;
-            //    PickupScheduleRequest.stop_address1 = string.Empty;
-            //    PickupScheduleRequest.stop_address2 = string.Empty;
-            //    PickupScheduleRequest.stop_mobile = string.Empty;
-            //    PickupScheduleRequest.stop_name = string.Empty;
-
-            //}
-            //CheckButtonEnaled();
-            #endregion
             ShowLoading();
             try
             {
@@ -168,7 +161,6 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
                     if (finalList != null && finalList.Count > 0)
                     {
                         var lst = new List<PickupScheduleRequestStopModel>();
-
                         foreach (var item in finalList)
                         {
                             id = id + 1;
@@ -191,7 +183,6 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
             {
 
             }
-
             HideLoading();
         }
 
@@ -211,6 +202,7 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
                 PickupScheduleLocTextColor = Color.Red;
                 PickupScheduleLocTextVisible = true;
             }
+
             PickupScheduleRequest = new PickupScheduleRequestModel();
             PickupScheduleRequest = App.Locator.WhereTo.PickupScheduleRequest;
             if (PickupScheduleRequest != null)
@@ -242,13 +234,8 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
                 {
                     IsVisibleWhereToView = false;
                 }
-
             }
-
             CheckButtonEnaled();
-
-
-
         }
 
         private void CheckButtonEnaled()
@@ -265,11 +252,6 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
 
         private async Task GoToPickupScheduleCmdExecute()
         {
-            //if (_navigationService.GetCurrentPageViewModel() != typeof(PickupScheduleViewModel))
-            //{
-            //    await _navigationService.NavigateToAsync<PickupScheduleViewModel>();
-            //    await App.Locator.PickupSchedule.InitilizeData();
-            //}
             if (_navigationService.GetCurrentPageViewModel() != typeof(PickupSchedulePopUp))
             {
                 await PopupNavigation.Instance.PushAsync(new PickupSchedulePopUp());
@@ -302,6 +284,7 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
                 await App.Locator.AddStopLocation.InitilizeData();
             }
         }
+
         private async Task GoToSelectVehicleCmdExecute()
         {
             if (CheckConnection())
@@ -377,7 +360,6 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
             }
             else
                 ShowToast(AppResources.NoInternet);
-
         }
     }
 }

@@ -378,7 +378,6 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
                         });
                         ProductImage = ImageHelper.ReadToEnd(file.GetStream());
                     });
-
                 }
             }
         }
@@ -532,7 +531,6 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
                                     }
                                     catch (Exception ex)
                                     {
-                                        //ShowToast(CommonMessages.ServerError);
                                     }
                                 }
                                 else
@@ -560,7 +558,6 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
             }
             else
                 ShowToast(AppResources.NoInternet);
-
         }
     }
 }

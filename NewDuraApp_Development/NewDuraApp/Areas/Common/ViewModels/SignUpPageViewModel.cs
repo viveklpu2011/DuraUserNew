@@ -57,6 +57,7 @@ namespace NewDuraApp.Areas.Common.ViewModels
                 OnPropertyChanged(nameof(IsEmailErrorVisible));
             }
         }
+
         public bool IsPasswordErrorVisible
         {
             get { return _isPasswordErrorVisible; }
@@ -66,6 +67,7 @@ namespace NewDuraApp.Areas.Common.ViewModels
                 OnPropertyChanged(nameof(IsPasswordErrorVisible));
             }
         }
+
         public bool IsConfirmPasswordErrorVisible
         {
             get { return _isConfirmPasswordErrorVisible; }
@@ -75,6 +77,7 @@ namespace NewDuraApp.Areas.Common.ViewModels
                 OnPropertyChanged(nameof(IsConfirmPasswordErrorVisible));
             }
         }
+
         private int _SelectedItemIndex;
         public int SelectedItemIndex
         {
@@ -84,6 +87,7 @@ namespace NewDuraApp.Areas.Common.ViewModels
                 SetProperty(ref _SelectedItemIndex, value);
             }
         }
+
         public bool IsAreaErrorVisible
         {
             get { return _isAreaErrorVisible; }
@@ -98,6 +102,7 @@ namespace NewDuraApp.Areas.Common.ViewModels
             get { return _emailNotValid; }
             set { _emailNotValid = value; OnPropertyChanged(nameof(EmailNotValid)); }
         }
+
         public bool PasswordNotValid
         {
             get { return _passwordNotValid; }
@@ -107,6 +112,7 @@ namespace NewDuraApp.Areas.Common.ViewModels
                 OnPropertyChanged(nameof(PasswordNotValid));
             }
         }
+
         public bool ConfirmPasswordNotValid
         {
             get { return _confirmPasswordNotValid; }
@@ -116,6 +122,7 @@ namespace NewDuraApp.Areas.Common.ViewModels
                 OnPropertyChanged(nameof(ConfirmPasswordNotValid));
             }
         }
+
         public bool IsSignupButtoinEnabled
         {
             get { return _isSignupButtoinEnabled; }
@@ -125,6 +132,7 @@ namespace NewDuraApp.Areas.Common.ViewModels
                 OnPropertyChanged(nameof(IsSignupButtoinEnabled));
             }
         }
+
         public bool IsAcceptTerms
         {
             set
@@ -135,6 +143,7 @@ namespace NewDuraApp.Areas.Common.ViewModels
             }
             get => _isAcceptTerms;
         }
+
         public SignupRequestModel SignupRequestModelVM
         {
             set
@@ -144,6 +153,7 @@ namespace NewDuraApp.Areas.Common.ViewModels
             }
             get => _signupRequestModelVM;
         }
+
         public string Email
         {
             get { return _email; }
@@ -165,6 +175,7 @@ namespace NewDuraApp.Areas.Common.ViewModels
                 OnPropertyChanged(nameof(Email));
             }
         }
+
         private bool _isPhoneNumberEmpty;
         public bool IsPhoneNumberEmpty
         {
@@ -229,6 +240,7 @@ namespace NewDuraApp.Areas.Common.ViewModels
                 OnPropertyChanged(nameof(Password));
             }
         }
+
         public string ConfirmPassword
         {
             get { return _confirmPassword; }
@@ -242,7 +254,6 @@ namespace NewDuraApp.Areas.Common.ViewModels
                     else
                         IsConfirmPasswordErrorVisible = true;
                     CheckLoginValidation();
-
                 }
                 else
                 {
@@ -251,6 +262,7 @@ namespace NewDuraApp.Areas.Common.ViewModels
                 OnPropertyChanged(nameof(ConfirmPassword));
             }
         }
+
         string selectedColorName;
         public string SelectedColorName
         {
@@ -265,6 +277,7 @@ namespace NewDuraApp.Areas.Common.ViewModels
                 }
             }
         }
+
         public ObservableCollection<NewLocationDataResponse> AllLocationList
         {
             get { return _allLocationList; }
@@ -289,12 +302,11 @@ namespace NewDuraApp.Areas.Common.ViewModels
                         IsAreaErrorVisible = true;
                 }
                 CheckLoginValidation();
-
                 this.OnPropertyChanged(nameof(SelectedLocation));
             }
         }
-        private FacebookResponseModel _facebookResponse;
 
+        private FacebookResponseModel _facebookResponse;
         public FacebookResponseModel FacebookResponse
         {
             get { return _facebookResponse; }
@@ -310,8 +322,8 @@ namespace NewDuraApp.Areas.Common.ViewModels
             BackToLoginCmd = new AsyncCommand(BackToLogin);
             GoToGetOTPCmd = new AsyncCommand(NavigateToGetOTP);
             GoToTermsCmd = new AsyncCommand(NavigateToTerms);
-
         }
+
         private async Task OnLoginWithFacebookCommandExecute()
         {
             try
@@ -334,7 +346,6 @@ namespace NewDuraApp.Areas.Common.ViewModels
                                 Name = $"{facebookProfile.FirstName} {facebookProfile.LastName}",
                                 Id = facebookProfile.Id
                             };
-                            //send to homepage code
                             break;
                         case FacebookActionStatus.Canceled:
                             break;
@@ -372,7 +383,6 @@ namespace NewDuraApp.Areas.Common.ViewModels
                     var phone = string.IsNullOrEmpty(facebookRequest?.phone) ? "" : facebookRequest?.phone;
                     var firstName = string.IsNullOrEmpty(facebookRequest?.first_name) ? "" : facebookRequest?.first_name;
                     var lastName = string.IsNullOrEmpty(facebookRequest?.last_name) ? "" : facebookRequest?.last_name;
-
                     form.Add(new StringContent(Convert.ToString(facebookRequest?.email)), "email");
                     form.Add(new StringContent(Convert.ToString(firstName)), "first_name");
                     form.Add(new StringContent(Convert.ToString(lastName)), "last_name");
@@ -406,11 +416,9 @@ namespace NewDuraApp.Areas.Common.ViewModels
                         await App.Locator.HomePage.InitilizefbData(FacebookResponse);
                         await _navigationService.NavigateToAsync<AppShellViewModel>();
                         await App.Locator.HomePage.CheckAccountIsVerified();
-                        //ShowToast("Login successful");
                     }
                     else
                     {
-                        //ShowAlert(result.Data.message, "Error", "Ok");
                     }
                 }
             }
@@ -495,7 +503,6 @@ namespace NewDuraApp.Areas.Common.ViewModels
             };
             SignupRequestModelVM = new SignupRequestModel();
             SignupRequestModelVM = signupRequestModel;
-
             if (_navigationService.GetCurrentPageViewModel() != typeof(SendOTPPageViewModel))
             {
                 App.Locator.CurrentUser.SendWay = SendInvite.LOGIN_WAY.ToString();

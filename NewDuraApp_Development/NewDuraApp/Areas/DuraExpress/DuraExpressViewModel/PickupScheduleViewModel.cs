@@ -116,8 +116,8 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
             get { return _laterIsCheck; }
             set { _laterIsCheck = value; OnPropertyChanged(); }
         }
-        private bool _isAsaspSelected;
 
+        private bool _isAsaspSelected;
         public bool IsAsaspSelected
         {
             get { return _isAsaspSelected; }
@@ -189,10 +189,8 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
             {
                 _type = "ASAP";
                 _date = $"{DateTime.Now.Date.ToString("yyyy-MM-dd")} {DateTime.Now.ToString("HH:mm")}";
-
                 App.Locator.DuraExpress.PickupScheduleLocTextVisible = true;
                 App.Locator.DuraExpress.PickupScheduleLocText = $"ASAP- Date: {DateTime.Now.Date.ToString("ddd, MMM d, yyyy")}, Time: {DateTime.Now.TimeOfDay.Hours}:{DateTime.Now.TimeOfDay.Minutes}";
-
                 App.Locator.TrackOrder.PickupScheduleLocTextVisible = true;
                 App.Locator.TrackOrder.PickupScheduleLocText = $"ASAP- Date: {DateTime.Now.Date.ToString("ddd, MMM d, yyyy")}, Time: {DateTime.Now.TimeOfDay.Hours}:{DateTime.Now.TimeOfDay.Minutes}";
             }
@@ -200,10 +198,8 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
             {
                 _type = "Later";
                 _date = $"{DatePick.Date.ToString("yyyy-MM-dd")} {PickTime.Hours}:{PickTime.Minutes}";
-
                 App.Locator.DuraExpress.PickupScheduleLocTextVisible = true;
                 App.Locator.DuraExpress.PickupScheduleLocText = $"Later- Date: {DatePick.Date.ToString("ddd, MMM d, yyyy")}, Time: {PickTime.Hours}:{PickTime.Minutes}";
-
                 App.Locator.TrackOrder.PickupScheduleLocTextVisible = true;
                 App.Locator.TrackOrder.PickupScheduleLocText = $"Later- Date: {DatePick.Date.ToString("ddd, MMM d, yyyy")}, Time: {PickTime.Hours}:{PickTime.Minutes}";
             }
@@ -223,6 +219,5 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
         {
             ishowtoast = true;
         }
-
     }
 }

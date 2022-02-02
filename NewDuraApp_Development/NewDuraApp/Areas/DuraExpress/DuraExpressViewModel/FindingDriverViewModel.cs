@@ -45,6 +45,7 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
                 OnPropertyChanged(nameof(DriverDetails));
             }
         }
+
         public string SearchText
         {
             get { return _searchText; }
@@ -192,13 +193,11 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
                 }
                 catch (Exception ex)
                 {
-                    //ShowToast(CommonMessages.ServerError);
                 }
                 HideLoading();
             }
             else
                 ShowToast(AppResources.NoInternet);
-
         }
 
         internal async Task InitilizeData()

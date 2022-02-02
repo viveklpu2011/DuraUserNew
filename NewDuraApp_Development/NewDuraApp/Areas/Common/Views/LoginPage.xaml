@@ -32,7 +32,10 @@
                             FontSize="20"
                             Text="{translate:Translate Login}"
                             TextColor="Black" />
-                        <Grid ColumnDefinitions="*" RowDefinitions="Auto,Auto,Auto">
+                        <Grid
+                            ColumnDefinitions="*"
+                            IsVisible="False"
+                            RowDefinitions="Auto,Auto,Auto">
                             <control:CustomPicker
                                 Title="{translate:Translate ChooseLocation}"
                                 Grid.Row="0"
@@ -45,7 +48,6 @@
                                 SelectedItem="{Binding SelectedCountries}"
                                 TextColor="Black"
                                 TitleColor="{StaticResource PlaceholderColor}" />
-
                             <BoxView
                                 Grid.Row="1"
                                 Grid.Column="0"
@@ -126,7 +128,6 @@
                                 BackgroundColor="{StaticResource BorderColor}"
                                 HeightRequest="1"
                                 HorizontalOptions="FillAndExpand" />
-
                             <Label
                                 Grid.Row="2"
                                 Grid.Column="2"
@@ -146,7 +147,6 @@
                                 PlaceholderColor="{StaticResource PlaceholderColor}"
                                 Text="{Binding Email}"
                                 TextColor="Black" />
-
                             <BoxView
                                 Grid.Row="1"
                                 BackgroundColor="{StaticResource BorderColor}"
@@ -329,6 +329,5 @@
                 </Label.FormattedText>
             </Label>
         </Grid>
-
     </ContentPage.Content>
 </ContentPage>

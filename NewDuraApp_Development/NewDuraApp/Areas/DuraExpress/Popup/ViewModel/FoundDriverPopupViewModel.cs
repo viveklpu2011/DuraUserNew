@@ -33,6 +33,7 @@ namespace NewDuraApp.Areas.DuraExpress.Popup.ViewModel
             get { return _productImage; }
             set { _productImage = value; OnPropertyChanged(nameof(ProductImage)); }
         }
+
         private ImageSource _profileImage;
         public ImageSource ProfileImage
         {
@@ -64,8 +65,6 @@ namespace NewDuraApp.Areas.DuraExpress.Popup.ViewModel
                 await PopupNavigation.PopAsync();
                 await _navigationService.NavigateToAsync<OrderDetailsViewModel>();
                 await App.Locator.OrderDetails.InitilizeData();
-
-
             }
         }
 
@@ -76,11 +75,5 @@ namespace NewDuraApp.Areas.DuraExpress.Popup.ViewModel
                 DriverDetails = getDriverDetailsModel;
             }
         }
-
-        //public ICommand GoToOrderDetailsCmd => new Command(async () =>
-        //{
-        //    await RichNavigation.PushAsync(new OrderDetails(), typeof(OrderDetails));
-        //    await PopupNavigation.PopAsync();
-        //});
     }
 }

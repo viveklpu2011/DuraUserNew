@@ -29,7 +29,6 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
         public IAsyncCommand GoToWhereCmd { get; set; }
         private Map _mapPickupLocation;
         private string _address1;
-
         public IAsyncCommand OpenMapCommand { get; set; }
         private Position position;
         public Position Position
@@ -217,7 +216,6 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
             ExecuteSetAddress = new Command<Position>(async (position) => await SetAddress(position));
             ExecuteSetPosition = new Command(async () => await SetPosition(Address1));
             InitilizeData();
-
         }
 
         private async Task OpenMapCommandExecute()
@@ -271,7 +269,6 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
                     Helpers.CommonHelper.CurrentLongPick = p.Longitude;
                     Address1 = $"{addrs.SubLocality} {addrs.SubAdminArea} {addrs.PostalCode} {addrs.Locality} {addrs.CountryName}";
                 }
-
                 Position = p;
                 HideLoading();
             }
@@ -386,7 +383,6 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
                             HideLoading();
                         });
             }
-
         }
 
     }

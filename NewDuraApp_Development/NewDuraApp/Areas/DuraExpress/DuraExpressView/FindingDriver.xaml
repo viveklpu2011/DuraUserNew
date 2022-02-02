@@ -57,8 +57,6 @@
                     IsVisible="{Binding IsVisibleSearchImage}"
                     VerticalOptions="CenterAndExpand"
                     WidthRequest="70">
-
-
                     <Image
                         HeightRequest="50"
                         HorizontalOptions="CenterAndExpand"

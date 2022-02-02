@@ -15,7 +15,6 @@ namespace NewDuraApp.Areas.DuraExpress.Popup.ViewModel
         {
             _navigationService = navigationService;
             GoToDuraExpressCmd = new AsyncCommand(GoToDuraExpressCmdExecute, allowsMultipleExecutions: false);
-
         }
 
         private async Task GoToDuraExpressCmdExecute()
@@ -26,11 +25,5 @@ namespace NewDuraApp.Areas.DuraExpress.Popup.ViewModel
                 await PopupNavigation.PopAsync();
             }
         }
-
-        //public ICommand GoToDuraExpressCmd => new Command(async (obj) =>
-        //{
-        //    await RichNavigation.PushAsync(new DuraExpress(), typeof(DuraExpress));
-        //    await PopupNavigation.PopAsync();
-        //});
     }
 }

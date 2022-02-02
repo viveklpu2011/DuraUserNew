@@ -73,18 +73,21 @@ namespace NewDuraApp.Areas.Orders.ViewModels
                 OnPropertyChanged(nameof(PickUpId));
             }
         }
+
         private bool _isLoading;
         public bool IsLoading
         {
             get => _isLoading;
             set { _isLoading = value; OnPropertyChanged(); }
         }
+
         private bool _isEmpty = false;
         public bool IsEmpty
         {
             get => _isEmpty;
             set { _isEmpty = value; OnPropertyChanged(); }
         }
+
         private bool _isOnLoad;
         public bool IsOnLoad
         {
@@ -95,6 +98,7 @@ namespace NewDuraApp.Areas.Orders.ViewModels
                 OnPropertyChanged(nameof(IsOnLoad));
             }
         }
+
         private bool _isNoRecord = true;
         public bool IsNoRecord
         {
@@ -122,15 +126,15 @@ namespace NewDuraApp.Areas.Orders.ViewModels
             get { return _dureExpressOrderList; }
             set { _dureExpressOrderList = value; OnPropertyChanged(nameof(DuraExpressOrderList)); }
         }
-        private ObservableCollection<MyOrdersModel> _orderList;
 
+        private ObservableCollection<MyOrdersModel> _orderList;
         public ObservableCollection<MyOrdersModel> OrderList
         {
             get { return _orderList; }
             set { _orderList = value; OnPropertyChanged(); }
         }
-        private ObservableCollection<MyOrdersModel> _completedOrderList;
 
+        private ObservableCollection<MyOrdersModel> _completedOrderList;
         public ObservableCollection<MyOrdersModel> CompletedOrderList
         {
             get { return _completedOrderList; }
@@ -138,12 +142,12 @@ namespace NewDuraApp.Areas.Orders.ViewModels
         }
 
         private ObservableCollection<MyOrdersModel> _duraEatsOrderList;
-
         public ObservableCollection<MyOrdersModel> DuraEatsOrderList
         {
             get { return _duraEatsOrderList; }
             set { _duraEatsOrderList = value; OnPropertyChanged(); }
         }
+
         private bool _isRefreshing;
         public bool IsRefreshing
         {
@@ -219,8 +223,6 @@ namespace NewDuraApp.Areas.Orders.ViewModels
                     GetPickupData.status = arg.status;
                     await App.Locator.OrderDetails2.InitilizeData(GetPickupData, false);
                     await Shell.Current.GoToAsync("OrderDetails2");
-
-
                 }
             }
             catch (Exception ex)
@@ -239,15 +241,12 @@ namespace NewDuraApp.Areas.Orders.ViewModels
                     GetPickupData.pickup_id = arg.pickup_id;
                     await App.Locator.OrderDetails2.InitilizeData(GetPickupData, false);
                     await Shell.Current.GoToAsync("OrderDetails2");
-
-
                 }
             }
             catch (Exception ex)
             {
 
             }
-
         }
 
         private ObservableCollection<MyOrdersModel> GetDuraEatsOrderList()
@@ -297,6 +296,7 @@ namespace NewDuraApp.Areas.Orders.ViewModels
                 await _navigationService.NavigateToAsync<RatingAndReviewsPageViewModel>();
             }
         }
+
         private async Task GoToRateCmdExecute()
         {
             if (_navigationService.GetCurrentPageViewModel() != typeof(RateandReviewViewModel))
@@ -304,6 +304,7 @@ namespace NewDuraApp.Areas.Orders.ViewModels
                 await _navigationService.NavigateToAsync<RateandReviewViewModel>();
             }
         }
+
         private async Task GoToTrackOrderCmdExecute(MyOrdersModel myOrdersModel)
         {
             if (_navigationService.GetCurrentPageViewModel() != typeof(TrackOrderShopViewModel))
@@ -349,8 +350,8 @@ namespace NewDuraApp.Areas.Orders.ViewModels
                 },
             };
         }
-        private ObservableCollection<OrderStatusModel> _orderStatusList;
 
+        private ObservableCollection<OrderStatusModel> _orderStatusList;
         public ObservableCollection<OrderStatusModel> OrderStatusList
         {
             get { return _orderStatusList; }
@@ -365,13 +366,11 @@ namespace NewDuraApp.Areas.Orders.ViewModels
                 {
                     ChooseOrderStatus=OrderStatusType.Pending.ToString(),
                     OrderId=OrderStatusType.Pending
-
                 } ,
                 new OrderStatusModel()
                 {
                     ChooseOrderStatus=OrderStatusType.Ongoing.ToString(),
                     OrderId=OrderStatusType.Ongoing
-
                 },
                 new OrderStatusModel()
                 {
@@ -387,22 +386,19 @@ namespace NewDuraApp.Areas.Orders.ViewModels
         }
 
         private bool _selectedOrderStatus;
-
         public bool SelectedOrderStatus
         {
             get { return _selectedOrderStatus; }
             set { _selectedOrderStatus = value; OnPropertyChanged(); }
         }
 
-
         public async Task InitilizeDataMyOrder()
         {
-            //_isEmpty = false;
-            //_isNoRecord = true;
             PageNo = 1;
             OrderStatus = OrderStatusType.Pending;
             await GetDuraExpressOrderNew(OrderStatus);
         }
+
         private async Task RemainThresholdReachCommandExecute()
         {
             if (DuraExpressOrderList.Count > 0)
@@ -412,110 +408,19 @@ namespace NewDuraApp.Areas.Orders.ViewModels
                     isSamePageNumber = false;
                     PageNo = PageNo + 1;
                     await GetDuraExpressOrder(OrderStatus, PageNo);
-
                 }
             }
         }
-        //public async Task GetDuraExpressOrder(OrderStatusType status, int pageno = 1)
-        //{
-        //    if (!_isAllItemLoaded && !_isLock)
-        //    {
-        //        IsLoading = _isLock = true;
-        //        if (CheckConnection())
-        //        {
 
-        //            try
-        //            {
-        //                int id = (int)status;
-        //                if (pageno == 1)
-        //                {
-        //                    _isEmpty = false;
-        //                    _isNoRecord = true;
-        //                    DuraExpressOrderList = new ObservableCollection<MyOrderResponse>(lstOrderList);
-        //                    lstOrderList = new List<MyOrderResponse>();
-        //                }
-        //                var form = new MultipartFormDataContent();
-        //                form.Add(new StringContent(Convert.ToString(SettingsExtension.UserId)), "user_id");
-        //                form.Add(new StringContent(Convert.ToString(id)), "status");
-        //                form.Add(new StringContent(Convert.ToString(pageno)), "page_id");
-        //                form.Add(new StringContent(Convert.ToString(PageSize)), "totalcount");
-        //                //_ = Task.Run(async () => {
-        //                //ShowToast("Please wait.....");
-        //                var result = await TryWithErrorAsync(_userCoreService.GetMyOrder(form, SettingsExtension.Token), true, false);
-
-        //                if (result?.ResultType == ResultType.Ok && result.Data.status == 200)
-        //                {
-        //                    if (result?.Data?.data != null && result?.Data?.data.Count > 0)
-        //                    {
-        //                        IsOnLoad = false;
-        //                        Device.BeginInvokeOnMainThread(() =>
-        //                        {
-        //                            if (result?.Data?.data.Count < PageSize)
-        //                                _isAllItemLoaded = _isLock = true;
-
-        //                            if (result?.Data?.data.Count > 0)
-        //                            {
-        //                                IsEmpty = false;
-        //                                IsNoRecord = false;
-        //                                foreach (var student in result?.Data?.data)
-        //                                {
-        //                                    DuraExpressOrderList.Add(student);
-        //                                }
-        //                            }
-        //                            _isLock = IsLoading = false;
-        //                        });
-
-        //                    }
-        //                }
-        //                else if (result?.ResultType == ResultType.Unauthorized)
-        //                {
-        //                    IsEmpty = true;
-        //                    IsNoRecord = false;
-        //                    DuraExpressOrderList = new ObservableCollection<MyOrderResponse>(lstOrderList);
-        //                    lstOrderList = new List<MyOrderResponse>();
-
-        //                    await LogoutHelper.LogoutOnTokenExpire("Token expire, you will be redirected to login");
-        //                }
-        //                else
-        //                {
-        //                    IsEmpty = true;
-        //                    IsNoRecord = false;
-        //                    DuraExpressOrderList = new ObservableCollection<MyOrderResponse>(lstOrderList);
-        //                    lstOrderList = new List<MyOrderResponse>();
-
-        //                }
-        //                //});
-        //                //ShowAlert(result?.Data?.message, result?.Data?.message);
-        //            }
-        //            catch (Exception ex)
-        //            {
-        //                IsOnLoad = false;
-        //                IsEmpty = true;
-        //                //ShowAlert(CommonMessages.ServerError);
-        //            }
-        //            HideLoading();
-        //        }
-        //        else
-        //        {
-        //            IsOnLoad = false;
-        //            ShowToast(CommonMessages.NoInternet);
-        //        }
-
-        //    }
-
-        //}
         public async Task GetDuraExpressOrder(OrderStatusType status, int pageno)
         {
             if (IsLoadingIndicator)
                 return;
-
             IsLoadingIndicator = true;
-
             if (CheckConnection())
             {
                 try
                 {
-
                     int id = (int)status;
                     var form = new MultipartFormDataContent();
                     form.Add(new StringContent(Convert.ToString(SettingsExtension.UserId)), "user_id");
@@ -524,14 +429,12 @@ namespace NewDuraApp.Areas.Orders.ViewModels
                     form.Add(new StringContent(Convert.ToString(PageSize)), "totalcount");
                     var listfoOrder = new List<MyOrderResponse>();
                     var result = await TryWithErrorAsync(_userCoreService.GetMyOrder(form, SettingsExtension.Token), true, false);
-
                     if (result?.ResultType == ResultType.Ok && result.Data.status == 200)
                     {
                         if (result?.Data?.data != null && result?.Data?.data.Count > 0)
                         {
                             if (result?.Data?.data.Count > 0)
                             {
-
                                 foreach (var student in result?.Data?.data)
                                 {
                                     listfoOrder.Add(student);
@@ -541,12 +444,10 @@ namespace NewDuraApp.Areas.Orders.ViewModels
                                     foreach (var item in listfoOrder)
                                     {
                                         DuraExpressOrderList.Add(item);
-
                                     }
                                     isSamePageNumber = true;
                                 }
                             }
-
                         }
                         if (DuraExpressOrderList.Count() == 0)
                         {
@@ -580,8 +481,6 @@ namespace NewDuraApp.Areas.Orders.ViewModels
                             DuraExpressOrderList = new ObservableCollection<MyOrderResponse>(lstOrderList);
                             lstOrderList = new List<MyOrderResponse>();
                         }
-
-
                     }
                 }
                 catch (Exception ex)
@@ -600,6 +499,7 @@ namespace NewDuraApp.Areas.Orders.ViewModels
                 ShowToast(AppResources.NoInternet);
             }
         }
+
         public async Task GetDuraExpressOrderNew(OrderStatusType status)
         {
             if (IsLoadingIndicator)
@@ -622,14 +522,11 @@ namespace NewDuraApp.Areas.Orders.ViewModels
                     form.Add(new StringContent(Convert.ToString(id)), "status");
                     form.Add(new StringContent(Convert.ToString(PageNo)), "page_id");
                     form.Add(new StringContent(Convert.ToString(4)), "totalcount");
-
                     var result = await TryWithErrorAsync(_userCoreService.GetMyOrder(form, SettingsExtension.Token), true, false);
-
                     if (result?.ResultType == ResultType.Ok && result.Data.status == 200)
                     {
                         if (result?.Data?.data != null && result?.Data?.data.Count > 0)
                         {
-
                             if (result?.Data?.data.Count > 0)
                             {
                                 IsOnLoad = false;
@@ -638,7 +535,6 @@ namespace NewDuraApp.Areas.Orders.ViewModels
                                     DuraExpressOrderList.Add(orderData);
                                 }
                                 isSamePageNumber = true;
-                                //PageNo = PageNo + 1;
                             }
                         }
                     }
@@ -657,7 +553,6 @@ namespace NewDuraApp.Areas.Orders.ViewModels
                         DuraExpressOrderList = new ObservableCollection<MyOrderResponse>(lstOrderList);
                         lstOrderList = new List<MyOrderResponse>();
                         ShowToast(result?.Data?.message);
-
                     }
                 }
                 catch (Exception ex)

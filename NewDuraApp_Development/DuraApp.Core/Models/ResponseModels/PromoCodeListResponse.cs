@@ -61,6 +61,4 @@ namespace DuraApp.Core.Models.ResponseModels
             }
         }
     }
-
-
 }

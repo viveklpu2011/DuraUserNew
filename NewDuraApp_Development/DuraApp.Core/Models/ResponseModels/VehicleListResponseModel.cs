@@ -31,12 +31,6 @@ namespace DuraApp.Core.Models.ResponseModels
         public List<AdditionalServices> services { get; set; }
         public ImageSource VehicleImage { get; set; }
         public byte[] ProductImage { get; set; }
-
-        //public ImageSource VehicleImage { get {
-
-        //        var imagedata = string.IsNullOrEmpty(image) ? ImageHelper.GetStreamFormResource("camera.png") : await ImageHelper.GetImageFromUrl(VehicleListSelectedData?.image);
-        //        return ImageSource.FromStream(() => new MemoryStream(ProductImage));
-        //    } }
     }
     public class AdditionalServices
     {
@@ -62,7 +56,6 @@ namespace DuraApp.Core.Models.ResponseModels
     public class PriceBreakUpList
     {
         public string km_fare;
-
         public string price { get; set; }
         public string distance { get; set; }
         public string tip { get; set; }

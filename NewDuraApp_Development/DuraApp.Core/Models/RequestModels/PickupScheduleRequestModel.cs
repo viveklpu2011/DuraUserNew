@@ -80,9 +80,18 @@ namespace DuraApp.Core.Models.RequestModels
         public string stop_address2 { get; set; }
         public string stop_name { get; set; }
         public string stop_mobile { get; set; }
+        public string ImageName { get; set; }
+        public bool IsVisibleLastBottomLine { get; set; } = true;
         public double stoplat { get; set; }
         public double stoplon { get; set; }
         public bool IsAvailableAddStopLocationLocation { get; set; }
+        public string CompleteStopAddress
+        {
+            get
+            {
+                return $"{stop_name.Trim()}- {stop_address1.Trim()} {stop_address2.Trim()}";
+            }
+        }
     }
     public class PickupScheduleRequestStopModelWithoutId
     {

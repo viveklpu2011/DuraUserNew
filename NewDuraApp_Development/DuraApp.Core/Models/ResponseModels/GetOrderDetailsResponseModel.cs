@@ -43,7 +43,6 @@ namespace DuraApp.Core.Models.ResponseModels
         public string vehicle { get; set; }
         public string username { get; set; }
         public long driver_id { get; set; }
-        //public string pickupstatus { get; set; }
         public string paymentmode { get; set; }
         public string orderdate { get; set; }
         public string status { get; set; }
@@ -68,7 +67,6 @@ namespace DuraApp.Core.Models.ResponseModels
                 OnPropertyChanged(nameof(displaystatustextcolor));
             }
         }
-
         public bool IsOngoingViewVisible
         {
             get

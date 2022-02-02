@@ -11,10 +11,8 @@ namespace DuraApp.Core.Models.ResponseModels
 
     public class Amount
     {
-
         public int id { get; set; }
         public string transactionid { get; set; }
-        //public string usertype { get; set; }
         public long user_id { get; set; }
         public string phone { get; set; }
         public string method { get; set; }
@@ -23,22 +21,6 @@ namespace DuraApp.Core.Models.ResponseModels
         public string description { get; set; }
         public string created_at { get; set; }
         public string updated_at { get; set; }
-        //public DateTime TransactionDate
-        //{
-        //    get
-        //    {
-
-        //        if (!string.IsNullOrEmpty(created_at))
-        //        {
-        //            return DateTime.Parse(created_at);
-        //        }
-        //        else
-        //        {
-        //            return DateTime.Now;
-        //        }
-
-        //    }
-        //}
         public bool IsCredited
         {
             get
@@ -67,28 +49,10 @@ namespace DuraApp.Core.Models.ResponseModels
                 }
             }
         }
-        //public string NewDateTime
-        //{
-        //    get
-        //    {
-        //        if (!string.IsNullOrEmpty(created_at))
-        //        {
-        //            DateTime dateTime = DateTime.Parse(created_at);
-        //            var newdate = dateTime.ToString("MMM dd yyyy");
-        //            var newtime = dateTime.ToString("HH:mm");
-        //            return $"{newdate} at {newtime}";
-        //        }
-        //        else
-        //        {
-        //            return "";
-        //        }
-        //    }
-        //}
     }
 
     public class GetWalletAmountResponseModel : CommonResponseModel
     {
         public List<Amount> data { get; set; }
     }
-
 }

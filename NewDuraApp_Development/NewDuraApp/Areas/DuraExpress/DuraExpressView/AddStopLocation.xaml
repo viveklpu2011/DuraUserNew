@@ -38,7 +38,6 @@
                 VerticalOptions="Center"
                 VerticalTextAlignment="Center" />
         </StackLayout>
-
     </Shell.TitleView>
     <ContentPage.Content>
         <Grid>

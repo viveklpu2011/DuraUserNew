@@ -1,4 +1,7 @@
 using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading.Tasks;
 using DuraApp.Core.Helpers;
 using DuraApp.Core.Helpers.Enums;
@@ -27,6 +30,7 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
         public IAsyncCommand GoToSelectVehicleCmd { get; set; }
         public IAsyncCommand GoToWhereCmd { get; set; }
         INavigationService _navigationService;
+        public IAsyncCommand<PickupScheduleRequestStopModel> HideAddStopView { get; set; }
         public ILocationService locationService => DependencyService.Get<ILocationService>();
         public IPlatformSpecificLocationService platFormLocationService => DependencyService.Get<IPlatformSpecificLocationService>();
 
@@ -36,6 +40,7 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
             get { return _pickupScheduleResponse; }
             set { _pickupScheduleResponse = value; OnPropertyChanged(nameof(PickupScheduleResponse)); }
         }
+
         private IUserCoreService _userCoreService;
         private PickupScheduleRequestModel _pickupScheduleRequest;
         public PickupScheduleRequestModel PickupScheduleRequest
@@ -43,30 +48,73 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
             get { return _pickupScheduleRequest; }
             set { _pickupScheduleRequest = value; OnPropertyChanged(nameof(PickupScheduleRequest)); }
         }
+
+        private bool _isVisibleMapMarkerDestination = true;
+        public bool IsVisibleMapMarkerDestination
+        {
+            get { return _isVisibleMapMarkerDestination; }
+            set
+            {
+                _isVisibleMapMarkerDestination = value;
+                OnPropertyChanged(nameof(IsVisibleMapMarkerDestination));
+            }
+        }
+
         private bool _addStopIsVisible;
         private bool _pickupScheduleLocTextVisible;
         private bool _pickupLocationTextVisible;
         private bool _pickupWhereToTextVisible;
-
         private string _pickupScheduleLocText;
         private string _pickupLocationText;
         private string _pickupWhereToText;
+
+        private ObservableCollection<PickupScheduleRequestStopModel> _stopAddressListTemp = new ObservableCollection<PickupScheduleRequestStopModel>();
+        public ObservableCollection<PickupScheduleRequestStopModel> StopAddressListTemp
+        {
+            get { return _stopAddressListTemp; }
+            set
+            {
+                _stopAddressListTemp = value;
+                OnPropertyChanged(nameof(StopAddressListTemp));
+            }
+        }
+
+        private ObservableCollection<PickupScheduleRequestStopModel> _stopAddressList = new ObservableCollection<PickupScheduleRequestStopModel>();
+        public ObservableCollection<PickupScheduleRequestStopModel> StopAddressList
+        {
+            get { return _stopAddressList; }
+            set
+            {
+                _stopAddressList = value;
+                OnPropertyChanged(nameof(StopAddressList));
+            }
+        }
+
+        private bool _isVisibleAddStopView;
+        public bool IsVisibleAddStopView
+        {
+            get { return _isVisibleAddStopView; }
+            set { _isVisibleAddStopView = value; OnPropertyChanged(nameof(IsVisibleAddStopView)); }
+        }
 
         public bool AddStopIsVisible
         {
             get { return _addStopIsVisible; }
             set { _addStopIsVisible = value; OnPropertyChanged(); }
         }
+
         public bool PickupScheduleLocTextVisible
         {
             get { return _pickupScheduleLocTextVisible; }
             set { _pickupScheduleLocTextVisible = value; OnPropertyChanged(nameof(PickupScheduleLocTextVisible)); }
         }
+
         public bool PickupLocationTextVisible
         {
             get { return _pickupLocationTextVisible; }
             set { _pickupLocationTextVisible = value; OnPropertyChanged(nameof(PickupLocationTextVisible)); }
         }
+
         public bool PickupWhereToTextVisible
         {
             get { return _pickupWhereToTextVisible; }
@@ -84,6 +132,7 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
             get { return _pickupLocationText; }
             set { _pickupLocationText = value; OnPropertyChanged(nameof(PickupLocationText)); }
         }
+
         public string PickupWhereToText
         {
             get { return _pickupWhereToText; }
@@ -99,10 +148,12 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
             GoToAddStopLocationCmd = new AsyncCommand(GoToAddStopLocationCmdExecute, allowsMultipleExecutions: false);
             GoToSelectVehicleCmd = new AsyncCommand(GoToSelectVehicleCmdExecute, allowsMultipleExecutions: false);
             GoToWhereCmd = new AsyncCommand(GoToWhereCmdExecute, allowsMultipleExecutions: false);
+            HideAddStopView = new AsyncCommand<PickupScheduleRequestStopModel>(HideAddStopViewCommandExecute, allowsMultipleExecutions: false);
             MessagingCenter.Subscribe<HomePageViewModel>(this, "FromHomePage", (sender) =>
             {
                 AddStopIsVisible = false;
             });
+
             MessagingCenter.Subscribe<WhereToViewModel>(this, "FromWhereTo", (sender) =>
             {
                 AddStopIsVisible = true;
@@ -114,9 +165,86 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
             PickupLocationText = string.Empty;
             PickupScheduleLocText = string.Empty;
             PickupWhereToText = string.Empty;
-
-            //await getCurrentPosition();
+            IsVisibleMapMarkerDestination = true;
+            StopAddressList = new ObservableCollection<PickupScheduleRequestStopModel>();
+            StopAddressListTemp = new ObservableCollection<PickupScheduleRequestStopModel>();
+            App.Locator.AddStopLocation.StopAddressList = new ObservableCollection<PickupScheduleRequestStopModel>();
+            App.Locator.AddStopLocation.StopAddressListTemp = new ObservableCollection<PickupScheduleRequestStopModel>();
+            App.Locator.AddStopLocation.stopid = 0;
         }
+
+        internal void CheckStopLocation()
+        {
+            if (App.Locator.AddStopLocation.PickupScheduleRequest.IsAvailableAddStopLocationLocation)
+            {
+                StopAddressListTemp = new ObservableCollection<PickupScheduleRequestStopModel>(App.Locator.AddStopLocation.StopAddressList);
+                if (StopAddressListTemp != null && StopAddressListTemp.Count > 0)
+                {
+                    StopAddressListTemp.Where(c => c.IsVisibleLastBottomLine == false).Select(c => { c.IsVisibleLastBottomLine = true; return c; }).ToList();
+                    StopAddressListTemp.Last().IsVisibleLastBottomLine = false;
+                    StopAddressList = new ObservableCollection<PickupScheduleRequestStopModel>(StopAddressListTemp);
+                    IsVisibleMapMarkerDestination = false;
+                    IsVisibleAddStopView = true;
+                }
+                else
+                    IsVisibleAddStopView = false;
+            }
+            else
+            {
+                IsVisibleAddStopView = false;
+            }
+        }
+
+        private async Task HideAddStopViewCommandExecute(PickupScheduleRequestStopModel arg)
+        {
+            ShowLoading();
+            try
+            {
+                int id = 0;
+                if (arg != null)
+                {
+                    StopAddressList.RemoveAt(StopAddressList.IndexOf(arg));
+                    if (StopAddressList.Count > 0)
+                    {
+                        StopAddressListTemp = new ObservableCollection<PickupScheduleRequestStopModel>(StopAddressList);
+                        StopAddressListTemp.Where(c => c.IsVisibleLastBottomLine == false).Select(c => { c.IsVisibleLastBottomLine = true; return c; }).ToList();
+                        StopAddressListTemp.Last().IsVisibleLastBottomLine = false;
+                        var finalList = StopAddressList;
+                        if (finalList != null && finalList.Count > 0)
+                        {
+                            var lst = new List<PickupScheduleRequestStopModel>();
+                            foreach (var item in finalList)
+                            {
+                                id = id + 1;
+                                item.StopId = id;
+                                item.StopText = $"Stop Location {id}";
+                                lst.Add(item);
+                            }
+                            if (lst != null && lst.Count > 0)
+                            {
+                                StopAddressList.Clear();
+                                StopAddressList = new ObservableCollection<PickupScheduleRequestStopModel>(lst);
+                                App.Locator.AddStopLocation.stopid = id;
+                                App.Locator.AddStopLocation.StopAddressList = StopAddressList;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        StopAddressList.Clear();
+                        App.Locator.AddStopLocation.stopid = id;
+                        App.Locator.AddStopLocation.StopAddressList = StopAddressList;
+                        IsVisibleMapMarkerDestination = true;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            HideLoading();
+        }
+
         public async Task<Location> getCurrentPosition()
         {
             Location location1 = new Location();
@@ -127,7 +255,6 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
                 if (location1 != null)
                 {
                     Console.WriteLine($"Latitude: {location1.Latitude}, Longitude: {location1.Longitude}, Altitude: {location1.Altitude}");
-
                 }
             }
             catch (FeatureNotSupportedException fnsEx)
@@ -152,107 +279,69 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
             }
             return location1;
         }
+
         private async Task GoToAddStopLocationCmdExecute()
         {
-            if (_navigationService.GetCurrentPageViewModel() != typeof(AddStopLocationViewModel))
+            if (PickupWhereToTextVisible && !string.IsNullOrEmpty(PickupWhereToText))
             {
-                App.DuraExpressTrackOrderWay = "AddStop";
-                await _navigationService.NavigateToAsync<AddStopLocationViewModel>();
-                await App.Locator.AddStopLocation.InitilizeData();
+                if (_navigationService.GetCurrentPageViewModel() != typeof(AddStopLocationViewModel))
+                {
+                    App.DuraExpressTrackOrderWay = "AddStop";
+                    await _navigationService.NavigateToAsync<AddStopLocationViewModel>();
+                    await App.Locator.AddStopLocation.InitilizeData();
+                }
+            }
+            else
+            {
+                ShowToast("Please select destination address");
             }
         }
+
         private async Task GoToSelectVehicleCmdExecute()
         {
             if (CheckValidation())
             {
                 await NavigateSelectVehicleCmdExecute();
             }
-            //if (!CheckValidation())
-            //{
-            //    await NavigateSelectVehicleCmdExecute();
-            //}
-
         }
+
         private async Task GoToWhereCmdExecute()
         {
-            //if (platFormLocationService != null)
-            //{
-            //    var statusLocationService = platFormLocationService.IsLocationServiceEnabled();
-            //    if (!statusLocationService)
-            //    {
-            //        ShowSettingToast("Location service not enabled", "Settings");
-            //        return;
-            //    }
-            //}
-            //var status = await locationService.CheckAndRequestLocationPermission();
-            //if (status == PermissionStatus.Granted)
-            //{
-            //    ShowLoading();
-            //    if (!App.Locator.HomePage.IsHavingFromSAvedAddress)
-            //    {
-            //        await App.Locator.HomePage.GetCurrentLoc();
-            //    }
-            //    if (_navigationService.GetCurrentPageViewModel() != typeof(WhereToViewModel))
-            //    {
-            App.DuraExpressTrackOrderWay = "WhereTo";
-            await _navigationService.NavigateToAsync<WhereToViewModel>();
-            await App.Locator.WhereTo.InitilizeData();
-            //    }
-            //    HideLoading();
-            //}
-            //else
-            //{
-            //    ShowToast("Permission not granted");
-            //}
-
-
+            if (PickupLocationTextVisible && !string.IsNullOrEmpty(PickupLocationText))
+            {
+                App.DuraExpressTrackOrderWay = "WhereTo";
+                await _navigationService.NavigateToAsync<WhereToViewModel>();
+                await App.Locator.WhereTo.InitilizeData();
+            }
+            else
+            {
+                ShowToast("Please select pickup location");
+            }
         }
+
         private async Task GoToPickupScheduleCmdExecute()
         {
-            //if (_navigationService.GetCurrentPageViewModel() != typeof(PickupScheduleViewModel))
-            //{
-            //    await _navigationService.NavigateToAsync<PickupScheduleViewModel>();
-            //    await App.Locator.PickupSchedule.InitilizeData();
-            //}
             if (_navigationService.GetCurrentPageViewModel() != typeof(PickupSchedulePopUp))
             {
                 await PopupNavigation.Instance.PushAsync(new PickupSchedulePopUp());
                 await App.Locator.PickupSchedule.InitilizeData();
             }
         }
+
         private async Task GoToPickupLocationCmdExecute()
         {
-            //if (platFormLocationService != null)
-            //{
-            //    var statusLocationService = platFormLocationService.IsLocationServiceEnabled();
-            //    if (!statusLocationService)
-            //    {
-            //        ShowSettingToast("Location service not enabled", "Settings");
-            //        return;
-            //    }
-            //}
-            //var status = await locationService.CheckAndRequestLocationPermission();
-            //if (status == PermissionStatus.Granted)
-            //{
-            //    ShowLoading();
-            //    if (!App.Locator.HomePage.IsHavingFromSAvedAddress)
-            //    {
-            //        await App.Locator.HomePage.GetCurrentLoc();
-            //    }
-            //if (_navigationService.GetCurrentPageViewModel() != typeof(PickupLocationViewModel))
-            //{
-            App.DuraExpressTrackOrderWay = "PickupLocation";
-            await _navigationService.NavigateToAsync<PickupLocationViewModel>();
-            await App.Locator.PickupLocation.InitilizeData();
-            //    HideLoading();
-            //}
-
-            //}
-            //else
-            //{
-            //    ShowToast("Permission not granted");
-            //}
+            if (PickupScheduleLocTextVisible && !string.IsNullOrEmpty(PickupScheduleLocText))
+            {
+                App.DuraExpressTrackOrderWay = "PickupLocation";
+                await _navigationService.NavigateToAsync<PickupLocationViewModel>();
+                await App.Locator.PickupLocation.InitilizeData();
+            }
+            else
+            {
+                ShowToast("Please select pickup schedule first");
+            }
         }
+
         private bool CheckValidation()
         {
             bool res = true;
@@ -276,7 +365,6 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
             {
                 ShowToast(error);
             }
-
             return res;
         }
 
@@ -284,16 +372,29 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
         {
             if (CheckConnection())
             {
-                //if (_navigationService.GetCurrentPageViewModel() != typeof(PaymentViewModel))
-                //{
-
-                //    await _navigationService.NavigateToAsync<PaymentViewModel>();
-                //    await App.Locator.Payment.InitilizeData();
-                //    //MessagingCenter.Send<AddMoreDetailsViewModel>(null, "FromAddMoreDetails");
-                //}
                 ShowLoading();
                 try
                 {
+                    List<PickupScheduleRequestStopModelWithoutId> lstStopAddress = new List<PickupScheduleRequestStopModelWithoutId>();
+                    PickupScheduleRequestStopModelWithoutId pickupScheduleRequestStopModelWithoutId = new PickupScheduleRequestStopModelWithoutId();
+                    if (StopAddressList != null && StopAddressList.Count > 0)
+                    {
+                        foreach (var item in StopAddressList)
+                        {
+                            pickupScheduleRequestStopModelWithoutId = new PickupScheduleRequestStopModelWithoutId();
+                            pickupScheduleRequestStopModelWithoutId.stoplat = item.stoplat;
+                            pickupScheduleRequestStopModelWithoutId.stoplon = item.stoplon;
+                            pickupScheduleRequestStopModelWithoutId.stop_address1 = item.stop_address1;
+                            pickupScheduleRequestStopModelWithoutId.stop_address2 = item.stop_address2;
+                            pickupScheduleRequestStopModelWithoutId.stop_name = item.stop_name;
+                            pickupScheduleRequestStopModelWithoutId.stop_mobile = item.stop_mobile;
+                            lstStopAddress.Add(pickupScheduleRequestStopModelWithoutId);
+                        }
+                    }
+                    else
+                    {
+                        lstStopAddress = null;
+                    }
                     PickupScheduleReqModel pickupScheduleRequestModel = new PickupScheduleReqModel
                     {
                         destinationlat = PickupScheduleRequest.destinationlat,
@@ -309,16 +410,10 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
                         pickup_address2 = PickupScheduleRequest.pickup_address2,
                         pickup_mobile = PickupScheduleRequest.pickup_mobile,
                         pickup_name = PickupScheduleRequest.pickup_name,
-
                         type = PickupScheduleRequest.type,
-                        user_id = SettingsExtension.UserId
+                        user_id = SettingsExtension.UserId,
+                        stopData = lstStopAddress
                     };
-                    //stoplat = PickupScheduleRequest.stoplat,
-                    //    stoplon = PickupScheduleRequest.stoplon,
-                    //    stop_address1 = PickupScheduleRequest.stop_address1,
-                    //    stop_address2 = PickupScheduleRequest.stop_address2,
-                    //    stop_mobile = PickupScheduleRequest.stop_mobile,
-                    //    stop_name = PickupScheduleRequest.stop_name,
                     var result = await TryWithErrorAsync(_userCoreService.PickupSchedule(pickupScheduleRequestModel, SettingsExtension.Token), true, false);
                     if (result?.ResultType == ResultType.Ok && result?.Data?.status == 200)
                     {
@@ -329,7 +424,6 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
                             PickupScheduleResponse = result?.Data;
                             App.Locator.SelectVehicle.InitilizeData();
                             await _navigationService.NavigateToAsync<SelectVehicleViewModel>();
-
                         }
                     }
                     else if (result?.ResultType == ResultType.Unauthorized)
@@ -340,7 +434,6 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
                     {
                         ShowAlert(result?.Data?.message);
                     }
-                    //ShowAlert(result.Data.message);
                 }
                 catch (Exception ex)
                 {
@@ -350,7 +443,6 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
             }
             else
                 ShowToast(AppResources.NoInternet);
-
         }
     }
 }

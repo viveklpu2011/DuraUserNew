@@ -16,5 +16,4 @@ namespace DuraApp.Core.Models.ResponseModels
         public string created_at { get; set; }
         public string updated_at { get; set; }
     }
-
 }

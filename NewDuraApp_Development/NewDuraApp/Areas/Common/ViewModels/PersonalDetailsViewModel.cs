@@ -23,42 +23,49 @@ namespace NewDuraApp.Areas.Common.ViewModels
         public IAsyncCommand PickImageCommand { get; set; }
         private SignupRequestModel _signupRequestModelVM;
         INavigationService _navigationService;
-        private byte[] _userImage;
         private bool _isFirstNameErrorVisible;
         private bool _isLastNameErrorVisible;
         private bool _isDoneButtonEnabled;
+
+        private byte[] _userImage;
         public byte[] UserImage
         {
             get { return _userImage; }
             set { _userImage = value; OnPropertyChanged(nameof(UserImage)); }
         }
+
         private ImageSource _profileImage;
         public ImageSource ProfileImage
         {
             get { return _profileImage; }
             set { _profileImage = value; OnPropertyChanged(nameof(ProfileImage)); }
         }
+
         public bool IsFirstNameErrorVisible
         {
             get { return _isFirstNameErrorVisible; }
             set { _isFirstNameErrorVisible = value; OnPropertyChanged(nameof(IsFirstNameErrorVisible)); }
         }
+
         public bool IsLastNameErrorVisible
         {
             get { return _isLastNameErrorVisible; }
             set { _isLastNameErrorVisible = value; OnPropertyChanged(nameof(IsLastNameErrorVisible)); }
         }
+
         private bool _isProfilePic;
         public bool IsProfilePic
         {
             get { return _isProfilePic; }
             set { _isProfilePic = value; OnPropertyChanged(nameof(IsProfilePic)); }
         }
+
         public bool IsDoneButtonEnabled
         {
             get { return _isDoneButtonEnabled; }
             set { _isDoneButtonEnabled = value; OnPropertyChanged(nameof(IsDoneButtonEnabled)); }
         }
+
         public SignupRequestModel SignupRequestModelVM
         {
             set
@@ -68,6 +75,7 @@ namespace NewDuraApp.Areas.Common.ViewModels
             }
             get => _signupRequestModelVM;
         }
+
         public PersonalDetailsViewModel(INavigationService navigationService)
         {
             _navigationService = navigationService;
@@ -76,6 +84,7 @@ namespace NewDuraApp.Areas.Common.ViewModels
             IsProfilePic = false;
             ProfileImage = ImageHelper.GetImageNameFromResource("user_pic_placeholder.png");
         }
+
         private async Task GoToReferralCmdExecute()
         {
             if (_navigationService.GetCurrentPageViewModel() != typeof(ReferralCodeViewModel))
@@ -95,12 +104,14 @@ namespace NewDuraApp.Areas.Common.ViewModels
                 FirstName = LastName = string.Empty;
             }
         }
+
         private string _profilepic;
         public string Profilepic
         {
             get { return _profilepic; }
             set { _profilepic = value; OnPropertyChanged(nameof(Profilepic)); }
         }
+
         private string _firstName;
         public string FirstName
         {
@@ -123,6 +134,7 @@ namespace NewDuraApp.Areas.Common.ViewModels
                 OnPropertyChanged(nameof(FirstName));
             }
         }
+
         private string _lastName;
         public string LastName
         {
@@ -145,6 +157,7 @@ namespace NewDuraApp.Areas.Common.ViewModels
                 OnPropertyChanged(nameof(LastName));
             }
         }
+
         private bool _firstNameNotValid;
         public bool FirstNameNotValid
         {
@@ -155,6 +168,7 @@ namespace NewDuraApp.Areas.Common.ViewModels
                 OnPropertyChanged(nameof(FirstNameNotValid));
             }
         }
+
         private bool _lasttNameNotValid;
         public bool LastNameNotValid
         {
@@ -184,9 +198,9 @@ namespace NewDuraApp.Areas.Common.ViewModels
                 return true;
             }
         }
+
         private async Task PickImage()
         {
-            //var res = await ShowCameraActionSheet();
             var res = await ShowCameraPopup();
             if (res != null)
             {
@@ -201,7 +215,6 @@ namespace NewDuraApp.Areas.Common.ViewModels
                             {
                                 ShowToast("Camera Permission Required");
                             }
-
                             status = await CrossPermissions.Current.RequestPermissionAsync<CameraPermission>();
                         }
                         if (status == PermissionStatus.Granted)
@@ -214,7 +227,6 @@ namespace NewDuraApp.Areas.Common.ViewModels
                                     ShowAlert("No Camera", ":( No camera avaialble.", "OK");
                                     return;
                                 }
-
                                 var file = await CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions
                                 {
                                     PhotoSize = Plugin.Media.Abstractions.PhotoSize.Small,
@@ -222,7 +234,6 @@ namespace NewDuraApp.Areas.Common.ViewModels
                                     CompressionQuality = 92,
                                     Name = "test.jpg"
                                 });
-
                                 if (file == null)
                                     return;
 
@@ -246,9 +257,7 @@ namespace NewDuraApp.Areas.Common.ViewModels
                     }
                     catch (Exception ex)
                     {
-                        //Something went wrong
                     }
-
                 }
                 else if (res.Item1 == ProfilePicSelectionType.Gallery)
                 {
@@ -257,7 +266,6 @@ namespace NewDuraApp.Areas.Common.ViewModels
                         ShowAlert("Photos Not Supported", ":( Permission not granted to photos.", "OK");
                         return;
                     }
-                    // replace with below commented code if needed
                     Device.BeginInvokeOnMainThread(async () =>
                     {
                         var file = await Plugin.Media.CrossMedia.Current.PickPhotoAsync(new Plugin.Media.Abstractions.PickMediaOptions
@@ -268,39 +276,16 @@ namespace NewDuraApp.Areas.Common.ViewModels
                         await Task.Delay(1000);
                         if (file == null)
                             return;
-
                         ProfileImage = ImageSource.FromStream(() =>
                         {
                             var stream = file.GetStream();
                             return stream;
                         });
-
                         UserImage = ImageHelper.ReadToEnd(file.GetStream());
                         IsProfilePic = true;
                     });
-
                 }
-
             }
-
-            //var result = await FilePicker.PickAsync();
-            //if (result != null)
-            //{
-            //    if (result.FileName.EndsWith("jpg", StringComparison.OrdinalIgnoreCase) ||
-            //        result.FileName.EndsWith("png", StringComparison.OrdinalIgnoreCase))
-            //    {
-            //        var streams = await result.OpenReadAsync();
-
-            //        ProfileImage = ImageSource.FromStream(() =>
-            //        {
-            //            var stream = streams;
-            //            return stream;
-            //        });
-            //        UserImage = ImageHelper.ReadToEnd(streams);
-            //        IsProfilePic = true;
-            //    }
-            //}
-
         }
 
         internal async Task InitializedData()

@@ -13,10 +13,8 @@
     Shell.NavBarIsVisible="False"
     Shell.TabBarIsVisible="False"
     Visual="Material">
-
     <ContentPage.Content>
         <StackLayout>
-
             <StackLayout Margin="20,20,20,0" Orientation="Horizontal">
                 <Label
                     FontFamily="ProximaSemiBold"
@@ -39,7 +37,6 @@
                 VerticalOptions="FillAndExpand" />
             <ScrollView IsVisible="False" VerticalScrollBarVisibility="Never">
                 <StackLayout Margin="20">
-
                     <StackLayout>
                         <Label
                             Margin="0,20,0,0"

@@ -44,6 +44,7 @@ namespace NewDuraApp.Areas.Common.ViewModels
                 OnPropertyChanged(nameof(ProfileDetails));
             }
         }
+
         public ILocationService locationService => DependencyService.Get<ILocationService>();
         public IPlatformSpecificLocationService platFormLocationService => DependencyService.Get<IPlatformSpecificLocationService>();
 
@@ -53,6 +54,7 @@ namespace NewDuraApp.Areas.Common.ViewModels
             get { return _addressList; }
             set { _addressList = value; OnPropertyChanged(nameof(AddressList)); }
         }
+
         public IAsyncCommand NavigateToDuraEatsCommand { get; set; }
         private List<NewLocationDataResponse> locList;
         private ObservableCollection<NewLocationDataResponse> _allLocationList;
@@ -64,6 +66,7 @@ namespace NewDuraApp.Areas.Common.ViewModels
                 SetProperty(ref _allLocationList, value);
             }
         }
+
         private CommonLatLong commonLatLong;
         public CommonLatLong CommonLatLong
         {
@@ -74,6 +77,7 @@ namespace NewDuraApp.Areas.Common.ViewModels
                 OnPropertyChanged(nameof(CommonLatLong));
             }
         }
+
         private string _currentLocation;
         public string CurrentLocation
         {
@@ -84,8 +88,8 @@ namespace NewDuraApp.Areas.Common.ViewModels
                 OnPropertyChanged(nameof(CurrentLocation));
             }
         }
-        INavigationService _navigationService;
 
+        INavigationService _navigationService;
         private bool _isHavingFromSavedAddress;
         public bool IsHavingFromSAvedAddress
         {
@@ -96,6 +100,7 @@ namespace NewDuraApp.Areas.Common.ViewModels
                 OnPropertyChanged(nameof(IsHavingFromSAvedAddress));
             }
         }
+
         private ObservableCollection<NewLocationDataResponse> _allLocationListCode;
         public ObservableCollection<NewLocationDataResponse> AllLocationListCode
         {
@@ -105,6 +110,7 @@ namespace NewDuraApp.Areas.Common.ViewModels
                 SetProperty(ref _allLocationListCode, value);
             }
         }
+
         private bool _isRefreshing;
         public bool IsRefreshing
         {
@@ -115,6 +121,7 @@ namespace NewDuraApp.Areas.Common.ViewModels
                 OnPropertyChanged(nameof(IsRefreshing));
             }
         }
+
         public IAsyncCommand RefreshCommand { get; set; }
         public HomePageViewModel(INavigationService navigationService, IAuthenticationService authenticationService, IUserCoreService userCoreService)
         {
@@ -122,13 +129,11 @@ namespace NewDuraApp.Areas.Common.ViewModels
             _authService = authenticationService;
             _userCoreService = userCoreService;
             GoToNotificationsCmd = new AsyncCommand(GoToNotificationsCmdExecute);
-
             GoToSearchLoactionPopupCmd = new AsyncCommand(GoToSearchLoactionPopupCmdExecute);
             GoToDuraShopCmd = new AsyncCommand(GoToDuraShopCmdExecute);
             GoToDuraExpressCmd = new AsyncCommand(GoToDuraExpressCmdExecute);
             NavigateToDuraEatsCommand = new AsyncCommand(NavigateToDuraEatsCommandExecute);
             RefreshCommand = new AsyncCommand(RefreshCommandExecute);
-            //GetAllLocation();
         }
 
         private async Task RefreshCommandExecute()
@@ -147,9 +152,9 @@ namespace NewDuraApp.Areas.Common.ViewModels
                 await PopupNavigation.Instance.PushAsync(new LocationSearchPopup());
             }
         }
+
         public async Task GetAllLocation()
         {
-
             if (CheckConnection())
             {
                 try
@@ -181,9 +186,7 @@ namespace NewDuraApp.Areas.Common.ViewModels
                             catch (Exception ex)
                             {
                                 HideLoading();
-                                //ShowToast(CommonMessages.ServerError);
                             }
-
                             if (locList != null && locList.Count > 0)
                             {
                                 AllLocationList = new ObservableCollection<NewLocationDataResponse>(locList);
@@ -198,14 +201,11 @@ namespace NewDuraApp.Areas.Common.ViewModels
                                     App.Locator.EditProfileInfoPage.SelectedCountries = AllLocationList.Where(x => x.id == Convert.ToInt32(id)).FirstOrDefault();
                             }
                         }
-
                     });
                 }
                 catch (Exception ex)
                 {
-
                 }
-
             }
             else
                 ShowToast(CommonMessages.NoInternet);
@@ -218,12 +218,11 @@ namespace NewDuraApp.Areas.Common.ViewModels
             //{
             //    await App.Locator.DuraEatsHomePage.InitilizeData();
             //    await _navigationService.NavigateToAsync<DuraEatsHomePageViewModel>();
-
             //}
         }
+
         private async Task GoToNotificationsCmdExecute()
         {
-            //ShowAlert("We are working on it, All type of Notifications will not show right now!", "DuraDrive", "Ok");
             await Shell.Current.GoToAsync("NotificatonPage");
             await App.Locator.NotificatonPage.InitializedData();
         }
@@ -231,8 +230,8 @@ namespace NewDuraApp.Areas.Common.ViewModels
         private async Task GoToDuraShopCmdExecute()
         {
             ShowToast(AppResources.We_are_coming_soon);
-            //await Shell.Current.GoToAsync("DuraShop");
         }
+
         private async Task GoToDuraExpressCmdExecute()
         {
             await Shell.Current.GoToAsync("DuraExpress");
@@ -263,9 +262,7 @@ namespace NewDuraApp.Areas.Common.ViewModels
                         await GetCurrentLocation();
                         await GetAddressList();
                     }
-
                 });
-
             }
             catch (Exception ex)
             {
@@ -295,15 +292,14 @@ namespace NewDuraApp.Areas.Common.ViewModels
                         await GetCurrentLocation();
                         await GetAddressList();
                     }
-
                 });
-
             }
             catch (Exception ex)
             {
                 var val = ex.Message;
             }
         }
+
         public async Task CheckAccountIsVerified()
         {
             if (CheckConnection())
@@ -318,9 +314,7 @@ namespace NewDuraApp.Areas.Common.ViewModels
                             {
                                 user_id = SettingsExtension.UserId
                             };
-
                             var result = await TryWithErrorAsync(_userCoreService.GetProfileDetails(commonUserIdRequestModel, SettingsExtension.Token), true, false);
-
                             if (result?.ResultType == ResultType.Ok && result.Data.status == 200)
                             {
                                 if (result?.Data?.data != null)
@@ -332,9 +326,7 @@ namespace NewDuraApp.Areas.Common.ViewModels
                                         {
                                             if (_navigationService.GetCurrentPageViewModel() != typeof(PhoneVerificationPopupPageViewModel))
                                             {
-
                                                 await App.Locator.PhoneVerificationPopupPage.InitilizeData();
-
                                                 await PopupNavigation.Instance.PushAsync(new PhoneVerificationPopupPage());
                                             }
                                         }
@@ -351,15 +343,16 @@ namespace NewDuraApp.Areas.Common.ViewModels
                         }
                     }
                 });
-
             }
             else
                 ShowToast(AppResources.NoInternet);
         }
+
         public async Task GetCurrentLocation()
         {
             await GetCurrentLoc();
         }
+
         public async Task GetCurrentLoc()
         {
             if (CheckConnection())
@@ -382,11 +375,11 @@ namespace NewDuraApp.Areas.Common.ViewModels
             else
                 ShowToast(CommonMessages.NoInternet);
         }
+
         public Task GetAddressList()
         {
             _ = Task.Run(async () =>
             {
-
                 if (CheckConnection())
                 {
                     try
@@ -412,7 +405,6 @@ namespace NewDuraApp.Areas.Common.ViewModels
                             await _navigationService.ClosePopupsAsync();
                             await LogoutHelper.LogoutOnTokenExpire(AppResources.Token_expired);
                         }
-                        //ShowAlert(result?.Data?.message, result?.Data?.message);
                     }
                     catch (Exception ex)
                     {
@@ -424,6 +416,5 @@ namespace NewDuraApp.Areas.Common.ViewModels
             });
             return Task.CompletedTask;
         }
-
     }
 }

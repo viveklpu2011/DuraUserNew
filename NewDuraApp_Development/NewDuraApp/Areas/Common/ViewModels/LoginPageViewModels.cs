@@ -33,7 +33,6 @@ namespace NewDuraApp.Areas.Common.ViewModels
         public IAsyncCommand NavigateToForgetPassword { get; set; }
         public IAsyncCommand GoToSignUpCmd { get; set; }
         IFacebookClient _facebookService = CrossFacebookClient.Current;
-
         private List<NewLocationDataResponse> locList;
         private ObservableCollection<NewLocationDataResponse> _allLocationList;
         private bool _isAreaErrorVisible;
@@ -49,12 +48,14 @@ namespace NewDuraApp.Areas.Common.ViewModels
             get { return _isPhoneErrorVisible; }
             set { _isPhoneErrorVisible = value; OnPropertyChanged(nameof(IsPhoneErrorVisible)); }
         }
+
         private bool _isPhoneEmail;
         public bool IsPhoneEmail
         {
             get { return _isPhoneEmail; }
             set { _isPhoneEmail = value; OnPropertyChanged(nameof(IsPhoneEmail)); }
         }
+
         private string _mobileNumber;
         private string _email;
         private string _password;
@@ -87,11 +88,10 @@ namespace NewDuraApp.Areas.Common.ViewModels
                 {
                     IsPhoneErrorVisible = false;
                 }
-
-
                 this.OnPropertyChanged(nameof(MobileNumber));
             }
         }
+
         private LoginResponseModel _loginResponse;
         public LoginResponseModel LoginResponse
         {
@@ -113,6 +113,7 @@ namespace NewDuraApp.Areas.Common.ViewModels
                 this.OnPropertyChanged(nameof(FacebookResponse));
             }
         }
+
         private bool _isEmailErrorVisible;
         public bool IsEmailErrorVisible
         {
@@ -141,6 +142,7 @@ namespace NewDuraApp.Areas.Common.ViewModels
                 this.OnPropertyChanged(nameof(Email));
             }
         }
+
         public string Password
         {
             get { return _password; }
@@ -151,6 +153,7 @@ namespace NewDuraApp.Areas.Common.ViewModels
                 this.OnPropertyChanged(nameof(Password));
             }
         }
+
         private string _countriesTitle;
         private NewLocationDataResponse _selectedCountries;
         public NewLocationDataResponse SelectedCountries
@@ -162,13 +165,11 @@ namespace NewDuraApp.Areas.Common.ViewModels
                 try
                 {
                     this.OnPropertyChanged(nameof(SelectedCountries));
-
-                    //this.OnPropertyChanged(nameof(CountriesTitle));
-                    //CountriesTitle = $"+{_selectedCountries.country_code}";
                 }
                 catch (Exception ex) { }
             }
         }
+
         private NewLocationDataResponse _selectedCountriesCode;
         public NewLocationDataResponse SelectedCountriesCode
         {
@@ -179,7 +180,6 @@ namespace NewDuraApp.Areas.Common.ViewModels
                 try
                 {
                     this.OnPropertyChanged(nameof(SelectedCountriesCode));
-                    //this.OnPropertyChanged(nameof(CountriesTitle));
                     CountriesTitleCode = $"+{_selectedCountriesCode.country_code}";
                 }
                 catch (Exception ex) { }
@@ -206,6 +206,7 @@ namespace NewDuraApp.Areas.Common.ViewModels
                 this.OnPropertyChanged("CountriesTitle");
             }
         }
+
         private string _countriesTitleCode;
         public string CountriesTitleCode
         {
@@ -216,6 +217,7 @@ namespace NewDuraApp.Areas.Common.ViewModels
                 this.OnPropertyChanged("CountriesTitleCode");
             }
         }
+
         private ObservableCollection<Countries> _countriesList;
         public ObservableCollection<Countries> CountriesList
         {
@@ -226,6 +228,7 @@ namespace NewDuraApp.Areas.Common.ViewModels
                 this.OnPropertyChanged(nameof(CountriesList));
             }
         }
+
         INavigationService _navigationService;
         public ObservableCollection<NewLocationDataResponse> AllLocationList
         {
@@ -258,6 +261,7 @@ namespace NewDuraApp.Areas.Common.ViewModels
                 this.OnPropertyChanged(nameof(SelectedLocation));
             }
         }
+
         private NewLocationDataResponse _selectedLocationTemp;
         public NewLocationDataResponse SelectedLocationTemp
         {
@@ -268,13 +272,13 @@ namespace NewDuraApp.Areas.Common.ViewModels
                 this.OnPropertyChanged(nameof(SelectedLocationTemp));
             }
         }
+
         private bool CheckLoginValidation()
         {
             if (IsVisiblePhoneNumberLayout)
             {
                 if (string.IsNullOrEmpty(MobileNumber) || string.IsNullOrEmpty(Password) || string.IsNullOrEmpty(SelectedLocation?.country_name))
                 {
-                    //ShowToast("Please again select Location.");
                     IsLoginButtoinEnabled = false;
                     return false;
                 }
@@ -293,7 +297,6 @@ namespace NewDuraApp.Areas.Common.ViewModels
             {
                 if (string.IsNullOrEmpty(Email) || string.IsNullOrEmpty(Password) || string.IsNullOrEmpty(SelectedLocation?.country_name))
                 {
-                    //ShowToast("Please again select Location.");
                     IsLoginButtoinEnabled = false;
                     return false;
                 }
@@ -315,36 +318,43 @@ namespace NewDuraApp.Areas.Common.ViewModels
             get { return _isAreaErrorVisible; }
             set { _isAreaErrorVisible = value; OnPropertyChanged(nameof(IsAreaErrorVisible)); }
         }
+
         public bool EmailNotValid
         {
             get { return _emailNotValid; }
             set { _emailNotValid = value; OnPropertyChanged(nameof(EmailNotValid)); }
         }
+
         public bool PasswordNotValid
         {
             get { return _passwordNotValid; }
             set { _passwordNotValid = value; OnPropertyChanged(nameof(PasswordNotValid)); }
         }
+
         public bool PhoneNumberNotValid
         {
             get { return _phoneNumberNotValid; }
             set { _phoneNumberNotValid = value; OnPropertyChanged(nameof(PhoneNumberNotValid)); }
         }
+
         public bool IsLoginButtoinEnabled
         {
             get { return _isLoginButtoinEnabled; }
             set { _isLoginButtoinEnabled = value; OnPropertyChanged(nameof(IsLoginButtoinEnabled)); }
         }
+
         public string ButtonText
         {
             get { return _buttonText; }
             set { _buttonText = value; OnPropertyChanged(nameof(ButtonText)); }
         }
+
         public bool IsVisiblePhoneNumberLayout
         {
             get { return _isVisiblePhoneLayout; }
             set { _isVisiblePhoneLayout = value; OnPropertyChanged(nameof(IsVisiblePhoneNumberLayout)); }
         }
+
         public bool IsVisibleEmailLayout
         {
             get { return _isVisibleEmailLayout; }
@@ -361,6 +371,7 @@ namespace NewDuraApp.Areas.Common.ViewModels
                 OnPropertyChanged(nameof(AppVersion));
             }
         }
+
         private ObservableCollection<NewLocationDataResponse> _allLocationListCode;
         public ObservableCollection<NewLocationDataResponse> AllLocationListCode
         {
@@ -370,6 +381,7 @@ namespace NewDuraApp.Areas.Common.ViewModels
                 SetProperty(ref _allLocationListCode, value);
             }
         }
+
         public LoginPageViewModels(INavigationService navigationService, IAuthenticationService authenticationService)
         {
             _navigationService = navigationService;
@@ -380,7 +392,6 @@ namespace NewDuraApp.Areas.Common.ViewModels
             NavigateToForgetPassword = new AsyncCommand(NavigateToForgetPasswordPage);
             GoToSignUpCmd = new AsyncCommand(NavigateToSignup);
             IsPhoneEmail = true;
-            //GetAllLocation();
         }
 
         public async Task OnLoginWithGoogleCommandExecute(FacebookRequestModel arg)
@@ -397,11 +408,9 @@ namespace NewDuraApp.Areas.Common.ViewModels
                     devicetype = Convert.ToString(((int)DuraApp.Core.Helpers.Enums.DeviceType.iOS));
                 }
                 var form = new MultipartFormDataContent();
-
                 var phone = string.IsNullOrEmpty(arg?.phone) ? "" : arg?.phone;
                 var firstName = string.IsNullOrEmpty(arg?.first_name) ? "" : arg?.first_name;
                 var lastName = string.IsNullOrEmpty(arg?.last_name) ? "" : arg?.last_name;
-
                 form.Add(new StringContent(arg.email), "email");
                 form.Add(new StringContent(firstName), "first_name");
                 form.Add(new StringContent(lastName), "last_name");
@@ -442,22 +451,20 @@ namespace NewDuraApp.Areas.Common.ViewModels
                     await App.Locator.ProfilePage.UpdateSociaLink("Google");
                     await _navigationService.NavigateToAsync<AppShellViewModel>();
                     await App.Locator.HomePage.CheckAccountIsVerified();
-                    //ShowToast("Login successful");
                 }
                 else
                 {
                     ShowAlert(result.Data.message, "Error", AppResources.Ok);
                     return;
                 }
-                //HideLoading();
             }
             catch (Exception ex)
             {
                 HideLoading();
                 ShowToast("Google server down." + ex.Message);
-
             }
         }
+
         public async Task OnLoginWithFacebookCommand(NetworkAuthData networkAuthData)
         {
             try
@@ -524,7 +531,6 @@ namespace NewDuraApp.Areas.Common.ViewModels
                     ShowAlert(result.Data.message, "Error", AppResources.Ok);
                     return;
                 }
-
             }
             catch (Exception ex)
             {
@@ -564,10 +570,10 @@ namespace NewDuraApp.Areas.Common.ViewModels
                     ButtonText = AppResources.LoginWithEmail;
                     IsPhoneEmail = true;
                 }
-                //Password = string.Empty; 
                 CheckLoginValidation();
             }
         }
+
         private async Task LoginAndNavigateToHome()
         {
             if (SelectedCountries != null)
@@ -616,25 +622,15 @@ namespace NewDuraApp.Areas.Common.ViewModels
                     }
                     LoginRequestModel loginRequestModel = new LoginRequestModel
                     {
-                        //user_area = SelectedLocation?.area,   
                         email = Email.Trim(),
                         password = Password.Trim(),
                         phone = MobileNumber.Trim(),
                         country_code = CountriesTitleCode.Trim(),
-                        country_id = Convert.ToString(SelectedCountries.id),
+                        //country_id = Convert.ToString(SelectedCountries.id),
                         device_id = App.DeviceToken,
                         device_type = devicetype
                     };
 
-                    //LoginRequestModel loginRequestModel = new LoginRequestModel
-                    //{
-                    //    //user_area = SelectedLocation?.area,   
-                    //    email = Email.Trim(),
-                    //    password = Password.Trim(),
-                    //    phone = MobileNumber.Trim(),
-                    //    country_code = "+91",
-                    //    country_id = "99"
-                    //};
                     LoginResponse = new LoginResponseModel();
                     var result = await TryWithErrorAsync(_authService.Login(loginRequestModel), true, false);
                     if (result?.ResultType == ResultType.Ok && result?.Data?.status == 200)
@@ -666,8 +662,7 @@ namespace NewDuraApp.Areas.Common.ViewModels
                     }
                     else
                     {
-                        ShowAlert("Please_recheck_your_credentials_and_selected_location.");
-                        //ShowAlert(result?.Errors[0]);
+                        ShowAlert("Please recheck your credentials and selected location.");
                     }
                 }
                 catch (Exception ex)
@@ -679,19 +674,19 @@ namespace NewDuraApp.Areas.Common.ViewModels
             else
                 ShowToast(AppResources.NoInternet);
         }
+
         public async Task InitilizeData()
         {
             Email = Password = MobileNumber = string.Empty;
             IsAreaErrorVisible = false;
             IsPhoneErrorVisible = false;
             CheckLoginValidation();
-
         }
+
         public async Task GetAllLocation()
         {
             if (CheckConnection())
             {
-
                 try
                 {
                     locList = new List<NewLocationDataResponse>();
@@ -712,13 +707,10 @@ namespace NewDuraApp.Areas.Common.ViewModels
                 }
                 catch (Exception ex)
                 {
-                    //ShowToast(CommonMessages.ServerError);
                 }
                 if (locList != null && locList.Count > 0)
                 {
                     AllLocationList = new ObservableCollection<NewLocationDataResponse>(locList);
-
-
                     AllLocationListCode = new ObservableCollection<NewLocationDataResponse>(locList.GroupBy(x => x.country_code).Select(y => y.First()));
                     ShowLoading();
                     var country_code = await TrackingService.GetUserCountryCodeAsync();
@@ -741,14 +733,10 @@ namespace NewDuraApp.Areas.Common.ViewModels
                             CountriesTitleCode = countryData != null ? $"+{countryData?.country_code}" : "";
                         }
                     }
-
                 }
-
             }
             else
                 ShowToast(AppResources.NoInternet);
         }
-
-
     }
 }

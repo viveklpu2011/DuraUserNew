@@ -25,6 +25,4 @@ namespace DuraApp.Core.Models.ResponseModels
         public string valid_date { get; set; }
         public bool is_used { get; set; }
     }
-
-
 }

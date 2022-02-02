@@ -50,7 +50,6 @@
                             Glyph="{x:Static fonticon:FontIconsClass.ArrowLeft}"
                             Size="30"
                             Color="Black" />
-
                     </ImageButton.Source>
                 </ImageButton>
                 <Label
@@ -127,7 +126,6 @@
                     ColumnDefinitions="*,*"
                     HeightRequest="40"
                     IsVisible="{Binding IsVisibleLaterView}">
-
                     <StackLayout
                         Grid.Column="0"
                         HorizontalOptions="FillAndExpand"

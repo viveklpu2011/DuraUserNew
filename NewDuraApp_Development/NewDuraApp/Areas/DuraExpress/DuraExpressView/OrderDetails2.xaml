@@ -366,7 +366,6 @@
                             TextColor="#3D3D3D" />
                     </StackLayout>
                 </StackLayout>
-                <!--  IsVisible="{Binding GetOrderData.IsOngoingViewVisible}"  -->
                 <Frame
                     Margin="5,10,5,10"
                     Padding="0"

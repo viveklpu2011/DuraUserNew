@@ -34,16 +34,19 @@ namespace NewDuraApp.Areas.Common.ViewModels
             SkipAndGoToLoginCmd = new AsyncCommand(SkipGoToLoginCmdExecute);
             var dr = App.Locator.PersonalDetails.SignupRequestModelVM;
         }
+
         public bool IsReferalCodeErrorVisible
         {
             get { return _isReferalCodeErrorVisible; }
             set { _isReferalCodeErrorVisible = value; OnPropertyChanged(nameof(IsReferalCodeErrorVisible)); }
         }
+
         public bool IsContinueButtonEnabled
         {
             get { return _isContinueButtonEnabled; }
             set { _isContinueButtonEnabled = value; OnPropertyChanged(nameof(IsContinueButtonEnabled)); }
         }
+
         private async Task SkipGoToLoginCmdExecute()
         {
             await UserRegistration();
@@ -85,6 +88,7 @@ namespace NewDuraApp.Areas.Common.ViewModels
             IsReferalCodeErrorVisible = false;
             CheckValidation();
         }
+
         private async Task UserRegistration(bool isSkipRefCode = false)
         {
             if (CheckConnection())
@@ -132,7 +136,6 @@ namespace NewDuraApp.Areas.Common.ViewModels
                             await App.Locator.LoginPage.GetAllLocation();
                             await _navigationService.NavigateToAsync<LoginPageViewModels>();
                             await App.Locator.LoginPage.InitilizeData();
-                            // await _navigationService.RemoveLastFromBackStackAsync();
                             ShowToast(result?.Data?.message);
                         }
                         else if (result?.ResultType == ResultType.Ok && result.Data.status == 404)
@@ -159,7 +162,6 @@ namespace NewDuraApp.Areas.Common.ViewModels
         {
             if (CheckConnection())
             {
-
                 try
                 {
                     ReferCodeRequestModel referCodeRequestModel = new ReferCodeRequestModel()
@@ -173,7 +175,6 @@ namespace NewDuraApp.Areas.Common.ViewModels
                     {
                         if (result?.Data?.data != null)
                         {
-                            //ShowToast(result?.Data?.message);
                             await UserRegistration(true);
                         }
                         else
@@ -185,7 +186,6 @@ namespace NewDuraApp.Areas.Common.ViewModels
                             }
                         }
                     }
-                    //ShowAlert(result?.Data?.message, result?.Data?.message);
                 }
                 catch (Exception ex)
                 {
@@ -195,7 +195,6 @@ namespace NewDuraApp.Areas.Common.ViewModels
             }
             else
                 ShowToast(AppResources.NoInternet);
-
         }
     }
 }

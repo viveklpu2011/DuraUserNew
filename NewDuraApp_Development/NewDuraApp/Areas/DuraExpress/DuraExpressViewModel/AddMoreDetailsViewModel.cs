@@ -54,6 +54,7 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
                 OnPropertyChanged(nameof(TipPriceList));
             }
         }
+
         private List<VehicleServicesRequest> _lstServices = new List<VehicleServicesRequest>();
         public List<VehicleServicesRequest> LstServices
         {
@@ -64,6 +65,7 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
                 OnPropertyChanged(nameof(LstServices));
             }
         }
+
         private List<PriceBreakUpList> _PriceBreakUpList = new List<PriceBreakUpList>();
         public List<PriceBreakUpList> PriceBreakUpList
         {
@@ -74,6 +76,7 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
                 OnPropertyChanged(nameof(PriceBreakUpList));
             }
         }
+        
         private string _addNote = string.Empty;
         private string _pType;
 
@@ -83,17 +86,20 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
             get { return _isVisiblePromoCodeStack; }
             set { _isVisiblePromoCodeStack = value; OnPropertyChanged(nameof(IsVisiblePromoCodeStack)); }
         }
+
         private string _totalFinalFare;
         public string TotalFinalFare
         {
             get { return _totalFinalFare; }
             set { _totalFinalFare = value; OnPropertyChanged(nameof(TotalFinalFare)); }
         }
+
         public string PType
         {
             get { return _pType; }
             set { _pType = value; OnPropertyChanged(nameof(PType)); }
         }
+
         public string AddNote
         {
             get { return _addNote; }
@@ -105,6 +111,7 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
             get { return _duraAddressCommon; }
             set { _duraAddressCommon = value; OnPropertyChanged(nameof(DuraAddressCommon)); }
         }
+
         public string TipAmount
         {
             get { return _tipAmount; }
@@ -114,6 +121,7 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
                 OnPropertyChanged(nameof(TipAmount));
             }
         }
+
         public bool IsVisiblePhotoButton
         {
             get { return _isVisiblePhotoButton; }
@@ -126,6 +134,7 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
             get { return _productImage; }
             set { _productImage = value; OnPropertyChanged(nameof(ProductImage)); }
         }
+
         private ImageSource _profileImage;
         public ImageSource ProfileImage
         {
@@ -138,11 +147,13 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
             get { return _totalFare; }
             set { _totalFare = value; OnPropertyChanged(nameof(TotalFare)); }
         }
+
         public VerifyPromoCodeData VerifyPromoCode
         {
             get { return _verifyPromoCode; }
             set { _verifyPromoCode = value; OnPropertyChanged(nameof(VerifyPromoCode)); }
         }
+
         public VehicleListData VehicleListSelectedData
         {
             get { return _vehicleListSelectedData; }
@@ -154,32 +165,32 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
             get { return _pickupScheduleRequest; }
             set { _pickupScheduleRequest = value; OnPropertyChanged(nameof(PickupScheduleRequest)); }
         }
+
         public PickupScheduleResponseModel PickupScheduleResponse
         {
             get { return _pickupScheduleResponse; }
             set { _pickupScheduleResponse = value; OnPropertyChanged(nameof(PickupScheduleResponse)); }
         }
-        private ObservableCollection<AddMoreDetailsModel> _accountType;
 
+        private ObservableCollection<AddMoreDetailsModel> _accountType;
         public ObservableCollection<AddMoreDetailsModel> AccountType
         {
             get { return _accountType; }
             set { _accountType = value; OnPropertyChanged(); }
         }
-        private AddMoreDetailsModel _selectedAccount;
 
+        private AddMoreDetailsModel _selectedAccount;
         public AddMoreDetailsModel SelectedAccount
         {
             get { return _selectedAccount; }
             set
             {
                 _selectedAccount = value;
-
                 OnPropertyChanged(nameof(SelectedAccount));
             }
         }
-        private int _index = 0;
 
+        private int _index = 0;
         public int Index
         {
             get { return _index; }
@@ -229,7 +240,6 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
 
         internal async Task InitilizeData()
         {
-
             var promoData = VerifyPromoCode;
             if (VerifyPromoCode != null)
             {
@@ -241,27 +251,8 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
                 AppConstant.Discount = totalDiscount;
                 AppConstant.TotalFinalFare = Convert.ToString(Math.Round(Convert.ToDouble(App.Locator.SelectVehicle.TotalFinalFare)));
             }
-            //else
-            //{
-            //    //AccountType = GetAccountType();
-            //    //Index = 0;
-            //    //AddNote = string.Empty;
-            //    //IsVisiblePhotoButton = true;
-            //    //ProductImage = null;
-            //    //PickupScheduleRequest = App.Locator.SelectVehicle.PickupScheduleRequest;
-            //    //PickupScheduleResponse = App.Locator.SelectVehicle.PickupScheduleResponse;
-            //    //VehicleListSelectedData = App.Locator.SelectVehicle.VehicleListSelectedData;
-            //    //LstServices = App.Locator.SelectVehicle.LstServices;
-            //    //TotalFare = Math.Round(App.Locator.SelectVehicle.TotalFare);
-            //    //TotalFinalFare = Convert.ToString(Math.Round(Convert.ToDouble(App.Locator.SelectVehicle.TotalFinalFare)));
-            //    //string defaultImage = "img_placeholder.png";
-            //    //ProductImage = await ImageHelper.GetStreamFormResource(defaultImage);
-            //    //ProfileImage = ImageSource.FromStream(() => new MemoryStream(ProductImage));
-            //    //PType = App.Locator.TrackOrder.DuraAddressCommon.PickupType;
-            //    //await GetTipPrice();
-            //}
-
         }
+
         internal async Task InitializeDataNew()
         {
             App.Locator.AddMoreDetails.RemovePromoCodeCommand.Execute(null);
@@ -283,11 +274,11 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
             PType = App.Locator.TrackOrder.DuraAddressCommon.PickupType;
             await GetTipPrice();
         }
+
         private async Task GetTipPrice()
         {
             if (CheckConnection())
             {
-
                 try
                 {
                     ShowLoading();
@@ -308,7 +299,6 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
                     {
                         await LogoutHelper.LogoutOnTokenExpire(AppResources.Token_expired);
                     }
-                    //ShowAlert(result?.Data?.message, result?.Data?.message);
                 }
                 catch (Exception ex)
                 {
@@ -319,9 +309,9 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
             else
                 ShowToast(AppResources.NoInternet);
         }
+
         private async Task PickImage()
         {
-            //var res = await ShowCameraActionSheet();
             var res = await ShowCameraPopup();
             if (res != null)
             {
@@ -388,16 +378,8 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
                         });
                         ProductImage = ImageHelper.ReadToEnd(file.GetStream());
                     });
-
                 }
             }
-
-            //   var result = await ShowConfirmationAlert("Please select below one", "Edit Photo", "Pick from gallery", "Pick from camera");
-            //if (result) {
-
-            //} else {
-
-            //}
         }
 
         private async Task GoToApplyCmdExecute()
@@ -407,10 +389,12 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
                 await _navigationService.NavigateToAsync<ApplyPromoCodePageViewModel>();
             }
         }
+
         private async Task GoToPaymentCmdExecute()
         {
             await AddMoreDetailsCommandExecute();
         }
+
         private async Task GoToOfferCmdExecute()
         {
             if (_navigationService.GetCurrentPageViewModel() != typeof(OfferAndPromocodePageViewModel))
@@ -420,6 +404,7 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
                 await _navigationService.NavigateToAsync<OfferAndPromocodePageViewModel>();
             }
         }
+
         private ObservableCollection<AddMoreDetailsModel> GetAccountType()
         {
             return new ObservableCollection<AddMoreDetailsModel>()
@@ -429,6 +414,7 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
             };
             Index = 0;
         }
+
         private async Task AddMoreDetailsCommandExecute()
         {
             if (CheckConnection())
@@ -526,7 +512,6 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
                             {
                                 if (CheckConnection())
                                 {
-
                                     try
                                     {
                                         VerifyPromoCodeRequestModel verifyPromoCodeRequestModel = new VerifyPromoCodeRequestModel
@@ -546,9 +531,7 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
                                     }
                                     catch (Exception ex)
                                     {
-                                        //ShowToast(CommonMessages.ServerError);
                                     }
-
                                 }
                                 else
                                     ShowToast(CommonMessages.NoInternet);
@@ -566,8 +549,6 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
                     {
                         ShowAlert(AppResources.Your_order_location_is_not_selected_right_Please_recheck_your_order_confirm_location_pickup_dropup_again, "DruaDrive", AppResources.Ok);
                     }
-
-                    //ShowAlert(result?.Data?.message, result?.Data?.message);
                 }
                 catch (Exception ex)
                 {
@@ -577,7 +558,6 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
             }
             else
                 ShowToast(AppResources.NoInternet);
-
         }
     }
 }

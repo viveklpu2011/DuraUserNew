@@ -78,6 +78,7 @@ namespace NewDuraApp.Areas.Common.ViewModels
                     GetPlaceDetailCommand.Execute(_placeSelected);
             }
         }
+
         private GetOrderDetailsModel _getOrderData;
         public GetOrderDetailsModel GetOrderData
         {
@@ -88,13 +89,12 @@ namespace NewDuraApp.Areas.Common.ViewModels
                 OnPropertyChanged(nameof(GetOrderData));
             }
         }
+
         public ICommand FocusOriginCommand { get; set; }
         public ICommand GetPlacesCommand { get; set; }
         public ICommand GetPlaceDetailCommand { get; set; }
-
         public ObservableCollection<GooglePlaceAutoCompletePrediction> Places { get; set; }
         public ObservableCollection<GooglePlaceAutoCompletePrediction> RecentPlaces { get; set; } = new ObservableCollection<GooglePlaceAutoCompletePrediction>();
-
         public bool ShowRecentPlaces { get; set; }
         bool _isPickupFocused = true;
 
@@ -142,7 +142,6 @@ namespace NewDuraApp.Areas.Common.ViewModels
                 return !HasRouteRunning;
             }
         }
-        //public IAsyncCommand MarkasReadCommand { get; set; }
 
         public OrderTrackerPageViewModel(INavigationService navigationService, IUserCoreService userCoreService)
         {
@@ -246,7 +245,6 @@ namespace NewDuraApp.Areas.Common.ViewModels
         //    PlaceSelected = null;
         //}
 
-
         ////Get place 
         //public async Task GetLocationName(Position position)
         //{
@@ -268,6 +266,7 @@ namespace NewDuraApp.Areas.Common.ViewModels
         //        Debug.WriteLine(ex.ToString());
         //    }
         //}
+
         internal async Task InitializedData()
         {
             //_originLatitud = "30.707";
@@ -284,12 +283,10 @@ namespace NewDuraApp.Areas.Common.ViewModels
                 try
                 {
                     var result = await _userCoreService.GetGoogleDirectionTime(source, destination);
-
                     if (result?.ResultType == ResultType.Ok && result?.Data?.status == "OK")
                     {
                         if (result?.Data?.rows.Count > 0 && result?.Data?.rows != null)
                         {
-
                             foreach (var item in result?.Data?.rows)
                             {
                                 if (item.elements != null && item.elements.Count > 0)
@@ -320,7 +317,5 @@ namespace NewDuraApp.Areas.Common.ViewModels
             else
                 ShowToast(AppResources.NoInternet);
         }
-
-
     }
 }

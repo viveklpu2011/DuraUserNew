@@ -44,7 +44,6 @@
                             SelectedIndexChanged="pickerLocation_SelectedIndexChanged"
                             TextColor="Black"
                             TitleColor="{StaticResource PlaceholderColor}" />
-
                         <BoxView
                             Grid.Row="1"
                             Grid.Column="0"
@@ -129,7 +128,6 @@
                             Text="{translate:Translate Confirm_Password}"
                             TextColor="Red" />
                     </Grid>
-
                     <Grid Padding="0" ColumnDefinitions="10*,90*">
                         <CheckBox IsChecked="{Binding IsAcceptTerms}" Color="#211E66" />
                         <Label

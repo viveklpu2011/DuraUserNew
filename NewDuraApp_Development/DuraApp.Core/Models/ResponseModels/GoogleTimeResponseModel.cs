@@ -10,7 +10,6 @@ namespace DuraApp.Core.Models.ResponseModels
         public List<Row> rows { get; set; }
         public string status { get; set; }
     }
-
     public class Distance
     {
         public string text { get; set; }
@@ -31,5 +30,4 @@ namespace DuraApp.Core.Models.ResponseModels
     {
         public List<Element> elements { get; set; }
     }
-
 }

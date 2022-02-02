@@ -51,8 +51,6 @@
                                 Size="100"
                                 Source="{Binding ProfileImage}"
                                 VerticalOptions="CenterAndExpand" />
-
-
                         </Frame>
                         <StackLayout
                             Padding="0"
@@ -70,9 +68,7 @@
                                 WidthRequest="30" />
                         </StackLayout>
                     </Grid>
-
                     <StackLayout Spacing="10" VerticalOptions="StartAndExpand">
-
                         <Grid RowDefinitions="Auto,Auto,Auto">
                             <control:CustomEntry
                                 FontFamily="ProximaRegular"
@@ -86,8 +82,6 @@
                                     <behaviours:NumericValidationBehaviorAlphOnly />
                                 </control:CustomEntry.Behaviors>
                             </control:CustomEntry>
-
-
                             <BoxView
                                 Grid.Row="1"
                                 BackgroundColor="{StaticResource BorderColor}"
@@ -112,8 +106,6 @@
                                     <behaviours:NumericValidationBehaviorAlphOnly />
                                 </control:CustomEntry.Behaviors>
                             </control:CustomEntry>
-
-
                             <BoxView
                                 Grid.Row="1"
                                 BackgroundColor="{StaticResource BorderColor}"

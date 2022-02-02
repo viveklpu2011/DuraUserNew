@@ -26,8 +26,6 @@ namespace DuraApp.Core.Models.ResponseModels
         public string created_at { get; set; }
         public string updated_at { get; set; }
         public string FullAddress { get { return $"{address1}"; } }
-
-        //public string FullAddress { get { return $"{address1} {address2} {city} {country} {type}"; } }
         public bool IsDefault
         {
             get

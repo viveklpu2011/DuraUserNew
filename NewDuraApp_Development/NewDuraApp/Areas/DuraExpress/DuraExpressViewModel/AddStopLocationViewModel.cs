@@ -8,6 +8,7 @@ using DuraApp.Core.Helpers;
 using DuraApp.Core.Helpers.Enums;
 using DuraApp.Core.Models.RequestModels;
 using NewDuraApp.Areas.DuraExpress.Common.Maps;
+using NewDuraApp.FontIcons;
 using NewDuraApp.Helpers;
 using NewDuraApp.Resources;
 using NewDuraApp.Services.Interfaces;
@@ -31,7 +32,6 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
         private bool _isAddress1ErrorVisible;
         private bool _isAddress2ErrorVisible;
         private bool _isNameErrorVisible;
-
         private bool _isButtonEnabled;
         public IAsyncCommand SkipCommand { get; set; }
         public IAsyncCommand OpenMapCommand { get; set; }
@@ -57,6 +57,17 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
             }
         }
 
+        private ObservableCollection<PickupScheduleRequestStopModel> _stopAddressListTemp = new ObservableCollection<PickupScheduleRequestStopModel>();
+        public ObservableCollection<PickupScheduleRequestStopModel> StopAddressListTemp
+        {
+            get { return _stopAddressListTemp; }
+            set
+            {
+                _stopAddressListTemp = value;
+                OnPropertyChanged(nameof(StopAddressListTemp));
+            }
+        }
+
         public Xamarin.Forms.Command ExecuteSetPosition { get; set; }
         public Xamarin.Forms.Command<Position> ExecuteSetAddress { get; set; }
         public IAsyncCommand AddressReturnCommand { get; set; }
@@ -66,51 +77,58 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
             get { return _isAddress1ErrorVisible; }
             set { _isAddress1ErrorVisible = value; OnPropertyChanged(nameof(IsAddress1ErrorVisible)); }
         }
+
         public bool IsAddress2ErrorVisible
         {
             get { return _isAddress2ErrorVisible; }
             set { _isAddress2ErrorVisible = value; OnPropertyChanged(nameof(IsAddress2ErrorVisible)); }
         }
+
         public bool IsNameErrorVisible
         {
             get { return _isNameErrorVisible; }
             set { _isNameErrorVisible = value; OnPropertyChanged(nameof(IsNameErrorVisible)); }
         }
+
         private bool _isPhoneErrorVisible;
         public bool IsPhoneErrorVisible
         {
             get { return _isPhoneErrorVisible; }
             set { _isPhoneErrorVisible = value; OnPropertyChanged(nameof(IsPhoneErrorVisible)); }
         }
+
         public bool IsButtonEnabled
         {
             get { return _isButtonEnabled; }
             set { _isButtonEnabled = value; OnPropertyChanged(nameof(IsButtonEnabled)); }
         }
+
         public PickupScheduleRequestModel PickupScheduleRequest
         {
             get { return _pickupScheduleRequest; }
             set { _pickupScheduleRequest = value; OnPropertyChanged(nameof(PickupScheduleRequest)); }
         }
+
         public Location AddStopLocation
         {
             get { return _addStopLocation; }
             set { _addStopLocation = value; OnPropertyChanged(nameof(AddStopLocation)); }
         }
-        private Placemark _placemarkAddress;
 
+        private Placemark _placemarkAddress;
         public Placemark PlacemarkAddress
         {
             get { return _placemarkAddress; }
             set { _placemarkAddress = value; OnPropertyChanged(nameof(PlacemarkAddress)); }
         }
+
         public Map MapAddStopLocation
         {
             get { return _mapAddStopLocation; }
             set { _mapAddStopLocation = value; OnPropertyChanged(nameof(MapAddStopLocation)); }
         }
-        private string _address1;
 
+        private string _address1;
         public string Address1
         {
             get { return _address1; }
@@ -127,7 +145,6 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
                     {
                         IsAddress1ErrorVisible = true;
                     }
-
                 }
                 else
                 {
@@ -137,8 +154,8 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
                 OnPropertyChanged(nameof(Address1));
             }
         }
-        private string _address2;
 
+        private string _address2;
         public string Address2
         {
             get { return _address2; }
@@ -164,8 +181,8 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
                 OnPropertyChanged(nameof(Address2));
             }
         }
-        private string _name;
 
+        private string _name;
         public string Name
         {
             get { return _name; }
@@ -193,7 +210,6 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
         }
 
         private string _number;
-
         public string Number
         {
             get { return _number; }
@@ -220,6 +236,7 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
                 OnPropertyChanged(nameof(Number));
             }
         }
+
         private bool CheckLoginValidation()
         {
             if (IsAddress1ErrorVisible || IsNameErrorVisible || IsPhoneErrorVisible)
@@ -237,8 +254,8 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
                 IsButtonEnabled = true;
                 return true;
             }
-
         }
+
         public int stopid = 0;
         public AddStopLocationViewModel(INavigationService navigationService)
         {
@@ -284,34 +301,19 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
         {
             try
             {
-                //if (App.Locator.CurrentUser.SendWay == SendInvite.SELECTEDLOCATION.ToString())
-                //{
-                //    p = new Position(App.Locator.HomePage.CommonLatLong.latitude, App.Locator.HomePage.CommonLatLong.longitude);
-                //    //var addrs = (await Geocoding.GetPlacemarksAsync(new Location(p.Latitude, p.Longitude))).FirstOrDefault();
-                //    Address1 = $"{App.Locator.HomePage.CurrentLocation}";
-                //}
-                //else
-                //{
-                //    var addrs = (await Geocoding.GetPlacemarksAsync(new Location(p.Latitude, p.Longitude))).FirstOrDefault();
-                //    Address1 = $"{addrs.SubLocality} {addrs.SubAdminArea} {addrs.PostalCode} {addrs.Locality} {addrs.CountryName}";
-                //}
                 if (p == Position)
                 {
                     if (App.Locator.HomePage.CommonLatLong != null)
                     {
                         p = new Position(App.Locator.HomePage.CommonLatLong.latitude, App.Locator.HomePage.CommonLatLong.longitude);
-                        //var addrs = (await Geocoding.GetPlacemarksAsync(new Location(p.Latitude, p.Longitude))).FirstOrDefault();
-                        //Address1 = $"{addrs.SubLocality} {addrs.SubAdminArea} {addrs.PostalCode} {addrs.Locality} {addrs.CountryName}";
                         Address1 = $"{App.Locator.HomePage.CommonLatLong.FullAddress}";
                         Address2 = App.Locator.HomePage.CommonLatLong.address2;
                         Name = App.Locator.HomePage.CommonLatLong.contactperson;
                         Number = App.Locator.HomePage.CommonLatLong.mobile;
                         Helpers.CommonHelper.CurrentLat = p.Latitude;
                         Helpers.CommonHelper.CurrentLong = p.Longitude;
-
                         Helpers.CommonHelper.CurrentLatStop = p.Latitude;
                         Helpers.CommonHelper.CurrentLongStop = p.Longitude;
-
                     }
                     else
                     {
@@ -321,71 +323,38 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
                         Helpers.CommonHelper.CurrentLong = p.Longitude;
                         Helpers.CommonHelper.CurrentLatStop = p.Latitude;
                         Helpers.CommonHelper.CurrentLongStop = p.Longitude;
-
                     }
                 }
                 else
                 {
-                    //p = new Position(App.Locator.HomePage.CommonLatLong.latitude, App.Locator.HomePage.CommonLatLong.longitude);
                     var addrs = (await Geocoding.GetPlacemarksAsync(new Location(p.Latitude, p.Longitude))).FirstOrDefault();
                     Address1 = $"{addrs.SubLocality} {addrs.SubAdminArea} {addrs.PostalCode} {addrs.Locality} {addrs.CountryName}";
                     Helpers.CommonHelper.CurrentLat = p.Latitude;
                     Helpers.CommonHelper.CurrentLong = p.Longitude;
                     Helpers.CommonHelper.CurrentLatStop = p.Latitude;
                     Helpers.CommonHelper.CurrentLongStop = p.Longitude;
-
                 }
-
                 Position = p;
             }
             catch (Exception ex)
             {
 
             }
-
         }
 
         public async Task SetPosition(string street)
         {
             try
             {
-                try
-                {
-                    Location location = null;
-                    //if (App.Locator.CurrentUser.SendWay == SendInvite.SELECTEDLOCATION.ToString())
-                    //{
-                    //    location = (await Geocoding.GetLocationsAsync($"{App.Locator.HomePage.CurrentLocation}")).FirstOrDefault();
-                    //}
-                    //else
-                    //{
-                    //location = (await Geocoding.GetLocationsAsync($"{street}")).FirstOrDefault();
-
-                    //}
-                    Position = new Position(Helpers.CommonHelper.CurrentLatStop, Helpers.CommonHelper.CurrentLongStop);
-                    HideLoading();
-                }
-                catch (Exception ex)
-                {
-
-                }
-                //Location location = null;
-                //if (App.Locator.CurrentUser.SendWay == SendInvite.SELECTEDLOCATION.ToString())
-                //{
-                //    location = (await Geocoding.GetLocationsAsync($"{App.Locator.HomePage.CurrentLocation}")).FirstOrDefault();
-                //}
-                //else
-                //{
-                //    location = (await Geocoding.GetLocationsAsync($"{street}")).FirstOrDefault();
-
-                //}
-                //Position = new Position(location.Latitude, location.Longitude);
+                Location location = null;
+                Position = new Position(Helpers.CommonHelper.CurrentLatStop, Helpers.CommonHelper.CurrentLongStop);
+                HideLoading();
             }
             catch (Exception ex)
             {
 
             }
         }
-
 
         private async Task OpenMapCommandExecute()
         {
@@ -395,11 +364,11 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
                 await App.Locator.AutoCompleteMapPage.InitilizeData(ExpressType.StopLocation);
             }
         }
+
         private async Task GoToTrackorderCmdExecute()
         {
             try
             {
-
                 var address2 = Address2 == null ? "" : Address2.Trim();
                 ShowLoading();
                 AddStopLocation = await LocationHelpers.GetLatLongBasedOnAddress($"{Address1} {address2}");
@@ -416,7 +385,6 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
                 }
                 if (_navigationService.GetCurrentPageViewModel() != typeof(WhereToViewModel))
                 {
-                    //App.Locator.CurrentUser.SendWay = SendInvite.SELECTEDLOCATION.ToString();
                     PickupScheduleRequest = new PickupScheduleRequestModel();
                     if (App.Locator.PickupLocation.PickupScheduleRequest != null)
                     {
@@ -431,7 +399,8 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
                         PickupScheduleRequest.IsAvailablePickupLocation = App.Locator.PickupLocation.PickupScheduleRequest.IsAvailablePickupLocation;
                     }
 
-                    if (App.Locator.WhereTo.PickupScheduleRequest != null)
+                    if (App.Locator.WhereTo.PickupScheduleRequest != null &&
+                        App.Locator.PickupLocation.PickupScheduleRequest != null)
                     {
                         PickupScheduleRequest.pickuplat = App.Locator.PickupLocation.PickupScheduleRequest.pickuplat;
                         PickupScheduleRequest.pickuplon = App.Locator.PickupLocation.PickupScheduleRequest.pickuplon;
@@ -471,22 +440,27 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
                         stop_address1 = Address1.Trim(),
                         stop_address2 = address2,
                         stop_mobile = Number.Replace(" ", "").Trim(),
-                        stop_name = Name.Trim()
+                        stop_name = Name.Trim(),
+                        ImageName = FontIconsClass.CheckboxBlankCircleOutline,
+                        IsVisibleLastBottomLine = true
                     };
                     StopAddressList.Add(pickupScheduleRequestStopModel);
                     await _navigationService.NavigateBackAsync();
                     await App.Locator.TrackOrder.InitilizeData();
+                    App.Locator.DuraExpress.CheckStopLocation();
                 }
+            }
+            catch (Exception ex)
+            {
 
             }
-            catch (Exception ex) { }
         }
+
         internal async Task InitilizeData()
         {
             Name = string.Empty;
             Number = string.Empty;
             Address2 = string.Empty;
-
             IsAddress1ErrorVisible = IsAddress2ErrorVisible = IsNameErrorVisible = IsPhoneErrorVisible = false;
             CheckLoginValidation();
             Geolocation.GetLastKnownLocationAsync()
@@ -499,8 +473,8 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
                             Position = position;
                             await SetAddress(position);
                         });
-
         }
+
         private async Task SelectContactCommandExecute()
         {
             try

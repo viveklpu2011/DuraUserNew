@@ -42,12 +42,14 @@ namespace NewDuraApp.Areas.DuraExpress.Popup.ViewModel
                 OnPropertyChanged(nameof(IsVisibleRatingError));
             }
         }
+
         private byte[] _productImage;
         public byte[] ProductImage
         {
             get { return _productImage; }
             set { _productImage = value; OnPropertyChanged(nameof(ProductImage)); }
         }
+
         private ImageSource _profileImage;
         public ImageSource ProfileImage
         {
@@ -121,7 +123,6 @@ namespace NewDuraApp.Areas.DuraExpress.Popup.ViewModel
                         await _navigationService.ClosePopupsAsync();
                         ShowToast(AppResources.Thanks_for_provide_the_rating);
                     }
-                    //ShowAlert(result?.Data?.message, result?.Data?.message);
                 }
                 catch (Exception ex)
                 {
@@ -138,7 +139,6 @@ namespace NewDuraApp.Areas.DuraExpress.Popup.ViewModel
             if (getDriverDetailsModel != null)
             {
                 GetOrderData = getDriverDetailsModel;
-
                 ProductImage = string.IsNullOrEmpty(GetOrderData?.driverphoto) ? await ImageHelper.GetStreamFormResource("user_pic_placeholder.png") : await ImageHelper.GetImageFromUrl(GetOrderData?.driverphoto);
                 ProfileImage = ImageSource.FromStream(() => new MemoryStream(ProductImage));
             }

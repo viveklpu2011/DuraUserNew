@@ -26,10 +26,11 @@
             VerticalTextAlignment="Center" />
     </Shell.TitleView>
     <ContentPage.Content>
+
         <Grid
             Margin="10,0"
             ColumnDefinitions="Auto"
-            RowDefinitions="Auto,Auto,*">
+            RowDefinitions="Auto,Auto,55">
             <AbsoluteLayout
                 Grid.Row="0"
                 Grid.Column="0"
@@ -481,5 +482,6 @@
                 TextColor="White"
                 VerticalOptions="EndAndExpand" />
         </Grid>
+
     </ContentPage.Content>
 </ContentPage>

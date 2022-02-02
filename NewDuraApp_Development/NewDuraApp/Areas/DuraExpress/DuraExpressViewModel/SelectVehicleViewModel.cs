@@ -200,6 +200,7 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
                     TotalFare = 0;
                     Currency = arg?.currency;
                     TotalFare = Convert.ToDouble(arg.totalfare);
+
                     TotalFinalFare = Math.Round(TotalFare).ToString("N2");
                     AppConstant.SelectedVehicle = arg;
                     var tempListData = VehicleListTemp.ToList();

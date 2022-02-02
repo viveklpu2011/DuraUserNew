@@ -76,7 +76,7 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
                 OnPropertyChanged(nameof(PriceBreakUpList));
             }
         }
-
+        
         private string _addNote = string.Empty;
         private string _pType;
 

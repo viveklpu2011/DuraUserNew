@@ -26,11 +26,15 @@
             VerticalTextAlignment="Center" />
     </Shell.TitleView>
     <ContentPage.Content>
-        <ScrollView>
+        <Grid>
+        <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" x:Name="scrollView" IsClippedToBounds="True">
+         <StackLayout>
         <Grid
             Margin="10,0"
             ColumnDefinitions="Auto"
-            RowDefinitions="Auto,Auto,55">
+            HorizontalOptions="CenterAndExpand"
+            VerticalOptions="FillAndExpand"
+            RowDefinitions="Auto,Auto">
             <AbsoluteLayout
                 Grid.Row="0"
                 Grid.Column="0"
@@ -72,14 +76,13 @@
                         XAlign="Center" />
                 </StackLayout>
             </AbsoluteLayout>
-
-            
-                <shades:Shadows Grid.Row="1" CornerRadius="20" Shades="{shades:SingleShade Offset='0, 4', Opacity=0.7, Color=LightGray}">
                     <Frame
                         Margin="1,1,1,8"
                         Padding="0"
+                        Grid.Row="1"
+                        HasShadow="True"
                         BackgroundColor="WhiteSmoke"
-                        CornerRadius="8"
+                        CornerRadius="10"
                         IsClippedToBounds="True"
                         Visual="Material">
                         <StackLayout
@@ -462,24 +465,26 @@
                                 TextColor="#211E66"
                                 VerticalOptions="CenterAndExpand"
                                 Visual="Default" />
-                                <Button
-                                Grid.Row="2"
-                                Margin="0,0.5"
-                                Padding="0"
-                                BackgroundColor="#211E66"
-                                Command="{Binding GoToSelectVehicleCmd}"
-                                CornerRadius="5"
-                                FontFamily="RobotoRegular"
-                                FontSize="16"
-                                HeightRequest="45"
-                                HorizontalOptions="FillAndExpand"
-                                Text="{translate:Translate Select_Vehicle}"
-                                TextColor="White"
-                                VerticalOptions="EndAndExpand" />
+                             
                         </StackLayout>
                     </Frame>
-                </shades:Shadows>
         </Grid>
+             <Button
+              Margin="5"
+              Padding="0"
+              BackgroundColor="#211E66"
+              Command="{Binding GoToSelectVehicleCmd}"
+              CornerRadius="5"
+              IsVisible="True"
+              FontFamily="RobotoRegular"
+              FontSize="16"
+              HeightRequest="45"
+              HorizontalOptions="FillAndExpand"
+              Text="{translate:Translate Select_Vehicle}"
+              TextColor="White"
+              VerticalOptions="EndAndExpand" />
+           </StackLayout>
 </ScrollView>
-    </ContentPage.Content>
+       </Grid>
+        </ContentPage.Content>
 </ContentPage>

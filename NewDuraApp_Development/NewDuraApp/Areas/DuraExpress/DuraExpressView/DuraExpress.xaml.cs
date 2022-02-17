@@ -15,11 +15,13 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressView
         public DuraExpress()
         {
             InitializeComponent();
+           
             //lblPickupLocation.IsVisible = false;
         }
         protected override void OnAppearing()
         {
             base.OnAppearing();
+
             if (lblPickupLocation.IsVisible)
             {
                 lblPickupLocation.Text = SettingsExtension.PickupAddress;

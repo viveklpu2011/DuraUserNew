@@ -382,7 +382,7 @@
     <value>Driving license front image removed</value>
   </data>
 	<data name="Drop_off_Final_Drop_Location" xml:space="preserve">
-    <value>Drop off (Final Drop Location)</value>
+    <value>Stop Location</value>
   </data>
 	<data name="DuraDrive_Chat_with_Admin" xml:space="preserve">
     <value>DuraDrive - Chat with Admin</value>

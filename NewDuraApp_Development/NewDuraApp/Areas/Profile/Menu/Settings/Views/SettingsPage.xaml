@@ -17,7 +17,6 @@
     Shell.TabBarIsVisible="False"
     Visual="Material">
     <Shell.TitleView>
-
         <Label
             FontFamily="ProximaSemiBold"
             FontSize="22"
@@ -26,8 +25,6 @@
             TextColor="Black"
             VerticalOptions="CenterAndExpand"
             VerticalTextAlignment="Center" />
-
-
     </Shell.TitleView>
     <ContentPage.Content>
         <ScrollView Margin="15" VerticalScrollBarVisibility="Never">
@@ -100,7 +97,6 @@
                                     Glyph="{x:Static fonticon:FontIconsClass.MenuRight}"
                                     Size="30"
                                     Color="Black" />
-
                             </ImageButton.Source>
                         </ImageButton>
                     </StackLayout>
@@ -174,7 +170,6 @@
                                     Glyph="{x:Static fonticon:FontIconsClass.MenuRight}"
                                     Size="30"
                                     Color="Black" />
-
                             </ImageButton.Source>
                         </ImageButton>
                     </StackLayout>
@@ -210,7 +205,6 @@
                                     Glyph="{x:Static fonticon:FontIconsClass.MenuRight}"
                                     Size="30"
                                     Color="Black" />
-
                             </ImageButton.Source>
                         </ImageButton>
                     </StackLayout>
@@ -246,7 +240,6 @@
                                     Glyph="{x:Static fonticon:FontIconsClass.MenuRight}"
                                     Size="30"
                                     Color="Black" />
-
                             </ImageButton.Source>
                         </ImageButton>
                     </StackLayout>
@@ -269,7 +262,6 @@
                         Source="{images:EmbeddedImage NewDuraApp.Images.logout.png}"
                         VerticalOptions="CenterAndExpand"
                         WidthRequest="20" />
-
                     <Label
                         FontFamily="ProximaRegular"
                         FontSize="14"

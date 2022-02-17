@@ -228,14 +228,10 @@
                             WidthRequest="250" />
                         <Grid
                             Margin="0,20,0,0"
+                            ColumnDefinitions="90,110,90"
                             HorizontalOptions="CenterAndExpand"
                             VerticalOptions="CenterAndExpand"
                             WidthRequest="290">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="90" />
-                                <ColumnDefinition Width="110" />
-                                <ColumnDefinition Width="90" />
-                            </Grid.ColumnDefinitions>
                             <Grid
                                 Grid.Column="0"
                                 HeightRequest=".5"

@@ -34,6 +34,7 @@ namespace NewDuraApp.Areas.Common.ViewModels
         private IAuthenticationService _authService;
         private IUserCoreService _userCoreService;
         public IAsyncCommand GoToSearchLoactionPopupCmd { get; set; }
+
         private GetProfileDetailsModel _profileDetails;
         public GetProfileDetailsModel ProfileDetails
         {
@@ -176,9 +177,6 @@ namespace NewDuraApp.Areas.Common.ViewModels
                                 }
                                 else
                                 {
-                                    ////locList = new List<LocationDataResponse>();
-                                    //LocationDataResponse item = new LocationDataResponse { area = "philipins", country = "philipins" };
-                                    //locList.Add(item);
                                     HideLoading();
                                     ShowAlert(result?.Data?.message);
                                 }

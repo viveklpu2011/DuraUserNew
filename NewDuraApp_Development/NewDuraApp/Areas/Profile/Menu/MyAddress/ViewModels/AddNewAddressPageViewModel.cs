@@ -21,504 +21,540 @@ using Xamarin.Forms.Maps;
 
 namespace NewDuraApp.Areas.Profile.Menu.MyAddress.ViewModels
 {
-	public class AddNewAddressPageViewModel : AppBaseViewModel
-	{
-		INavigationService _navigationService;
-		public IAsyncCommand SaveAddress { get; set; }
-		private IUserCoreService _userCoreService;
-		public IAsyncCommand OpenMapCommand { get; set; }
-		public IAsyncCommand SelectContactCommand { get; set; }
-		//private string _address1;
-		//public string Address1
-		//{
-		//    get { return _address1; }
-		//    set
-		//    {
-		//        _address1 = value;
-		//        OnPropertyChanged(nameof(Address1));
-		//    }
-		//}
+    public class AddNewAddressPageViewModel : AppBaseViewModel
+    {
+        INavigationService _navigationService;
+        public IAsyncCommand SaveAddress { get; set; }
+        private IUserCoreService _userCoreService;
+        public IAsyncCommand OpenMapCommand { get; set; }
+        public IAsyncCommand SelectContactCommand { get; set; }
 
-		private int _selectedTypeIndex = -1;
-		public int SelectedTypeIndex {
-			get { return _selectedTypeIndex; }
-			set {
-				_selectedTypeIndex = value;
-				OnPropertyChanged(nameof(SelectedTypeIndex));
-			}
-		}
+        private int _selectedTypeIndex = -1;
+        public int SelectedTypeIndex
+        {
+            get { return _selectedTypeIndex; }
+            set
+            {
+                _selectedTypeIndex = value;
+                OnPropertyChanged(nameof(SelectedTypeIndex));
+            }
+        }
 
-		private bool _isCheckedDefault;
-		public bool IsCheckedDefault {
-			get { return _isCheckedDefault; }
-			set {
-				_isCheckedDefault = value;
-				OnPropertyChanged(nameof(IsCheckedDefault));
-			}
-		}
+        private bool _isCheckedDefault;
+        public bool IsCheckedDefault
+        {
+            get { return _isCheckedDefault; }
+            set
+            {
+                _isCheckedDefault = value;
+                OnPropertyChanged(nameof(IsCheckedDefault));
+            }
+        }
 
-		private string _addressType;
-		public string AddressType {
-			get { return _addressType; }
-			set {
-				_addressType = value;
-				if (RegexUtilities.EmptyString(_addressType)) {
-					IsAddressTypeErrorVisible = false;
-				} else {
-					IsAddressTypeErrorVisible = true;
-				}
+        private string _addressType;
+        public string AddressType
+        {
+            get { return _addressType; }
+            set
+            {
+                _addressType = value;
+                if (RegexUtilities.EmptyString(_addressType))
+                {
+                    IsAddressTypeErrorVisible = false;
+                }
+                else
+                {
+                    IsAddressTypeErrorVisible = true;
+                }
+                CheckAddressValidation();
+                OnPropertyChanged(nameof(AddressType));
+            }
+        }
 
-				CheckAddressValidation();
-				OnPropertyChanged(nameof(AddressType));
-			}
-		}
-		private string _homeAddress;
-		public string HomeAddress {
-			get { return _homeAddress; }
-			set {
-				_homeAddress = value;
-				if (RegexUtilities.EmptyString(_homeAddress)) {
-					IsHomeAddressErrorVisible = false;
-				} else {
-					IsHomeAddressErrorVisible = true;
-				}
+        private string _homeAddress;
+        public string HomeAddress
+        {
+            get { return _homeAddress; }
+            set
+            {
+                _homeAddress = value;
+                if (RegexUtilities.EmptyString(_homeAddress))
+                {
+                    IsHomeAddressErrorVisible = false;
+                }
+                else
+                {
+                    IsHomeAddressErrorVisible = true;
+                }
+                CheckAddressValidation();
+                OnPropertyChanged(nameof(HomeAddress));
+            }
+        }
 
-				CheckAddressValidation();
-				OnPropertyChanged(nameof(HomeAddress));
-			}
-		}
+        private string _blockAddress;
+        public string BlockAddress
+        {
+            get { return _blockAddress; }
+            set
+            {
+                _blockAddress = value;
+                if (RegexUtilities.EmptyString(_blockAddress))
+                {
+                    IsBlockAddressErrorVisible = false;
+                }
+                else
+                {
+                    IsBlockAddressErrorVisible = true;
+                }
+                CheckAddressValidation();
+                OnPropertyChanged(nameof(BlockAddress));
+            }
+        }
 
-		private string _blockAddress;
-		public string BlockAddress {
-			get { return _blockAddress; }
-			set {
-				_blockAddress = value;
-				if (RegexUtilities.EmptyString(_blockAddress)) {
-					IsBlockAddressErrorVisible = false;
-				} else {
-					IsBlockAddressErrorVisible = true;
-				}
+        private string _city;
+        public string City
+        {
+            get { return _city; }
+            set
+            {
+                _city = value;
+                if (!string.IsNullOrEmpty(_city))
+                {
+                    if (RegexUtilities.EmptyString(_city))
+                    {
+                        IsCityErrorVisible = false;
+                    }
+                    else
+                    {
+                        IsCityErrorVisible = true;
+                    }
 
-				CheckAddressValidation();
-				OnPropertyChanged(nameof(BlockAddress));
-			}
-		}
+                }
+                else
+                {
+                    IsCityErrorVisible = false;
+                }
+                CheckAddressValidation();
+                OnPropertyChanged(nameof(City));
+            }
+        }
 
-		private string _city;
-		public string City {
-			get { return _city; }
-			set {
-				_city = value;
-				if (!string.IsNullOrEmpty(_city)) {
-					if (RegexUtilities.EmptyString(_city)) {
-						IsCityErrorVisible = false;
-					} else {
-						IsCityErrorVisible = true;
-					}
+        private string _contactPerson;
+        public string ContactPerson
+        {
+            get { return _contactPerson; }
+            set
+            {
+                _contactPerson = value;
+                if (!string.IsNullOrEmpty(_contactPerson))
+                {
+                    if (RegexUtilities.AlphanumericNameValidation(_contactPerson))
+                    {
+                        IsContactPersonErrorVisible = false;
+                    }
+                    else
+                    {
+                        IsContactPersonErrorVisible = true;
+                    }
+                }
+                else
+                {
+                    IsContactPersonErrorVisible = false;
+                }
+                CheckAddressValidation();
+                OnPropertyChanged(nameof(ContactPerson));
+            }
+        }
 
-				} else {
-					IsCityErrorVisible = false;
-				}
-				CheckAddressValidation();
-				OnPropertyChanged(nameof(City));
-			}
-		}
+        private string _contactNumber;
+        public string ContactNumber
+        {
+            get { return _contactNumber; }
+            set
+            {
+                _contactNumber = value;
+                if (!string.IsNullOrEmpty(_contactNumber))
+                {
+                    if (RegexUtilities.PhoneNumberValidation(_contactNumber) && _contactNumber.Length >= 10)
+                    {
+                        IsPhoneErrorVisible = false;
+                    }
+                    else
+                    {
+                        IsPhoneErrorVisible = true;
+                    }
+                }
+                else
+                {
+                    IsPhoneErrorVisible = false;
+                }
+                CheckAddressValidation();
+                OnPropertyChanged(nameof(ContactNumber));
+            }
+        }
 
-		private string _contactPerson;
-		public string ContactPerson {
-			get { return _contactPerson; }
-			set {
-				_contactPerson = value;
-				if (!string.IsNullOrEmpty(_contactPerson)) {
-					if (RegexUtilities.AlphanumericNameValidation(_contactPerson)) {
-						IsContactPersonErrorVisible = false;
-					} else {
-						IsContactPersonErrorVisible = true;
-					}
+        private string _default = "0";
+        public string Default
+        {
+            get { return _default; }
+            set
+            {
+                _default = value;
+                OnPropertyChanged(nameof(Default));
+            }
+        }
 
+        private string _headerText = AppResources.Add_New_Address;
+        public string HeaderText
+        {
+            get { return _headerText; }
+            set
+            {
+                _headerText = value;
+                OnPropertyChanged(nameof(HeaderText));
+            }
+        }
 
-				} else {
-					IsContactPersonErrorVisible = false;
-				}
+        private string _buttonText = AppResources.Add;
+        public string ButtonText
+        {
+            get { return _buttonText; }
+            set
+            {
+                _buttonText = value;
+                OnPropertyChanged(nameof(ButtonText));
+            }
+        }
 
-				CheckAddressValidation();
-				OnPropertyChanged(nameof(ContactPerson));
-			}
-		}
+        private bool _isHomeAddressErrorVisible;
+        public bool IsHomeAddressErrorVisible
+        {
+            get { return _isHomeAddressErrorVisible; }
+            set
+            {
+                _isHomeAddressErrorVisible = value;
+                OnPropertyChanged(nameof(IsHomeAddressErrorVisible));
+            }
+        }
 
-		private string _contactNumber;
-		public string ContactNumber {
-			get { return _contactNumber; }
-			set {
-				_contactNumber = value;
-				if (!string.IsNullOrEmpty(_contactNumber)) {
-					if (RegexUtilities.PhoneNumberValidation(_contactNumber) && _contactNumber.Length >= 10) {
-						IsPhoneErrorVisible = false;
-					} else {
-						IsPhoneErrorVisible = true;
-					}
-				} else {
-					IsPhoneErrorVisible = false;
-				}
+        private bool _isBlockAddressErrorVisible;
+        public bool IsBlockAddressErrorVisible
+        {
+            get { return _isBlockAddressErrorVisible; }
+            set
+            {
+                _isBlockAddressErrorVisible = value;
+                OnPropertyChanged(nameof(IsBlockAddressErrorVisible));
+            }
+        }
 
+        private bool _isCityErrorVisible;
+        public bool IsCityErrorVisible
+        {
+            get { return _isCityErrorVisible; }
+            set
+            {
+                _isCityErrorVisible = value;
+                OnPropertyChanged(nameof(IsCityErrorVisible));
+            }
+        }
 
-				CheckAddressValidation();
-				OnPropertyChanged(nameof(ContactNumber));
-			}
-		}
+        private bool _isContactPersonErrorVisible;
+        public bool IsContactPersonErrorVisible
+        {
+            get { return _isContactPersonErrorVisible; }
+            set
+            {
+                _isContactPersonErrorVisible = value;
+                OnPropertyChanged(nameof(IsContactPersonErrorVisible));
+            }
+        }
 
-		private string _default = "0";
-		public string Default {
-			get { return _default; }
-			set {
-				_default = value;
-				OnPropertyChanged(nameof(Default));
-			}
-		}
+        private bool _isPhoneErrorVisible;
+        public bool IsPhoneErrorVisible
+        {
+            get { return _isPhoneErrorVisible; }
+            set
+            {
+                _isPhoneErrorVisible = value;
+                OnPropertyChanged(nameof(IsPhoneErrorVisible));
+            }
+        }
 
-		private string _headerText =AppResources.Add_New_Address;
-		public string HeaderText {
-			get { return _headerText; }
-			set {
-				_headerText = value;
-				OnPropertyChanged(nameof(HeaderText));
-			}
-		}
-		private string _buttonText = AppResources.Add;
-		public string ButtonText {
-			get { return _buttonText; }
-			set {
-				_buttonText = value;
-				OnPropertyChanged(nameof(ButtonText));
-			}
-		}
+        private bool _isAddressTypeErrorVisible;
+        public bool IsAddressTypeErrorVisible
+        {
+            get { return _isAddressTypeErrorVisible; }
+            set
+            {
+                _isAddressTypeErrorVisible = value;
+                OnPropertyChanged(nameof(IsAddressTypeErrorVisible));
+            }
+        }
 
-		private bool _isHomeAddressErrorVisible;
-		public bool IsHomeAddressErrorVisible {
-			get { return _isHomeAddressErrorVisible; }
-			set {
-				_isHomeAddressErrorVisible = value;
-				OnPropertyChanged(nameof(IsHomeAddressErrorVisible));
-			}
-		}
+        private bool _isButtonEnabled;
+        public bool IsButtonEnabled
+        {
+            get { return _isButtonEnabled; }
+            set
+            {
+                _isButtonEnabled = value;
+                OnPropertyChanged(nameof(IsButtonEnabled));
+            }
+        }
 
-		private bool _isBlockAddressErrorVisible;
-		public bool IsBlockAddressErrorVisible {
-			get { return _isBlockAddressErrorVisible; }
-			set {
-				_isBlockAddressErrorVisible = value;
-				OnPropertyChanged(nameof(IsBlockAddressErrorVisible));
-			}
-		}
+        private Position position;
+        public Position Position
+        {
+            get { return position; }
+            set
+            {
+                position = value;
+                OnPropertyChanged(nameof(Position));
+            }
+        }
 
-		private bool _isCityErrorVisible;
-		public bool IsCityErrorVisible {
-			get { return _isCityErrorVisible; }
-			set {
-				_isCityErrorVisible = value;
-				OnPropertyChanged(nameof(IsCityErrorVisible));
-			}
-		}
+        private GetAddressModel _addressData;
+        public GetAddressModel AddressData
+        {
+            get { return _addressData; }
+            set
+            {
+                _addressData = value;
+                OnPropertyChanged(nameof(AddressData));
+            }
+        }
 
-		private bool _isContactPersonErrorVisible;
-		public bool IsContactPersonErrorVisible {
-			get { return _isContactPersonErrorVisible; }
-			set {
-				_isContactPersonErrorVisible = value;
-				OnPropertyChanged(nameof(IsContactPersonErrorVisible));
-			}
-		}
+        public Xamarin.Forms.Command ExecuteSetPosition { get; set; }
+        public Xamarin.Forms.Command<Position> ExecuteSetAddress { get; set; }
+        public IAsyncCommand AddressReturnCommand { get; set; }
 
-		private bool _isPhoneErrorVisible;
-		public bool IsPhoneErrorVisible {
-			get { return _isPhoneErrorVisible; }
-			set {
-				_isPhoneErrorVisible = value;
-				OnPropertyChanged(nameof(IsPhoneErrorVisible));
-			}
-		}
+        public AddNewAddressPageViewModel(INavigationService navigationService, IUserCoreService userCoreService)
+        {
+            _navigationService = navigationService;
+            _userCoreService = userCoreService;
+            SaveAddress = new AsyncCommand(SaveAddressCommand);
+            SelectContactCommand = new AsyncCommand(SelectContactCommandExecute);
+            AddressReturnCommand = new AsyncCommand(AddressReturnCommandExecute);
+            ExecuteSetAddress = new Xamarin.Forms.Command<Position>(async (position) => await SetAddress(position));
+            OpenMapCommand = new AsyncCommand(OpenMapCommandExecute);
+            ExecuteSetPosition = new Xamarin.Forms.Command(async () => await SetPosition(HomeAddress));
+        }
 
-		private bool _isAddressTypeErrorVisible;
-		public bool IsAddressTypeErrorVisible {
-			get { return _isAddressTypeErrorVisible; }
-			set {
-				_isAddressTypeErrorVisible = value;
-				OnPropertyChanged(nameof(IsAddressTypeErrorVisible));
-			}
-		}
+        private async Task SelectContactCommandExecute()
+        {
+            var userContact = await CommonHelper.GetContact();
+            if (userContact != null)
+            {
 
-		private bool _isButtonEnabled;
-		public bool IsButtonEnabled {
-			get { return _isButtonEnabled; }
-			set {
-				_isButtonEnabled = value;
-				OnPropertyChanged(nameof(IsButtonEnabled));
-			}
-		}
-		private Position position;
-		public Position Position {
-			get { return position; }
-			set {
-				position = value;
-				OnPropertyChanged(nameof(Position));
-			}
-		}
+                ContactPerson = userContact?.DisplayName;
+                if (userContact?.Phones != null && userContact?.Phones.Count > 0)
+                {
+                    ContactNumber = userContact?.Phones[0].PhoneNumber.Trim();
+                }
+            }
+        }
 
-		private GetAddressModel _addressData;
-		public GetAddressModel AddressData {
-			get { return _addressData; }
-			set {
-				_addressData = value;
-				OnPropertyChanged(nameof(AddressData));
-			}
-		}
-		public Xamarin.Forms.Command ExecuteSetPosition { get; set; }
-		public Xamarin.Forms.Command<Position> ExecuteSetAddress { get; set; }
-		public IAsyncCommand AddressReturnCommand { get; set; }
+        public async Task AddressReturnCommandExecute()
+        {
+            await SetPosition(HomeAddress);
+        }
 
+        private async Task OpenMapCommandExecute()
+        {
+            if (_navigationService.GetCurrentPageViewModel() != typeof(AutoCompleteMapPageViewModel))
+            {
+                await _navigationService.NavigateToAsync<AutoCompleteMapPageViewModel>();
+                await App.Locator.AutoCompleteMapPage.InitilizeData(ExpressType.AddAddress);
+            }
+        }
 
-		public AddNewAddressPageViewModel(INavigationService navigationService, IUserCoreService userCoreService)
-		{
-			_navigationService = navigationService;
-			_userCoreService = userCoreService;
-			SaveAddress = new AsyncCommand(SaveAddressCommand);
-			SelectContactCommand = new AsyncCommand(SelectContactCommandExecute);
-			AddressReturnCommand = new AsyncCommand(AddressReturnCommandExecute);
-			ExecuteSetAddress = new Xamarin.Forms.Command<Position>(async (position) => await SetAddress(position));
-			OpenMapCommand = new AsyncCommand(OpenMapCommandExecute);
-			ExecuteSetPosition = new Xamarin.Forms.Command(async () => await SetPosition(HomeAddress));
+        public async Task SetAddress(Position p)
+        {
+            try
+            {
+                if (p == Position)
+                {
+                    p = new Position(App.Locator.HomePage.CommonLatLong.latitude, App.Locator.HomePage.CommonLatLong.longitude);
+                    var addrs = (await Geocoding.GetPlacemarksAsync(new Location(p.Latitude, p.Longitude))).FirstOrDefault();
+                    HomeAddress = $"{App.Locator.HomePage.CommonLatLong.FullAddress}";
+                }
+                else
+                {
+                    var addrs = (await Geocoding.GetPlacemarksAsync(new Location(p.Latitude, p.Longitude))).FirstOrDefault();
+                    HomeAddress = $"{addrs.SubLocality} {addrs.SubAdminArea} {addrs.PostalCode} {addrs.Locality} {addrs.CountryName}";
+                }
 
-		}
-		private async Task SelectContactCommandExecute()
-		{
-			var userContact = await CommonHelper.GetContact();
-			if (userContact != null) {
+                Position = p;
+                HideLoading();
+            }
+            catch (Exception ex)
+            {
 
-				ContactPerson = userContact?.DisplayName;
-				if (userContact?.Phones != null && userContact?.Phones.Count > 0) {
-					ContactNumber = userContact?.Phones[0].PhoneNumber.Trim();
+            }
+        }
 
-				}
-			}
-		}
+        private async Task SetPosition(string street)
+        {
+            try
+            {
+                Location location = null;
+                location = (await Geocoding.GetLocationsAsync($"{street}")).FirstOrDefault();
+                Position = new Position(location.Latitude, location.Longitude);
+                HideLoading();
+            }
+            catch (Exception ex)
+            {
 
-		public async Task AddressReturnCommandExecute()
-		{
-			await SetPosition(HomeAddress);
-		}
-		private async Task OpenMapCommandExecute()
-		{
-			if (_navigationService.GetCurrentPageViewModel() != typeof(AutoCompleteMapPageViewModel)) {
-				//App.Locator.CurrentUser.SendWay = SendInvite.SELECTEDLOCATION.ToString();
-				await _navigationService.NavigateToAsync<AutoCompleteMapPageViewModel>();
-				await App.Locator.AutoCompleteMapPage.InitilizeData(ExpressType.AddAddress);
-			}
-		}
-		public async Task SetAddress(Position p)
-		{
-			try {
-				if (p == Position) {
-					p = new Position(App.Locator.HomePage.CommonLatLong.latitude, App.Locator.HomePage.CommonLatLong.longitude);
-					var addrs = (await Geocoding.GetPlacemarksAsync(new Location(p.Latitude, p.Longitude))).FirstOrDefault();
-
-					HomeAddress = $"{App.Locator.HomePage.CommonLatLong.FullAddress}";
-					//City = addrs.Locality;
-				} else {
-					var addrs = (await Geocoding.GetPlacemarksAsync(new Location(p.Latitude, p.Longitude))).FirstOrDefault();
-					HomeAddress = $"{addrs.SubLocality} {addrs.SubAdminArea} {addrs.PostalCode} {addrs.Locality} {addrs.CountryName}";
-					//City = addrs.Locality;
-
-				}
-
-				Position = p;
-				HideLoading();
-			} catch (Exception ex) {
-
-			}
-
-		}
-
-		private async Task SetPosition(string street)
-		{
-			try {
-				Location location = null;
-				location = (await Geocoding.GetLocationsAsync($"{street}")).FirstOrDefault();
-				Position = new Position(location.Latitude, location.Longitude);
-				//var address = await LocationHelpers.GetAddressBasedOnLatLong(location);
-				//if (address != null)
-				//{
-				//    City = address.Locality;
-				//}
-				HideLoading();
-			} catch (Exception ex) {
-
-			}
-
-			//try
-			//{
-			//    Location location = null;
-			//    if (App.Locator.CurrentUser.SendWay == SendInvite.SELECTEDLOCATION.ToString())
-			//    {
-			//        location = (await Geocoding.GetLocationsAsync($"{App.Locator.HomePage.CurrentLocation}")).FirstOrDefault();
-			//    }
-			//    else
-			//    {
-			//        location = (await Geocoding.GetLocationsAsync($"{street}")).FirstOrDefault();
-
-			//    }
-			//    Position = new Position(location.Latitude, location.Longitude);
-			//    var address = await LocationHelpers.GetAddressBasedOnLatLong(location);
-			//    if (address != null)
-			//    {
-			//        City = address.Locality;
-			//    }
-			//    HideLoading();
-			//}
-			//catch (Exception ex)
-			//{
-
-			//}
-		}
+            }
+        }
 
 
-		private async Task SaveAddressCommand()
-		{
-			if (ButtonText == "Update") {
-				if (CheckConnection()) {
-					ShowLoading();
-					try {
-						UpdateAddressRequestModel updateAddressRequestModel = new UpdateAddressRequestModel() {
-							user_id = SettingsExtension.UserId,
-							address1 = HomeAddress,
-							address2 = BlockAddress,
-							contactperson = ContactPerson,
-							mobile = ContactNumber,
-							isdefault = Default,
-							latitude = Position.Latitude,
-							longitude = Position.Longitude,
-							addressid = AddressData.id
-						};
-						var result = await TryWithErrorAsync(_userCoreService.UpdateAddress(updateAddressRequestModel, SettingsExtension.Token), true, false);
-						if (result?.ResultType == ResultType.Ok && result.Data.status == 200) {
-							App.Locator.CurrentUser.SendWay = SendInvite.SELECTEDLOCATION.ToString();
-							await App.Locator.HomePage.GetAddressList();
-							await _navigationService.NavigateBackAsync();
-							await App.Locator.MyAddressPage.InitilizeData();
-							ShowToast(AppResources.Address_Updated);
-						}
-						//ShowAlert(result?.Data?.message, result?.Data?.message);
-					} catch (Exception ex) {
-						// ShowAlert(CommonMessages.ServerError);
-					}
-					HideLoading();
-				} else
-					ShowToast(CommonMessages.NoInternet);
-			} else {
-				if (CheckConnection()) {
-					ShowLoading();
-					try {
-						AddAddressRequestModel addAddressRequestModel = new AddAddressRequestModel() {
-							user_id = SettingsExtension.UserId,
-							address1 = HomeAddress,
-							address2 = BlockAddress,
-							contactperson = ContactPerson,
-							mobile = ContactNumber,
-							isdefault = Default,
-							latitude = Position.Latitude,
-							longitude = Position.Longitude
+        private async Task SaveAddressCommand()
+        {
+            if (ButtonText == "Update")
+            {
+                if (CheckConnection())
+                {
+                    ShowLoading();
+                    try
+                    {
+                        UpdateAddressRequestModel updateAddressRequestModel = new UpdateAddressRequestModel()
+                        {
+                            user_id = SettingsExtension.UserId,
+                            address1 = HomeAddress,
+                            address2 = BlockAddress,
+                            contactperson = ContactPerson,
+                            mobile = ContactNumber,
+                            isdefault = Default,
+                            latitude = Position.Latitude,
+                            longitude = Position.Longitude,
+                            addressid = AddressData.id
+                        };
+                        var result = await TryWithErrorAsync(_userCoreService.UpdateAddress(updateAddressRequestModel, SettingsExtension.Token), true, false);
+                        if (result?.ResultType == ResultType.Ok && result.Data.status == 200)
+                        {
+                            App.Locator.CurrentUser.SendWay = SendInvite.SELECTEDLOCATION.ToString();
+                            await App.Locator.HomePage.GetAddressList();
+                            await _navigationService.NavigateBackAsync();
+                            await App.Locator.MyAddressPage.InitilizeData();
+                            ShowToast(AppResources.Address_Updated);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                    }
+                    HideLoading();
+                }
+                else
+                    ShowToast(CommonMessages.NoInternet);
+            }
+            else
+            {
+                if (CheckConnection())
+                {
+                    ShowLoading();
+                    try
+                    {
+                        AddAddressRequestModel addAddressRequestModel = new AddAddressRequestModel()
+                        {
+                            user_id = SettingsExtension.UserId,
+                            address1 = HomeAddress,
+                            address2 = BlockAddress,
+                            contactperson = ContactPerson,
+                            mobile = ContactNumber,
+                            isdefault = Default,
+                            latitude = Position.Latitude,
+                            longitude = Position.Longitude
 
-						};
-						var result = await TryWithErrorAsync(_userCoreService.AddAddress(addAddressRequestModel, SettingsExtension.Token), true, false);
-						if (result?.ResultType == ResultType.Ok && result.Data.status == 200) {
-							App.Locator.CurrentUser.SendWay = SendInvite.SELECTEDLOCATION.ToString();
-							await App.Locator.HomePage.GetAddressList();
-							await _navigationService.NavigateBackAsync();
-							await App.Locator.MyAddressPage.InitilizeData();
-							ShowToast(AppResources.New_Address_Added);
-						}
-						//ShowAlert(result?.Data?.message, result?.Data?.message);
-					} catch (Exception ex) {
-						// ShowAlert(CommonMessages.ServerError);
-					}
-					HideLoading();
-				} else
-					ShowToast(AppResources.NoInternet);
+                        };
+                        var result = await TryWithErrorAsync(_userCoreService.AddAddress(addAddressRequestModel, SettingsExtension.Token), true, false);
+                        if (result?.ResultType == ResultType.Ok && result.Data.status == 200)
+                        {
+                            App.Locator.CurrentUser.SendWay = SendInvite.SELECTEDLOCATION.ToString();
+                            await App.Locator.HomePage.GetAddressList();
+                            await _navigationService.NavigateBackAsync();
+                            await App.Locator.MyAddressPage.InitilizeData();
+                            ShowToast(AppResources.New_Address_Added);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                    }
+                    HideLoading();
+                }
+                else
+                    ShowToast(AppResources.NoInternet);
+            }
+        }
 
-			}
-		}
+        public async Task InitilizeData(GetAddressModel getAddressModel = null)
+        {
+            if (getAddressModel != null)
+            {
+                AddressData = getAddressModel;
+                ButtonText = "Update";
+                HeaderText = "Update Address";
+                HomeAddress = AddressData?.address1;
+                BlockAddress = AddressData?.address2;
+                ContactPerson = AddressData?.contactperson;
+                ContactNumber = AddressData?.mobile;
+                Position = new Position(Convert.ToDouble(AddressData?.latitude), Convert.ToDouble(AddressData?.longitude));
 
-		public async Task InitilizeData(GetAddressModel getAddressModel = null)
-		{
-			if (getAddressModel != null) {
-				AddressData = getAddressModel;
-				ButtonText = "Update";
-				HeaderText = "Update Address";
-				HomeAddress = AddressData?.address1;
-				BlockAddress = AddressData?.address2;
-				//City = AddressData?.city;
-				ContactPerson = AddressData?.contactperson;
-				ContactNumber = AddressData?.mobile;
-				//AddressType = AddressData.type;
-				Position = new Position(Convert.ToDouble(AddressData?.latitude), Convert.ToDouble(AddressData?.longitude));
-				//if (AddressData.type.Contains("Home"))
-				//{
-				//    SelectedTypeIndex = 0;
+                if (AddressData?.isdefault == "1")
+                {
+                    IsCheckedDefault = true;
+                }
+                else
+                {
+                    IsCheckedDefault = false;
+                }
+                await SetPosition($"{AddressData?.address1} {AddressData?.address2} {AddressData?.city}");
+            }
+            else
+            {
+                ButtonText = AppResources.Add;
+                HeaderText = AppResources.Add_New_Address;
+                HomeAddress = BlockAddress = City = ContactPerson = ContactNumber = AddressType = string.Empty;
+                IsCheckedDefault = false;
+                IsHomeAddressErrorVisible = IsBlockAddressErrorVisible = IsContactPersonErrorVisible = IsPhoneErrorVisible = false;
+                CheckAddressValidation();
+                Geolocation.GetLastKnownLocationAsync()
+                        .ToObservable()
+                        .Catch(Observable.Return(new Location()))
+                        .SubscribeOn(RxApp.MainThreadScheduler)
+                        .Subscribe(async location =>
+                        {
+                            var position = new Position(location.Latitude, location.Longitude);
+                            Position = position;
+                            await SetAddress(position);
+                        });
+            }
+        }
 
-				//}
-				//else if (AddressData.type.Contains("Work"))
-				//{
-				//    SelectedTypeIndex = 1;
-				//}
-				//else
-				//{
-				//    SelectedTypeIndex = -1;
-				//}
-
-				if (AddressData?.isdefault == "1") {
-					IsCheckedDefault = true;
-				} else {
-					IsCheckedDefault = false;
-				}
-				await SetPosition($"{AddressData?.address1} {AddressData?.address2} {AddressData?.city}");
-			} else {
-				ButtonText = AppResources.Add;
-				HeaderText = AppResources.Add_New_Address;
-				HomeAddress = BlockAddress = City = ContactPerson = ContactNumber = AddressType = string.Empty;
-				//SelectedTypeIndex = -1;
-				IsCheckedDefault = false;
-				IsHomeAddressErrorVisible = IsBlockAddressErrorVisible = IsContactPersonErrorVisible = IsPhoneErrorVisible = false;
-				CheckAddressValidation();
-
-				Geolocation.GetLastKnownLocationAsync()
-						.ToObservable()
-						.Catch(Observable.Return(new Location()))
-						.SubscribeOn(RxApp.MainThreadScheduler)
-						.Subscribe(async location => {
-							var position = new Position(location.Latitude, location.Longitude);
-							Position = position;
-							await SetAddress(position);
-						});
-			}
-		}
-
-		private bool CheckAddressValidation()
-		{
-			if (IsHomeAddressErrorVisible ||
-				IsBlockAddressErrorVisible ||
-				IsContactPersonErrorVisible ||
-				IsPhoneErrorVisible) {
-				IsButtonEnabled = false;
-				return false;
-			} else if (string.IsNullOrEmpty(HomeAddress) ||
-				  string.IsNullOrEmpty(BlockAddress) ||
-				  string.IsNullOrEmpty(ContactPerson) ||
-				  string.IsNullOrEmpty(ContactNumber)) {
-				IsButtonEnabled = false;
-				return false;
-			} else {
-				IsButtonEnabled = true;
-				return true;
-			}
-		}
-	}
+        private bool CheckAddressValidation()
+        {
+            if (IsHomeAddressErrorVisible ||
+                IsBlockAddressErrorVisible ||
+                IsContactPersonErrorVisible ||
+                IsPhoneErrorVisible)
+            {
+                IsButtonEnabled = false;
+                return false;
+            }
+            else if (string.IsNullOrEmpty(HomeAddress) ||
+                string.IsNullOrEmpty(BlockAddress) ||
+                string.IsNullOrEmpty(ContactPerson) ||
+                string.IsNullOrEmpty(ContactNumber))
+            {
+                IsButtonEnabled = false;
+                return false;
+            }
+            else
+            {
+                IsButtonEnabled = true;
+                return true;
+            }
+        }
+    }
 }

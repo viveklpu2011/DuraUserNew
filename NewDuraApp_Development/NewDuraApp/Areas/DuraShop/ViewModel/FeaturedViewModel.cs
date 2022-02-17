@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace NewDuraApp.Areas.DuraShop.ViewModel
 {
-   public class FeaturedViewModel: AppBaseViewModel
+    public class FeaturedViewModel : AppBaseViewModel
     {
         INavigationService _navigationService;
         public IAsyncCommand ItemDetailsCmd { get; set; }
@@ -22,33 +22,34 @@ namespace NewDuraApp.Areas.DuraShop.ViewModel
         public FeaturedViewModel(INavigationService navigationService)
         {
             ItemDetailsCmd = new AsyncCommand(ItemDetailsCmdExecute);
-            GoToSearchCmd = new AsyncCommand(GoToSearchCmdExecute); 
+            GoToSearchCmd = new AsyncCommand(GoToSearchCmdExecute);
             _navigationService = navigationService;
             ProductList = GetProductList();
         }
 
         private async Task ItemDetailsCmdExecute()
         {
-            if(_navigationService.GetCurrentPageViewModel() != typeof(ItemDetailsViewModel))
+            if (_navigationService.GetCurrentPageViewModel() != typeof(ItemDetailsViewModel))
             {
                 await _navigationService.NavigateToAsync<ItemDetailsViewModel>();
             }
         }
+
         private async Task GoToSearchCmdExecute()
         {
-            if(_navigationService.GetCurrentPageViewModel() != typeof(SearchScreenViewModel))
+            if (_navigationService.GetCurrentPageViewModel() != typeof(SearchScreenViewModel))
             {
                 await _navigationService.NavigateToAsync<SearchScreenViewModel>();
             }
         }
 
         private ObservableCollection<DuraShopModel> _productList;
-
         public ObservableCollection<DuraShopModel> ProductList
         {
             get { return _productList; }
             set { _productList = value; OnPropertyChanged(); }
         }
+
         private ObservableCollection<DuraShopModel> GetProductList()
         {
             return new ObservableCollection<DuraShopModel>()
@@ -63,9 +64,5 @@ namespace NewDuraApp.Areas.DuraShop.ViewModel
                 new DuraShopModel(){ProductImage=ImageHelper.GetImageNameFromResource("watch.png"), ProductName="Men's & Boys Watch",ProductPrice="₱ 60"},
             };
         }
-        //public ICommand ItemDetailsCmd => new Command(async (obj) =>
-        //{
-        //    await RichNavigation.PushAsync(new ItemDetails(), typeof(ItemDetails));
-        //});
     }
 }

@@ -97,6 +97,7 @@ namespace NewDuraApp.Areas.Common.ViewModels
                 OnPropertyChanged(nameof(IsAreaErrorVisible));
             }
         }
+
         public bool EmailNotValid
         {
             get { return _emailNotValid; }

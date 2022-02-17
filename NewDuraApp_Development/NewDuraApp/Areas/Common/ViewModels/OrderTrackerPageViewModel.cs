@@ -25,13 +25,10 @@ namespace NewDuraApp.Areas.Common.ViewModels
 {
     public class OrderTrackerPageViewModel : AppBaseViewModel
     {
-
         private INavigationService _navigationService;
         private IUserCoreService _userCoreService;
-
         public ICommand CalculateRouteCommand { get; set; }
         public ICommand UpdatePositionCommand { get; set; }
-
         public ICommand LoadRouteCommand { get; set; }
         public ICommand StopRouteCommand { get; set; }
         IGoogleMapsApiService googleMapsApi = new GoogleMapsApiService();

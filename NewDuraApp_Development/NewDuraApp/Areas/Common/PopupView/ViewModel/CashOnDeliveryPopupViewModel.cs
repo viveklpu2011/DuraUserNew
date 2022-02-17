@@ -12,25 +12,22 @@ using System.Threading.Tasks;
 
 namespace NewDuraApp.Areas.Common.PopupView.ViewModel
 {
-   public class CashOnDeliveryPopupViewModel: AppBaseViewModel
+    public class CashOnDeliveryPopupViewModel : AppBaseViewModel
     {
         INavigationService _navigationService;
         public IAsyncCommand GoToSuccessPopupCmd { get; set; }
-        public CashOnDeliveryPopupViewModel(INavigationService navigationService )
+        public CashOnDeliveryPopupViewModel(INavigationService navigationService)
         {
             _navigationService = navigationService;
             GoToSuccessPopupCmd = new AsyncCommand(GoToSuccessPopupCmdExecute);
         }
+
         private async Task GoToSuccessPopupCmdExecute()
         {
             if (_navigationService.GetCurrentPageViewModel() != typeof(SuccessOrderPopupViewModel))
             {
                 await _navigationService.ClosePopupsAsync();
                 await PopupNavigation.Instance.PushAsync(new SuccessOrderPopup());
-                //  await PopupNavigation.PopAsync();
-                // ClosePopupCommand = new Command(async () => await NavigationService.ClosePopupsAsync());
-               
-                
             }
         }
     }

@@ -17,7 +17,6 @@
     Shell.TabBarIsVisible="False"
     Visual="Material">
     <Shell.TitleView>
-
         <Label
             FontFamily="ProximaSemiBold"
             FontSize="22"
@@ -36,7 +35,6 @@
                 HorizontalOptions="FillAndExpand">
                 <sh:Shadows.Shades>
                     <sh:ImmutableShades>
-
                         <sh:Shade
                             BlurRadius="10"
                             Opacity="0.5"
@@ -190,7 +188,6 @@
                                             VerticalOptions="Center"
                                             WidthRequest="43" />
                                     </Frame>
-
                                     <StackLayout
                                         Grid.Row="0"
                                         Grid.Column="1"
@@ -217,11 +214,9 @@
                                                         Glyph="{x:Static fonticon:FontIconsClass.SquareEditOutline}"
                                                         Size="30"
                                                         Color="Black" />
-
                                                 </ImageButton.Source>
                                             </ImageButton>
                                         </StackLayout>
-
                                         <Label
                                             FontFamily="ProximaRegular"
                                             FontSize="12"
@@ -273,7 +268,6 @@
                                             Spacing="10">
                                             <BindableLayout.ItemTemplate>
                                                 <DataTemplate>
-
                                                     <Frame
                                                         Padding="0"
                                                         BorderColor="#707070"
@@ -287,7 +281,6 @@
                                                             Source="{Binding ReviewImage}"
                                                             WidthRequest="114" />
                                                     </Frame>
-
                                                 </DataTemplate>
                                             </BindableLayout.ItemTemplate>
                                         </StackLayout>

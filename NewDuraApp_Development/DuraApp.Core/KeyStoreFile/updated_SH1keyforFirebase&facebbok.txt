@@ -1,0 +1,40 @@
+https://codewithandrea.com/articles/keytool-command-not-found-how-to-fix-windows-macos/
+
+Password keystore : 12345678
+
+C:\Users\Sharanamit>keytool -list -v -keystore "C:\Users\Sharanamit\Desktop\DuraUser\DuraUser.keystore" -alias durauser
+Enter keystore password:
+Alias name: durauser
+Creation date: 10-Jan-2022
+Entry type: PrivateKeyEntry
+Certificate chain length: 1
+Certificate[1]:
+Owner: CN=Dura
+Issuer: CN=Dura
+Serial number: 2aee50ea
+Valid from: Mon Jan 10 17:15:08 IST 2022 until: Wed Jan 03 17:15:08 IST 2052
+Certificate fingerprints:
+         SHA1: CD:C7:7E:13:54:BB:4F:2C:D1:2B:5D:3D:6F:F4:2A:B1:78:A4:E8:B9
+         SHA256: 04:98:57:FE:3B:09:8A:6B:D6:40:BB:FC:9D:0F:04:72:78:E2:4D:8A:30:73:3F:57:EB:42:B2:2A:46:A5:9C:69
+Signature algorithm name: SHA256withRSA
+Subject Public Key Algorithm: 2048-bit RSA key
+Version: 3
+
+Extensions:
+
+#1: ObjectId: 2.5.29.14 Criticality=false
+SubjectKeyIdentifier [
+KeyIdentifier [
+0000: F5 CE FA FB C0 3A 85 DD   E4 CC 29 39 4D D2 60 35  .....:....)9M.`5
+0010: DA 27 1B D6                                        .'..
+]
+]
+
+
+
+      
+keytool -exportcert -alias YOUR_RELEASE_KEY_ALIAS -keystore YOUR_RELEASE_KEY_PATH | openssl sha1 -binary | openssl base64
+
+C:\Users\Sharanamit>keytool -exportcert -alias durauser -keystore "C:\Users\Sharanamit\Desktop\DuraUser\DuraUser.keystore" | "C:\Users\Sharanamit\Downloads\openssl-0.9.8k_WIN32\bin\openssl" sha1 -binary | "C:\Users\Sharanamit\Downloads\openssl-0.9.8k_WIN32\bin\openssl" base64
+Enter keystore password:  12345678
+zcd+E1S7TyzRK109b/QqsXik6Lk=

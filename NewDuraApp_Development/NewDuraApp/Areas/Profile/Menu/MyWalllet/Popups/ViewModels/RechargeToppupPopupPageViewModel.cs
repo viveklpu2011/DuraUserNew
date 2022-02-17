@@ -25,28 +25,31 @@ namespace NewDuraApp.Areas.Profile.Menu.MyWalllet.Popups.ViewModels
     {
         HttpClient client;
         CreateSourceMaster ResponseDataSource;
-
         INavigationService _navigationService;
         public IAsyncCommand NavigateToRehargeSuccessfull { get; set; }
         private IUserCoreService _userCoreService;
-        private WalletAmountModel _walletAmount;
+
         private GetSaveWalletAmountResponseModel _getSaveWalletAmount;
         public GetSaveWalletAmountResponseModel GetSaveWalletAmount
         {
             get { return _getSaveWalletAmount; }
             set { _getSaveWalletAmount = value; OnPropertyChanged(nameof(GetSaveWalletAmount)); }
         }
-        private string _phone;
+
+        private WalletAmountModel _walletAmount;
         public WalletAmountModel WalletAmount
         {
             get { return _walletAmount; }
             set { _walletAmount = value; OnPropertyChanged(nameof(WalletAmount)); }
         }
+
+        private string _phone;
         public string Phone
         {
             get { return _phone; }
             set { _phone = value; OnPropertyChanged(nameof(Phone)); }
         }
+
         public RechargeToppupPopupPageViewModel(INavigationService navigationService, IUserCoreService userCoreService)
         {
             _navigationService = navigationService;
@@ -83,14 +86,11 @@ namespace NewDuraApp.Areas.Profile.Menu.MyWalllet.Popups.ViewModels
                         await _navigationService.ClosePopupsAsync();
                         RechargeSuccessfullPopupPageViewModel rechargeSuccessfullPopupPageViewModel = new RechargeSuccessfullPopupPageViewModel(_navigationService);
                         await _navigationService.NavigateToPopupAsync<RechargeSuccessfullPopupPageViewModel>(true, rechargeSuccessfullPopupPageViewModel);
-
-
                     }
                     else
                     {
                         ShowAlert(result?.Data?.message);
                     }
-                    //ShowAlert(result.Data.message);
                 }
                 catch (Exception ex)
                 {
@@ -100,7 +100,6 @@ namespace NewDuraApp.Areas.Profile.Menu.MyWalllet.Popups.ViewModels
             }
             else
                 ShowToast(CommonMessages.NoInternet);
-
         }
 
         private async Task GcashInitiatePayment()
@@ -119,7 +118,6 @@ namespace NewDuraApp.Areas.Profile.Menu.MyWalllet.Popups.ViewModels
             createSourceMaster.data = data;
             var jsonData = JsonConvert.SerializeObject(createSourceMaster);
             var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
-
             var WebAPIUrl = GCashHelper.GCashPaymentUrlSource; // Set your REST API URL here.
             var uri = new Uri(WebAPIUrl);
             try
@@ -130,10 +128,6 @@ namespace NewDuraApp.Areas.Profile.Menu.MyWalllet.Popups.ViewModels
                     var contentResult = await response.Content.ReadAsStringAsync();
                     ResponseDataSource = JsonConvert.DeserializeObject<CreateSourceMaster>(contentResult);
                     ShowAlert($"Response From API {ResponseDataSource.data.id}");
-
-                    //actBusy.IsVisible = actBusy.IsRunning == true;
-                    //messageLebel.Text = "Please Approve Payment on Gcash Side & Press Approvel Done Button below.";
-
                     await Browser.OpenAsync(ResponseDataSource.data.attributes.redirect.checkout_url, new BrowserLaunchOptions
                     {
                         LaunchMode = BrowserLaunchMode.SystemPreferred,
@@ -147,18 +141,17 @@ namespace NewDuraApp.Areas.Profile.Menu.MyWalllet.Popups.ViewModels
             {
             }
         }
+
         private async Task GcashMakePayment()
         {
             string contentResult = string.Empty;
             var authData = string.Format("{0}:{1}", GCashHelper.Secret_Key, "");
             var authHeaderValue = Convert.ToBase64String(Encoding.UTF8.GetBytes(authData));
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", authHeaderValue);
-
             CreatePaymentMaster createPaymentMaster = new CreatePaymentMaster();
             Data data = new Data();
             Attributes attributes = new Attributes();
             Source source = new Source();
-
             if (ResponseDataSource.data.id != string.Empty && ResponseDataSource.data.type != string.Empty)
             {
                 source.id = ResponseDataSource.data.id;
@@ -169,7 +162,6 @@ namespace NewDuraApp.Areas.Profile.Menu.MyWalllet.Popups.ViewModels
                 ShowAlert("Please Rehit to Pay Button to request payment", "Error Gcash");
                 return;
             }
-
             attributes.amount = (Convert.ToInt32(WalletAmount?.amount) * 100);
             attributes.currency = "PHP";
             attributes.description = "Dura Drive Wallet Recharge";
@@ -189,11 +181,6 @@ namespace NewDuraApp.Areas.Profile.Menu.MyWalllet.Popups.ViewModels
                     contentResult = await response.Content.ReadAsStringAsync();
                     var ResponseData = JsonConvert.DeserializeObject<PaymentResponse>(contentResult);
                     ShowAlert("Response From API - Payment DONE Successfully", ResponseData.data.id);
-
-                    //actBusy.IsVisible = actBusy.IsRunning == true;
-                    //this.IsEnabled = false;
-                    //messageLebel.Text = "Please Approve Payment on Gcash Side & Press Approvel Done Button below.";
-                    //actBusy.IsVisible = actBusy.IsRunning == false;
                 }
                 else if (response.StatusCode == System.Net.HttpStatusCode.BadRequest)
                 {

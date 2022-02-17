@@ -71,7 +71,6 @@
                         XAlign="Center" />
                 </StackLayout>
             </AbsoluteLayout>
-
             <ScrollView Grid.Row="1" VerticalScrollBarVisibility="Never">
                 <shades:Shadows CornerRadius="20" Shades="{shades:SingleShade Offset='0, 4', Opacity=0.7, Color=LightGray}">
                     <Frame
@@ -465,7 +464,6 @@
                     </Frame>
                 </shades:Shadows>
             </ScrollView>
-
             <Button
                 Grid.Row="2"
                 Margin="5,0,5,10"

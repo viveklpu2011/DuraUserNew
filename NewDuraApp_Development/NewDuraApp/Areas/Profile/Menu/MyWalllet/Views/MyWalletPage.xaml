@@ -17,7 +17,6 @@
     Shell.TabBarIsVisible="False"
     Visual="Material">
     <Shell.TitleView>
-
         <Label
             FontAttributes="Bold"
             FontFamily="ProximaRegular"
@@ -27,11 +26,8 @@
             TextColor="Black"
             VerticalOptions="CenterAndExpand"
             VerticalTextAlignment="Center" />
-
-
     </Shell.TitleView>
     <ContentPage.Content>
-
         <Grid
             Margin="15"
             RowDefinitions="82,*"
@@ -69,7 +65,6 @@
                                 </FormattedString>
                             </Label.FormattedText>
                         </Label>
-
                     </StackLayout>
                     <Button
                         Grid.Column="1"
@@ -193,9 +188,7 @@
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
-
             </StackLayout>
         </Grid>
-
     </ContentPage.Content>
 </ContentPage>

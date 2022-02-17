@@ -20,13 +20,14 @@ namespace NewDuraApp.Areas.DuraShop.ViewModel
         public IAsyncCommand GoToMyCartCmd { get; set; }
         public IAsyncCommand GoToItemDetailsCmd { get; set; }
         public IAsyncCommand GoToSearchCmd { get; set; }
-        private ObservableCollection<DuraShopModel> _bannerList;
 
+        private ObservableCollection<DuraShopModel> _bannerList;
         public ObservableCollection<DuraShopModel> BannerList
         {
             get { return _bannerList; }
             set { _bannerList = value; OnPropertyChanged(); }
         }
+
         public DuraShopViewModel(INavigationService navigationService)
         {
             _navigationService = navigationService;
@@ -46,6 +47,7 @@ namespace NewDuraApp.Areas.DuraShop.ViewModel
                 await _navigationService.NavigateToAsync<SearchScreenViewModel>();
             }
         }
+
         private async Task GoToItemDetailsCmdExecute()
         {
             if (_navigationService.GetCurrentPageViewModel() != typeof(ItemDetailsViewModel))
@@ -53,6 +55,7 @@ namespace NewDuraApp.Areas.DuraShop.ViewModel
                 await _navigationService.NavigateToAsync<ItemDetailsViewModel>();
             }
         }
+
         private async Task GoToMyCartCmdExecute()
         {
             if (_navigationService.GetCurrentPageViewModel() != typeof(MyCartViewModel))
@@ -60,6 +63,7 @@ namespace NewDuraApp.Areas.DuraShop.ViewModel
                 await _navigationService.NavigateToAsync<MyCartViewModel>();
             }
         }
+
         private async Task GoToFeaturedCmdExecute()
         {
             if (_navigationService.GetCurrentPageViewModel() != typeof(FeaturedViewModel))
@@ -106,12 +110,12 @@ namespace NewDuraApp.Areas.DuraShop.ViewModel
         //});
 
         private ObservableCollection<DuraShopModel> _newproductList;
-
         public ObservableCollection<DuraShopModel> NewProductList
         {
             get { return _newproductList; }
             set { _newproductList = value; OnPropertyChanged(); }
         }
+
         private ObservableCollection<DuraShopModel> NewGetProductList()
         {
             return new ObservableCollection<DuraShopModel>()
@@ -122,13 +126,14 @@ namespace NewDuraApp.Areas.DuraShop.ViewModel
                 new DuraShopModel(){NewProductImage=ImageHelper.GetImageNameFromResource("t_shirt.png"), NewProductName="Men's Fit T-Shirt",NewProductPrice="₱ 200"},
             };
         }
-        private ObservableCollection<DuraShopModel> _productList;
 
+        private ObservableCollection<DuraShopModel> _productList;
         public ObservableCollection<DuraShopModel> ProductList
         {
             get { return _productList; }
             set { _productList = value; OnPropertyChanged(); }
         }
+
         private ObservableCollection<DuraShopModel> GetProductList()
         {
             return new ObservableCollection<DuraShopModel>()

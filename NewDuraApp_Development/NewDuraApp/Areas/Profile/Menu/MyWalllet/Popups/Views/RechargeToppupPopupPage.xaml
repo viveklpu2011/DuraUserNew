@@ -125,18 +125,11 @@
                                     Glyph="{x:Static fonticon:FontIconsClass.MenuRight}"
                                     Size="30"
                                     Color="Black" />
-
                             </ImageButton.Source>
                         </ImageButton>
                     </Grid>
-
-                    <!--<Frame.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding NavigateToRehargeSuccessfull}" />
-                    </Frame.GestureRecognizers>-->
                 </Frame>
             </StackLayout>
         </Frame>
-
-
     </ContentPage.Content>
 </rgPages:PopupPage>

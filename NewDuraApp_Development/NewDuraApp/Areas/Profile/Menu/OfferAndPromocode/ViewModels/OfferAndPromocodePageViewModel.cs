@@ -25,6 +25,7 @@ namespace NewDuraApp.Areas.Profile.Menu.OfferAndPromocode.ViewModels
         public IAsyncCommand<PromoCodeListModel> PromoCodeDetails { get; set; }
         public IAsyncCommand ApplyPromoCodeCommand { get; set; }
         private bool _isVisibleEntryFrame;
+
         private string _promoCode;
         public string PromoCode
         {
@@ -48,11 +49,13 @@ namespace NewDuraApp.Areas.Profile.Menu.OfferAndPromocode.ViewModels
             get { return _isVisibleEntryFrame; }
             set { _isVisibleEntryFrame = value; OnPropertyChanged(nameof(IsVisibleEntryFrame)); }
         }
+
         public ObservableCollection<PromoCodeListModel> PromoCodeList
         {
             get { return _promoCodeList; }
             set { _promoCodeList = value; OnPropertyChanged(nameof(PromoCodeList)); }
         }
+
         public OfferAndPromocodePageViewModel(INavigationService navigationService, IUserCoreService userCoreService)
         {
             _navigationService = navigationService;
@@ -107,7 +110,6 @@ namespace NewDuraApp.Areas.Profile.Menu.OfferAndPromocode.ViewModels
                 }
                 catch (Exception ex)
                 {
-                    //ShowToast(CommonMessages.ServerError);
                 }
                 HideLoading();
             }
@@ -167,7 +169,6 @@ namespace NewDuraApp.Areas.Profile.Menu.OfferAndPromocode.ViewModels
                     }
                 }
             }
-
         }
 
         public async Task InitilizeData()
@@ -182,9 +183,9 @@ namespace NewDuraApp.Areas.Profile.Menu.OfferAndPromocode.ViewModels
             }
             await GetAllPromocode();
         }
+
         private async Task GetAllPromocode()
         {
-
             if (CheckConnection())
             {
                 ShowLoading();
@@ -210,17 +211,14 @@ namespace NewDuraApp.Areas.Profile.Menu.OfferAndPromocode.ViewModels
                         {
                             OffersText = AppResources.No_offers_available;
                         }
-
                     }
                     else
                     {
                         ShowAlert(result?.Data?.message);
                     }
-                    //ShowAlert(result.Data.message);
                 }
                 catch (Exception ex)
                 {
-                    //ShowToast(CommonMessages.ServerError);
                 }
                 HideLoading();
             }

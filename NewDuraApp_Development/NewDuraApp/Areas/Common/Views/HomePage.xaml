@@ -16,11 +16,7 @@
             IsRefreshing="{Binding IsRefreshing}"
             RefreshColor="#211E66">
             <ScrollView>
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="60" />
-                        <RowDefinition Height="*" />
-                    </Grid.RowDefinitions>
+                <Grid RowDefinitions="60,*">
                     <StackLayout
                         Margin="20,0,20,0"
                         Padding="0"

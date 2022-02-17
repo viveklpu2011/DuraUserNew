@@ -29,7 +29,6 @@
                     Aspect="Fill"
                     HeightRequest="188"
                     Source="{images:EmbeddedImage NewDuraApp.Images.refer_friend_graphic.png}" />
-
                 <Label
                     Margin="30,0"
                     FontFamily="ProximaSemiBold"

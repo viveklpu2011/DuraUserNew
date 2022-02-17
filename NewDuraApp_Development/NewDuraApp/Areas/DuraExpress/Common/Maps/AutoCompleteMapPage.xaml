@@ -61,7 +61,6 @@
                                 Glyph="{x:Static fonticon:FontIconsClass.ArrowLeft}"
                                 Size="30"
                                 Color="Black" />
-
                         </ImageButton.Source>
                     </ImageButton>
                     <Label
@@ -70,9 +69,7 @@
                         Text="{Binding HeaderTitle}"
                         TextColor="Black"
                         VerticalOptions="CenterAndExpand" />
-
                 </StackLayout>
-
                 <StackLayout Margin="5,10,5,5">
                     <Label
                         FontFamily="Proxima"
@@ -98,7 +95,6 @@
                             TextChanged="OnTextChanged"
                             TextColor="Black" />
                     </Frame>
-
                 </StackLayout>
                 <StackLayout Margin="5,0,5,10" IsVisible="False">
                     <Label
@@ -123,7 +119,6 @@
                             TextChanged="CustomEntry_TextChanged"
                             TextColor="Black" />
                     </Frame>
-
                 </StackLayout>
                 <Label
                     Margin="5,0"
@@ -139,9 +134,7 @@
                     BackgroundColor="White"
                     BindableLayout.ItemsSource="{Binding AddressList}">
                     <BindableLayout.EmptyView>
-
                         <Label Text="{translate:Translate No_saved_address}" />
-
                     </BindableLayout.EmptyView>
                     <BindableLayout.ItemTemplate>
                         <DataTemplate>
@@ -165,7 +158,6 @@
                                             Glyph="{x:Static fonticon:FontIconsClass.MapMarkerRadiusOutline}"
                                             Size="20"
                                             Color="Gray" />
-
                                     </Image.Source>
                                 </Image>
                                 <StackLayout Grid.Column="1" Spacing="0">
@@ -181,7 +173,6 @@
                                                     Glyph="{Binding type, Converter={Helpers:StringToFonticonConverter}}"
                                                     Size="20"
                                                     Color="Gray" />
-
                                             </Image.Source>
                                         </Image>
                                         <Label
@@ -191,14 +182,12 @@
                                             Text="{Binding contactperson}"
                                             TextColor="Black"
                                             VerticalOptions="CenterAndExpand" />
-
                                         <Label
                                             FontSize="12"
                                             IsVisible="{Binding IsDefault}"
                                             Text="(Default)"
                                             TextColor="Gray" />
                                     </StackLayout>
-
                                     <Label
                                         Margin="5,0"
                                         FontFamily="Proxima"
@@ -288,9 +277,7 @@
                                     VerticalOptions="CenterAndExpand"
                                     VerticalTextAlignment="Center" />
                             </StackLayout>
-
                         </ViewCell>
-
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

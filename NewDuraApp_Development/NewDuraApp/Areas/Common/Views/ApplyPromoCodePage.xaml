@@ -84,7 +84,6 @@
                     <Frame.Background>
                         <LinearGradientBrush StartPoint="0,1" EndPoint="1,1">
                             <GradientStop Offset="0.0" Color="#EBE9FF" />
-
                             <GradientStop Offset="1.0" Color="#D5D1FF" />
                         </LinearGradientBrush>
                     </Frame.Background>
@@ -183,7 +182,6 @@
                             VerticalOptions="FillAndExpand"
                             WidthRequest="1" />
                     </AbsoluteLayout>
-
                 </Frame>-->
             </StackLayout>
         </Grid>

@@ -37,8 +37,8 @@ namespace NewDuraApp.Areas.Common.PopupView.ViewModel
         private async Task CancelCommandExecute()
         {
             await _navigationService.ClosePopupsAsync();
-
         }
+
         private async Task ClosePopUp(ProfilePicSelectionType outputType, string inputValue)
         {
             ReturnValue = new Tuple<ProfilePicSelectionType, string>(outputType, inputValue);
@@ -58,8 +58,6 @@ namespace NewDuraApp.Areas.Common.PopupView.ViewModel
                     await ClosePopUp(ProfilePicSelectionType.Gallery, "");
                 }
             }
-
-
         }
 
         public async Task InitilizeData()

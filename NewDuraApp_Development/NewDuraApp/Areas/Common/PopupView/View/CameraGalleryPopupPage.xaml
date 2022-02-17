@@ -90,7 +90,5 @@
                     VerticalOptions="End" />
             </Grid>
         </Frame>
-
-
     </pages:PopupPage.Content>
 </pages:PopupPage>

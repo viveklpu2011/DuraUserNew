@@ -19,7 +19,6 @@
     Shell.TabBarIsVisible="False"
     Visual="Material">
     <Shell.TitleView>
-
         <Label
             FontFamily="ProximaSemiBold"
             FontSize="22"
@@ -28,8 +27,6 @@
             TextColor="Black"
             VerticalOptions="CenterAndExpand"
             VerticalTextAlignment="Center" />
-
-
     </Shell.TitleView>
     <ContentPage.Content>
         <Grid Margin="15" RowDefinitions="*,50">
@@ -48,7 +45,6 @@
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-
                         <sh:Shadows
                             Padding="0"
                             BackgroundColor="#FFFFFF"
@@ -56,7 +52,6 @@
                             HorizontalOptions="FillAndExpand">
                             <sh:Shadows.Shades>
                                 <sh:ImmutableShades>
-
                                     <sh:Shade
                                         BlurRadius="10"
                                         Opacity="0.5"
@@ -92,7 +87,6 @@
                                                     Glyph="{Binding type, Converter={Helpers:StringToFonticonConverter}}"
                                                     Size="30"
                                                     Color="Black" />
-
                                             </Image.Source>
                                         </Image>
                                         <Label
@@ -142,8 +136,6 @@
                                             Source="{images:EmbeddedImage NewDuraApp.Images.delete.png}"
                                             VerticalOptions="CenterAndExpand"
                                             WidthRequest="15" />
-
-
                                     </StackLayout>
                                     <StackLayout
                                         Grid.Row="1"
@@ -204,7 +196,6 @@
                                 </Grid>
                             </Frame>
                         </sh:Shadows>
-
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
@@ -222,6 +213,5 @@
                 TextColor="White"
                 VerticalOptions="EndAndExpand" />
         </Grid>
-
     </ContentPage.Content>
 </ContentPage>

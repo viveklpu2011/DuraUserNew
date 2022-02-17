@@ -34,5 +34,4 @@ namespace DuraApp.Core.Helpers
         public static double TipAmount { get; set; }
         public static List<ServicesModel> ServiceList { get; set; }
     }
-
 }

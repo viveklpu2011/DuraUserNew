@@ -199,7 +199,6 @@ namespace DuraApp.Core.Helpers
         }
 
         public static string UserType
-
         {
             get => Preferences.Get(nameof(UserType), string.Empty);
             set => Preferences.Set(nameof(UserType), value);

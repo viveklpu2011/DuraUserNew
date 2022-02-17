@@ -72,11 +72,9 @@ namespace NewDuraApp.Areas.Common.PopupView.ViewModel
             App.Locator.WhereTo.Address2 = string.Empty;
             App.Locator.AddStopLocation.Address1 = string.Empty;
             App.Locator.AddStopLocation.Address2 = string.Empty;
-
             App.Current.MainPage = new NavigationPage(new LoginPage()) { BarBackgroundColor = Color.White, BarTextColor = Color.Black };
             await App.Locator.LoginPage.GetAllLocation();
             await _navigationService.ClosePopupsAsync();
-
             HideLoading();
         }
     }

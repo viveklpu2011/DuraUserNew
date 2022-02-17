@@ -61,7 +61,6 @@ namespace NewDuraApp.Areas.DuraExpress.Common.MapPopups.ViewModel
             set
             {
                 _address2 = value;
-
                 OnPropertyChanged(nameof(Address2));
             }
         }

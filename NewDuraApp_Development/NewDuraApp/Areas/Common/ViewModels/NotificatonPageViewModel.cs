@@ -40,6 +40,7 @@ namespace NewDuraApp.Areas.Common.ViewModels
             get { return _notificationsList; }
             set { _notificationsList = value; OnPropertyChanged(); }
         }
+
         public NotificatonPageViewModel(INavigationService navigationService, IUserCoreService userCoreService)
         {
             _navigationService = navigationService;
@@ -133,7 +134,6 @@ namespace NewDuraApp.Areas.Common.ViewModels
         {
             if (CheckConnection())
             {
-
                 try
                 {
                     NotificatonData NotificatonModel = obj as NotificatonData;

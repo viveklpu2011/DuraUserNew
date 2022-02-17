@@ -9,13 +9,9 @@
     <Grid
         BackgroundColor="White"
         ColumnSpacing="0"
+        RowDefinitions="Auto,Auto,Auto"
         RowSpacing="0"
         VerticalOptions="FillAndExpand">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
@@ -97,16 +93,10 @@
                     <ViewCell>
                         <Grid
                             Padding="15"
+                            ColumnDefinitions="Auto,*"
                             ColumnSpacing="15"
+                            RowDefinitions="Auto,Auto"
                             RowSpacing="2">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
                             <Image
                                 Grid.Row="0"
                                 Grid.RowSpan="2"

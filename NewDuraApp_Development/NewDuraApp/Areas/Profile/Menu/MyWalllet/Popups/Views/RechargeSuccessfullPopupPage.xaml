@@ -101,6 +101,5 @@
                     VerticalOptions="Center" />
             </StackLayout>
         </Frame>
-
     </ContentPage.Content>
 </rgPages:PopupPage>

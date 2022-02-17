@@ -49,7 +49,6 @@ namespace NewDuraApp.Areas.Common.Permissions.ViewModels
         {
             _navigationService = navigationService;
             GrandpermissionCommand = new AsyncCommand<PermissionInfo>(GrandpermissionCommandExecute);
-            //GetCountryCode();
         }
 
         private async Task GrandpermissionCommandExecute(PermissionInfo arg)
@@ -95,6 +94,7 @@ namespace NewDuraApp.Areas.Common.Permissions.ViewModels
         {
             await LoadPermissions();
         }
+
         async Task LoadPermissions()
         {
             PermissionsList = new ObservableCollection<PermissionInfo>()

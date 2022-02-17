@@ -61,7 +61,6 @@
                             Text="{Binding Address123}"
                             TextColor="Black" />
                     </Frame>
-
                 </StackLayout>
                 <StackLayout Margin="5,0,5,10">
                     <Frame
@@ -81,9 +80,7 @@
                             TextColor="Black"
                             Unfocused="CustomEntry_Unfocused" />
                     </Frame>
-
                 </StackLayout>
-
                 <Button
                     Margin="0,20,0,0"
                     BackgroundColor="#211E66"

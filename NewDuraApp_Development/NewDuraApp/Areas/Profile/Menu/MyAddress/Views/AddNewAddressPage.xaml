@@ -19,7 +19,6 @@
     Shell.TabBarIsVisible="False"
     Visual="Material">
     <Shell.TitleView>
-
         <Label
             FontFamily="ProximaSemiBold"
             FontSize="22"
@@ -28,8 +27,6 @@
             TextColor="Black"
             VerticalOptions="CenterAndExpand"
             VerticalTextAlignment="Center" />
-
-
     </Shell.TitleView>
     <ContentPage.Content>
         <Grid
@@ -180,7 +177,6 @@
                                 VerticalOptions="CenterAndExpand"
                                 WidthRequest="26" />
                         </Grid>
-
                         <Label
                             FontSize="12"
                             IsVisible="{Binding IsPhoneErrorVisible}"
@@ -193,7 +189,6 @@
                             CornerRadius="5"
                             HeightRequest="40"
                             IsVisible="False">
-
                             <Grid ColumnDefinitions="*,Auto">
                                 <control:BorderlessPicker
                                     x:Name="pickertype"
@@ -225,7 +220,6 @@
                                     <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TapGestureRecognizer_Tapped" />
                                 </Grid.GestureRecognizers>
                             </Grid>
-
                         </Frame>
                         <Label
                             FontSize="12"
@@ -250,7 +244,6 @@
                                 TextColor="Black"
                                 VerticalOptions="CenterAndExpand"
                                 VerticalTextAlignment="Center" />
-
                         </StackLayout>
                         <Label
                             Margin="10"

@@ -16,6 +16,7 @@ using Plugin.GoogleClient;
 using Plugin.CurrentActivity;
 using Xamarin.Forms.GoogleMaps.Android;
 using Plugin.FirebasePushNotification;
+using Java.Security;
 
 namespace NewDuraApp.Droid
 {
@@ -60,7 +61,7 @@ namespace NewDuraApp.Droid
             ImageService.Instance.Initialize(config);
             FFImageLoading.Forms.Platform.CachedImageRenderer.Init(true);
             UserDialogs.Init(this);
-            GoogleClientManager.Initialize(this, null, "216962613796-69f8c6bhjh0ili6p1anv87434a6mf0ah.apps.googleusercontent.com");
+            GoogleClientManager.Initialize(this);
             ImageCircleRenderer.Init();
             Plugin.CurrentActivity.CrossCurrentActivity.Current.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.SetFlags("CollectionView_Experimental");
@@ -70,7 +71,25 @@ namespace NewDuraApp.Droid
             //global::Xamarin.Auth.Presenters.XamarinAndroid.AuthenticationConfiguration.Init(this, bundle);
             CustomTabsConfiguration.CustomTabsClosingMessage = null;
             LoadApplication(new App());
+            try
+            {
+                PackageInfo info = Android.App.Application.Context.PackageManager.GetPackageInfo(Android.App.Application.Context.PackageName, PackageInfoFlags.Signatures);
+                foreach (var signature in info.Signatures)
+                {
+                    MessageDigest md = MessageDigest.GetInstance("SHA");
+                    md.Update(signature.ToByteArray());
 
+                    System.Diagnostics.Debug.WriteLine(Convert.ToBase64String(md.Digest()));
+                }
+            }
+            catch (NoSuchAlgorithmException e)
+            {
+                System.Diagnostics.Debug.WriteLine(e);
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e);
+            }
             FirebasePushNotificationManager.ProcessIntent(this, Intent);
         }
         public class CustomLogger : FFImageLoading.Helpers.IMiniLogger

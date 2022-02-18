@@ -128,6 +128,7 @@ namespace NewDuraApp.Areas.Common.Views
 				await _googleService.LoginAsync();
 			} catch (Exception ex) {
 				Debug.WriteLine(ex.ToString());
+			await	DisplayAlert("google error",ex.Message,"ok");
 			}
 		}
 

@@ -31,13 +31,13 @@
     <PackageReference Include="Xamarin.FFImageLoading.Transformations" Version="2.4.11.982" />
     <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.11.982" />
     <PackageReference Include="ReactiveUI.XamForms" Version="11.1.23" />
-    <PackageReference Include="Plugin.FacebookClient" Version="2.2.1" />
     <PackageReference Include="Plugin.GoogleClient" Version="2.1.12" />
     <PackageReference Include="Xamarin.FFImageLoading" Version="2.4.11.982" />
     <PackageReference Include="Xamarin.Forms.GoogleMaps" Version="3.3.0" />
     <PackageReference Include="Xam.Plugin.Geolocator" Version="4.5.0.6" />
     <PackageReference Include="Plugin.FirebasePushNotification" Version="3.3.10" />
     <PackageReference Include="Com.Airbnb.Xamarin.Forms.Lottie" Version="2.0.0" />
+    <PackageReference Include="Plugin.FacebookClient" Version="4.0.1" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DuraApp.Core\DuraApp.Core.csproj" />
@@ -246,6 +246,7 @@
     <None Remove="LocationTracker\MapStyle.json" />
     <None Remove="Plugin.FirebasePushNotification" />
     <None Remove="Com.Airbnb.Xamarin.Forms.Lottie" />
+    <None Remove="Plugin.FacebookClient" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Images\coupon_bg.png" />

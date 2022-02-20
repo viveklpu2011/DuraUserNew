@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
-using MvvmHelpers.Commands;
-using MvvmHelpers.Interfaces;
 using NewDuraApp.Areas.DuraEats.MyCart.ViewModels;
 using NewDuraApp.Models;
 using NewDuraApp.Services.Interfaces;
 using NewDuraApp.ViewModels;
+using Xamarin.CommunityToolkit.ObjectModel;
 
 namespace NewDuraApp.Areas.DuraEats.ItemDetails.Popups.ViewModels
 {
@@ -21,8 +20,8 @@ namespace NewDuraApp.Areas.DuraEats.ItemDetails.Popups.ViewModels
         public ItemsDetailAddCartPopupViewModel(INavigationService navigationService)
         {
             _navigationService = navigationService;
-            ClosePopup = new AsyncCommand(ClosePopUpcommand);
-            NavigateToCart = new AsyncCommand(NavigateToCartPage);
+            ClosePopup = new AsyncCommand(ClosePopUpcommand, allowsMultipleExecutions: false);
+            NavigateToCart = new AsyncCommand(NavigateToCartPage, allowsMultipleExecutions: false);
             InitilizeData();
         }
 

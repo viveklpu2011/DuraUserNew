@@ -1,5 +1,4 @@
-﻿using MvvmHelpers.Commands;
-using MvvmHelpers.Interfaces;
+﻿
 using NewDuraApp.Areas.Common.ViewModels;
 using NewDuraApp.Areas.DuraShop.Popup.ViewModel;
 using NewDuraApp.Areas.Orders.ViewModels;
@@ -10,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.CommunityToolkit.ObjectModel;
 using Xamarin.Forms;
 
 namespace NewDuraApp.Areas.DuraShop.ViewModel
@@ -21,7 +21,7 @@ namespace NewDuraApp.Areas.DuraShop.ViewModel
         public TrackOrderShopViewModel(INavigationService navigationService)
         {
             _navigationService = navigationService;
-            GoToMyOrderDuraShop = new AsyncCommand(GoToMyOrderDuraShopExecute);
+            GoToMyOrderDuraShop = new AsyncCommand(GoToMyOrderDuraShopExecute, allowsMultipleExecutions: false);
             GoToMyOrderIsVisible = true;
             MessagingCenter.Subscribe<MyOrdersViewModel>(this, "FromMyOrderShop", (sender) =>
             {

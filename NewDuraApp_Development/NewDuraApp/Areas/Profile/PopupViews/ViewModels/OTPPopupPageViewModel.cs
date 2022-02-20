@@ -5,13 +5,12 @@ using DuraApp.Core.Helpers.Enums;
 using DuraApp.Core.Models.Auth.RequestModels;
 using DuraApp.Core.Models.RequestModels;
 using DuraApp.Core.Services.Interfaces;
-using MvvmHelpers.Commands;
-using MvvmHelpers.Interfaces;
 using NewDuraApp.Areas.Common.PopupView.View;
 using NewDuraApp.Areas.Profile.ViewModels;
 using NewDuraApp.Services.Interfaces;
 using NewDuraApp.ViewModels;
 using Rg.Plugins.Popup.Services;
+using Xamarin.CommunityToolkit.ObjectModel;
 
 namespace NewDuraApp.Areas.Profile.PopupViews.ViewModels
 {
@@ -29,9 +28,9 @@ namespace NewDuraApp.Areas.Profile.PopupViews.ViewModels
             _navigationService = navigationService;
             _authService = authenticationService;
             _userCoreService = userCoreService;
-            ResendOTPCommand = new AsyncCommand(ResendOTPCommandExecute);
-            GetACallCommand = new AsyncCommand(GetACallCommandExecute);
-            NavigateToChangePhone = new AsyncCommand(NavigateToChangePhonePage);
+            ResendOTPCommand = new AsyncCommand(ResendOTPCommandExecute, allowsMultipleExecutions: false);
+            GetACallCommand = new AsyncCommand(GetACallCommandExecute, allowsMultipleExecutions: false);
+            NavigateToChangePhone = new AsyncCommand(NavigateToChangePhonePage, allowsMultipleExecutions: false);
             if (!string.IsNullOrEmpty(App.UserPhone))
             {
                 PhoneNumber = App.UserPhone;

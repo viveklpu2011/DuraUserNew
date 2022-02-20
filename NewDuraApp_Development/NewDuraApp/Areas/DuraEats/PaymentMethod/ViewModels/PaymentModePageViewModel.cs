@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
 using DuraApp.Core.Services.Interfaces;
-using MvvmHelpers.Commands;
-using MvvmHelpers.Interfaces;
 using NewDuraApp.Areas.Common.PopupView.View;
 using NewDuraApp.Areas.Common.PopupView.ViewModel;
 using NewDuraApp.Areas.DuraEats.PaymentMethod.Popups.ViewModels;
@@ -10,6 +8,7 @@ using NewDuraApp.Areas.Profile.Menu.MyWalllet.Popups.ViewModels;
 using NewDuraApp.Services.Interfaces;
 using NewDuraApp.ViewModels;
 using Rg.Plugins.Popup.Services;
+using Xamarin.CommunityToolkit.ObjectModel;
 
 namespace NewDuraApp.Areas.DuraEats.PaymentMethod.ViewModels
 {
@@ -24,9 +23,9 @@ namespace NewDuraApp.Areas.DuraEats.PaymentMethod.ViewModels
         {
             _navigationService = navigationService;
             _userCoreService = userCoreService;
-            NavigateToSelectAmount = new AsyncCommand(NavigateToSelectAmountPage);
-            NavigateToThanksForOrder = new AsyncCommand(GetFoodDetails);
-            GoToCashOnDeliveryPopup = new AsyncCommand(GoToCashOnDeliveryPopupExecute);
+            NavigateToSelectAmount = new AsyncCommand(NavigateToSelectAmountPage, allowsMultipleExecutions: false);
+            NavigateToThanksForOrder = new AsyncCommand(GetFoodDetails, allowsMultipleExecutions: false);
+            GoToCashOnDeliveryPopup = new AsyncCommand(GoToCashOnDeliveryPopupExecute, allowsMultipleExecutions: false);
         }
         private async Task NavigateToSelectAmountPage()
         {

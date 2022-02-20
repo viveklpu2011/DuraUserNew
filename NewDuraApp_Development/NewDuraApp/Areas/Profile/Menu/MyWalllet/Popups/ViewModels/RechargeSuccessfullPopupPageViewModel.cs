@@ -2,10 +2,9 @@
 using System.Threading.Tasks;
 using DuraApp.Core.Helpers.Enums;
 using DuraApp.Core.Models.ResponseModels;
-using MvvmHelpers.Commands;
-using MvvmHelpers.Interfaces;
 using NewDuraApp.Services.Interfaces;
 using NewDuraApp.ViewModels;
+using Xamarin.CommunityToolkit.ObjectModel;
 
 namespace NewDuraApp.Areas.Profile.Menu.MyWalllet.Popups.ViewModels
 {
@@ -31,7 +30,7 @@ namespace NewDuraApp.Areas.Profile.Menu.MyWalllet.Popups.ViewModels
         public RechargeSuccessfullPopupPageViewModel(INavigationService navigationService)
         {
             _navigationService = navigationService;
-            NavigateToWallet = new AsyncCommand(NavigateToWalletPage);
+            NavigateToWallet = new AsyncCommand(NavigateToWalletPage, allowsMultipleExecutions: false);
             InitilizeData();
         }
 

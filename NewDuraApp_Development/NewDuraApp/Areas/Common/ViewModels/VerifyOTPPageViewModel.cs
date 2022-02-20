@@ -6,11 +6,10 @@ using DuraApp.Core.Helpers;
 using DuraApp.Core.Helpers.Enums;
 using DuraApp.Core.Models.Auth.RequestModels;
 using DuraApp.Core.Services.Interfaces;
-using MvvmHelpers.Commands;
-using MvvmHelpers.Interfaces;
 using NewDuraApp.Resources;
 using NewDuraApp.Services.Interfaces;
 using NewDuraApp.ViewModels;
+using Xamarin.CommunityToolkit.ObjectModel;
 using Xamarin.Forms;
 
 namespace NewDuraApp.Areas.Common.ViewModels
@@ -118,9 +117,9 @@ namespace NewDuraApp.Areas.Common.ViewModels
         {
             _navigationService = navigationService;
             _authService = authenticationService;
-            VerifyOTPCommand = new AsyncCommand(VerifyOTPCommandExecute);
-            GoToResetPassCmd = new AsyncCommand(GoToResetPassCmdExecute);
-            RestartTimerCmd = new AsyncCommand(RestartTimerCmdExecute);
+            VerifyOTPCommand = new AsyncCommand(VerifyOTPCommandExecute, allowsMultipleExecutions: false);
+            GoToResetPassCmd = new AsyncCommand(GoToResetPassCmdExecute, allowsMultipleExecutions: false);
+            RestartTimerCmd = new AsyncCommand(RestartTimerCmdExecute, allowsMultipleExecutions: false);
             GotoPersonalDetailsIsVisible = true;
             GotoResetPasswordIsVisible = false;
             MessagingCenter.Subscribe<ForgetPasswordPageViewModel>(this, "FromForgetPassPage", (sender) =>

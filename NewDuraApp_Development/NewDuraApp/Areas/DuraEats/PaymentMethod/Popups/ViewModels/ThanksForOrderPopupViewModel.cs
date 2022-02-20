@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Threading.Tasks;
-using MvvmHelpers.Commands;
-using MvvmHelpers.Interfaces;
 using NewDuraApp.Areas.DuraEats.TrackOrder.ViewModels;
 using NewDuraApp.Services.Interfaces;
 using NewDuraApp.ViewModels;
+using Xamarin.CommunityToolkit.ObjectModel;
 
 namespace NewDuraApp.Areas.DuraEats.PaymentMethod.Popups.ViewModels
 {
@@ -15,7 +14,7 @@ namespace NewDuraApp.Areas.DuraEats.PaymentMethod.Popups.ViewModels
         public ThanksForOrderPopupViewModel(INavigationService navigationService)
         {
             _navigationService = navigationService;
-            NavigateToTrackOrder = new AsyncCommand(NavigateToTrackOrderCommand);
+            NavigateToTrackOrder = new AsyncCommand(NavigateToTrackOrderCommand, allowsMultipleExecutions: false);
         }
 
         internal async Task InitilizeData()

@@ -1,11 +1,10 @@
 ﻿using System.Threading.Tasks;
 using DuraApp.Core.Models.ResponseModels;
 using DuraApp.Core.Services.Interfaces;
-using MvvmHelpers.Commands;
-using MvvmHelpers.Interfaces;
 using NewDuraApp.GCash.ViewModel;
 using NewDuraApp.Services.Interfaces;
 using NewDuraApp.ViewModels;
+using Xamarin.CommunityToolkit.ObjectModel;
 
 namespace NewDuraApp.Areas.Profile.Menu.MyWalllet.ViewModels
 {
@@ -26,7 +25,7 @@ namespace NewDuraApp.Areas.Profile.Menu.MyWalllet.ViewModels
         {
             _navigationService = navigationService;
             _userCoreService = userCoreService;
-            NavigateToRechargeTopup = new AsyncCommand(NavigateToRechargeTopupPage);
+            NavigateToRechargeTopup = new AsyncCommand(NavigateToRechargeTopupPage, allowsMultipleExecutions: false);
         }
 
         private async Task NavigateToRechargeTopupPage()

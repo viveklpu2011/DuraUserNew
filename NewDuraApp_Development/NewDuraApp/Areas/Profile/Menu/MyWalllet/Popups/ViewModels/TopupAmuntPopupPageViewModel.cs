@@ -7,12 +7,11 @@ using DuraApp.Core.Helpers;
 using DuraApp.Core.Helpers.Enums;
 using DuraApp.Core.Models.ResponseModels;
 using DuraApp.Core.Services.Interfaces;
-using MvvmHelpers.Commands;
-using MvvmHelpers.Interfaces;
 using NewDuraApp.Areas.Profile.Menu.MyWalllet.ViewModels;
 using NewDuraApp.Models;
 using NewDuraApp.Services.Interfaces;
 using NewDuraApp.ViewModels;
+using Xamarin.CommunityToolkit.ObjectModel;
 
 namespace NewDuraApp.Areas.Profile.Menu.MyWalllet.Popups.ViewModels
 {
@@ -56,9 +55,9 @@ namespace NewDuraApp.Areas.Profile.Menu.MyWalllet.Popups.ViewModels
         {
             _navigationService = navigationService;
             _userCoreService = userCoreService;
-            AmountDetails = new AsyncCommand<WalletAmountModel>(AmountDetailsPage);
-            ClosePopup = new AsyncCommand(ClosePopupPage);
-            TopupWalletCommand = new AsyncCommand(TopupWalletCommandPage);
+            AmountDetails = new AsyncCommand<WalletAmountModel>(AmountDetailsPage, allowsMultipleExecutions: false);
+            ClosePopup = new AsyncCommand(ClosePopupPage, allowsMultipleExecutions: false);
+            TopupWalletCommand = new AsyncCommand(TopupWalletCommandPage, allowsMultipleExecutions: false);
             InitilizeData();
         }
 

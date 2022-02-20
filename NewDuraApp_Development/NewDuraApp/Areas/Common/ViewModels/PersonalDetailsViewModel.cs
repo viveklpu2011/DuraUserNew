@@ -4,8 +4,6 @@ using System.Threading.Tasks;
 using DuraApp.Core.Helpers;
 using DuraApp.Core.Helpers.Enums;
 using DuraApp.Core.Models.Auth.RequestModels;
-using MvvmHelpers.Commands;
-using MvvmHelpers.Interfaces;
 using NewDuraApp.Helpers;
 using NewDuraApp.Resources;
 using NewDuraApp.Services.Interfaces;
@@ -13,6 +11,7 @@ using NewDuraApp.ViewModels;
 using Plugin.Media;
 using Plugin.Permissions;
 using Plugin.Permissions.Abstractions;
+using Xamarin.CommunityToolkit.ObjectModel;
 using Xamarin.Forms;
 
 namespace NewDuraApp.Areas.Common.ViewModels
@@ -79,8 +78,8 @@ namespace NewDuraApp.Areas.Common.ViewModels
         public PersonalDetailsViewModel(INavigationService navigationService)
         {
             _navigationService = navigationService;
-            GoToReferralCmd = new AsyncCommand(GoToReferralCmdExecute);
-            PickImageCommand = new AsyncCommand(PickImage);
+            GoToReferralCmd = new AsyncCommand(GoToReferralCmdExecute, allowsMultipleExecutions: false);
+            PickImageCommand = new AsyncCommand(PickImage, allowsMultipleExecutions: false);
             IsProfilePic = false;
             ProfileImage = ImageHelper.GetImageNameFromResource("user_pic_placeholder.png");
         }

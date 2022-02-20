@@ -1,5 +1,4 @@
-﻿using MvvmHelpers.Commands;
-using MvvmHelpers.Interfaces;
+﻿
 using NewDuraApp.Areas.DuraShop.Popup.View;
 using NewDuraApp.Areas.DuraShop.Popup.ViewModel;
 using NewDuraApp.Services.Interfaces;
@@ -9,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.CommunityToolkit.ObjectModel;
 
 namespace NewDuraApp.Areas.Common.PopupView.ViewModel
 {
@@ -19,7 +19,7 @@ namespace NewDuraApp.Areas.Common.PopupView.ViewModel
         public CashOnDeliveryPopupViewModel(INavigationService navigationService)
         {
             _navigationService = navigationService;
-            GoToSuccessPopupCmd = new AsyncCommand(GoToSuccessPopupCmdExecute);
+            GoToSuccessPopupCmd = new AsyncCommand(GoToSuccessPopupCmdExecute, allowsMultipleExecutions: false);
         }
 
         private async Task GoToSuccessPopupCmdExecute()

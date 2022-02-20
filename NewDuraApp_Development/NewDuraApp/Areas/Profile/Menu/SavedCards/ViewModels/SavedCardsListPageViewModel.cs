@@ -6,13 +6,12 @@ using DuraApp.Core.Helpers.Enums;
 using DuraApp.Core.Models.RequestModels;
 using DuraApp.Core.Models.ResponseModels;
 using DuraApp.Core.Services.Interfaces;
-using MvvmHelpers.Commands;
-using MvvmHelpers.Interfaces;
 using NewDuraApp.Helpers;
 using NewDuraApp.Models;
 using NewDuraApp.Resources;
 using NewDuraApp.Services.Interfaces;
 using NewDuraApp.ViewModels;
+using Xamarin.CommunityToolkit.ObjectModel;
 
 namespace NewDuraApp.Areas.Profile.Menu.SavedCards.ViewModels
 {
@@ -53,9 +52,9 @@ namespace NewDuraApp.Areas.Profile.Menu.SavedCards.ViewModels
         {
             _navigationService = navigationService;
             _userCoreService = userCoreService;
-            CardsDetails = new AsyncCommand<CardListModel>(NavigateToCardDetailsPage);
-            NavigateToAddNewCard = new AsyncCommand(NavigateToAddNewCardPage);
-            DeleteCardCommand = new AsyncCommand<CardListModel>(DeleteCardCommandExecute);
+            CardsDetails = new AsyncCommand<CardListModel>(NavigateToCardDetailsPage, allowsMultipleExecutions: false);
+            NavigateToAddNewCard = new AsyncCommand(NavigateToAddNewCardPage, allowsMultipleExecutions: false);
+            DeleteCardCommand = new AsyncCommand<CardListModel>(DeleteCardCommandExecute, allowsMultipleExecutions: false);
         }
 
         private async Task DeleteCardCommandExecute(CardListModel arg)

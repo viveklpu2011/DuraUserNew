@@ -8,14 +8,13 @@ using DuraApp.Core.Helpers.Enums;
 using DuraApp.Core.Models.RequestModels;
 using DuraApp.Core.Models.ResponseModels;
 using DuraApp.Core.Services.Interfaces;
-using MvvmHelpers.Commands;
-using MvvmHelpers.Interfaces;
 using NewDuraApp.Areas.DuraExpress.Common.Maps;
 using NewDuraApp.Helpers;
 using NewDuraApp.Resources;
 using NewDuraApp.Services.Interfaces;
 using NewDuraApp.ViewModels;
 using ReactiveUI;
+using Xamarin.CommunityToolkit.ObjectModel;
 using Xamarin.Essentials;
 using Xamarin.Forms.Maps;
 
@@ -333,11 +332,11 @@ namespace NewDuraApp.Areas.Profile.Menu.MyAddress.ViewModels
         {
             _navigationService = navigationService;
             _userCoreService = userCoreService;
-            SaveAddress = new AsyncCommand(SaveAddressCommand);
-            SelectContactCommand = new AsyncCommand(SelectContactCommandExecute);
-            AddressReturnCommand = new AsyncCommand(AddressReturnCommandExecute);
+            SaveAddress = new AsyncCommand(SaveAddressCommand, allowsMultipleExecutions: false);
+            SelectContactCommand = new AsyncCommand(SelectContactCommandExecute, allowsMultipleExecutions: false);
+            AddressReturnCommand = new AsyncCommand(AddressReturnCommandExecute, allowsMultipleExecutions: false);
             ExecuteSetAddress = new Xamarin.Forms.Command<Position>(async (position) => await SetAddress(position));
-            OpenMapCommand = new AsyncCommand(OpenMapCommandExecute);
+            OpenMapCommand = new AsyncCommand(OpenMapCommandExecute, allowsMultipleExecutions: false);
             ExecuteSetPosition = new Xamarin.Forms.Command(async () => await SetPosition(HomeAddress));
         }
 

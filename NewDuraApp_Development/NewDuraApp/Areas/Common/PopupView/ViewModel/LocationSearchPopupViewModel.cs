@@ -10,14 +10,13 @@ using DuraApp.Core.Models.Common;
 using DuraApp.Core.Models.RequestModels;
 using DuraApp.Core.Models.ResponseModels;
 using DuraApp.Core.Services.Interfaces;
-using MvvmHelpers.Commands;
-using MvvmHelpers.Interfaces;
 using NewDuraApp.Helpers;
 using NewDuraApp.Models;
 using NewDuraApp.Resources;
 using NewDuraApp.Services.Interfaces;
 using NewDuraApp.ViewModels;
 using Newtonsoft.Json;
+using Xamarin.CommunityToolkit.ObjectModel;
 
 namespace NewDuraApp.Areas.Common.PopupView.ViewModel
 {
@@ -129,11 +128,11 @@ namespace NewDuraApp.Areas.Common.PopupView.ViewModel
         {
             _navigationService = navigationService;
             _userCoreService = userCoreService;
-            AddressDetails = new AsyncCommand<GetAddressModel>(SavedAddressDetailsCommand);
+            AddressDetails = new AsyncCommand<GetAddressModel>(SavedAddressDetailsCommand, allowsMultipleExecutions: false);
             AddressText = string.Empty;
-            AddressDetailsCommand = new AsyncCommand<AddressInfo>(AddressDetailsCommandExecute);
+            AddressDetailsCommand = new AsyncCommand<AddressInfo>(AddressDetailsCommandExecute, allowsMultipleExecutions: false);
             TextClick = new AsyncCommand(TextClickExecute);
-            GetCurrentLocationCommand = new AsyncCommand(GetCurrentLocationCommandExecute);
+            GetCurrentLocationCommand = new AsyncCommand(GetCurrentLocationCommandExecute, allowsMultipleExecutions: false);
             AddressLocationList = GetAddressLocationList();
         }
 

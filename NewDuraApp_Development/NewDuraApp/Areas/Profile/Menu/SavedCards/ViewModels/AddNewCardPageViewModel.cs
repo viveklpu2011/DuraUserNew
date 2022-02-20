@@ -5,11 +5,10 @@ using DuraApp.Core.Helpers.Enums;
 using DuraApp.Core.Models.RequestModels;
 using DuraApp.Core.Models.ResponseModels;
 using DuraApp.Core.Services.Interfaces;
-using MvvmHelpers.Commands;
-using MvvmHelpers.Interfaces;
 using NewDuraApp.Resources;
 using NewDuraApp.Services.Interfaces;
 using NewDuraApp.ViewModels;
+using Xamarin.CommunityToolkit.ObjectModel;
 
 namespace NewDuraApp.Areas.Profile.Menu.SavedCards.ViewModels
 {
@@ -219,7 +218,7 @@ namespace NewDuraApp.Areas.Profile.Menu.SavedCards.ViewModels
         {
             _navigationService = navigationService;
             _userCoreService = userCoreService;
-            AddUpdateSaveCardCommand = new AsyncCommand(AddUpdateSaveCardCommandExecute);
+            AddUpdateSaveCardCommand = new AsyncCommand(AddUpdateSaveCardCommandExecute, allowsMultipleExecutions: false);
         }
 
         private async Task AddUpdateSaveCardCommandExecute()

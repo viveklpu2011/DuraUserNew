@@ -7,12 +7,11 @@ using DuraApp.Core.Helpers.Enums;
 using DuraApp.Core.Models.RequestModels;
 using DuraApp.Core.Models.ResponseModels;
 using DuraApp.Core.Services.Interfaces;
-using MvvmHelpers.Commands;
-using MvvmHelpers.Interfaces;
 using NewDuraApp.Areas.DuraEats.RatingReviews.ViewModels;
 using NewDuraApp.Models;
 using NewDuraApp.Services.Interfaces;
 using NewDuraApp.ViewModels;
+using Xamarin.CommunityToolkit.ObjectModel;
 
 namespace NewDuraApp.Areas.Profile.Menu.Reviews.ViewModels
 {
@@ -44,7 +43,7 @@ namespace NewDuraApp.Areas.Profile.Menu.Reviews.ViewModels
         {
             _navigationService = navigationService;
             _userCoreService = userCoreService;
-            ReveiewDetails = new AsyncCommand<UserReviewsModel>(ReveiewDetailsPage);
+            ReveiewDetails = new AsyncCommand<UserReviewsModel>(ReveiewDetailsPage, allowsMultipleExecutions: false);
         }
 
         private async Task ReveiewDetailsPage(UserReviewsModel arg)

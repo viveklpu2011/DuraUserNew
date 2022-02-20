@@ -125,7 +125,7 @@
       <Version>11.1.23</Version>
     </PackageReference>
     <PackageReference Include="Plugin.FacebookClient">
-      <Version>2.2.1</Version>
+      <Version>4.0.1</Version>
     </PackageReference>
     <PackageReference Include="Plugin.CurrentActivity">
       <Version>2.1.0.4</Version>

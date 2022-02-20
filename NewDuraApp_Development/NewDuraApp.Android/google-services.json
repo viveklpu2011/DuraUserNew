@@ -14,6 +14,22 @@
       },
       "oauth_client": [
         {
+          "client_id": "143145681882-9h4ekls50lacqgsqd3rjttv047qogh4r.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.dura.duraapp",
+            "certificate_hash": "2db49f2d87015a11179586e441eb7f0c47db21c8"
+          }
+        },
+        {
+          "client_id": "143145681882-bjp572h3pu4a7iu6hc4jm2hn3qqb1qkl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.dura.duraapp",
+            "certificate_hash": "cdc77e1354bb4f2cd12b5d3d6ff42ab178a4e8b9"
+          }
+        },
+        {
           "client_id": "143145681882-p91o4m4sold1jmp1jb5p1a4dh405ofp2.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -29,6 +45,13 @@
             {
               "client_id": "143145681882-p91o4m4sold1jmp1jb5p1a4dh405ofp2.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "143145681882-jdsi004fg0ad69ss3m69ti0a4lh7vtft.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.duradriveuser.com"
+              }
             }
           ]
         }

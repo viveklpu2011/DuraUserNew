@@ -717,8 +717,8 @@
                     FontSize="16"
                     HeightRequest="50"
                     HorizontalOptions="FillAndExpand"
-                    IsVisible="{Binding IsVisibleRateButton}"
-                    Text="{translate:Translate Rate_Review}"
+                    IsVisible="True"
+                    Text="Rate Driver"
                     TextColor="White" />
             </StackLayout>
         </ScrollView>

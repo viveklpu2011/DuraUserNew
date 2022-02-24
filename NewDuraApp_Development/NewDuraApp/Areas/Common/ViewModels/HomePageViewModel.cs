@@ -30,7 +30,7 @@ namespace NewDuraApp.Areas.Common.ViewModels
         public IAsyncCommand GoToNotificationsCmd { get; set; }
         public IAsyncCommand GoToDuraShopCmd { get; set; }
         public IAsyncCommand GoToDuraExpressCmd { get; set; }
-        private IAuthenticationService _authService;
+        public IAuthenticationService _authService;
         private IUserCoreService _userCoreService;
         public IAsyncCommand GoToSearchLoactionPopupCmd { get; set; }
 

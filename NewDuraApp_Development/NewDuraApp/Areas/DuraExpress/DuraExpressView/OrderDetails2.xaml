@@ -717,7 +717,7 @@
                     FontSize="16"
                     HeightRequest="50"
                     HorizontalOptions="FillAndExpand"
-                    IsVisible="True"
+                    IsVisible="{Binding IsVisibleRateButton}"
                     Text="Rate Driver"
                     TextColor="White" />
             </StackLayout>

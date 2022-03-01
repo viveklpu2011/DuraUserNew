@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.dura.duraapp" android:installLocation="auto" android:versionName="1.9" android:versionCode="10">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.dura.duraapp" android:installLocation="auto" android:versionName="1.11" android:versionCode="12">
 	<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="30" />
 	<application android:theme="@style/MainTheme" android:label="DuraApp" android:icon="@drawable/AppLogo">
 		<provider android:name="androidx.core.content.FileProvider" android:authorities="com.dura.duraapp.fileprovider" android:exported="false" android:grantUriPermissions="true">

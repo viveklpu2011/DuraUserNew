@@ -7,12 +7,11 @@ using DuraApp.Core.Helpers.Enums;
 using DuraApp.Core.Models.RequestModels;
 using DuraApp.Core.Models.ResponseModels;
 using DuraApp.Core.Services.Interfaces;
-using MvvmHelpers.Commands;
-using MvvmHelpers.Interfaces;
 using NewDuraApp.Helpers;
 using NewDuraApp.Resources;
 using NewDuraApp.Services.Interfaces;
 using NewDuraApp.ViewModels;
+using Xamarin.CommunityToolkit.ObjectModel;
 
 namespace NewDuraApp.Areas.Common.ViewModels
 {
@@ -45,8 +44,8 @@ namespace NewDuraApp.Areas.Common.ViewModels
         {
             _navigationService = navigationService;
             _userCoreService = userCoreService;
-            MarkasReadCommand = new AsyncCommand(AllReadNotification);
-            NotificationCommand = new AsyncCommand<object>(OneByOneReadNotification);
+            MarkasReadCommand = new AsyncCommand(AllReadNotification, allowsMultipleExecutions: false);
+            NotificationCommand = new AsyncCommand<object>(OneByOneReadNotification, allowsMultipleExecutions: false);
         }
 
         internal async Task InitializedData()

@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Threading.Tasks;
-using MvvmHelpers.Commands;
-using MvvmHelpers.Interfaces;
 using NewDuraApp.Services.Interfaces;
 using NewDuraApp.ViewModels;
 

@@ -25,7 +25,7 @@
     </Shell.TitleView>
     <ContentPage.Content>
         <ScrollView>
-            <Grid Padding="10" RowDefinitions="Auto,*,Auto">
+            <Grid Padding="10" RowDefinitions="Auto,*,Auto,Auto">
                 <Image
                     Grid.Row="0"
                     HeightRequest="100"
@@ -37,18 +37,30 @@
                     x:Name="Webview"
                     Grid.Row="1"
                     Margin="5"
-                    CharacterSpacing="1"
                     FontSize="14"
                     LineBreakMode="WordWrap"
                     MaxLines="100"
-                    Text="DURADRIVE IS A TECHNOLOGY COMPANY WHICH PROVIDES A PLATFORM FOR USERS TO OBTAIN OR PROCURE SERVICES. DEPENDING ON THE SERVICE IN QUESTION, THE SERVICES MAY BE SUPPLIED BY DURADRIVE OR A THIRD PARTY PROVIDER. WHERE THE SERVICE IS PROVIDED BY A THIRD PARTY PROVIDER, DURADRIVE'S ROLE IS MERELY TO LINK THE USER WITH SUCH THIRD PARTY PROVIDER. DURADRIVE IS NOT RESPONSIBLE FOR THE ACTS AND/OR OMISSIONS OF ANY THIRD PARTY PROVIDER, AND ANY LIABILITY IN RELATION TO SUCH SERVICES SHALL BE BORNE BY THE THIRD PARTY PROVIDER. THIRD PARTY PROVIDERS SHALL NOT REPRESENT TO BE AN AGENT, EMPLOYEE OR STAFF OF DURADRIVE AND THE SOLUTIONS PROVIDED BY THIRD PARTY PROVIDERS SHALL NOT BE DEEMED TO BE PROVIDED BY DURADRIVE."
+                    Text="Duradrive is a technology company which provides a platform for users to obtain or procure services. Depending on the service in question, the services may be supplied by duradrive or a third party provider. Where the service is provided by a third party provider, duradrive's role is merely to link the user with such third party provider. Duradrive is not responsible for the acts and/or omissions of any third party provider, and any liability in relation to such services shall be borne by the third party provider. Third party providers shall not represent to be an agent, employee or staff of duradrive and the solutions provided by third party providers shall not be deemed to be provided by duradrive."
                     TextColor="Black"
                     TextDecorations="None"
                     TextTransform="Default"
                     VerticalOptions="FillAndExpand" />
+                 <Label
+                    x:Name="Webview1"
+                    Grid.Row="2"
+                    Margin="5"
+                    FontSize="14"
+                    LineBreakMode="WordWrap"
+                    MaxLines="100"
+                    Text="© 2022 Duradrive Technologies."
+                    TextColor="Black"
+                    TextDecorations="None"
+                    TextTransform="Default"
+                     HorizontalOptions="Center"
+                    VerticalOptions="Center" />
 
                 <Label
-                    Grid.Row="2"
+                    Grid.Row="3"
                     Margin="{OnPlatform iOS='0,0,0,20'}"
                     FontSize="15"
                     HorizontalOptions="CenterAndExpand"

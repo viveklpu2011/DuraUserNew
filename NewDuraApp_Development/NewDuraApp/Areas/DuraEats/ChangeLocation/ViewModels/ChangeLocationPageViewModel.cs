@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Threading.Tasks;
-using MvvmHelpers.Commands;
-using MvvmHelpers.Interfaces;
 using NewDuraApp.Areas.DuraEats.ChangeLocation.Popups.ViewModels;
 using NewDuraApp.Services.Interfaces;
 using NewDuraApp.ViewModels;
+using Xamarin.CommunityToolkit.ObjectModel;
 
 namespace NewDuraApp.Areas.DuraEats.ChangeLocation.ViewModels
 {
@@ -15,7 +14,7 @@ namespace NewDuraApp.Areas.DuraEats.ChangeLocation.ViewModels
         public ChangeLocationPageViewModel(INavigationService navigationService)
         {
             _navigationService = navigationService;
-            NavigaeteToSavedAddressPopup = new AsyncCommand(NavigaeteToSavedAddressPopupPage);
+            NavigaeteToSavedAddressPopup = new AsyncCommand(NavigaeteToSavedAddressPopupPage, allowsMultipleExecutions: false);
         }
 
         private async Task NavigaeteToSavedAddressPopupPage()

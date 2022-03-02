@@ -6,12 +6,11 @@ using DuraApp.Core.Helpers;
 using DuraApp.Core.Helpers.Enums;
 using DuraApp.Core.Models.Auth.ResponseModel;
 using DuraApp.Core.Services.Interfaces;
-using MvvmHelpers.Commands;
-using MvvmHelpers.Interfaces;
 using NewDuraApp.Areas.Common.Permissions.ViewModels;
 using NewDuraApp.Resources;
 using NewDuraApp.Services.Interfaces;
 using NewDuraApp.ViewModels;
+using Xamarin.CommunityToolkit.ObjectModel;
 using Xamarin.Essentials;
 
 namespace NewDuraApp.Areas.Common.ViewModels
@@ -48,7 +47,7 @@ namespace NewDuraApp.Areas.Common.ViewModels
         {
             _navigationService = navigationService;
             _authService = authenticationService;
-            SignupPageCommand = new AsyncCommand(MoveToSignupCommandExecute);
+            SignupPageCommand = new AsyncCommand(MoveToSignupCommandExecute, allowsMultipleExecutions: false);
             AppVersion = VersionTracking.CurrentVersion;
         }
 

@@ -8,14 +8,13 @@ using DuraApp.Core.Helpers.Enums;
 using DuraApp.Core.Models.RequestModels;
 using DuraApp.Core.Models.ResponseModels;
 using DuraApp.Core.Services.Interfaces;
-using MvvmHelpers.Commands;
-using MvvmHelpers.Interfaces;
 using NewDuraApp.Areas.Profile.Menu.MyWalllet.Popups.ViewModels;
 using NewDuraApp.GCash.Helpers;
 using NewDuraApp.GCash.Models;
 using NewDuraApp.Services.Interfaces;
 using NewDuraApp.ViewModels;
 using Newtonsoft.Json;
+using Xamarin.CommunityToolkit.ObjectModel;
 
 namespace NewDuraApp.GCash.ViewModel
 {
@@ -146,6 +145,7 @@ namespace NewDuraApp.GCash.ViewModel
         {
             if (CheckConnection())
             {
+                ShowLoading();
                 AnimationFileName = "payment_initiating.json";
                 PaymentText = "Initiating Payment";
                 IsVisibleLoader = true;
@@ -179,7 +179,8 @@ namespace NewDuraApp.GCash.ViewModel
                         IsVisibleLoader = false;
                         var contentResult = await response.Content.ReadAsStringAsync();
                         ResponseDataSource = JsonConvert.DeserializeObject<CreateSourceMaster>(contentResult);
-                        var confirmation = await ShowConfirmationAlert("Do you want to process a payment", "Payment Initiated");
+                        var confirmation = await ShowConfirmationAlert("Do you want to process a payment.", "Payment Initiated");
+                        HideLoading();
                         if (confirmation)
                         {
                             AnimationFileName = "payment_processing.json";
@@ -205,6 +206,7 @@ namespace NewDuraApp.GCash.ViewModel
                     }
                     else
                     {
+                        HideLoading();
                         IsBackEnabled = true;
                         AnimationFileName = "payment_failed.json";
                         IsVisibleLoader = false;
@@ -214,10 +216,12 @@ namespace NewDuraApp.GCash.ViewModel
                 }
                 catch (Exception ex)
                 {
+                    HideLoading();
                 }
             }
             else
                 ShowToast(CommonMessages.NoInternet);
+            HideLoading();
         }
         public async Task GcashMakePayment()
         {

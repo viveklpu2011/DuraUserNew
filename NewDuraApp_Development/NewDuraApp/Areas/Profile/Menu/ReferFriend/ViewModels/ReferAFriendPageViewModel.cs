@@ -4,12 +4,11 @@ using DuraApp.Core.Helpers;
 using DuraApp.Core.Helpers.Enums;
 using DuraApp.Core.Models.RequestModels;
 using DuraApp.Core.Services.Interfaces;
-using MvvmHelpers.Commands;
-using MvvmHelpers.Interfaces;
 using NewDuraApp.Areas.Common.ViewModels;
 using NewDuraApp.Resources;
 using NewDuraApp.Services.Interfaces;
 using NewDuraApp.ViewModels;
+using Xamarin.CommunityToolkit.ObjectModel;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
@@ -49,9 +48,9 @@ namespace NewDuraApp.Areas.Profile.Menu.ReferFriend.ViewModels
         {
             _navigationService = navigationService;
             _userCoreService = userCoreService;
-            GoToTermsCmd = new AsyncCommand(GoToTermsCmdExecute);
-            InviteCommand = new AsyncCommand(InviteCommandExecute);
-            SubmitReferralCodeCommand = new AsyncCommand(SubmitReferralCodeCommandExecute);
+            GoToTermsCmd = new AsyncCommand(GoToTermsCmdExecute, allowsMultipleExecutions: false);
+            InviteCommand = new AsyncCommand(InviteCommandExecute, allowsMultipleExecutions: false);
+            SubmitReferralCodeCommand = new AsyncCommand(SubmitReferralCodeCommandExecute, allowsMultipleExecutions: false);
             ReferralCodeDesc = AppResources.Refer_a_friend_get_you_and_your_friend_off_on_food_ordering;
             ReferralCode = "2XdgrVU";
         }

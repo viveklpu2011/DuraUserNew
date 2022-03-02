@@ -9,8 +9,6 @@ using DuraApp.Core.Helpers.Enums;
 using DuraApp.Core.Models.Auth.RequestModels;
 using DuraApp.Core.Models.Auth.ResponseModel;
 using DuraApp.Core.Services.Interfaces;
-using MvvmHelpers.Commands;
-using MvvmHelpers.Interfaces;
 using NewDuraApp.Behaviours;
 using NewDuraApp.Models;
 using NewDuraApp.Resources;
@@ -18,6 +16,7 @@ using NewDuraApp.Services.Interfaces;
 using NewDuraApp.ViewModels;
 using Newtonsoft.Json;
 using Plugin.FacebookClient;
+using Xamarin.CommunityToolkit.ObjectModel;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
@@ -319,10 +318,10 @@ namespace NewDuraApp.Areas.Common.ViewModels
             _navigationService = navigationService;
             _authService = authService;
             _emailValidatorBehavior = emailValidatorBehavior;
-            OnLoginWithFacebookCommand = new AsyncCommand(OnLoginWithFacebookCommandExecute);
-            BackToLoginCmd = new AsyncCommand(BackToLogin);
-            GoToGetOTPCmd = new AsyncCommand(NavigateToGetOTP);
-            GoToTermsCmd = new AsyncCommand(NavigateToTerms);
+            OnLoginWithFacebookCommand = new AsyncCommand(OnLoginWithFacebookCommandExecute, allowsMultipleExecutions: false);
+            BackToLoginCmd = new AsyncCommand(BackToLogin, allowsMultipleExecutions: false);
+            GoToGetOTPCmd = new AsyncCommand(NavigateToGetOTP, allowsMultipleExecutions: false);
+            GoToTermsCmd = new AsyncCommand(NavigateToTerms, allowsMultipleExecutions: false);
         }
 
         private async Task OnLoginWithFacebookCommandExecute()

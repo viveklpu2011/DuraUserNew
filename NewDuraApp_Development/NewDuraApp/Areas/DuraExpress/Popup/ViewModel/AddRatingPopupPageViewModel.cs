@@ -112,7 +112,7 @@ namespace NewDuraApp.Areas.DuraExpress.Popup.ViewModel
                     {
                         user_id = SettingsExtension.UserId,
                         driver_id = GetOrderData.driver_id,
-                        order_id = GetOrderData?.order_no,
+                        order_id = GetOrderData?.pickup_id.ToString(),
                         rating = SelectedRating,
                         remarks = Remarks,
                         service_type = "Dura Drive"
@@ -122,6 +122,10 @@ namespace NewDuraApp.Areas.DuraExpress.Popup.ViewModel
                     {
                         await _navigationService.ClosePopupsAsync();
                         ShowToast(AppResources.Thanks_for_provide_the_rating);
+                    }
+                    else
+                    {
+                        ShowToast(result?.Data.status.ToString());
                     }
                 }
                 catch (Exception ex)

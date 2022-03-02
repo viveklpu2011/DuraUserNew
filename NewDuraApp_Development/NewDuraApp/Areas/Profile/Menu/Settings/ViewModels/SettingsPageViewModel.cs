@@ -1,20 +1,15 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using DuraApp.Core.Helpers;
-using MvvmHelpers.Commands;
-using MvvmHelpers.Interfaces;
 using NewDuraApp.Areas.Common.PopupView.View;
 using NewDuraApp.Areas.Common.PopupView.ViewModel;
-using NewDuraApp.Areas.Common.ViewModels;
-using NewDuraApp.Areas.Common.Views;
 using NewDuraApp.Areas.Profile.Menu.Settings.SettingsMenu.About.ViewModels;
 using NewDuraApp.Areas.Profile.Menu.Settings.SettingsMenu.Language.ViewModels;
 using NewDuraApp.Areas.Profile.Menu.Settings.SettingsMenu.Notifications.ViewModels;
-using NewDuraApp.Areas.Profile.Menu.Settings.SettingsMenu.PrivacyPolicy.ViewModels;
 using NewDuraApp.Resources;
 using NewDuraApp.Services.Interfaces;
 using NewDuraApp.ViewModels;
 using Rg.Plugins.Popup.Services;
+using Xamarin.CommunityToolkit.ObjectModel;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
@@ -32,12 +27,12 @@ namespace NewDuraApp.Areas.Profile.Menu.Settings.ViewModels
         public SettingsPageViewModel(INavigationService navigationService)
         {
             _navigationService = navigationService;
-            NavigateToNotifications = new AsyncCommand(NavigateToNotificationsPage);
-            NavigateToLanguage = new AsyncCommand(NavigateToLanguagePage);
-            NavigateToAboutUs = new AsyncCommand(NavigateToAboutUsPage);
-            NavigateToPrivacyPoliccy = new AsyncCommand(NavigateToPrivacyPoliccyPage);
-            NavigateToTermsCondition = new AsyncCommand(NavigateToTermsConditionExecute);
-            LogoutCommand = new AsyncCommand(LogoutCommandExecute);
+            NavigateToNotifications = new AsyncCommand(NavigateToNotificationsPage, allowsMultipleExecutions: false);
+            NavigateToLanguage = new AsyncCommand(NavigateToLanguagePage, allowsMultipleExecutions: false);
+            NavigateToAboutUs = new AsyncCommand(NavigateToAboutUsPage, allowsMultipleExecutions: false);
+            NavigateToPrivacyPoliccy = new AsyncCommand(NavigateToPrivacyPoliccyPage, allowsMultipleExecutions: false);
+            NavigateToTermsCondition = new AsyncCommand(NavigateToTermsConditionExecute, allowsMultipleExecutions: false);
+            LogoutCommand = new AsyncCommand(LogoutCommandExecute, allowsMultipleExecutions: false);
         }
 
         private async Task LogoutCommandExecute()

@@ -6,11 +6,10 @@ using DuraApp.Core.Helpers.Enums;
 using DuraApp.Core.Models.Auth.RequestModels;
 using DuraApp.Core.Models.Auth.ResponseModel;
 using DuraApp.Core.Services.Interfaces;
-using MvvmHelpers.Commands;
-using MvvmHelpers.Interfaces;
 using NewDuraApp.Resources;
 using NewDuraApp.Services.Interfaces;
 using NewDuraApp.ViewModels;
+using Xamarin.CommunityToolkit.ObjectModel;
 
 namespace NewDuraApp.Areas.Common.ViewModels
 {
@@ -146,7 +145,7 @@ namespace NewDuraApp.Areas.Common.ViewModels
         {
             _navigationService = navigationService;
             _authService = authenticationService;
-            NavigateOTPVerification = new AsyncCommand(NavigateToVerifyOTP);
+            NavigateOTPVerification = new AsyncCommand(NavigateToVerifyOTP, allowsMultipleExecutions: false);
         }
 
         private async Task NavigateToVerifyOTP()

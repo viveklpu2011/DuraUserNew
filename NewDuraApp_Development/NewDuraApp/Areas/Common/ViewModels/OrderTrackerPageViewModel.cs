@@ -1,25 +1,15 @@
 ﻿using System;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using DuraApp.Core.Helpers;
 using DuraApp.Core.Helpers.Enums;
 using DuraApp.Core.Models.ResponseModels;
 using DuraApp.Core.Services.Interfaces;
-using MvvmHelpers.Commands;
-using MvvmHelpers.Interfaces;
-using NewDuraApp.LocationTracker.Helper;
 using NewDuraApp.LocationTracker.Models;
 using NewDuraApp.LocationTracker.Services;
 using NewDuraApp.Resources;
 using NewDuraApp.Services.Interfaces;
 using NewDuraApp.ViewModels;
-using Xamarin.Essentials;
-using Xamarin.Forms;
-using Xamarin.Forms.GoogleMaps;
-using Command = Xamarin.Forms.Command;
 
 namespace NewDuraApp.Areas.Common.ViewModels
 {

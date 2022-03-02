@@ -370,17 +370,21 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
                 Address2 = string.Empty;
                 IsAddress1ErrorVisible = IsAddress2ErrorVisible = IsNameErrorVisible = IsPhoneErrorVisible = false;
                 CheckLoginValidation();
+                
                 Geolocation.GetLastKnownLocationAsync()
                         .ToObservable()
                         .Catch(Observable.Return(new Location()))
                         .SubscribeOn(RxApp.MainThreadScheduler)
                         .Subscribe(async location =>
                         {
-                            var position = new Position(location.Latitude, location.Longitude);
+                            if (location != null)
+                            { 
+                                var position = new Position(location.Latitude, location.Longitude);
                             Position = position;
                             ShowLoading();
                             await SetAddress(position);
                             HideLoading();
+                            }
                         });
             }
         }

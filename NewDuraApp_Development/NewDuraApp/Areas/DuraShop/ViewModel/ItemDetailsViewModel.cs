@@ -1,6 +1,4 @@
 ﻿using Acr.UserDialogs;
-using MvvmHelpers.Commands;
-using MvvmHelpers.Interfaces;
 using NewDuraApp.Helpers;
 using NewDuraApp.Models;
 using NewDuraApp.Services.Interfaces;
@@ -12,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Xamarin.CommunityToolkit.ObjectModel;
 using Xamarin.Forms;
 
 namespace NewDuraApp.Areas.DuraShop.ViewModel
@@ -30,7 +29,7 @@ namespace NewDuraApp.Areas.DuraShop.ViewModel
         public ItemDetailsViewModel(INavigationService navigationService)
         {
             _navigationService = navigationService;
-            GoToMyCartCmd = new AsyncCommand(GoToMyCartCmdExecute);
+            GoToMyCartCmd = new AsyncCommand(GoToMyCartCmdExecute, allowsMultipleExecutions: false);
             ProductList = GetProductList();
             SelectColor = GetSelectColor();
             SelectSize = GetSelectSize();

@@ -1,9 +1,8 @@
 ﻿using System.Threading.Tasks;
-using MvvmHelpers.Commands;
-using MvvmHelpers.Interfaces;
 using NewDuraApp.Areas.DuraShop.ViewModel;
 using NewDuraApp.Services.Interfaces;
 using NewDuraApp.ViewModels;
+using Xamarin.CommunityToolkit.ObjectModel;
 
 namespace NewDuraApp.Areas.Common.ViewModels
 {
@@ -14,7 +13,7 @@ namespace NewDuraApp.Areas.Common.ViewModels
         public SearchScreenViewModel(INavigationService navigationService)
         {
             _navigationService = navigationService;
-            GoToDuraShop = new AsyncCommand(GoToDuraShopExecute);
+            GoToDuraShop = new AsyncCommand(GoToDuraShopExecute, allowsMultipleExecutions: false);
         }
 
         private async Task GoToDuraShopExecute()

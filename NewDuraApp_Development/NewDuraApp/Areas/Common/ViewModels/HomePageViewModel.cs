@@ -11,8 +11,6 @@ using DuraApp.Core.Models.Common;
 using DuraApp.Core.Models.RequestModels;
 using DuraApp.Core.Models.ResponseModels;
 using DuraApp.Core.Services.Interfaces;
-using MvvmHelpers.Commands;
-using MvvmHelpers.Interfaces;
 using NewDuraApp.Areas.Common.PopupView.View;
 using NewDuraApp.Areas.Common.PopupView.ViewModel;
 using NewDuraApp.Helpers;
@@ -21,6 +19,7 @@ using NewDuraApp.Services.Interfaces;
 using NewDuraApp.Services.LocationService;
 using NewDuraApp.ViewModels;
 using Rg.Plugins.Popup.Services;
+using Xamarin.CommunityToolkit.ObjectModel;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
@@ -31,7 +30,7 @@ namespace NewDuraApp.Areas.Common.ViewModels
         public IAsyncCommand GoToNotificationsCmd { get; set; }
         public IAsyncCommand GoToDuraShopCmd { get; set; }
         public IAsyncCommand GoToDuraExpressCmd { get; set; }
-        private IAuthenticationService _authService;
+        public IAuthenticationService _authService;
         private IUserCoreService _userCoreService;
         public IAsyncCommand GoToSearchLoactionPopupCmd { get; set; }
 
@@ -129,12 +128,12 @@ namespace NewDuraApp.Areas.Common.ViewModels
             _navigationService = navigationService;
             _authService = authenticationService;
             _userCoreService = userCoreService;
-            GoToNotificationsCmd = new AsyncCommand(GoToNotificationsCmdExecute);
-            GoToSearchLoactionPopupCmd = new AsyncCommand(GoToSearchLoactionPopupCmdExecute);
-            GoToDuraShopCmd = new AsyncCommand(GoToDuraShopCmdExecute);
-            GoToDuraExpressCmd = new AsyncCommand(GoToDuraExpressCmdExecute);
-            NavigateToDuraEatsCommand = new AsyncCommand(NavigateToDuraEatsCommandExecute);
-            RefreshCommand = new AsyncCommand(RefreshCommandExecute);
+            GoToNotificationsCmd = new AsyncCommand(GoToNotificationsCmdExecute, allowsMultipleExecutions: false);
+            GoToSearchLoactionPopupCmd = new AsyncCommand(GoToSearchLoactionPopupCmdExecute, allowsMultipleExecutions: false);
+            GoToDuraShopCmd = new AsyncCommand(GoToDuraShopCmdExecute, allowsMultipleExecutions: false);
+            GoToDuraExpressCmd = new AsyncCommand(GoToDuraExpressCmdExecute, allowsMultipleExecutions: false);
+            NavigateToDuraEatsCommand = new AsyncCommand(NavigateToDuraEatsCommandExecute, allowsMultipleExecutions: false);
+            RefreshCommand = new AsyncCommand(RefreshCommandExecute, allowsMultipleExecutions: false);
         }
 
         private async Task RefreshCommandExecute()

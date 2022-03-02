@@ -718,7 +718,7 @@
                     HeightRequest="50"
                     HorizontalOptions="FillAndExpand"
                     IsVisible="{Binding IsVisibleRateButton}"
-                    Text="{translate:Translate Rate_Review}"
+                    Text="Rate Driver"
                     TextColor="White" />
             </StackLayout>
         </ScrollView>

@@ -6,12 +6,11 @@ using DuraApp.Core.Helpers.Enums;
 using DuraApp.Core.Models.RequestModels;
 using DuraApp.Core.Models.ResponseModels;
 using DuraApp.Core.Services.Interfaces;
-using MvvmHelpers.Commands;
-using MvvmHelpers.Interfaces;
 using NewDuraApp.Models;
 using NewDuraApp.Resources;
 using NewDuraApp.Services.Interfaces;
 using NewDuraApp.ViewModels;
+using Xamarin.CommunityToolkit.ObjectModel;
 
 namespace NewDuraApp.Areas.Profile.Menu.MyAddress.ViewModels
 {
@@ -46,9 +45,9 @@ namespace NewDuraApp.Areas.Profile.Menu.MyAddress.ViewModels
         {
             _navigationService = navigationService;
             _userCoreService = userCoreService;
-            AddressDetails = new AsyncCommand<GetAddressModel>(AddressDetailsCommand);
-            DeleteAddressDetails = new AsyncCommand<GetAddressModel>(DeleteAddressDetailsCommand);
-            AddNewAddress = new AsyncCommand(AddNewAddressCommand);
+            AddressDetails = new AsyncCommand<GetAddressModel>(AddressDetailsCommand, allowsMultipleExecutions: false);
+            DeleteAddressDetails = new AsyncCommand<GetAddressModel>(DeleteAddressDetailsCommand, allowsMultipleExecutions: false);
+            AddNewAddress = new AsyncCommand(AddNewAddressCommand, allowsMultipleExecutions: false);
         }
 
         private async Task DeleteAddressDetailsCommand(GetAddressModel arg)

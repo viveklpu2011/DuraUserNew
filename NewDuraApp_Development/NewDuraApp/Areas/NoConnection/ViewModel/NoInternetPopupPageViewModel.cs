@@ -1,10 +1,9 @@
 ﻿using System.Threading.Tasks;
-using MvvmHelpers.Commands;
-using MvvmHelpers.Interfaces;
 using NewDuraApp.Resources;
 using NewDuraApp.Services;
 using NewDuraApp.Services.Interfaces;
 using NewDuraApp.ViewModels;
+using Xamarin.CommunityToolkit.ObjectModel;
 
 namespace NewDuraApp.Areas.NoConnection.ViewModel
 {
@@ -53,8 +52,8 @@ namespace NewDuraApp.Areas.NoConnection.ViewModel
 		public NoInternetPopupPageViewModel(INavigationService navigationService)
 		{
 			_navigationService = navigationService;
-			ButtonCommand = new AsyncCommand(ButtonCommandExecute);
-			CloseInternetPopupCommand = new AsyncCommand(CloseInternetPopupCommandExecute);
+			ButtonCommand = new AsyncCommand(ButtonCommandExecute, allowsMultipleExecutions: false);
+			CloseInternetPopupCommand = new AsyncCommand(CloseInternetPopupCommandExecute, allowsMultipleExecutions: false);
 		}
 
 		private async Task CloseInternetPopupCommandExecute()

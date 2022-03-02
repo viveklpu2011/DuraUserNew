@@ -7,12 +7,11 @@ using DuraApp.Core.Helpers.Enums;
 using DuraApp.Core.Models.RequestModels;
 using DuraApp.Core.Models.ResponseModels;
 using DuraApp.Core.Services.Interfaces;
-using MvvmHelpers.Commands;
-using MvvmHelpers.Interfaces;
 using NewDuraApp.Models;
 using NewDuraApp.Resources;
 using NewDuraApp.Services.Interfaces;
 using NewDuraApp.ViewModels;
+using Xamarin.CommunityToolkit.ObjectModel;
 
 namespace NewDuraApp.Areas.Profile.Menu.OfferAndPromocode.ViewModels
 {
@@ -60,8 +59,8 @@ namespace NewDuraApp.Areas.Profile.Menu.OfferAndPromocode.ViewModels
         {
             _navigationService = navigationService;
             _userCoreService = userCoreService;
-            PromoCodeDetails = new AsyncCommand<PromoCodeListModel>(ProCodeDetailsCommand);
-            ApplyPromoCodeCommand = new AsyncCommand(ApplyPromoCodeCommandExecute);
+            PromoCodeDetails = new AsyncCommand<PromoCodeListModel>(ProCodeDetailsCommand, allowsMultipleExecutions: false);
+            ApplyPromoCodeCommand = new AsyncCommand(ApplyPromoCodeCommandExecute, allowsMultipleExecutions: false);
         }
 
         private async Task ApplyPromoCodeCommandExecute()

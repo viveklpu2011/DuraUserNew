@@ -3,6 +3,7 @@ using DuraApp.Core.Helpers.Enums;
 using DuraApp.Core.Models.Auth.RequestModels;
 using DuraApp.Core.Models.Auth.ResponseModel;
 using DuraApp.Core.Models.Common;
+using DuraApp.Core.Models.Google;
 using DuraApp.Core.Models.Result;
 using DuraApp.Core.Services.Interfaces;
 using Newtonsoft.Json;
@@ -25,6 +26,18 @@ namespace DuraApp.Core.Services
         public async Task<Result<AllLocationResponseModel>> GetAllLocations()
         {
             var response = await _httpService.GetJsonAsync<AllLocationResponseModel>(Urls.BASE_URL + Urls.GET_ALL_LOCATION);
+            if (response?.ResultType == ResultType.Ok)
+            {
+                if (response?.Data != null)
+                {
+                    //App.Locator.CurrentUser.AppointmentData = response?.Data;
+                }
+            }
+            return response;
+        }
+        public async Task<Result<GoogleLocation>> GetAddressList(string lat, string log, string mapkey)
+        {
+            var response = await _httpService.GetJsonAsync<GoogleLocation>("https://maps.googleapis.com/maps/api/geocode/json?latlng="+lat+","+log+ "&key="+mapkey);
             if (response?.ResultType == ResultType.Ok)
             {
                 if (response?.Data != null)

@@ -9,13 +9,12 @@ using DuraApp.Core.Helpers.Enums;
 using DuraApp.Core.Models.RequestModels;
 using DuraApp.Core.Models.ResponseModels;
 using DuraApp.Core.Services.Interfaces;
-using MvvmHelpers.Commands;
-using MvvmHelpers.Interfaces;
 using NewDuraApp.GCash.Helpers;
 using NewDuraApp.GCash.Models;
 using NewDuraApp.Services.Interfaces;
 using NewDuraApp.ViewModels;
 using Newtonsoft.Json;
+using Xamarin.CommunityToolkit.ObjectModel;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
@@ -54,7 +53,7 @@ namespace NewDuraApp.Areas.Profile.Menu.MyWalllet.Popups.ViewModels
         {
             _navigationService = navigationService;
             _userCoreService = userCoreService;
-            NavigateToRehargeSuccessfull = new AsyncCommand(NavigateToRehargeSuccessfullPage);
+            NavigateToRehargeSuccessfull = new AsyncCommand(NavigateToRehargeSuccessfullPage, allowsMultipleExecutions: false);
             InitilizeData();
         }
 

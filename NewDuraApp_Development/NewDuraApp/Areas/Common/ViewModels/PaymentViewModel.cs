@@ -5,8 +5,6 @@ using DuraApp.Core.Helpers.Enums;
 using DuraApp.Core.Models.RequestModels;
 using DuraApp.Core.Models.ResponseModels;
 using DuraApp.Core.Services.Interfaces;
-using MvvmHelpers.Commands;
-using MvvmHelpers.Interfaces;
 using NewDuraApp.Areas.Common.PopupView.View;
 using NewDuraApp.Areas.Common.PopupView.ViewModel;
 using NewDuraApp.Areas.DuraExpress.DuraExpressViewModel;
@@ -20,7 +18,7 @@ using NewDuraApp.Resources;
 using NewDuraApp.Services.Interfaces;
 using NewDuraApp.ViewModels;
 using Rg.Plugins.Popup.Services;
-using Xamarin.Forms;
+using Xamarin.CommunityToolkit.ObjectModel;
 
 namespace NewDuraApp.Areas.Common.ViewModels
 {
@@ -79,13 +77,13 @@ namespace NewDuraApp.Areas.Common.ViewModels
         {
             _navigationService = navigationService;
             _userCoreService = userCoreService;
-            GoToFindingDriverCmd = new AsyncCommand(GoToFindingDriverCmdExecute);
-            GoToSuccessPopupCmd = new AsyncCommand(GoToSuccessPopupCmdExecute);
-            GoToTopCmd = new AsyncCommand(GoToTopCmdExecute);
-            NavigateToSelectAmount = new AsyncCommand(NavigateToSelectAmountPage);
-            GoToCashOnDeliveryPopup = new AsyncCommand(GoToCashOnDeliveryPopupExecute);
-            GoToCODCmd = new AsyncCommand(GoToCODCmdExecute);
-            GoToFeeBreakdownPopup = new AsyncCommand(GoToFeeBreakdownPopupExecute);
+            GoToFindingDriverCmd = new AsyncCommand(GoToFindingDriverCmdExecute, allowsMultipleExecutions: false);
+            GoToSuccessPopupCmd = new AsyncCommand(GoToSuccessPopupCmdExecute, allowsMultipleExecutions: false);
+            GoToTopCmd = new AsyncCommand(GoToTopCmdExecute, allowsMultipleExecutions: false);
+            NavigateToSelectAmount = new AsyncCommand(NavigateToSelectAmountPage, allowsMultipleExecutions: false);
+            GoToCashOnDeliveryPopup = new AsyncCommand(GoToCashOnDeliveryPopupExecute, allowsMultipleExecutions: false);
+            GoToCODCmd = new AsyncCommand(GoToCODCmdExecute, allowsMultipleExecutions: false);
+            GoToFeeBreakdownPopup = new AsyncCommand(GoToFeeBreakdownPopupExecute, allowsMultipleExecutions: false);
             EWalletIsvisible = false;
             EWallet2Isvisible = true;
         }

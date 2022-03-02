@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using DuraApp.Core.Helpers;
 using DuraApp.Core.Helpers.Enums;
 using DuraApp.Core.Models.RequestModels;
 using DuraApp.Core.Models.ResponseModels;
 using DuraApp.Core.Services.Interfaces;
+using NewDuraApp.Areas.Common.ViewModels;
 using NewDuraApp.Areas.DuraExpress.Popup.View;
 using NewDuraApp.Areas.DuraExpress.Popup.ViewModel;
 using NewDuraApp.Helpers;
@@ -93,19 +96,41 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
 
         private async Task GoToCancelDriverCmdExecute()
         {
-            if (CancelButtonText == AppResources.Try_Again || CancelButtonText == AppResources.Search)
+            App.Locator.AddStopLocation.StopAddressList.Clear();
+            App.Locator.AddStopLocation.stopid = 0;
+            App.Locator.AddStopLocation.StopAddressList = new ObservableCollection<PickupScheduleRequestStopModel>();
+            App.Locator.TrackOrder.StopAddressList.Clear();
+            App.Locator.AddMoreDetails.LstServices = new List<VehicleServicesRequest>();
+            App.Locator.AddMoreDetails.LstServices.Clear();
+            App.Locator.SelectVehicle.LstServices = new List<VehicleServicesRequest>();
+            App.Locator.SelectVehicle.LstServices.Clear();
+            App.Locator.AddMoreDetails.TipAmount = "0";
+            App.Locator.AddMoreDetails.VehicleListSelectedData = null;
+            App.Locator.AddMoreDetails.VerifyPromoCode = null;
+            App.Locator.SelectVehicle.VehicleListSelectedData = null;
+            App.Locator.PickupSchedule.IsVisibleLaterView = false;
+            App.Locator.PickupSchedule.AsapIsChecked = true;
+            App.Locator.PickupSchedule.LaterIsCheck = false;
+            App.Locator.PickupSchedule.IsButtonEnabled = true;
+            App.Locator.PickupSchedule.DuraAddressCommon = null;
+            App.Locator.PickupSchedule.PickupScheduleRequest = null;
+            App.Locator.PickupLocation.PickupScheduleRequest = null;
+            App.Locator.WhereTo.PickupScheduleRequest = null;
+            App.Locator.AddStopLocation.PickupScheduleRequest = null;
+            App.Locator.DuraExpress.PickupLocationText = string.Empty;
+            App.Locator.DuraExpress.PickupLocationTextVisible = false;
+            SettingsExtension.PickupAddress = string.Empty;
+            App.Locator.DuraExpress.PickupScheduleLocText = string.Empty;
+            App.Locator.DuraExpress.PickupScheduleLocTextVisible = false;
+            App.Locator.DuraExpress.PickupWhereToText = string.Empty;
+            App.Locator.DuraExpress.PickupWhereToTextVisible = false;
+            App.Locator.PickupLocation.Address2 = string.Empty;
+            App.Locator.WhereTo.Address2 = string.Empty;
+            App.Locator.AddStopLocation.Address2 = string.Empty;
+            if (_navigationService.GetCurrentPageViewModel() != typeof(HomePageViewModel))
             {
-                IsBackEnabled = false;
-                await GetdriverDetails();
+                TabNavigationHelper.ForceFullyRedirectingTab(0);
             }
-            else
-            {
-                if (_navigationService.GetCurrentPageViewModel() != typeof(CancelDriverPopupViewModel))
-                {
-                    await PopupNavigation.Instance.PushAsync(new CancelDriverPopup());
-                }
-            }
-
         }
 
         internal async Task<DuraApp.Core.Models.Result.Result<GetDriverDetailsResponseModel>> CheckDriver(GetDriverDetailsRequestModel getDriverDetailsRequestModel)
@@ -178,7 +203,7 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
                     {
                         HideLoading();
                         IsBackEnabled = true;
-                        CancelButtonText = AppResources.Try_Again;
+                        //CancelButtonText = AppResources.Try_Again;
                         SearchText = AppResources.Sorry_we_dont_serve_this_location_yet;
                         ShowAlert(AppResources.Our_Service_are_currently_not_available_in_this_city_We_will_notify_you_as_soon_as_we_launch);
                     }

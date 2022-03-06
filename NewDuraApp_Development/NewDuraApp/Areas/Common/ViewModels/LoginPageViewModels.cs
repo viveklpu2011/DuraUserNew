@@ -12,13 +12,12 @@ using DuraApp.Core.Models.Auth.ResponseModel;
 using DuraApp.Core.Models.Common;
 using DuraApp.Core.Models.RequestModels;
 using DuraApp.Core.Services.Interfaces;
-using MvvmHelpers.Commands;
-using MvvmHelpers.Interfaces;
 using NewDuraApp.Models;
 using NewDuraApp.Resources;
 using NewDuraApp.Services.Interfaces;
 using NewDuraApp.ViewModels;
 using Plugin.FacebookClient;
+using Xamarin.CommunityToolkit.ObjectModel;
 using Xamarin.Essentials;
 
 namespace NewDuraApp.Areas.Common.ViewModels
@@ -387,10 +386,10 @@ namespace NewDuraApp.Areas.Common.ViewModels
             _navigationService = navigationService;
             _authService = authenticationService;
             AppVersion = VersionTracking.CurrentVersion;
-            SwitchToEmailLayout = new AsyncCommand<object>(SwitchCommandExecute);
-            NavigateToHomeCommand = new AsyncCommand(LoginAndNavigateToHome);
-            NavigateToForgetPassword = new AsyncCommand(NavigateToForgetPasswordPage);
-            GoToSignUpCmd = new AsyncCommand(NavigateToSignup);
+            SwitchToEmailLayout = new AsyncCommand<object>(SwitchCommandExecute, allowsMultipleExecutions: false);
+            NavigateToHomeCommand = new AsyncCommand(LoginAndNavigateToHome, allowsMultipleExecutions: false);
+            NavigateToForgetPassword = new AsyncCommand(NavigateToForgetPasswordPage, allowsMultipleExecutions: false);
+            GoToSignUpCmd = new AsyncCommand(NavigateToSignup, allowsMultipleExecutions: false);
             IsPhoneEmail = true;
         }
 

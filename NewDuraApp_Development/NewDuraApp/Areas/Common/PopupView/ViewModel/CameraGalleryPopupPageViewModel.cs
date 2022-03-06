@@ -3,10 +3,9 @@ using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using DuraApp.Core.Helpers.Enums;
 using DuraApp.Core.Models.Common;
-using MvvmHelpers.Commands;
-using MvvmHelpers.Interfaces;
 using NewDuraApp.Services.Interfaces;
 using NewDuraApp.ViewModels;
+using Xamarin.CommunityToolkit.ObjectModel;
 
 namespace NewDuraApp.Areas.Common.PopupView.ViewModel
 {
@@ -30,15 +29,15 @@ namespace NewDuraApp.Areas.Common.PopupView.ViewModel
         public CameraGalleryPopupPageViewModel(INavigationService navigationService)
         {
             _navigationService = navigationService;
-            GetSelectedOptionCommand = new AsyncCommand<UploadImageTypeModel>(GetSelectedOptionCommandExecute);
-            CancelCommand = new AsyncCommand(CancelCommandExecute);
+            GetSelectedOptionCommand = new AsyncCommand<UploadImageTypeModel>(GetSelectedOptionCommandExecute, allowsMultipleExecutions: false);
+            CancelCommand = new AsyncCommand(CancelCommandExecute, allowsMultipleExecutions: false);
         }
 
         private async Task CancelCommandExecute()
         {
             await _navigationService.ClosePopupsAsync();
-
         }
+
         private async Task ClosePopUp(ProfilePicSelectionType outputType, string inputValue)
         {
             ReturnValue = new Tuple<ProfilePicSelectionType, string>(outputType, inputValue);
@@ -58,8 +57,6 @@ namespace NewDuraApp.Areas.Common.PopupView.ViewModel
                     await ClosePopUp(ProfilePicSelectionType.Gallery, "");
                 }
             }
-
-
         }
 
         public async Task InitilizeData()

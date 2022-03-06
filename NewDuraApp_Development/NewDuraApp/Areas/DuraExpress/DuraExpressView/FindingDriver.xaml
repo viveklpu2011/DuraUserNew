@@ -38,7 +38,6 @@
                 <RowDefinition Height="70*" />
                 <RowDefinition Height="25*" />
             </Grid.RowDefinitions>
-
             <Grid
                 Grid.Row="0"
                 HorizontalOptions="FillAndExpand"
@@ -91,7 +90,7 @@
                     FontFamily="RobotoMedium"
                     FontSize="16"
                     HorizontalOptions="CenterAndExpand"
-                    Text="{Binding CancelButtonText}"
+                    Text="Cancel Order"
                     TextColor="#211E66"
                     VerticalOptions="CenterAndExpand">
                     <Label.GestureRecognizers>

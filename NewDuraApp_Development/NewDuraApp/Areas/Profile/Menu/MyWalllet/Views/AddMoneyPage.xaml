@@ -16,7 +16,6 @@
     Shell.TabBarIsVisible="False"
     Visual="Material">
     <Shell.TitleView>
-
         <Label
             FontAttributes="Bold"
             FontFamily="ProximaRegular"
@@ -26,8 +25,6 @@
             TextColor="Black"
             VerticalOptions="CenterAndExpand"
             VerticalTextAlignment="Center" />
-
-
     </Shell.TitleView>
     <ContentPage.Content>
         <Grid
@@ -98,11 +95,9 @@
                                     Glyph="{x:Static fonticon:FontIconsClass.MenuRight}"
                                     Size="30"
                                     Color="Black" />
-
                             </ImageButton.Source>
                         </ImageButton>
                     </StackLayout>
-
                 </Frame>
             </StackLayout>
         </Grid>

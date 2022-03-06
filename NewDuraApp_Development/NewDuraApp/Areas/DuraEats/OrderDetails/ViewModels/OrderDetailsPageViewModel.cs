@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Threading.Tasks;
-using MvvmHelpers.Commands;
-using MvvmHelpers.Interfaces;
 using NewDuraApp.Areas.Common.ViewModels;
 using NewDuraApp.Helpers;
 using NewDuraApp.Services.Interfaces;
 using NewDuraApp.ViewModels;
+using Xamarin.CommunityToolkit.ObjectModel;
 
 namespace NewDuraApp.Areas.DuraEats.OrderDetails.ViewModels
 {
@@ -17,7 +16,7 @@ namespace NewDuraApp.Areas.DuraEats.OrderDetails.ViewModels
         public OrderDetailsPageViewModel(INavigationService navigationService)
         {
             _navigationService = navigationService;
-            GoToHomeCmd = new AsyncCommand(GoToHomeCmdExecute);
+            GoToHomeCmd = new AsyncCommand(GoToHomeCmdExecute, allowsMultipleExecutions: false);
         }
         private async Task GoToHomeCmdExecute()
         {

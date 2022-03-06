@@ -10,12 +10,7 @@
     NavigationPage.HasNavigationBar="False"
     Visual="Material">
     <ContentPage.Content>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="80*" />
-                <RowDefinition Height="20*" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
+        <Grid RowDefinitions="80*,20*,Auto">
             <Image
                 Grid.Row="0"
                 Margin="20"

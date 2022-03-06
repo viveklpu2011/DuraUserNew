@@ -1,5 +1,4 @@
-﻿using MvvmHelpers.Commands;
-using MvvmHelpers.Interfaces;
+﻿
 using NewDuraApp.Areas.Common.ViewModels;
 using NewDuraApp.Areas.DuraEats.ChangeLocation.ViewModels;
 using NewDuraApp.Areas.Profile.Menu.OfferAndPromocode.ViewModels;
@@ -11,6 +10,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.CommunityToolkit.ObjectModel;
 using Xamarin.Forms;
 
 namespace NewDuraApp.Areas.DuraShop.ViewModel
@@ -32,9 +32,9 @@ namespace NewDuraApp.Areas.DuraShop.ViewModel
         public MyCartViewModel(INavigationService navigationService)
         {
             _navigationService = navigationService;
-            GoToPaymentCmd = new AsyncCommand(GoToPaymentCmdExecute);
-            GoToOfferCmd = new AsyncCommand(GoToOfferCmdExecute);
-            GoToEditAddressCmd = new AsyncCommand(GoToEditAddressCmdExecute);
+            GoToPaymentCmd = new AsyncCommand(GoToPaymentCmdExecute, allowsMultipleExecutions: false);
+            GoToOfferCmd = new AsyncCommand(GoToOfferCmdExecute, allowsMultipleExecutions: false);
+            GoToEditAddressCmd = new AsyncCommand(GoToEditAddressCmdExecute, allowsMultipleExecutions: false);
             CartList = GetCartList();
             //Quantity = 0;
         }

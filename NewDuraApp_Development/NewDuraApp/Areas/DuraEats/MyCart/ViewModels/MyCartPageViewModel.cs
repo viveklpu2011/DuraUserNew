@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Threading.Tasks;
-using MvvmHelpers.Commands;
-using MvvmHelpers.Interfaces;
 using NewDuraApp.Areas.Common.ViewModels;
 
 using NewDuraApp.Areas.DuraEats.ItemDetails.ViewMdels;
@@ -14,6 +12,7 @@ using NewDuraApp.Areas.DuraEats.RatingReviews.ViewModels;
 using NewDuraApp.Areas.Profile.Menu.OfferAndPromocode.ViewModels;
 using NewDuraApp.Services.Interfaces;
 using NewDuraApp.ViewModels;
+using Xamarin.CommunityToolkit.ObjectModel;
 
 namespace NewDuraApp.Areas.DuraEats.MyCart.ViewModels
 {
@@ -30,16 +29,16 @@ namespace NewDuraApp.Areas.DuraEats.MyCart.ViewModels
         public MyCartPageViewModel(INavigationService navigationService)
         {
             _navigationService = navigationService;
-            NavigateToPaymentMode = new AsyncCommand(NavigateToPaymentModePage);
-            NavigateToPromoCode = new AsyncCommand(NavigateToPromoCodePage);
+            NavigateToPaymentMode = new AsyncCommand(NavigateToPaymentModePage, allowsMultipleExecutions: false);
+            NavigateToPromoCode = new AsyncCommand(NavigateToPromoCodePage, allowsMultipleExecutions: false);
 
-            NavigateToPromoCode1 = new AsyncCommand(NavigateToPromoCode1Execute);
-            GoToAddItemCmd = new AsyncCommand(GoToAddItemCmdExecute);
+            NavigateToPromoCode1 = new AsyncCommand(NavigateToPromoCode1Execute, allowsMultipleExecutions: false);
+            GoToAddItemCmd = new AsyncCommand(GoToAddItemCmdExecute, allowsMultipleExecutions: false);
            // NavigateToRateAndReviews = new AsyncCommand(NavigateToRateAndReviewsPage);
 
            // NavigateToRateAndReviews = new AsyncCommand(NavigateToRateAndReviewsPage);
-            NavigateToChangeLocation = new AsyncCommand(NavigateToChangeLocationPage);
-            EditCartItems = new AsyncCommand(EditCartItemsPage);
+            NavigateToChangeLocation = new AsyncCommand(NavigateToChangeLocationPage, allowsMultipleExecutions: false);
+            EditCartItems = new AsyncCommand(EditCartItemsPage, allowsMultipleExecutions: false);
         }
 
         private async Task EditCartItemsPage()

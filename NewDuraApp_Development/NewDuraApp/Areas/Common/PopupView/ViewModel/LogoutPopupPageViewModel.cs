@@ -6,11 +6,10 @@ using DuraApp.Core.Helpers;
 using DuraApp.Core.Models.RequestModels;
 using DuraApp.Core.Models.ResponseModels;
 using DuraApp.Core.Services.Interfaces;
-using MvvmHelpers.Commands;
-using MvvmHelpers.Interfaces;
 using NewDuraApp.Areas.Common.Views;
 using NewDuraApp.Services.Interfaces;
 using NewDuraApp.ViewModels;
+using Xamarin.CommunityToolkit.ObjectModel;
 using Xamarin.Forms;
 
 namespace NewDuraApp.Areas.Common.PopupView.ViewModel
@@ -26,8 +25,8 @@ namespace NewDuraApp.Areas.Common.PopupView.ViewModel
         {
             _navigationService = navigationService;
             _userCoreService = userCoreService;
-            LogoutCommand = new AsyncCommand(LogoutCommandExecute);
-            CancelCommand = new AsyncCommand(CancelCommandExecute);
+            LogoutCommand = new AsyncCommand(LogoutCommandExecute, allowsMultipleExecutions: false);
+            CancelCommand = new AsyncCommand(CancelCommandExecute, allowsMultipleExecutions: false);
         }
 
         private async Task CancelCommandExecute()
@@ -72,11 +71,9 @@ namespace NewDuraApp.Areas.Common.PopupView.ViewModel
             App.Locator.WhereTo.Address2 = string.Empty;
             App.Locator.AddStopLocation.Address1 = string.Empty;
             App.Locator.AddStopLocation.Address2 = string.Empty;
-
             App.Current.MainPage = new NavigationPage(new LoginPage()) { BarBackgroundColor = Color.White, BarTextColor = Color.Black };
             await App.Locator.LoginPage.GetAllLocation();
             await _navigationService.ClosePopupsAsync();
-
             HideLoading();
         }
     }

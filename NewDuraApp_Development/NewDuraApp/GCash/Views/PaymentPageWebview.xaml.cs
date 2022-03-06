@@ -27,5 +27,10 @@ namespace NewDuraApp.GCash.Views
         {
             progress.IsVisible = false;
         }
+        protected override bool OnBackButtonPressed()
+        {
+            DisplayAlert("Dura Says","Please use Back button of app for payment confirmation , not hardware(device) back for your successfully transfer.","Ok");
+            return true;
+        }
     }
 }

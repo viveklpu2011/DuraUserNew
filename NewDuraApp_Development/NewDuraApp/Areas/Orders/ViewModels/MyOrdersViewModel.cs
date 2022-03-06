@@ -457,6 +457,7 @@ namespace NewDuraApp.Areas.Orders.ViewModels
                     }
                     else if (result?.ResultType == ResultType.Unauthorized)
                     {
+                        IsNoRecord = false;
                         IsEmpty = true;
                         IsNoRecord = false;
                         DuraExpressOrderList = new ObservableCollection<MyOrderResponse>(lstOrderList);
@@ -548,6 +549,7 @@ namespace NewDuraApp.Areas.Orders.ViewModels
                     }
                     else
                     {
+                        IsOnLoad = false;
                         IsEmpty = true;
                         IsNoRecord = false;
                         DuraExpressOrderList = new ObservableCollection<MyOrderResponse>(lstOrderList);
@@ -562,6 +564,7 @@ namespace NewDuraApp.Areas.Orders.ViewModels
                 }
                 finally
                 {
+
                     IsLoadingIndicator = false;
                     HideLoading();
                 }

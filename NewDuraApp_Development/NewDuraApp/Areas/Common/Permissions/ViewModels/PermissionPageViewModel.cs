@@ -2,14 +2,13 @@
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using DuraApp.Core.Helpers;
-using MvvmHelpers.Commands;
-using MvvmHelpers.Interfaces;
 using NewDuraApp.Areas.Common.ViewModels;
 using NewDuraApp.Models;
 using NewDuraApp.Resources;
 using NewDuraApp.Services.Interfaces;
 using NewDuraApp.Services.LocationService;
 using NewDuraApp.ViewModels;
+using Xamarin.CommunityToolkit.ObjectModel;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using static Xamarin.Essentials.Permissions;
@@ -48,8 +47,7 @@ namespace NewDuraApp.Areas.Common.Permissions.ViewModels
         public PermissionPageViewModel(INavigationService navigationService)
         {
             _navigationService = navigationService;
-            GrandpermissionCommand = new AsyncCommand<PermissionInfo>(GrandpermissionCommandExecute);
-            //GetCountryCode();
+            GrandpermissionCommand = new AsyncCommand<PermissionInfo>(GrandpermissionCommandExecute, allowsMultipleExecutions: false);
         }
 
         private async Task GrandpermissionCommandExecute(PermissionInfo arg)
@@ -95,6 +93,7 @@ namespace NewDuraApp.Areas.Common.Permissions.ViewModels
         {
             await LoadPermissions();
         }
+
         async Task LoadPermissions()
         {
             PermissionsList = new ObservableCollection<PermissionInfo>()

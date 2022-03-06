@@ -1,12 +1,11 @@
 ﻿using System.Collections.ObjectModel;
 using System.Threading.Tasks;
-using MvvmHelpers.Commands;
-using MvvmHelpers.Interfaces;
 using NewDuraApp.Helpers;
 using NewDuraApp.Models;
 using NewDuraApp.Resources;
 using NewDuraApp.Services.Interfaces;
 using NewDuraApp.ViewModels;
+using Xamarin.CommunityToolkit.ObjectModel;
 
 namespace NewDuraApp.Areas.Common.ViewModels
 {
@@ -25,7 +24,7 @@ namespace NewDuraApp.Areas.Common.ViewModels
         public GetStartedPageViewModel(INavigationService navigationService)
         {
             _navigationService = navigationService;
-            SkipCommand = new AsyncCommand(SkipCommandExecute);
+            SkipCommand = new AsyncCommand(SkipCommandExecute, allowsMultipleExecutions: false);
         }
 
         private async Task SkipCommandExecute()

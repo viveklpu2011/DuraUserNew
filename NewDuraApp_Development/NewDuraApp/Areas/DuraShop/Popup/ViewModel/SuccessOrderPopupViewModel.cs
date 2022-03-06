@@ -1,5 +1,4 @@
-﻿using MvvmHelpers.Commands;
-using MvvmHelpers.Interfaces;
+﻿
 using NewDuraApp.Areas.DuraShop.ViewModel;
 using NewDuraApp.Services.Interfaces;
 using NewDuraApp.ViewModels;
@@ -8,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.CommunityToolkit.ObjectModel;
 using Xamarin.Forms;
 
 namespace NewDuraApp.Areas.DuraShop.Popup.ViewModel
@@ -19,7 +19,7 @@ namespace NewDuraApp.Areas.DuraShop.Popup.ViewModel
         public SuccessOrderPopupViewModel(INavigationService navigationService)
         {
             _navigationService = navigationService;
-            GoToTrackOrderCmd = new AsyncCommand(GoToTrackOrderCmdExecute);
+            GoToTrackOrderCmd = new AsyncCommand(GoToTrackOrderCmdExecute, allowsMultipleExecutions: false);
         }
 
         private async Task GoToTrackOrderCmdExecute()

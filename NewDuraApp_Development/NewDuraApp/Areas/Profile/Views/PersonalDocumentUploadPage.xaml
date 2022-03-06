@@ -336,7 +336,7 @@
                     FontSize="17"
                     HeightRequest="50"
                     HorizontalOptions="FillAndExpand"
-                    Text="{Binding Done}"
+                    Text="SAVE"
                     TextColor="White"
                     VerticalOptions="EndAndExpand" />
             </Grid>

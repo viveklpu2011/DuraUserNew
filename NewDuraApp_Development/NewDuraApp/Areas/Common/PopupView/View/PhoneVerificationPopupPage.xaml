@@ -117,9 +117,7 @@
                                 <behaviours:NumericValidationBehaviorNumberOnly />
                             </control:CustomEntry.Behaviors>
                         </control:CustomEntry>
-
                     </Grid>
-
                 </Frame>
                 <Label
                     Grid.Row="3"
@@ -143,6 +141,5 @@
                     TextColor="White" />
             </Grid>
         </Frame>
-
     </pages:PopupPage.Content>
 </pages:PopupPage>

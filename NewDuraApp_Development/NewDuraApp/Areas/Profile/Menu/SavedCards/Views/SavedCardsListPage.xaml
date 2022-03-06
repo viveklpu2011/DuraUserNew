@@ -28,10 +28,7 @@
             VerticalTextAlignment="Center" />
     </Shell.TitleView>
     <ContentPage.Content>
-        <Grid
-            Margin="15"
-            RowDefinitions="Auto,50"
-            VerticalOptions="Start">
+         <Grid Margin="15" RowDefinitions="*,50">
             <CollectionView
                 x:Name="savedCardCollection"
                 Grid.Row="0"

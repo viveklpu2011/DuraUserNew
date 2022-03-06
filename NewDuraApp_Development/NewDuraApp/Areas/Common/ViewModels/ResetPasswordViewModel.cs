@@ -4,13 +4,12 @@ using DuraApp.Core.Helpers;
 using DuraApp.Core.Helpers.Enums;
 using DuraApp.Core.Models.Auth.RequestModels;
 using DuraApp.Core.Services.Interfaces;
-using MvvmHelpers.Commands;
-using MvvmHelpers.Interfaces;
 using NewDuraApp.Areas.Common.PopupView.View;
 using NewDuraApp.Resources;
 using NewDuraApp.Services.Interfaces;
 using NewDuraApp.ViewModels;
 using Rg.Plugins.Popup.Services;
+using Xamarin.CommunityToolkit.ObjectModel;
 
 namespace NewDuraApp.Areas.Common.ViewModels
 {
@@ -48,7 +47,7 @@ namespace NewDuraApp.Areas.Common.ViewModels
         {
             _navigationService = navigationService;
             _authService = authenticationService;
-            SuccessPopupCmd = new AsyncCommand(SuccessPopupCmdExecute);
+            SuccessPopupCmd = new AsyncCommand(SuccessPopupCmdExecute, allowsMultipleExecutions: false);
         }
 
         private async Task SuccessPopupCmdExecute()

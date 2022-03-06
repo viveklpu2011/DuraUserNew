@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Acr.UserDialogs;
+using DuraApp.Core.Services.Interfaces;
+using NewDuraApp.ViewModels;
 using Plugin.Geolocator;
 using Plugin.Geolocator.Abstractions;
 using Xamarin.Essentials;
@@ -10,7 +13,7 @@ using Position = Xamarin.Forms.Maps.Position;
 
 namespace NewDuraApp.Helpers
 {
-	public class LocationHelpers
+	public class LocationHelpers : AppBaseViewModel
 	{
 
 
@@ -45,10 +48,24 @@ namespace NewDuraApp.Helpers
 			try {
 				var locator = CrossGeolocator.Current;
 				Plugin.Geolocator.Abstractions.Position pos = new Plugin.Geolocator.Abstractions.Position(location.Latitude, location.Longitude);
+				UserDialogs.Instance.ShowLoading();
 				var places = await locator.GetAddressesForPositionAsync(pos);
 
 				placemark = places?.FirstOrDefault();
-				if (placemark != null) {
+				if (placemark == null)
+				{
+					IAuthenticationService _authService = App.Locator.HomePage._authService;
+					var result = await _authService.GetAddressList(pos.Latitude.ToString(), pos.Longitude.ToString(), "AIzaSyDmFLlT54DjzNIELWGniC3jD-OKM4K4GD4");
+					UserDialogs.Instance.HideLoading();
+					placemark = new Address();
+					if (result?.Data?.results?.Count >= 0)
+						placemark.Locality = result?.Data?.results[0].formatted_address;
+					else
+						placemark.Locality = string.Empty;
+				}
+				UserDialogs.Instance.HideLoading();
+				if (placemark != null)
+				{
 					var geocodeAddress =
 						$"AdminArea:       {placemark.AdminArea}\n" +
 						$"CountryCode:     {placemark.CountryCode}\n" +
@@ -65,8 +82,10 @@ namespace NewDuraApp.Helpers
 
 				}
 			} catch (FeatureNotSupportedException fnsEx) {
+				UserDialogs.Instance.HideLoading();
 				// Feature not supported on device
 			} catch (Exception ex) {
+				UserDialogs.Instance.HideLoading();
 				// Handle exception that may have occurred in geocoding
 			}
 			return placemark;

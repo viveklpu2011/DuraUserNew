@@ -179,7 +179,6 @@
                             Text="{translate:Translate Verify}"
                             TextColor="White"
                             WidthRequest="250" />
-
                         <Grid>
                             <Label
                                 x:Name="ResendOTPlbl"

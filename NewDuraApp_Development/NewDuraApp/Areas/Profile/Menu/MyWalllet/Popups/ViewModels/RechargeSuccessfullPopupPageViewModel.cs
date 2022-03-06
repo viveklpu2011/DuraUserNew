@@ -2,10 +2,9 @@
 using System.Threading.Tasks;
 using DuraApp.Core.Helpers.Enums;
 using DuraApp.Core.Models.ResponseModels;
-using MvvmHelpers.Commands;
-using MvvmHelpers.Interfaces;
 using NewDuraApp.Services.Interfaces;
 using NewDuraApp.ViewModels;
+using Xamarin.CommunityToolkit.ObjectModel;
 
 namespace NewDuraApp.Areas.Profile.Menu.MyWalllet.Popups.ViewModels
 {
@@ -14,22 +13,24 @@ namespace NewDuraApp.Areas.Profile.Menu.MyWalllet.Popups.ViewModels
         INavigationService _navigationService;
         public IAsyncCommand NavigateToWallet { get; set; }
         private GetSaveWalletAmountResponseModel _getSaveWalletAmount;
+
         private string _amount;
         public string Amount
         {
             get { return _amount; }
             set { _amount = value; OnPropertyChanged(nameof(Amount)); }
         }
+
         public GetSaveWalletAmountResponseModel GetSaveWalletAmount
         {
             get { return _getSaveWalletAmount; }
             set { _getSaveWalletAmount = value; OnPropertyChanged(nameof(GetSaveWalletAmount)); }
         }
+
         public RechargeSuccessfullPopupPageViewModel(INavigationService navigationService)
         {
             _navigationService = navigationService;
-
-            NavigateToWallet = new AsyncCommand(NavigateToWalletPage);
+            NavigateToWallet = new AsyncCommand(NavigateToWalletPage, allowsMultipleExecutions: false);
             InitilizeData();
         }
 
@@ -38,7 +39,6 @@ namespace NewDuraApp.Areas.Profile.Menu.MyWalllet.Popups.ViewModels
             GetSaveWalletAmount = new GetSaveWalletAmountResponseModel();
             Amount = App.Locator.RechargeToppupPopupPage.WalletAmount.AmountWithCurrency;//.GetSaveWalletAmount;
             var data1 = App.Locator.TopupAmuntPopupPage.WalletAmount;
-
             var data = GetSaveWalletAmount;
         }
 

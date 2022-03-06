@@ -13,7 +13,7 @@ namespace DuraApp.Core.Helpers
         //public static string BASE_URL = "https://duradriver.com/duradrive";
 
         //production base url New
-        public static string BASE_URL = "http://duradriver.com/duradrive";
+        public static string BASE_URL = "https://duradriver.com/duradrive";
 
         public static string GET_ALL_LOCATION = "/duradrive_api_dev/alllocation";
         public static string LOGIN = "/duradrive_api_dev/api/login";

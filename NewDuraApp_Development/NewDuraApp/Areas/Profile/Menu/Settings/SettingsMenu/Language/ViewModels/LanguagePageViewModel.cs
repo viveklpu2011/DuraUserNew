@@ -3,12 +3,11 @@ using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Threading.Tasks;
 using DuraApp.Core.Helpers;
-using MvvmHelpers.Commands;
-using MvvmHelpers.Interfaces;
 using NewDuraApp.Resources;
 using NewDuraApp.Services.Interfaces;
 using NewDuraApp.ViewModels;
 using Plugin.Multilingual;
+using Xamarin.CommunityToolkit.ObjectModel;
 
 namespace NewDuraApp.Areas.Profile.Menu.Settings.SettingsMenu.Language.ViewModels
 {
@@ -19,7 +18,7 @@ namespace NewDuraApp.Areas.Profile.Menu.Settings.SettingsMenu.Language.ViewModel
         public LanguagePageViewModel(INavigationService navigationService)
 		{
 			_navigationService = navigationService;
-            SaveCommand = new AsyncCommand(SaveCommandExecute);
+            SaveCommand = new AsyncCommand(SaveCommandExecute, allowsMultipleExecutions: false);
         }
 		public async Task InitilizeData()
 		{

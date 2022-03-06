@@ -7,11 +7,10 @@ using DuraApp.Core.Helpers.Enums;
 using DuraApp.Core.Models.Auth.RequestModels;
 using DuraApp.Core.Models.Auth.ResponseModel;
 using DuraApp.Core.Services.Interfaces;
-using MvvmHelpers.Commands;
-using MvvmHelpers.Interfaces;
 using NewDuraApp.Resources;
 using NewDuraApp.Services.Interfaces;
 using NewDuraApp.ViewModels;
+using Xamarin.CommunityToolkit.ObjectModel;
 
 namespace NewDuraApp.Areas.Common.ViewModels
 {
@@ -284,7 +283,7 @@ namespace NewDuraApp.Areas.Common.ViewModels
         {
             _navigationService = navigationService;
             _authService = authenticationService;
-            GoToOTPVerifyCmd = new AsyncCommand(GoToOTPVerifyCmdExecute);
+            GoToOTPVerifyCmd = new AsyncCommand(GoToOTPVerifyCmdExecute, allowsMultipleExecutions: false);
         }
 
         private async Task GoToOTPVerifyCmdExecute()

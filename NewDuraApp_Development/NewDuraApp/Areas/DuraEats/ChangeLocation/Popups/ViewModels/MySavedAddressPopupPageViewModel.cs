@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
-using MvvmHelpers.Commands;
-using MvvmHelpers.Interfaces;
 using NewDuraApp.Models;
 using NewDuraApp.Services.Interfaces;
 using NewDuraApp.ViewModels;
+using Xamarin.CommunityToolkit.ObjectModel;
 
 namespace NewDuraApp.Areas.DuraEats.ChangeLocation.Popups.ViewModels
 {
@@ -23,7 +22,7 @@ namespace NewDuraApp.Areas.DuraEats.ChangeLocation.Popups.ViewModels
         public MySavedAddressPopupPageViewModel(INavigationService navigationService)
         {
             _navigationService = navigationService;
-            ClosePopup = new AsyncCommand(ClosePopUpcommand);
+            ClosePopup = new AsyncCommand(ClosePopUpcommand, allowsMultipleExecutions: false);
             InitilizeData();
         }
         private async Task ClosePopUpcommand()

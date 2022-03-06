@@ -173,21 +173,7 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
             if (getpickupDetailsModel != null)
             {
                 IsVisibleHome = isVisibleHome;
-                if (!string.IsNullOrEmpty(getpickupDetailsModel.status))
-                {
-                    if (getpickupDetailsModel.status.ToLower() == "completed")
-                    {
-                        IsVisibleRateButton = true;
-                    }
-                    else
-                    {
-                        IsVisibleRateButton = false;
-                    }
-                }
-                else
-                {
-                    IsVisibleRateButton = false;
-                }
+                
                 await GetOrderDetails(getpickupDetailsModel.pickup_id);
             }
         }
@@ -210,6 +196,37 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
                         if (result?.Data?.data != null)
                         {
                             GetOrderData = result?.Data?.data;
+                            if (!string.IsNullOrEmpty(GetOrderData.status))
+                            {
+                                if (GetOrderData.status.ToLower() == "3")
+                                {
+                                    IsVisibleRateButton = true;
+                                }
+                                else
+                                {
+                                    IsVisibleRateButton = false;
+                                }
+                            }
+                            else
+                            {
+                                IsVisibleRateButton = false;
+                            }
+                            if (GetOrderData.status.ToLower() == "1")
+                            {
+                                GetOrderData.displaystatus = "Order Pending";
+                            }
+                            else if (GetOrderData.status.ToLower() == "2")
+                            {
+                                GetOrderData.displaystatus = "Order Ongoing";
+                            }
+                            else if (GetOrderData.status.ToLower() == "3")
+                            {
+                                GetOrderData.displaystatus = "Order Completed";
+                            }
+                            else
+                            {
+                                GetOrderData.displaystatus = "Order Cancelled";
+                            }
                             if (result?.Data?.data?.coupon != null)
                             {
                                 IsVisibleCouponView = true;

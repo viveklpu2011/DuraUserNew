@@ -5,12 +5,11 @@ using DuraApp.Core.Helpers;
 using DuraApp.Core.Helpers.Enums;
 using DuraApp.Core.Models.RequestModels;
 using DuraApp.Core.Services.Interfaces;
-using MvvmHelpers.Commands;
-using MvvmHelpers.Interfaces;
 using NewDuraApp.Helpers;
 using NewDuraApp.Resources;
 using NewDuraApp.Services.Interfaces;
 using NewDuraApp.ViewModels;
+using Xamarin.CommunityToolkit.ObjectModel;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
@@ -30,8 +29,8 @@ namespace NewDuraApp.Areas.Common.ViewModels
             _navigationService = navigationService;
             _authService = authenticationService;
             _userCoreService = userCoreService;
-            GoToLoginCmd = new AsyncCommand(GoToLoginCmdExecute);
-            SkipAndGoToLoginCmd = new AsyncCommand(SkipGoToLoginCmdExecute);
+            GoToLoginCmd = new AsyncCommand(GoToLoginCmdExecute, allowsMultipleExecutions: false);
+            SkipAndGoToLoginCmd = new AsyncCommand(SkipGoToLoginCmdExecute, allowsMultipleExecutions: false);
             var dr = App.Locator.PersonalDetails.SignupRequestModelVM;
         }
 

@@ -19,5 +19,9 @@
     <Folder Include="Services\" />
     <Folder Include="Services\Interfaces\" />
     <Folder Include="Models\Result\" />
+    <Folder Include="KeyStoreFile\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="KeyStoreFile\" />
   </ItemGroup>
 </Project>

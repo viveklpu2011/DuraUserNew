@@ -238,6 +238,7 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
                             }
                             if (GetPickupData?.status == "4")
                             {
+                                GetPickupData.verification_code = "N/A";
                                 GetPickupData.displaystatustextcolor = Color.Red;
                                 GetPickupData.displaystatus = AppResources.Cancelled_OrderCancelled;
                             }
@@ -258,7 +259,10 @@ namespace NewDuraApp.Areas.DuraExpress.DuraExpressViewModel
                             {
                                 IsVisibleDriverView = false;
                             }
-                            ShowAlert("Your Code for Sharing Driver :" + GetPickupData.verification_code, "Driver Code", "OK");
+                            if (GetPickupData?.status != "4")
+                            {
+                                ShowAlert("Your Code for Sharing Driver :" + GetPickupData.verification_code, "Driver Code", "OK");
+                            }
                         }
                     }
                     else if (result?.ResultType == ResultType.Unauthorized)

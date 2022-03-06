@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using DuraApp.Core.Models.Auth.RequestModels;
 using DuraApp.Core.Models.Auth.ResponseModel;
 using DuraApp.Core.Models.Common;
+using DuraApp.Core.Models.Google;
 using DuraApp.Core.Models.Result;
 
 namespace DuraApp.Core.Services.Interfaces
@@ -18,5 +19,6 @@ namespace DuraApp.Core.Services.Interfaces
         Task<Result<LoginResponseModel>> Login(LoginRequestModel request);
         Task<Result<ResetPasswordResponseModel>> ResetPassword(ResetPasswordRequestModel request);
         Task<Result<FacebookResponseModel>> FbLogin(MultipartFormDataContent request);
+        Task<Result<GoogleLocation>> GetAddressList(string lat, string log, string mapkey);
     }
 }

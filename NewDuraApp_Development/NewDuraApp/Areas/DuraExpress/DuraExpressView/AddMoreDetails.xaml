@@ -179,7 +179,6 @@
                                     IsVisible="{Binding IsVisiblePhotoButton}"
                                     Spacing="0"
                                     VerticalOptions="CenterAndExpand">
-
                                     <ImageButton
                                         Command="{Binding PickImageCommand}"
                                         HeightRequest="50"

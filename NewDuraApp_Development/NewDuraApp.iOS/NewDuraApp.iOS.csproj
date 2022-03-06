@@ -89,6 +89,7 @@
 		<Compile Include="Renderers\ImageEntryRenderer.cs" />
 		<Compile Include="Services\LocationService.cs" />
 		<Compile Include="CachingImageFactory.cs" />
+		<Compile Include="Renderers\ImageRenderer.cs" />
 	</ItemGroup>
 	<ItemGroup>
 		<InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />

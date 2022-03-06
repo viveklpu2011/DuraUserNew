@@ -279,10 +279,8 @@
                                     </sh:Shadows>
                                 </DataTemplate>
                             </BindableLayout.ItemTemplate>
-
                         </StackLayout>
                     </ScrollView>
-
                 </Grid>
             </ScrollView>
         </RefreshView>

@@ -139,7 +139,7 @@ namespace NewDuraApp.Areas.Common.ViewModels
                 }
                 else
                 {
-                    var resultpayment = await App.Current.MainPage.DisplayAlert(AppResources.Alert, $"{TotalFinalFare}" + AppResources.will_be_deducted_from_your_wallet_Do_you_really_want_to_proceed, AppResources.Yes, AppResources.No);
+                    var resultpayment = await App.Current.MainPage.DisplayAlert(AppResources.Alert, $"{TotalFinalFare} " + AppResources.will_be_deducted_from_your_wallet_Do_you_really_want_to_proceed, AppResources.Yes, AppResources.No);
                     if (resultpayment)
                     {
                         if (walletAmount < orderAmount)
@@ -283,7 +283,6 @@ namespace NewDuraApp.Areas.Common.ViewModels
                         paymentModeRequestModel.price = Convert.ToDouble(TotalFinalFare);
                         paymentModeRequestModel.user_id = SettingsExtension.UserId;
                     }
-
                     ShowLoadingWithTitle(AppResources.Searching_Driver);
                     var result = await TryWithErrorAsync(_userCoreService.PaymentMode(paymentModeRequestModel, SettingsExtension.Token), true, false);
                     HideLoading();

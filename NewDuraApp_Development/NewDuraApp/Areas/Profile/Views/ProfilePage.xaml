@@ -30,14 +30,14 @@
                 VerticalOptions="CenterAndExpand"
                 VerticalTextAlignment="Center" />
             <ImageButton
-                Grid.Column="0"
-                Margin="{OnPlatform iOS='0,0,20,0',
+                Grid.Column="1"
+                Margin="{OnPlatform iOS='0,0,0,0',
                                     Android='0,0,-35,0'}"
                 Aspect="Fill"
                 BackgroundColor="Transparent"
                 Command="{Binding NavigateToChangePassword}"
                 HeightRequest="24"
-                HorizontalOptions="End"
+                HorizontalOptions="EndAndExpand"
                 VerticalOptions="CenterAndExpand"
                 WidthRequest="22">
                 <ImageButton.Source>
@@ -46,10 +46,8 @@
                         Glyph="{x:Static fonticon:FontIconsClass.LockOutline}"
                         Size="30"
                         Color="Black" />
-
                 </ImageButton.Source>
             </ImageButton>
-
         </Grid>
     </Shell.TitleView>
     <ContentPage.Content>
@@ -66,8 +64,6 @@
                     Source="{Binding ProfileDetails.profile_image}"
                     VerticalOptions="CenterAndExpand"
                     WidthRequest="115" />
-
-
                 <Frame
                     Grid.Row="1"
                     Padding="15,3"
@@ -101,7 +97,6 @@
                                     Glyph="{x:Static fonticon:FontIconsClass.SquareEditOutline}"
                                     Size="30"
                                     Color="Black" />
-
                             </ImageButton.Source>
                         </ImageButton>
                         <StackLayout.GestureRecognizers>
@@ -266,7 +261,6 @@
                             </Switch.Behaviors>
                         </Switch>
                     </StackLayout>
-
                     <Frame
                         Padding="20,0,5,0"
                         BackgroundColor="#EBE9FF"
@@ -342,7 +336,6 @@
                                     <TapGestureRecognizer Command="{Binding LinkCommand}" />
                                 </Label.GestureRecognizers>
                             </Label>
-
                         </StackLayout>
                     </Frame>
                     <Frame
@@ -350,7 +343,6 @@
                         BackgroundColor="#FBFBFF"
                         HeightRequest="42">
                         <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand">
-
                             <Label
                                 FontFamily="ProximaRegular"
                                 FontSize="11"

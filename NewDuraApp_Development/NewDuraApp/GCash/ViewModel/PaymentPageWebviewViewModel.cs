@@ -29,13 +29,13 @@ namespace NewDuraApp.GCash.ViewModel
         private async Task BackCommandExecute()
         {
             await _navigationService.NavigateBackAsync();
-            await App.Locator.GCashPaymentPage.GcashMakePayment();
+            //await App.Locator.GCashPaymentPage.GcashMakePayment();
         }
         internal async Task InitilizeData(string url = "")
         {
             //ShowToast("Please use Back button of app , not hardware back for your successfully transfer");
             URL = url;
         }
-        
+
     }
 }

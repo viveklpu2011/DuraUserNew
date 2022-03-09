@@ -1,6 +1,11 @@
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Net.Http;
+using System.Threading.Tasks;
 using DuraApp.Core.Helpers;
 using DuraApp.Core.Helpers.Enums;
-using DuraApp.Core.Models.RequestModels;
 using DuraApp.Core.Models.ResponseModels;
 using DuraApp.Core.Services.Interfaces;
 using NewDuraApp.Areas.DuraEats.RatingReviews.ViewModels;
@@ -9,21 +14,13 @@ using NewDuraApp.Areas.DuraExpress.Popup.View;
 using NewDuraApp.Areas.DuraShop.ViewModel;
 using NewDuraApp.Helpers;
 using NewDuraApp.Models;
+using NewDuraApp.Resources;
 using NewDuraApp.Services.Interfaces;
 using NewDuraApp.ViewModels;
 using Rg.Plugins.Popup.Services;
-using System;
 using Xamarin.CommunityToolkit.ObjectModel;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
 using Xamarin.Essentials;
 using Xamarin.Forms;
-using NewDuraApp.Resources;
 
 namespace NewDuraApp.Areas.Orders.ViewModels
 {
@@ -564,7 +561,6 @@ namespace NewDuraApp.Areas.Orders.ViewModels
                 }
                 finally
                 {
-
                     IsLoadingIndicator = false;
                     HideLoading();
                 }

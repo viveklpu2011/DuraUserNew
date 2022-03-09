@@ -1,4 +1,7 @@
-﻿using DuraApp.Core.Helpers;
+﻿using System;
+using System.Net.Http;
+using System.Threading.Tasks;
+using DuraApp.Core.Helpers;
 using DuraApp.Core.Helpers.Enums;
 using DuraApp.Core.Models.Common;
 using DuraApp.Core.Models.RequestModels;
@@ -7,15 +10,9 @@ using DuraApp.Core.Models.Result;
 using DuraApp.Core.Services;
 using DuraApp.Core.Services.Interfaces;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ShriekSecurity.Core.Services
 {
-
     public class UserCoreService : IUserCoreService
     {
         private readonly HttpService _httpService;
@@ -35,9 +32,6 @@ namespace ShriekSecurity.Core.Services
             form.Add(new StringContent(Convert.ToString(request.isdefault)), "isdefault");
             form.Add(new StringContent(Convert.ToString(request.latitude)), "latitude");
             form.Add(new StringContent(Convert.ToString(request.longitude)), "longitude");
-
-            //var jsonRequest = JsonConvert.SerializeObject(request);
-
             var response = await _httpService.PostJsonAsync<CommonResponseModel>(Urls.BASE_URL + Urls.AddAddress, form, token);
             if (response?.ResultType == ResultType.Ok)
             {
@@ -201,6 +195,7 @@ namespace ShriekSecurity.Core.Services
             }
             return response;
         }
+
         public async Task<Result<GetUserBusinessDocsResponseModel>> GetBusinessDocument(CommonUserIdRequestModel request, string token)
         {
             var jsonRequest = JsonConvert.SerializeObject(request);
@@ -271,7 +266,6 @@ namespace ShriekSecurity.Core.Services
             }
             return response;
         }
-
 
         public async Task<Result<WalletAmountResponseModel>> GetWalletAmountList(string token)
         {
@@ -471,6 +465,7 @@ namespace ShriekSecurity.Core.Services
             var response = await _httpService.PostJsonAsync<NotificatonResponseModel>(Urls.BASE_URL + Urls.GetNotification, jsonRequest, token);
             return response;
         }
+
         public async Task<Result<GetWalletAmountResponseModel>> GetWallet(CommonUserIdRequestModel request, string token)
         {
             var jsonRequest = JsonConvert.SerializeObject(request);
@@ -492,6 +487,7 @@ namespace ShriekSecurity.Core.Services
             var response = await _httpService.PostJsonAsync<CommonResponseModel>(Urls.BASE_URL + Urls.ReadNotification, jsonRequest, token);
             return response;
         }
+
         public async Task<Result<CommonResponseModel>> CancelRide(CancelRideRequestModel request, string token)
         {
             var jsonRequest = JsonConvert.SerializeObject(request);
@@ -593,7 +589,6 @@ namespace ShriekSecurity.Core.Services
         public async Task<Result<GoogleTimeResponseModel>> GetGoogleDirectionTime(string source, string destination)
         {
             var url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=" + source + "&destinations=" + destination + "&key=" + AppConstant.GooglePlaceKey + "";
-
             var response = await _httpService.GetJsonAsync<GoogleTimeResponseModel>(url);
             if (response?.ResultType == ResultType.Ok)
             {
@@ -619,5 +614,4 @@ namespace ShriekSecurity.Core.Services
             return response;
         }
     }
-
 }

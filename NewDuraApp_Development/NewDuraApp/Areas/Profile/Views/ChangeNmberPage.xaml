@@ -17,7 +17,6 @@
     Shell.TabBarIsVisible="False"
     Visual="Material">
     <Shell.TitleView>
-
         <Label
             FontAttributes="Bold"
             FontFamily="ProximaRegular"
@@ -27,8 +26,6 @@
             TextColor="Black"
             VerticalOptions="CenterAndExpand"
             VerticalTextAlignment="Center" />
-
-
     </Shell.TitleView>
     <ContentPage.Content>
         <StackLayout Margin="15" Spacing="20">
@@ -44,7 +41,6 @@
                     PlaceholderColor="{StaticResource PlaceholderColor}"
                     TextColor="Black" />
             </Frame>
-
             <Button
                 Margin="0,20"
                 BackgroundColor="#211E66"

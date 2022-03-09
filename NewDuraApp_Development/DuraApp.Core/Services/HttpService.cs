@@ -21,12 +21,11 @@ namespace DuraApp.Core.Services
         {
             //client.Timeout = new TimeSpan(0, 0, 60);
             var httpClientHandler = new HttpClientHandler();
-
             httpClientHandler.ServerCertificateCustomValidationCallback =
             (message, cert, chain, errors) => { return true; };
-
             _client = new HttpClient(httpClientHandler);
         }
+
         /// <summary>
         /// Makes an HTTP POST request
         /// </summary>
@@ -40,16 +39,15 @@ namespace DuraApp.Core.Services
             //await SetHeaderAsync();
             var result = await _client.PostAsync(url, new StringContent(json, Encoding.UTF8, "application/json"));
             return await HandleResponseAsync<T>(result);
-
         }
+
         public virtual async Task<Result<T>> PostJsonAsyncWithoutToken<T>(string url, MultipartFormDataContent content)
         {
             await SetTokenAsync();
-
             var result = await _client.PostAsync(url, content);
             return await HandleResponseAsync<T>(result);
-
         }
+
         public virtual async Task<Result<T>> PostJsonAsync<T>(string url, string json, string token)
         {
             //await SetTokenAsync();
@@ -57,7 +55,6 @@ namespace DuraApp.Core.Services
             var result = await _client.PostAsync(url, new StringContent(json, Encoding.UTF8, "application/json"));
             Console.WriteLine($"Error Response is-------------------{result}");
             return await HandleResponseAsync<T>(result);
-
         }
 
         public virtual async Task<Result<T>> PostJsonAsync<T>(string url, MultipartFormDataContent content, string token)
@@ -70,7 +67,6 @@ namespace DuraApp.Core.Services
             }
             var result = await _client.PostAsync(url, content);
             return await HandleResponseAsync<T>(result);
-
         }
         /// <summary>
         /// Makes an HTTP POST request
@@ -84,7 +80,6 @@ namespace DuraApp.Core.Services
             await SetTokenAsync();
             var result = await _client.PostAsync(url, content);
             return await HandleResponseAsync<T>(result);
-
         }
 
         /// <summary>
@@ -149,7 +144,6 @@ namespace DuraApp.Core.Services
             await SetTokenAsync();
             var result = await _client.PostAsync(url, imageContent);
             return await HandleResponseAsync<T>(result);
-
         }
 
         /// <summary>
@@ -166,6 +160,7 @@ namespace DuraApp.Core.Services
             var result = await _client.GetAsync(url);
             return await HandleResponseAsync<T>(result);
         }
+
         public virtual async Task<Result<T>> GetJsonAsync<T>(string url, string token)
         {
             //await SetTokenAsync();
@@ -237,8 +232,8 @@ namespace DuraApp.Core.Services
             await SetTokenAsync();
             var result = await _client.DeleteAsync(url);
             return await HandleResponseAsync<T>(result);
-
         }
+
         private async Task SetHeaderAsync(string token)
         {
             _client.DefaultRequestHeaders.Clear();
@@ -284,13 +279,11 @@ namespace DuraApp.Core.Services
                     //var errorData = JsonConvert.DeserializeObject<BaseResponse>(content);
                     return new UnauthorizedResult<T>("Please recheck your email/password , not matching with duradrive database.");
                 }
-
                 // error, but no content? wing it.
                 if (string.IsNullOrEmpty(content))
                 {
                     return new UnexpectedResult<T>();
                 }
-
                 // otherwise, start mapping errors.
                 try
                 {
@@ -309,6 +302,7 @@ namespace DuraApp.Core.Services
                 }
             }
         }
+
         private async Task SetTokenAsync()
         {
             _client.DefaultRequestHeaders.Clear();
@@ -325,13 +319,14 @@ namespace DuraApp.Core.Services
 
             }
         }
+
         private async Task SetHeaderAsync()
         {
             _client.DefaultRequestHeaders.Clear();
             _client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Basic", Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(string.Format("{0}:{1}", "ck_2a86b3ecd81d79007dd998da3f97f5e08e11cec1", "cs_4175240a3f37a75796b20327b63ae5119d2e2fdf"))));
-
             //_client.DefaultRequestHeaders.Authorization = new BasicAuthenticationHeaderValue("ck_2a86b3ecd81d79007dd998da3f97f5e08e11cec1", "cs_4175240a3f37a75796b20327b63ae5119d2e2fdf");
         }
+
         private void SetDefaultHeader()
         {
             _client.DefaultRequestHeaders.Clear();

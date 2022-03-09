@@ -275,7 +275,6 @@ namespace NewDuraApp.GCash.ViewModel
                         {
                             await NavigateToRehargeSuccessfullPage(ResponseData.data.attributes.amount, ResponseData.data?.attributes?.balance_transaction_id);
                         }
-
                     }
                     else if (response.StatusCode == System.Net.HttpStatusCode.BadRequest)
                     {
@@ -341,7 +340,6 @@ namespace NewDuraApp.GCash.ViewModel
             }
             else
                 ShowToast(CommonMessages.NoInternet);
-
         }
     }
 }

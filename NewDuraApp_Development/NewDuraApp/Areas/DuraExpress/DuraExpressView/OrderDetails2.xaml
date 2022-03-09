@@ -42,7 +42,7 @@
             <ImageButton
                 x:Name="btnHelp"
                 Margin="{OnPlatform Android='0,0,20,0',
-                                    iOS='0,0,70,0'}"
+                                    iOS='0,0,20,0'}"
                 BackgroundColor="Transparent"
                 Command="{Binding DuraHelpCommand}"
                 HeightRequest="20"

@@ -400,6 +400,7 @@
                                                             <Frame
                                                                 Padding="0"
                                                                 BackgroundColor="#C7FFe5"
+                                                                HasShadow="False"
                                                                 HeightRequest="50">
 
                                                                 <Grid
@@ -466,7 +467,6 @@
                                                                                 Glyph="{x:Static fonticon:FontIconsClass.MapOutline}"
                                                                                 Size="30"
                                                                                 Color="Black" />
-
                                                                         </ImageButton.Source>
                                                                     </ImageButton>
                                                                 </Grid>
@@ -492,8 +492,8 @@
                                                         xct:ShadowEffect.Radius="5"
                                                         BackgroundColor="#FBFBFF"
                                                         CornerRadius="5"
-                                                        HasShadow="{OnPlatform Android='true',
-                                                                               iOS='false'}"
+                                                        HasShadow="{OnPlatform Android='True',
+                                                                               iOS='False'}"
                                                         IsVisible="{Binding IsOngoingViewVisible, Converter={Helpers:InverseBoolConverter}}">
                                                         <StackLayout Margin="10,15,10,0" Padding="0">
                                                             <Label FontSize="16">

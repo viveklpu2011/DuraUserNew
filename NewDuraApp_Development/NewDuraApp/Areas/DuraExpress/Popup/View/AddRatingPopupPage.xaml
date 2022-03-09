@@ -51,21 +51,13 @@
                         VerticalOptions="CenterAndExpand" />
                 </StackLayout>
                 <StackLayout>
-                    <Frame
-                        Padding="0"
-                        BackgroundColor="Gray"
-                        CornerRadius="50"
+                    <control:CircleImage
+                        Aspect="Fill"
                         HeightRequest="100"
                         HorizontalOptions="CenterAndExpand"
-                        IsClippedToBounds="True"
+                        Source="{Binding ProfileImage}"
                         VerticalOptions="CenterAndExpand"
-                        WidthRequest="80">
-                        <Image
-                            Aspect="AspectFit"
-                            HeightRequest="100"
-                            Source="{Binding ProfileImage}"
-                            WidthRequest="100" />
-                    </Frame>
+                        WidthRequest="100" />
                     <Label
                         Margin="0,5"
                         FontFamily="ProximaBold"
@@ -94,6 +86,7 @@
                         BackgroundColor="White"
                         BorderColor="#211E66"
                         CornerRadius="5"
+                        HasShadow="False"
                         HeightRequest="100"
                         HorizontalOptions="FillAndExpand">
                         <control:BorderlessEditor

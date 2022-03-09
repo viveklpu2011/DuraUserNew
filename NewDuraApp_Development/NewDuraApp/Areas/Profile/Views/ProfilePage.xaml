@@ -289,7 +289,6 @@
                                         Glyph="{x:Static fonticon:FontIconsClass.MenuRight}"
                                         Size="30"
                                         Color="Black" />
-
                                 </ImageButton.Source>
                             </ImageButton>
                         </StackLayout>
@@ -352,7 +351,6 @@
                                 TextColor="Black"
                                 VerticalOptions="CenterAndExpand"
                                 VerticalTextAlignment="Center" />
-
                             <Label
                                 FontFamily="ProximaRegular"
                                 FontSize="11"

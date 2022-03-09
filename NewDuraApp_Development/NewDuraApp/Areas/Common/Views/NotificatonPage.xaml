@@ -26,7 +26,7 @@
                 VerticalTextAlignment="Center" />
             <Label
                 xct:TouchEffect.Command="{Binding MarkasReadCommand}"
-                AbsoluteLayout.LayoutBounds="{OnPlatform iOS='0.8,0.5',
+                AbsoluteLayout.LayoutBounds="{OnPlatform iOS='1,0.5',
                                                          Android='0.95,0.5'}"
                 AbsoluteLayout.LayoutFlags="PositionProportional"
                 FontFamily="ProximaSemiBold"

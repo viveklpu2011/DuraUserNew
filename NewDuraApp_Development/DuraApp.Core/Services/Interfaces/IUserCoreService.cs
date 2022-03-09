@@ -1,8 +1,4 @@
-﻿
-using System;
-using System.Collections.Generic;
-using System.Net.Http;
-using System.Text;
+﻿using System.Net.Http;
 using System.Threading.Tasks;
 using DuraApp.Core.Models.Common;
 using DuraApp.Core.Models.RequestModels;
@@ -33,36 +29,28 @@ namespace DuraApp.Core.Services.Interfaces
         Task<Result<CommonResponseModel>> UpdateAddress(UpdateAddressRequestModel request, string token);
         Task<Result<CommonResponseModel>> DeleteAddress(DeleteAddressRequestModel request, string token);
         Task<Result<GetAddressResponseModel>> GetAddress(CommonUserIdRequestModel request, string token);
-
         Task<Result<CommonResponseModel>> AddCard(AddCardRequestModel request, string token);
         Task<Result<CommonResponseModel>> UpdateCard(UpdateCardRequestModel request, string token);
         Task<Result<CommonResponseModel>> DeleteCard(DeleteCardRequestModel request, string token);
         Task<Result<CardListResponseModel>> GetCard(CommonUserIdRequestModel request, string token);
-
         Task<Result<ReferCodeResponseModel>> ReferCode(ReferCodeRequestModel request);
-
         Task<Result<CommonResponseModel>> UploadDocument(MultipartFormDataContent request, string token);
         Task<Result<GetUserPersonalDocsResponseModel>> GetPersonalDocument(CommonUserIdRequestModel request, string token);
         Task<Result<DeleteDocumentResponseModel>> DeleteDocument(DeleteDocumentRequestModel request, string token);
         Task<Result<GetUserBusinessDocsResponseModel>> GetBusinessDocument(CommonUserIdRequestModel request, string token);
         Task<Result<CommonResponseModel>> ChangePassword(ChangePasswordRequestModel request, string token);
         Task<Result<MyOrderResponseModel>> GetMyOrder(MultipartFormDataContent request, string token);
-
         Task<Result<NotificatonResponseModel>> GetNotification(NotificatonRequestModel request, string token);
         Task<Result<CommonResponseModel>> ReadNotification(ReadNotificationRequestModel request, string token);
-
         Task<Result<GetWalletAmountResponseModel>> GetWallet(CommonUserIdRequestModel request, string token);
         Task<Result<CommonResponseModel>> CancelRide(CancelRideRequestModel request, string token);
         Task<Result<CommonResponseModel>> UpdateUserCountry(MultipartFormDataContent request, string token);
         Task<Result<CommonResponseModel>> BeARider(CommonUserIdRequestModel request, string token);
         Task<Result<CommonResponseModel>> UpdatePhone(UpdatePhoneRequestModel request, string token);
-
-
         Task<Result<CommonResponseModel>> SubmitRating(SubmitRatingRequestModel request, string token);
         Task<Result<GetRatingResponseModel>> GetUserRating(CommonUserIdRequestModel request, string token);
         Task<Result<CommonResponseModel>> SubmitReferralCode(ReferralCodeRequestModel request, string token);
         Task<Result<GoogleTimeResponseModel>> GetGoogleDirectionTime(string source, string destination);
         Task<Result<CommonResponseModel>> VerifyPhoneNumber(VerifyPhoneRequestModel request, string token);
     }
-
 }

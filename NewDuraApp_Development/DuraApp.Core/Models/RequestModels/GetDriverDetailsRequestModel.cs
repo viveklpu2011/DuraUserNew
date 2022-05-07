@@ -6,5 +6,6 @@ namespace DuraApp.Core.Models.RequestModels
         public string step { get; set; }
 
         public long pickup_id { get; set; }
+
     }
 }

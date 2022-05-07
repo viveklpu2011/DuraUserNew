@@ -46,6 +46,7 @@ namespace DuraApp.Core.Models.ResponseModels
         public string paymentmode { get; set; }
         public string orderdate { get; set; }
         public string status { get; set; }
+        public string otp { get; set; }
 
         private string _displaystatus = string.Empty;
         public string displaystatus

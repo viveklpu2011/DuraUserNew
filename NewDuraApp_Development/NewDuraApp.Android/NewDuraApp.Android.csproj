@@ -40,9 +40,8 @@
     <AndroidSupportedAbis>x86;x86_64;arm64-v8a;armeabi-v7a</AndroidSupportedAbis>
     <MandroidI18n></MandroidI18n>
     <MandroidI18n></MandroidI18n>
+    <AndroidPackageFormat>apk</AndroidPackageFormat>
     <AndroidLinkMode>None</AndroidLinkMode>
-    <EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
-    <AndroidPackageFormat>aab</AndroidPackageFormat>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>

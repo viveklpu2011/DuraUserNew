@@ -67,6 +67,16 @@
                     FontSize="18"
                     Text="{translate:Translate Hope_you_are_satisfied_by_our_services}"
                     TextColor="Black" />
+                 <StackLayout Margin="10,10,0,0" Orientation="Horizontal" Spacing="0">
+                                <Label
+                                    FontFamily="ProximaRegular"
+                                    FontSize="16"
+                                    Text="Code for Share to Driver : "/>
+                                <Label
+                                    FontFamily="ProximaSemiBold"
+                                    FontSize="16"
+                                    Text="{Binding GetOrderData.otp}"/>
+                            </StackLayout>
                 <StackLayout Margin="10,10,0,0" Orientation="Horizontal">
                     <Label
                         FontFamily="ProximaRegular"
@@ -85,6 +95,7 @@
                         </Label.FormattedText>
                     </Label>
                 </StackLayout>
+                 
                 <StackLayout Margin="10,0,0,10" Orientation="Horizontal">
                     <Label
                         FontFamily="ProximaRegular"
